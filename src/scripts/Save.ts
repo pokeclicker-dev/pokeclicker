@@ -6,12 +6,31 @@ class Save {
         let json = JSON.stringify(player);
         localStorage.setItem("player", json);
         localStorage.setItem("mine", Mine.serialize());
+        localStorage.setItem("settings", Settings.save());
+
+        let saveObject = {};
+
+        saveObject[Underground.saveKey] = Underground.save();
+
+        localStorage.setItem("save", JSON.stringify(saveObject));
+
         this.counter = 0;
         console.log("Game saved")
     }
 
     public static load(): Player {
         let saved = localStorage.getItem("player");
+
+        let settings = localStorage.getItem("settings");
+        Settings.load(JSON.parse(settings));
+
+
+        let saveJSON = localStorage.getItem("save");
+        if (saveJSON !== null) {
+            let saveObject = JSON.parse(saveJSON);
+            Underground.load(saveObject[Underground.saveKey]);
+        }
+
         if (saved !== "null") {
             return new Player(JSON.parse(saved));
         } else {
@@ -23,12 +42,8 @@ class Save {
         let element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(btoa(JSON.stringify(player))));
         let currentdate = new Date();
-        let datetime = "" + currentdate.getDate() + "/"
-            + (currentdate.getMonth() + 1) + "/"
-            + currentdate.getFullYear() + " @ "
-            + currentdate.getHours() + ":"
-            + currentdate.getMinutes();
-        let filename = "Pokeclicker save - " + datetime + '.txt';
+        let datestr = currentdate.toISOString().replace("T", " ").slice(0, 19);
+        let filename = "PokeClickerSave_" + datestr + '.txt';
         element.setAttribute('download', filename);
 
         element.style.display = 'none';
@@ -48,14 +63,18 @@ class Save {
         }
     }
 
-    public static reset(): void {
-        var confirmDelete = prompt("Are you sure you want reset? If so, type 'DELETE'");
+    public static reset(keepShinies: boolean = true): void {
+        var confirmDelete = prompt(`Are you sure you want reset?\nIf so, type 'DELETE'${keepShinies ? '\n\n[your shiny progress will not be reset]': ''}`);
 
-        if(confirmDelete == "DELETE"){
-            localStorage.setItem("player", null);
-            location.reload()
+        if(confirmDelete == 'DELETE'){
+            if (keepShinies){
+                const shiniesOnly = {_caughtShinyList: player.caughtShinyList()};
+                localStorage.setItem('player', JSON.stringify(shiniesOnly));
+            } else {
+                localStorage.removeItem('player');
+            }
+            location.reload();
         }
-
     }
 
     /** Filters an object by property names
@@ -137,10 +156,18 @@ class Save {
         return res;
     }
 
+    public static initializeEffects(saved?: Array<string>): {[name: string]: KnockoutObservable<number>} {
+        let res = {};
+        for (let obj in GameConstants.BattleItemType) {
+            res[obj] = ko.observable(saved ? saved[obj] || 0 : 0);
+        }
+        return res;
+    }
+
     public static loadFromFile(file) {
-        testing = file;
+        let fileToRead = file;
         let fr = new FileReader();
-        fr.readAsText(testing);
+        fr.readAsText(fileToRead);
 
         setTimeout(function () {
             try {
@@ -187,5 +214,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
         $('#saveTextArea').text(JSON.stringify(player));
     });
 });
-
-let testing;

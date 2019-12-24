@@ -39,7 +39,7 @@ class Battle {
         if (!this.enemyPokemon().isAlive()) {
             return;
         }
-        OakItemRunner.use("Poison Barb");
+        OakItemRunner.use(GameConstants.OakItem.Poison_Barb);
         GameHelper.incrementObservable(player.statistics.clicks)
         this.enemyPokemon().damage(player.calculateClickAttack());
         if (!this.enemyPokemon().isAlive()) {
@@ -57,8 +57,9 @@ class Battle {
         player.gainShards(this.enemyPokemon());
         player.addRouteKill();
         BreedingHelper.progressEggs(Math.floor(Math.sqrt(player.route()) * 100) / 100);
-        let alreadyCaught: boolean = player.alreadyCaughtPokemon(this.enemyPokemon().name);
-        let pokeBall: GameConstants.Pokeball = player.calculatePokeballToUse(alreadyCaught, this.enemyPokemon().shiny);
+        const pokemonName: string = this.enemyPokemon().name;
+        const isShiny: boolean = this.enemyPokemon().shiny;
+        const pokeBall: GameConstants.Pokeball = player.calculatePokeballToUse(pokemonName, isShiny);
 
         if (pokeBall !== GameConstants.Pokeball.None) {
             this.prepareCatch(pokeBall);
@@ -89,10 +90,17 @@ class Battle {
     }
 
     protected static calculateActualCatchRate(pokeBall: GameConstants.Pokeball) {
-        let pokeballBonus = GameConstants.getCatchBonus(pokeBall);
-        let oakBonus = OakItemRunner.isActive("Magic Ball") ? 
-            OakItemRunner.calculateBonus("Magic Ball") : 0;
-        let totalChance = this.enemyPokemon().catchRate + pokeballBonus + oakBonus;
+        // Each of the bonuses is added on, not multiplied (20+5+10+10)
+        let catchRate = this.enemyPokemon().catchRate;
+        // Pokeball bonus
+        catchRate += GameConstants.getCatchBonus(pokeBall);
+        // Oak item bonus
+        catchRate += OakItemRunner.isActive(GameConstants.OakItem.Magic_Ball) ?
+            OakItemRunner.calculateBonus(GameConstants.OakItem.Magic_Ball) : 0;
+        // Prestige bonus
+        catchRate += PrestigeBonuses.getBonus(36);
+        // Limit the catch chance to 0-100
+        const totalChance = GameConstants.clipNumber(catchRate, 0, 100);
         return totalChance;
     }
 
@@ -119,14 +127,10 @@ class Battle {
 
     static gainItem() {
         let p = player.route() / 1600 + 0.009375;
+
         if (Math.random() < p) {
-            this.getRandomBerry()
+            player.getRandomBerry()
         }
     }
 
-    public static getRandomBerry() {
-        let i = GameHelper.getIndexFromDistribution(GameConstants.BerryDistribution);
-        Notifier.notify("You got a " + GameConstants.BerryType[i] + " berry!", GameConstants.NotificationOption.success);
-        player.berryList[i](player.berryList[i]() + 1);
-    }
 }

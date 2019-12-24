@@ -17,7 +17,7 @@ class PokemonFactory {
             return new BattlePokemon("Rattata", 19, GameConstants.PokemonType.Psychic, GameConstants.PokemonType.None, 10000, 1, 0, 0, 0, false, 1);
         }
         let name: string;
-        
+
         if (PokemonFactory.roamingEncounter(route)) {
             let possible = GameConstants.RoamingPokemon[region];
             name = possible[Math.floor(Math.random() * possible.length)];
@@ -37,6 +37,7 @@ class PokemonFactory {
         let deviation = Math.floor(Math.random() * 51) - 25;
         let money: number = Math.max(10, 3 * route + 5 * Math.pow(route, 1.15) + deviation);
         let shiny: boolean = this.generateShiny(GameConstants.SHINY_CHANCE_BATTLE);
+        if (shiny) Notifier.notify(`✨ You encountered a shiny ${name}! ✨`, GameConstants.NotificationOption.warning);
         return new BattlePokemon(name, id, basePokemon.type1, basePokemon.type2, maxHealth, route * 2, catchRate, exp, money, shiny);
     }
 
@@ -50,13 +51,12 @@ class PokemonFactory {
      * @returns {boolean}
      */
     public static generateShiny(chance: number): boolean {
-        chance = OakItemRunner.isActive("Shiny Charm") ? chance / (1 + OakItemRunner.calculateBonus("Shiny Charm") / 100) : chance;
+        chance = OakItemRunner.isActive(GameConstants.OakItem.Shiny_Charm) ? chance / (1 + OakItemRunner.calculateBonus(GameConstants.OakItem.Shiny_Charm) / 100) : chance;
 
         let rand: number = Math.floor(Math.random() * chance) + 1;
 
         if (rand <= 1) {
-            Notifier.notify("You encounter a shiny Pokémon...", GameConstants.NotificationOption.warning);
-            OakItemRunner.use("Shiny Charm");
+            OakItemRunner.use(GameConstants.OakItem.Shiny_Charm);
             return true;
         }
         return false;
@@ -88,6 +88,7 @@ class PokemonFactory {
         let exp: number = basePokemon.exp;
         let money: number = 0;
         let shiny: boolean = this.generateShiny(GameConstants.SHINY_CHANCE_BATTLE);
+        if (shiny) Notifier.notify(`✨ You encountered a shiny ${name}! ✨`, GameConstants.NotificationOption.warning);
         return new BattlePokemon(name, id, basePokemon.type1, basePokemon.type2, maxHealth, level, catchRate, exp, money, shiny, GameConstants.DUNGEON_SHARDS);
     }
 
@@ -102,6 +103,7 @@ class PokemonFactory {
         let exp: number = basePokemon.exp;
         let money: number = 0;
         let shiny: boolean = this.generateShiny(GameConstants.SHINY_CHANCE_BATTLE);
+        if (shiny) Notifier.notify(`✨ You encountered a shiny ${name}! ✨`, GameConstants.NotificationOption.warning);
         return new BattlePokemon(name, id, basePokemon.type1, basePokemon.type2, maxHealth, bossPokemon.level, catchRate, exp, money, shiny, GameConstants.DUNGEON_BOSS_SHARDS);
     }
 

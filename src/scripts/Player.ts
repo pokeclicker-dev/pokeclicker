@@ -1,17 +1,21 @@
+///<reference path="upgrades/Upgrade.ts"/>
 /**
  * Information about the player.
  * All player variables need to be saved.
  */
 
 class Player {
-
     private _money: KnockoutObservable<number>;
     private _dungeonTokens: KnockoutObservable<number>;
 
     public achievementsCompleted: { [name: string]: boolean };
-    public prestigesCompleted: number[] = [0,0,0];
-    public prestigePoints: number[] = [20,20,20];
-    public prestigeUpgradesBought = new Array(GameConstants.AMOUNT_OF_PRESTIGE_UPGRADES).fill(false);
+
+    public prestigeType: GameConstants.PrestigeType;
+    public prestigePoints: Array<KnockoutObservable<number>>;
+    public prestigeUpgradesBought: Array<KnockoutObservable<boolean>>;
+    public prestigeBank: Array<KnockoutObservable<number>>;
+
+    public dungeonsCleared: Array<KnockoutObservable<number>>;
 
     private _caughtShinyList: KnockoutObservableArray<string>;
     private _route: KnockoutObservable<number>;
@@ -48,6 +52,19 @@ class Player {
         this._money = ko.observable(savedPlayer._money || 0);
         this._dungeonTokens = ko.observable(savedPlayer._dungeonTokens || 0);
         this._questPoints = ko.observable(savedPlayer._questPoints || 0);
+        this.prestigeType = savedPlayer.prestigeType || GameConstants.PrestigeType.Easy;
+        this.prestigePoints = Array.apply(null, Array(GameHelper.enumLength(GameConstants.PrestigeType))).map(function (val, index) {
+            return ko.observable(savedPlayer.prestigePoints ? (savedPlayer.prestigePoints[index] || 0) : 0)
+        });
+        this.prestigeUpgradesBought = Array.apply(null, Array(GameConstants.AMOUNT_OF_PRESTIGE_UPGRADES + 1)).map(function (val, index) {
+            return ko.observable(savedPlayer.prestigeUpgradesBought ? (savedPlayer.prestigeUpgradesBought[index] || false) : false)
+        });
+        this.prestigeBank = Array.apply(null, Array(GameHelper.enumLength(GameConstants.Currency))).map(function (val, index) {
+            return ko.observable(savedPlayer.prestigeBank ? (savedPlayer.prestigeBank[index] || 0) : 0)
+        });
+        this.dungeonsCleared = Array.apply(null, Array(GameConstants.RegionDungeons.flat().length)).map(function (val, index) {
+            return ko.observable(savedPlayer.dungeonsCleared ? (savedPlayer.dungeonsCleared[index] || 0) : 0)
+        });
         this._caughtShinyList = ko.observableArray<string>(savedPlayer._caughtShinyList);
         this._region = ko.observable(savedPlayer._region);
         if (MapHelper.validRoute(savedPlayer._route, savedPlayer._region)) {
@@ -111,7 +128,7 @@ class Player {
         }, this);
         this._town = ko.observable(TownList["Pallet Town"]);
         this._currentTown = ko.observable("");
-        this._starter = savedPlayer._starter || GameConstants.Starter.None;
+        this._starter = savedPlayer._starter != undefined ? savedPlayer._starter : GameConstants.Starter.None;
 
         console.log(savedPlayer._itemList);
 
@@ -123,17 +140,14 @@ class Player {
         }
 
         this._itemMultipliers = savedPlayer._itemMultipliers || Save.initializeMultipliers();
-        this._mineEnergy = ko.observable((typeof savedPlayer._mineEnergy == 'number') ? savedPlayer._mineEnergy : 50);
-        this._maxMineEnergy = ko.observable(savedPlayer._maxMineEnergy || GameConstants.MineUpgradesInitialValues.maxMineEnergy);
-        this._mineEnergyGain = ko.observable(savedPlayer._mineEnergyGain || GameConstants.MineUpgradesInitialValues.mineEnergyGain);
+
+        // TODO(@Isha) move to underground classes.
         this._mineInventory = ko.observableArray(savedPlayer._mineInventory || []);
         for (let item of this._mineInventory()) {
             item.amount = ko.observable(item.amount);
         }
         this._diamonds = ko.observable(savedPlayer._diamonds || 0);
-        this._maxDailyDeals = ko.observable(savedPlayer._maxDailyDeals || GameConstants.MineUpgradesInitialValues.maxDailyDeals);
-        this._maxUndergroundItems = ko.observable(savedPlayer._maxUndergroundItems || GameConstants.MineUpgradesInitialValues.maxUndergroundItems);
-        this._mineEnergyRegenTime = ko.observable(savedPlayer._mineEnergyRegenTime || GameConstants.MineUpgradesInitialValues.mineEnergyRegenTime);
+
         savedPlayer._eggList = savedPlayer._eggList || [null, null, null, null];
         this._eggList = savedPlayer._eggList.map((egg) => {
             return ko.observable(egg ? new Egg(egg.totalSteps, egg.pokemon, egg.type, egg.steps, egg.shinySteps, egg.notified) : null)
@@ -160,13 +174,17 @@ class Player {
                     return ko.observable(false)
                 });
             }
-            this.currentQuest = ko.observable(savedPlayer.currentQuest);
+
+            this.currentQuests = ko.observableArray(savedPlayer.currentQuests || []);
+            for (let q of this.currentQuests()) {
+                q.initial = ko.observable(q.initial);
+            }
         } else {
             this.questRefreshes = 0;
             this.completedQuestList = Array.apply(null, Array(GameConstants.QUESTS_PER_SET)).map(() => {
                 return ko.observable(false)
             });
-            this.currentQuest = ko.observable(null);
+            this.currentQuests = ko.observableArray([]);
         }
         this._questXP = ko.observable(savedPlayer._questXP || 0);
         this._questPoints = ko.observable(savedPlayer._questPoints || 0);
@@ -181,30 +199,23 @@ class Player {
             return ko.observable(savedPlayer.berryList ? (savedPlayer.berryList[index] || 0) : 0)
         });
         this.plotList = Save.initializePlots(savedPlayer.plotList);
-        this.highestRegion = savedPlayer.highestRegion || 0;
+        this.effectList = Save.initializeEffects(savedPlayer.effectList || {});
+        this.highestRegion = ko.observable(savedPlayer.highestRegion || 0);
 
         this.tutorialProgress = ko.observable(savedPlayer.tutorialProgress || 0);
         this.tutorialState = savedPlayer.tutorialState;
         this.tutorialComplete = ko.observable(!!savedPlayer.tutorialComplete);
 
-        //TODO remove before deployment
-        if (!debug) {
-            if (!saved) {
-                StartSequenceRunner.start()
-            }
+        if (this.starter === GameConstants.Starter.None) {
+            StartSequenceRunner.start()
         }
     }
 
     private _itemList: { [name: string]: KnockoutObservable<number> };
 
-    private _mineEnergy: KnockoutObservable<number>;
-    private _maxMineEnergy: KnockoutObservable<number>;
-    private _mineEnergyGain: KnockoutObservable<number>;
+    // TODO(@Isha) move to underground classes.
     private _mineInventory: KnockoutObservableArray<any>;
     private _diamonds: KnockoutObservable<number>;
-    private _maxDailyDeals: KnockoutObservable<number>;
-    private _maxUndergroundItems: KnockoutObservable<number>;
-    private _mineEnergyRegenTime: KnockoutObservable<number>;
 
     private _shardUpgrades: Array<Array<KnockoutObservable<number>>>;
     private _shardsCollected: Array<KnockoutObservable<number>>;
@@ -225,18 +236,27 @@ class Player {
     public _questPoints: KnockoutObservable<number>;
     public _questXP: KnockoutObservable<number>;
     public _lastSeen: number;
-    public currentQuest: KnockoutObservable<any>;
+    public currentQuests: KnockoutObservableArray<any>;
     private _shinyCatches: KnockoutObservable<number>;
 
     public plotList: KnockoutObservable<Plot>[];
     public farmPoints: KnockoutObservable<number>;
     public berryList: KnockoutObservable<number>[];
 
+    public effectList: { [name: string]: KnockoutObservable<number> } = {};
+
     public tutorialProgress: KnockoutObservable<number>;
     public tutorialState: any;
     public tutorialComplete: KnockoutObservable<boolean>;
 
-    private highestRegion: GameConstants.Region;
+    private highestRegion: KnockoutObservable<GameConstants.Region>;
+
+    public caughtAndShinyList(): KnockoutComputed<number> {
+        return ko.computed(function () {
+            const pokeList = this.caughtPokemonList.map(pokemon=>pokemon.name);
+            return this.caughtShinyList().filter(pokemon=>pokeList.includes(pokemon));
+        }, this);
+    }
 
     public routeKillsObservable(route: number): KnockoutComputed<number> {
         return ko.computed(function () {
@@ -272,12 +292,7 @@ class Player {
     }
 
     public hasKeyItem(name: string): boolean {
-        for (let i = 0; i < this._keyItems().length; i++) {
-            if (this._keyItems()[i] == name) {
-                return true;
-            }
-        }
-        return false;
+        return this._keyItems().includes(name);
     }
 
     set defeatedAmount(value: Array<KnockoutObservable<number>>) {
@@ -288,10 +303,20 @@ class Player {
         if (!this.hasKeyItem(name)) {
             this.recentKeyItem(name);
             if (!supressModal) {
+                $('.modal').modal('hide');
                 $("#keyItemModal").modal('show');
             }
             this._keyItems().push(name);
             KeyItemHandler.getKeyItemObservableByName(name).valueHasMutated();
+            player._keyItems.valueHasMutated();
+        }
+    }
+
+    public resetKeyItem(name: string) {
+        if (this.hasKeyItem(name)) {
+          this._keyItems().splice(this._keyItems().indexOf(name), 1);
+          KeyItemHandler.getKeyItemObservableByName(name).valueHasMutated();
+          player._keyItems.valueHasMutated();
         }
     }
 
@@ -321,8 +346,19 @@ class Player {
     private _caughtAmount: Array<KnockoutObservable<number>>;
 
     public calculateClickAttack(): number {
-        let oakItemBonus = OakItemRunner.isActive("Poison Barb") ? (1 + OakItemRunner.calculateBonus("Poison Barb") / 100) : 1;
-        return Math.floor(Math.pow(this.caughtPokemonList.length + 1, 1.4) * oakItemBonus);
+        // Base power
+        let clickAttack =  Math.pow(this.caughtPokemonList.length + this.caughtAndShinyList()().length + 1, 1.4);
+
+        // Apply Oak bonus
+        const oakItemBonus = OakItemRunner.isActive(GameConstants.OakItem.Poison_Barb) ? (1 + OakItemRunner.calculateBonus(GameConstants.OakItem.Poison_Barb) / 100) : 1;
+        clickAttack *= oakItemBonus;
+
+        // Apply battle item bonus
+        if(EffectEngineRunner.isActive(GameConstants.BattleItemType.xClick)()){
+            clickAttack *= 1.5;
+        }
+
+        return Math.floor(clickAttack);
     }
 
     public calculateMoneyMultiplier(): number {
@@ -362,21 +398,20 @@ class Player {
      * @param shiny if the pokémon is shiny.
      * @returns {GameConstants.Pokeball} pokéball to use.
      */
-    public calculatePokeballToUse(alreadyCaught: boolean, shiny: boolean): GameConstants.Pokeball {
+    public calculatePokeballToUse(pokemonName: string, isShiny: boolean): GameConstants.Pokeball {
+        const alreadyCaught = this.alreadyCaughtPokemon(pokemonName);
+        const alreadyCaughtShiny = this.alreadyCaughtPokemonShiny(pokemonName);
         let pref: GameConstants.Pokeball;
-        if (alreadyCaught) {
-            pref = this._alreadyCaughtBallSelection();
-        } else {
+        // just check against alreadyCaughtShiny as this returns false when you don't have the pokemon yet.
+        if (!alreadyCaught || (!alreadyCaughtShiny && isShiny)) {
             pref = this._notCaughtBallSelection();
-        }
-
-        // Always throw the highest available Pokéball at shinies
-        if (shiny) {
-            pref = GameConstants.Pokeball.Masterball;
+        } else {
+            pref = this._alreadyCaughtBallSelection();
         }
 
         let use: GameConstants.Pokeball = GameConstants.Pokeball.None;
 
+        // Check which Pokeballs we have in stock that are of equal or lesser than selection
         for (let i: number = pref; i >= 0; i--) {
             if (this._pokeballs[i]() > 0) {
                 use = i;
@@ -392,27 +427,27 @@ class Player {
      * @returns {boolean}
      */
     public alreadyCaughtPokemon(pokemonName: string) {
-        let id = PokemonHelper.getPokemonByName(pokemonName).id;
-        return player.caughtAmount[id]() > 0;
+        const pokemon = player._caughtPokemonList().find(p=>p.name==pokemonName);
+        return !!pokemon;
     }
 
     public alreadyCaughtPokemonShiny(pokemonName: string) {
-        for (let i: number = 0; i < this.caughtShinyList().length; i++) {
-            if (this.caughtShinyList()[i] == pokemonName) {
-                return true;
-            }
-        }
-        return false;
+        if (!this.alreadyCaughtPokemon(pokemonName)) return false;
+        return player.caughtShinyList().includes(pokemonName);
     }
 
     public capturePokemon(pokemonName: string, shiny: boolean = false, supressNotification = false) {
-        OakItemRunner.use("Magic Ball");
+        if (PokemonHelper.calcNativeRegion(pokemonName) > player.highestRegion()) {
+            return;
+        }
+        OakItemRunner.use(GameConstants.OakItem.Magic_Ball);
         let pokemonData = PokemonHelper.getPokemonByName(pokemonName);
         if (!this.alreadyCaughtPokemon(pokemonName)) {
             let caughtPokemon: CaughtPokemon = new CaughtPokemon(pokemonData, false, 0, 0);
             this._caughtPokemonList.push(caughtPokemon);
             if (!supressNotification) {
-                Notifier.notify("You have captured a " + pokemonName, GameConstants.NotificationOption.success)
+                if (shiny) Notifier.notify(`✨ You have captured a shiny ${pokemonName}! ✨`, GameConstants.NotificationOption.warning);
+                else Notifier.notify(`You have captured ${GameHelper.anOrA(pokemonName)} ${pokemonName}!`, GameConstants.NotificationOption.success)
             }
         }
         if (shiny && !this.alreadyCaughtPokemonShiny(pokemonName)) {
@@ -439,13 +474,17 @@ class Player {
     }
 
     public gainMoney(money: number) {
-        OakItemRunner.use("Amulet Coin");
+        OakItemRunner.use(GameConstants.OakItem.Amulet_Coin);
         // TODO add money multipliers
-        let oakItemBonus = OakItemRunner.isActive("Amulet Coin") ? (1 + OakItemRunner.calculateBonus("Amulet Coin") / 100) : 1;
+        let oakItemBonus = OakItemRunner.isActive(GameConstants.OakItem.Amulet_Coin) ? (1 + OakItemRunner.calculateBonus(GameConstants.OakItem.Amulet_Coin) / 100) : 1;
         let moneytogain = Math.floor(money * oakItemBonus * (1 + AchievementHandler.achievementBonus()))
+        if(EffectEngineRunner.isActive(GameConstants.BattleItemType.Lucky_incense)()){
+            moneytogain = Math.floor(moneytogain * 1.5);
+        }
         this._money(this._money() + moneytogain);
         GameHelper.incrementObservable(this.statistics.totalMoney, moneytogain);
         Game.updateMoney();
+
         Game.animateMoney(moneytogain,'playerMoney');
     }
 
@@ -461,9 +500,15 @@ class Player {
                 return this.hasQuestPoints(amt);
             case GameConstants.Currency.dungeontoken:
                 return this.hasDungeonTokens(amt);
+            case GameConstants.Currency.diamond:
+                return this.hasDiamonds(amt);
             default:
                 return false;
         }
+    }
+
+    public canAfford(cost: Cost) {
+        return this.hasCurrency(cost.amount, cost.currency);
     }
 
     public hasMoney(money: number) {
@@ -478,6 +523,10 @@ class Player {
         return this._dungeonTokens() >= tokens;
     }
 
+    public hasDiamonds(diamonds: number) {
+        return this._diamonds() >= diamonds;
+    }
+
     public payCurrency(amt: number, curr: GameConstants.Currency): boolean {
         switch (curr) {
             case GameConstants.Currency.money:
@@ -486,9 +535,15 @@ class Player {
                 return this.payQuestPoints(amt);
             case GameConstants.Currency.dungeontoken:
                 return this.payDungeonTokens(amt);
+            case GameConstants.Currency.diamond:
+                return this.payDiamonds(amt);
             default:
                 return false;
         }
+    }
+
+    public payCost(cost: Cost): boolean {
+        return this.payCurrency(cost.amount, cost.currency);
     }
 
     public payQuestPoints(questPoints: number): boolean {
@@ -519,16 +574,29 @@ class Player {
         }
     }
 
+    public payDiamonds(diamonds: number): boolean {
+        if (this.hasDiamonds(diamonds)) {
+            this._diamonds(Math.floor(this._diamonds() - diamonds));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public gainFarmPoints(points: number) {
         this.farmPoints(Math.floor(this.farmPoints() + points));
     }
 
     public gainExp(exp: number, level: number, trainer: boolean) {
-        OakItemRunner.use("Exp Share");
+        OakItemRunner.use(GameConstants.OakItem.Exp_Share);
         // TODO add exp multipliers
         let trainerBonus = trainer ? 1.5 : 1;
-        let oakItemBonus = OakItemRunner.isActive("Exp Share") ? 1 + (OakItemRunner.calculateBonus("Exp Share") / 100) : 1;
+        let oakItemBonus = OakItemRunner.isActive(GameConstants.OakItem.Exp_Share) ? 1 + (OakItemRunner.calculateBonus(GameConstants.OakItem.Exp_Share) / 100) : 1;
         let expTotal = Math.floor(exp * level * trainerBonus * oakItemBonus * (1 + AchievementHandler.achievementBonus()) / 9);
+
+        if(EffectEngineRunner.isActive(GameConstants.BattleItemType.xExp)()){
+            expTotal *= 1.5;
+        }
 
         for (let pokemon of this._caughtPokemonList()) {
             if (pokemon.levelObservable() < (this.gymBadges.length + 2) * 10) {
@@ -555,8 +623,12 @@ class Player {
         }
     }
 
+    public shardUpgradeMaxed(typeNum: number, effectNum: number): boolean {
+        return this._shardUpgrades[typeNum][effectNum]() >= GameConstants.MAX_SHARD_UPGRADES;
+    }
+
     public canBuyShardUpgrade(typeNum: number, effectNum: number): boolean {
-        let lessThanMax = this._shardUpgrades[typeNum][effectNum]() < GameConstants.MAX_SHARD_UPGRADES;
+        let lessThanMax = !this.shardUpgradeMaxed(typeNum, effectNum);
         let hasEnoughShards = this._shardsCollected[typeNum]() >= this.getShardUpgradeCost(typeNum, effectNum);
         return lessThanMax && hasEnoughShards;
     }
@@ -616,10 +688,11 @@ class Player {
         for (let i = 0; i < this._eggList.length; i++) {
             if (this._eggList[i]() == null) {
                 this._eggList[i](e);
-                return;
+                return true;
             }
         }
-        console.log("Error: Could not place egg " + e);
+        console.log("Error: Could not place " + GameConstants.EggType[e.type] + " Egg");
+        return false;
     }
 
     public gainBadge(badge: GameConstants.Badge) {
@@ -627,9 +700,20 @@ class Player {
     }
 
     public gainDungeonTokens(tokens: number) {
-        this._dungeonTokens(Math.floor(this._dungeonTokens() + tokens));
+        // Apply prestige bonuses
+        tokens = Math.round(tokens * PrestigeBonuses.getBonus(2));
+
+        // Apply battle item bonus
+        if(EffectEngineRunner.isActive(GameConstants.BattleItemType.Token_collector)()){
+            tokens *= 1.5;
+        }
+
+        tokens = Math.floor(tokens);
+
+        this.dungeonTokens(this.dungeonTokens() + tokens);
+
         GameHelper.incrementObservable(this.statistics.totalTokens, tokens);
-        Game.animateMoney(tokens,'playerMoneyDungeon');
+        Game.animateMoney(tokens, 'playerMoneyDungeon');
     }
 
     get routeKills(): Array<KnockoutObservable<number>> {
@@ -755,6 +839,7 @@ class Player {
         }
     }
 
+    // TODO(@Isha) move to underground classes.
     public hasMineItems() {
         for (let i = 0; i < this._mineInventory().length; i++) {
             if (this._mineInventory()[i].amount() > 0) {
@@ -771,11 +856,11 @@ class Player {
      * @returns {number} damage to be done.
      */
     public calculatePokemonAttack(type1: GameConstants.PokemonType, type2: GameConstants.PokemonType): number {
-        // TODO Calculate pokemon attack by checking upgrades and multipliers.
         let attack = 0;
         for (let pokemon of this.caughtPokemonList) {
             let multiplier = 1;
             if (this.region !== GameHelper.getRegion(pokemon.id)) {
+                // Pokemon only retain 20% of their total damage in other regions.
                 multiplier = 0.2
             }
             if (!pokemon.breeding()) {
@@ -788,65 +873,37 @@ class Player {
             }
         }
 
+        if(EffectEngineRunner.isActive(GameConstants.BattleItemType.xAttack)()){
+            attack *= 1.5;
+        }
+
         return Math.round(attack);
     }
 
-    get mineEnergy() {
-        return this._mineEnergy();
+    public getRandomBerry() {
+        let i = GameHelper.getIndexFromDistribution(GameConstants.BerryDistribution);
+        Notifier.notify("You got a " + GameConstants.BerryType[i] + " berry!", GameConstants.NotificationOption.success);
+        let amount = 1;
+        if (EffectEngineRunner.isActive(GameConstants.BattleItemType.Item_magnet)()) {
+            if (Math.random() < 0.5) {
+                amount += 1;
+            }
+        }
+        player.berryList[i](player.berryList[i]() + amount);
     }
 
-    set mineEnergy(n: number) {
-        this._mineEnergy(n);
-    }
 
     get diamonds() {
         return this._diamonds();
     }
 
     set diamonds(n: number) {
+        const amt = n - this._diamonds();
+        if (amt > 0) GameHelper.incrementObservable(player.statistics.totalDiamonds, amt);
         this._diamonds(n);
     }
 
-    get maxMineEnergy() {
-        return this._maxMineEnergy();
-    }
-
-    set maxMineEnergy(n: number) {
-        this._maxMineEnergy(n);
-    }
-
-    get maxUndergroundItems() {
-        return this._maxUndergroundItems();
-    }
-
-    set maxUndergroundItems(n: number) {
-        this._maxUndergroundItems(n);
-    }
-
-    get mineEnergyGain() {
-        return this._mineEnergyGain();
-    }
-
-    set mineEnergyGain(n: number) {
-        this._mineEnergyGain(n);
-    }
-
-    get mineEnergyRegenTime() {
-        return this._mineEnergyRegenTime();
-    }
-
-    set mineEnergyRegenTime(n: number) {
-        this._mineEnergyRegenTime(n);
-    }
-
-    get maxDailyDeals() {
-        return this._maxDailyDeals();
-    }
-
-    set maxDailyDeals(n: number) {
-        this._maxDailyDeals(n);
-    }
-
+    // TODO(@Isha) move to underground classes.
     public mineInventoryIndex(id: number): number {
         for (let i = 0; i < player._mineInventory().length; i++) {
             if (player._mineInventory()[i].id === id) {
@@ -856,6 +913,7 @@ class Player {
         return -1;
     }
 
+    // TODO(@Isha) move to underground classes.
     public getUndergroundItemAmount(id: number) {
         let index = this.mineInventoryIndex(id);
         if (index > -1) {
@@ -953,66 +1011,96 @@ class Player {
         Game.animateMoney(value,'playerMoneyQuest');
     }
 
-    public toJSON() {
-        let keep = [
-            "_money",
-            "_dungeonTokens",
-            "_questPoints",
-            "_caughtShinyList",
-            "_route",
-            "_caughtPokemonList",
-            "_defeatedAmount",
-            "_caughtAmount",
-            "_routeKills",
-            "_routeKillsNeeded",
-            "_region",
-            "_gymBadges",
-            "_pokeballs",
-            "_notCaughtBallSelection",
-            "_alreadyCaughtBallSelection",
-            "_sortOption",
-            "_sortDescending",
-            "_starter",
-            "_oakItemExp",
-            "_oakItemsEquipped",
-            "_itemList",
-            "_itemMultipliers",
-            "_keyItems",
-            "_mineEnergy",
-            "_maxMineEnergy",
-            "_mineEnergyGain",
-            "_mineInventory",
-            "_maxDailyDeals",
-            "_diamonds",
-            "_maxUndergroundItems",
-            "_mineEnergyRegenTime",
-            "_mineLayersCleared",
-            "_eggList",
-            "_eggSlots",
-            "_shardUpgrades",
-            "_shardsCollected",
-            "achievementsCompleted",
-            "completedQuestList",
-            "questRefreshes",
-            "_questXP",
-            "_questPoints",
-            "_lastSeen",
-            "currentQuest",
-            "_shinyCatches",
-            "gymDefeats",
-            "statistics",
-            "achievementsCompleted",
-            "farmPoints",
-            "plotList",
-            "berryList",
-            "highestRegion",
-            "tutorialProgress",
-            "tutorialState",
-            "tutorialComplete",
-        ];
+    public toJSON(prestige: boolean = false) {
+        let keep = [];
+        if (!prestige){
+          keep = [
+              "_money",
+              "_dungeonTokens",
+              "_questPoints",
+              "prestigePoints",
+              "prestigeUpgradesBought",
+              "prestigeType",
+              "prestigeBank",
+              "_caughtShinyList",
+              "_route",
+              "_caughtPokemonList",
+              "_defeatedAmount",
+              "_caughtAmount",
+              "_routeKills",
+              "_routeKillsNeeded",
+              "_region",
+              "_gymBadges",
+              "_pokeballs",
+              "_notCaughtBallSelection",
+              "_alreadyCaughtBallSelection",
+              "_sortOption",
+              "_sortDescending",
+              "_starter",
+              "_oakItemExp",
+              "_oakItemsEquipped",
+              "_itemList",
+              "_itemMultipliers",
+              "_keyItems",
+              // TODO(@Isha) remove.
+              "_mineInventory",
+              "_diamonds",
+              // TODO(@Isha) remove.
+              "_mineLayersCleared",
+              "_eggList",
+              "_eggSlots",
+              "_shardUpgrades",
+              "_shardsCollected",
+              "achievementsCompleted",
+              "completedQuestList",
+              "questRefreshes",
+              "_questXP",
+              "_questPoints",
+              "_lastSeen",
+              "currentQuests",
+              "_shinyCatches",
+              "gymDefeats",
+              "dungeonsCleared",
+              "statistics",
+              "achievementsCompleted",
+              "farmPoints",
+              "plotList",
+              "berryList",
+              "highestRegion",
+              "tutorialProgress",
+              "tutorialState",
+              "tutorialComplete",
+          ];
+        } else {
+          keep = [
+              "prestigePoints",
+              "prestigeUpgradesBought",
+              "prestigeType",
+              "prestigeBank",
+              "_caughtShinyList",
+              "_defeatedAmount",
+              "_caughtAmount",
+              "_sortOption",
+              "_sortDescending",
+              "_oakItemExp",
+              "_keyItems",
+              "_shardUpgrades",
+              "_shardsCollected",
+              "achievementsCompleted",
+              "questRefreshes",
+              "_questXP",
+              "_lastSeen",
+              "_shinyCatches",
+              "statistics",
+              "achievementsCompleted",
+              "plotList",
+              "berryList",
+              "tutorialProgress",
+              "tutorialState",
+              "tutorialComplete",
+          ];
+        }
         let plainJS = ko.toJS(this);
         return Save.filter(plainJS, keep)
     }
-
 }
-

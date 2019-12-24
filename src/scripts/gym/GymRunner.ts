@@ -67,7 +67,7 @@ class GymRunner {
 
             $('#receiveBadgeModal').modal('show');
         }
-        GameHelper.incrementObservable(player.statistics.gymsDefeated[Statistics.getGymIndex(gym.town, player.region)]);
+        GameHelper.incrementObservable(player.statistics.gymsDefeated[Statistics.getGymIndex(gym.town)]);
         player.town(TownList[gym.town]);
         MapHelper.updateAllRoutes();
         Game.gameState(GameConstants.GameState.town);
@@ -83,9 +83,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     $('#receiveBadgeModal').on('hidden.bs.modal', function () {
 
-       if(GymBattle.gym.badgeReward == GameConstants.Badge.Soul){
-           player.gainKeyItem("Safari ticket");
-       }
+        if(GymBattle.gym.badgeReward == GameConstants.Badge.Soul){
+            player.gainKeyItem("Safari ticket");
+        }
+
+        if (GymRunner.gymObservable() instanceof Champion) {
+            $('#hallOfFameModal').modal('show');
+        }
 
     });
 });

@@ -18,6 +18,7 @@ class SafariBattle {
         Notifier.notify("Battle", GameConstants.NotificationOption.info);
         SafariBattle.showBattleBars();
         SafariBattle.text("What will you do?");
+        SafariBattle.unlockButtons();
         SafariBattle.escapeAttempts = 0;
     }
 
@@ -50,7 +51,7 @@ class SafariBattle {
             SafariBattle.text("You throw a ball...");
             let enemyImg = $('#safariEnemy').offset();
             enemyImg.left += 48;
-            let p = SafariBattle.dropParticle('<div><img id="safariBall" src="../assets/images/safari/pokeball.png"></div>', $('#safariPlayer').offset(), enemyImg, 0.75, 'cubic-bezier(0,0,0.4,1)', true).css('z-index',9999);
+            let p = SafariBattle.dropParticle('<div><img id="safariBall" src="assets/images/safari/pokeball.png"></div>', $('#safariPlayer').offset(), enemyImg, 0.75, 'cubic-bezier(0,0,0.4,1)', true).css('z-index',9999);
 
             setTimeout(function() {
                 $('#safariEnemy').addClass('safariCapture');
@@ -60,15 +61,18 @@ class SafariBattle {
                     p.addClass('bounce');
 
                     setTimeout(function () {
-                        let random = Math.random();
-                        let catchF = SafariBattle.enemy.catchFactor / 100;
-                        let index = catchF >= 1 ? 3 : Math.floor( 4 * (1 - Math.max( random, catchF )) / (1 - catchF) );
+                        const random = Math.random();
+                        const catchF = SafariBattle.enemy.catchFactor / 100;
+                        const index = catchF >= 1 ? 3 : Math.floor( 4 * (1 - Math.max( random, catchF )) / (1 - catchF) );
                         if (index != 0) {
                             SafariBattle.startRoll(index);
                         }
 
                         setTimeout(function(){
-                            if (random*100 < SafariBattle.enemy.catchFactor){
+                            const oakBonus = OakItemRunner.isActive(GameConstants.OakItem.Magic_Ball) ?
+                                OakItemRunner.calculateBonus(GameConstants.OakItem.Magic_Ball) : 0;
+                            const prestigeBonus = PrestigeBonuses.getBonus(5);
+                            if (random * 100 < SafariBattle.enemy.catchFactor + oakBonus + prestigeBonus){
                                 SafariBattle.capturePokemon();
                                 $('#safariBall').css('filter', 'brightness(0.4) grayscale(100%)');
                                 setTimeout(function(){
@@ -84,7 +88,7 @@ class SafariBattle {
                                     gameOver ? SafariBattle.gameOver() : SafariBattle.enemyTurn();
                                 }, 1000);
                             }
-                        }, (200 + 1200*index));
+                        }, (200 + 1200 * index));
                     }, 1700);
                 }, 750);
             }, 750);
@@ -118,7 +122,7 @@ class SafariBattle {
             let enemy = $('#safariEnemy').offset();
             enemy.left += 30;
             enemy.top += 70;
-            SafariBattle.dropParticle('<img src="../assets/images/safari/bait.png">', $('#safariPlayer').offset(), enemy, 1, 'cubic-bezier(0,0,0.4,1)').css('z-index',9999);
+            SafariBattle.dropParticle('<img src="assets/images/safari/bait.png">', $('#safariPlayer').offset(), enemy, 1, 'cubic-bezier(0,0,0.4,1)').css('z-index',9999);
             setTimeout(SafariBattle.enemyTurn, 1500);
         }
     }
@@ -132,9 +136,9 @@ class SafariBattle {
             let enemy = $('#safariEnemy').offset();
             enemy.left += 40;
             enemy.top += 10;
-            SafariBattle.dropParticle('<img src="../assets/images/safari/rock.png">', $('#safariPlayer').offset(), enemy, 0.8, 'cubic-bezier(0,0,0.4,1)').css('z-index',9999);
+            SafariBattle.dropParticle('<img src="assets/images/safari/rock.png">', $('#safariPlayer').offset(), enemy, 0.8, 'cubic-bezier(0,0,0.4,1)').css('z-index',9999);
             setTimeout(function(){
-                let hitSplash = $('<ptcl>').html("<img src='../assets/images/safari/hit.png'>").children().appendTo('body');
+                let hitSplash = $('<ptcl>').html("<img src='assets/images/safari/hit.png'>").children().appendTo('body');
                 hitSplash.offset(enemy).css({'opacity': 0.8, 'z-index': 9998});
                 hitSplash.fadeOut(400, function(){hitSplash.remove();});
                 setTimeout(function(){
@@ -142,7 +146,7 @@ class SafariBattle {
                         top: enemy.top + 4,
                         left: enemy.left - 20
                     }
-                    let ang = $('<ptcl>').html("<img src='../assets/images/safari/angry.png'>").children().appendTo('body');
+                    let ang = $('<ptcl>').html("<img src='assets/images/safari/angry.png'>").children().appendTo('body');
                     ang.css('position','absolute').css('z-index', 9999);
                     ang.offset(newOffset);
                     ang.addClass('pulse');
@@ -161,12 +165,15 @@ class SafariBattle {
     }
 
     public static run() {
-        if(Math.random()*100 < (30 + 15*SafariBattle.escapeAttempts)){
-            SafariBattle.text("You flee.");
-            setTimeout(SafariBattle.endBattle, 1500);
-        } else {
-            SafariBattle.text("You can't escape...");
-            setTimeout(SafariBattle.enemyTurn, 1000);
+        if (!SafariBattle.busy){
+            SafariBattle.busy = true;
+            if(Math.random()*100 < (30 + 15*SafariBattle.escapeAttempts)){
+                SafariBattle.text("You flee.");
+                setTimeout(SafariBattle.endBattle, 1500);
+            } else {
+                SafariBattle.text("You can't escape...");
+                setTimeout(SafariBattle.enemyTurn, 1000);
+            }
         }
     }
 
@@ -188,9 +195,18 @@ class SafariBattle {
         setTimeout(function(){
             SafariBattle.text("What will you do?");
             SafariBattle.busy = false;
+            SafariBattle.unlockButtons();
         }, 1500);
         console.log(`Catch chance: ${SafariBattle.enemy.catchFactor}%`);
         console.log(`Escape chance: ${SafariBattle.enemy.escapeFactor}%`);
+    }
+
+    private static lockButtons() {
+      $('.safariOption button').attr('disabled', 'true');
+    }
+
+    private static unlockButtons() {
+      $('.safariOption button').attr('disabled', null);
     }
 
     private static endBattle() {

@@ -7,12 +7,14 @@ let player;
 const debug = true;
 let game;
 
+if (!debug)
+  Object.freeze(GameConstants);
+
 interface JQuery {
     animateNumber(options: object): void;
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    $('#PrestigeModal').modal('show');
     Preload.load(debug).then(function () {
         OakItemRunner.initialize();
         UndergroundItem.initialize();
@@ -22,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // DungeonRunner.initializeDungeon(dungeonList["Viridian Forest"]);
 
         $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
             $('[data-toggle="tooltip"]').tooltip();
         });
 
@@ -69,8 +72,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         Game.applyRouteBindings();
         Preload.hideSplashScreen();
         game.start();
-        Prestige.updateHTML()
-
     });
 });
 
@@ -80,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 class Game {
     interval;
     undergroundCounter: number;
-    farmCounter: number = 0;
     public static achievementCounter: number = 0;
 
     public static gameState: KnockoutObservable<GameConstants.GameState> = ko.observable(GameConstants.GameState.fighting);
@@ -108,6 +108,7 @@ class Game {
         // Update tick counters
         this.undergroundCounter += GameConstants.TICK_TIME;
         FarmRunner.counter += GameConstants.TICK_TIME;
+        EffectEngineRunner.counter += GameConstants.TICK_TIME;
         Game.achievementCounter += GameConstants.TICK_TIME;
         if (Game.achievementCounter > GameConstants.ACHIEVEMENT_TICK) {
             Game.achievementCounter = 0;
@@ -147,10 +148,10 @@ class Game {
             let now = new Date();
             if (new Date(player._lastSeen).toLocaleDateString() !== now.toLocaleDateString()) {
                 player.questRefreshes = 0;
-                QuestHelper.quitQuest();
+                QuestHelper.quitAllQuests();
                 QuestHelper.clearQuests();
                 QuestHelper.generateQuests(player.questLevel, player.questRefreshes, now);
-                DailyDeal.generateDeals(player.maxDailyDeals, now);
+                DailyDeal.generateDeals(Underground.getDailyDealsMax(), now);
                 Notifier.notify("It's a new day! Your quests and underground deals have been updated.", GameConstants.NotificationOption.info);
             }
             player._lastSeen = Date.now()
@@ -161,13 +162,17 @@ class Game {
             Underground.energyTick(Math.max(0, Underground.energyTick() - 1));
             if (Underground.energyTick() == 0) {
                 Underground.gainEnergy();
-                Underground.energyTick(player._mineEnergyRegenTime());
+                Underground.energyTick(Underground.getEnergyRegenTime());
             }
             Underground.counter = 0;
         }
 
         if (FarmRunner.counter > GameConstants.FARM_TICK) {
             FarmRunner.tick();
+        }
+
+        if (EffectEngineRunner.counter > GameConstants.EFFECT_ENGINE_TICK){
+            EffectEngineRunner.tick();
         }
 
         if (GameHelper.counter > 60 * 1000) {
@@ -184,10 +189,10 @@ class Game {
         Battle.generateNewEnemy();
         Safari.load();
         Save.loadMine();
-        Underground.energyTick(player._mineEnergyRegenTime())
-        DailyDeal.generateDeals(player.maxDailyDeals, new Date());
+        Underground.energyTick(Underground.getEnergyRegenTime());
+        DailyDeal.generateDeals(Underground.getDailyDealsMax(), new Date());
         QuestHelper.generateQuests(player.questLevel, player.questRefreshes, new Date());
-        QuestHelper.loadCurrentQuest(player.currentQuest());
+        QuestHelper.loadCurrentQuests(player.currentQuests);
         if (!player.tutorialComplete()) {
             QuestLineHelper.createTutorial();
             QuestLineHelper.tutorial.resumeAt(player.tutorialProgress(), player.tutorialState);
@@ -228,7 +233,7 @@ class Game {
         for(let i = 0; i < place; i++){
             multi *= 10;
         }
-        let ani = '<p class="moneyanimation" style="z-index:50;position:fixed;left:'+left+'px;top:'+pos.top+'px;">+'+money+'</p>';
+        let ani = '<p class="moneyanimation" style="z-index:50;position:absolute;left:'+left+'px;top:'+pos.top+'px;">+'+money+'</p>';
         $(ani).prependTo('body').animate({
             top: -100,
             opacity: 0

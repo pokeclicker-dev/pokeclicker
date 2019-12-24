@@ -56,6 +56,17 @@ class GameHelper {
         return (`0${n}`).slice(-2);
     }
 
+    public static formatAmount(n: number): string {
+      if (n >= 1e9){
+        return Math.floor(n / 1e9) + "b";
+      } else if (n >= 1e6){
+        return Math.floor(n / 1e6) + "m";
+      } else if (n >= 1e3){
+        return Math.floor(n / 1e3) + "k";
+      }
+      return n;
+    }
+
     public static getIndexFromDistribution(a: number[]) {
         let rand = Math.random();
         for (let i = 0; i < a.length; i++) {
@@ -71,4 +82,15 @@ class GameHelper {
         return GameConstants.Region.hoenn;
     }
 
+    public static createArray(start: number, max: number, step: number) {
+        let array = [];
+        for (let i = start; i <= max; i += step) {
+            array.push(i);
+        }
+        return array;
+    }
+
+    public static anOrA(name: string): string {
+      return ['a', 'e', 'i', 'o', 'u'].includes(name[0].toLowerCase()) ? 'an' : 'a';
+    }
 }

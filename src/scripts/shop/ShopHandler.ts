@@ -5,16 +5,14 @@ class ShopHandler {
     static amount: KnockoutObservable<number> = ko.observable(1);
 
     public static showShop(shop: Shop) {
-        ShopHandler.amount(1);
-        Game.gameState(GameConstants.GameState.idle);
+        this.setSelected(0);
+        this.resetAmount();
         this.shopObservable(shop);
 
         for (let i = 0; i < shop.items().length; i++) {
             let item: Item = shop.items()[i];
             item.price(Math.round(item.basePrice * player.itemMultipliers[item.name()]));
         }
-
-        Game.gameState(GameConstants.GameState.shop);
     }
 
     public static setSelected(i: number) {
@@ -22,36 +20,9 @@ class ShopHandler {
     }
 
     public static buyItem() {
-        if (this.amount() < 1) {
-            return;
-        }
         let item: Item = this.shopObservable().items()[ShopHandler.selected()];
-
-        let multiple = this.amount() > 1 ? "s" : "";
-
-        if (player.hasCurrency(item.totalPrice(), item.currency)) {
-            player.payCurrency(item.totalPrice(), item.currency);
-            item.buy(this.amount());
-            item.increasePriceMultiplier(this.amount());
-            Notifier.notify("You bought " + this.amount() + " " + item.name() + multiple, GameConstants.NotificationOption.success)
-        } else {
-            let curr = "currency";
-            switch (item.currency) {
-                case GameConstants.Currency.money:
-                    curr = "money";
-                    break;
-                case GameConstants.Currency.questPoint:
-                    curr = "quest points";
-                    break;
-                case GameConstants.Currency.dungeontoken:
-                    curr = "dungeon tokens";
-                    break;
-            }
-            Notifier.notify(`You don't have enough ${curr} to buy ${this.amount()} ${item.name() + multiple}`, GameConstants.NotificationOption.danger)
-        }
-
+        item.buy(this.amount());
         ShopHandler.resetAmount();
-
     }
 
     public static resetAmount() {
@@ -65,23 +36,31 @@ class ShopHandler {
         input.val(newVal > 1 ? newVal : 1).change();
     }
 
-    public static ownKeyItem(name: string): boolean {
-        let keyItem = GameConstants.KeyItemType[name];
-        return !(keyItem != undefined && player.hasKeyItem(name.replace("_", " ")));
+    public static maxAmount(n: number) {
+        const item: Item = this.shopObservable().items()[ShopHandler.selected()];
+        const input = $("input[name='amountOfItems']");
+
+        if (!item || !item.isAvailable()){
+          return input.val(0).change();
+        }
+        let amt = 1;
+        for (amt; player.hasCurrency(item.totalPrice(amt), item.currency); amt++){}
+        input.val(--amt).change();
     }
 
     public static calculateCss(i: number): string {
         if (this.selected() == i) {
-            return "shopItem clickable btn shopItemSelected"
+            return "shopItem clickable btn btn-secondary active"
         } else {
-            return "shopItem clickable btn"
+            return "shopItem clickable btn btn-secondary"
         }
     }
 
     public static calculateButtonCss(): string {
         let item: Item = this.shopObservable().items()[ShopHandler.selected()];
 
-        if (item && !player.hasCurrency(item.totalPrice(), item.currency) || this.amount() < 1) {
+        if (item && !(item.isAvailable() && player.hasCurrency(item.totalPrice(this.amount()), item.currency))
+                || this.amount() < 1) {
             return "btn btn-danger smallButton smallFont"
         } else {
             return "btn btn-success smallButton smallFont"

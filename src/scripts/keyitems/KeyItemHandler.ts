@@ -20,7 +20,11 @@ class KeyItemHandler {
         // TODO obtain somewhere at the start
         KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Factory key", "This pass serves as an ID card for gaining access to the Pokéball factory that lies along Route 13")));
 
-        KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Dungeon ticket", "This ticket grants access to all dungeons in the Kanto region")));
+        KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Dungeon ticket", "This ticket grants access to all dungeons in the Kanto region,<br/><strong>Tip:</strong> You gain Dungeon Tokens by capturing Pokémon")));
+
+        KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Super rod", "The best fishing rod for catching wild water Pokémon", function(){
+            return player.routeKillsObservable(12)() > player.routeKillsNeeded - 1;
+        })));
 
         // TODO obtain somewhere at the start
         KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Holo caster", "A device that allows users to receive and view hologram clips at any time. It’s also used to chat with others")));
@@ -32,10 +36,9 @@ class KeyItemHandler {
         KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Safari ticket", "This ticket grants access to the Safari Zone in Fuchsia City")));
 
         KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Wailmer pail", "This is a tool for watering Berries you planted to make them grow more quickly", function () {
-            return player.berryList[0]() >= 5
+            return MapHelper.accessToRoute(14,1) && player.berryList[0]() >= 5
         })));
 
-        // TODO buy for 100 quest points
         KeyItemHandler.keyItemList.push(ko.observable(new KeyItem("Explorer kit", "A bag filled with convenient tools for exploring. It provides access to the Underground")));
 
         // TODO buy for 500 quest points

@@ -1,5 +1,5 @@
 class OakItem {
-    public name: KnockoutObservable<string>;
+    public id: GameConstants.OakItem;
     public unlockReq: number;
     public description: KnockoutObservable<string>;
     public baseBonus: number;
@@ -7,17 +7,15 @@ class OakItem {
     public expGain: number;
     public level: KnockoutObservable<number>;
     public isActive: KnockoutObservable<boolean>;
-    public id: GameConstants.OakItem;
 
-    constructor(name: string, unlockReq: number, description: string, baseBonus: number, stepBonus: number, expGain: number) {
-        this.name = ko.observable(name);
+    constructor(id: GameConstants.OakItem, unlockReq: number, description: string, baseBonus: number, stepBonus: number, expGain: number) {
+        this.id = id;
         this.unlockReq = unlockReq;
         this.description = ko.observable(description);
         this.baseBonus = baseBonus;
         this.stepBonus = stepBonus;
         this.expGain = expGain;
         this.level = ko.observable(0);
-        this.id = GameConstants.OakItem[name];
         this.isActive = ko.observable(false);
     }
 
@@ -33,17 +31,17 @@ class OakItem {
         if (OakItemRunner.selectedItem().canUpgrade()) {
             return "Cost: " + GameConstants.OAKITEM_MONEY_COST[OakItemRunner.selectedItem().level()];
         }
-        return OakItemRunner.selectedItem().getNormalizedPlayerExp() + "/" + OakItemRunner.selectedItem().getNormalizedRequiredExp();
+        return OakItemRunner.inspectedItem().getNormalizedPlayerExp() + "/" + OakItemRunner.inspectedItem().getNormalizedRequiredExp();
     }
 
     public getNormalizedPlayerExp() {
         let previousExp = GameConstants.OAKITEM_XP_REQUIREMENT[this.level() - 1] || 0;
-        return player.getOakItemExp(this.id) - previousExp;
+        return Math.floor((player.getOakItemExp(this.id) - previousExp) / this.expGain);
     }
 
     public getNormalizedRequiredExp() {
         let previousExp = GameConstants.OAKITEM_XP_REQUIREMENT[this.level() - 1] || 0;
-        return GameConstants.OAKITEM_XP_REQUIREMENT[this.level()] - previousExp;
+        return Math.ceil((GameConstants.OAKITEM_XP_REQUIREMENT[this.level()] - previousExp) / this.expGain);
     }
 
     public use() {

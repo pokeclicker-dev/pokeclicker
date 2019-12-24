@@ -51,60 +51,103 @@ class Prestige {
      * Set the id of the upgrade to true in player and subtract the correct points.
      */
     public static buyUpgrade(upgradeId: number) {
-        if(upgradeId == 0){
-            return;
-        }
-        if (this.canBuyUpgrade(upgradeId)) {
-            player.prestigeUpgradesBought[upgradeId] = true;
-        }
-        this.updateHTML();
+        if(!this.canBuyUpgrade(upgradeId)) return;
+
+        const prestigeUpgrade: PrestigeUpgrade = this.getUpgrade(upgradeId);
+
+        player.prestigePoints[prestigeUpgrade.costType](player.prestigePoints[prestigeUpgrade.costType]() - prestigeUpgrade.cost);
+        player.prestigeUpgradesBought[upgradeId](true);
+
+        Notifier.notify(`Purchased upgrade!`, GameConstants.NotificationOption.success);
     }
 
     /**
      * Reward 1 of each point that is lower or equal to the prestige that is started.
      */
-    public static awardPrestigePoints(type: GameConstants.PrestigeType) {
-        // TODO
+    public static awardPrestigePoints(type: GameConstants.PrestigeType, amount: number = 1) {
+        return player.prestigePoints[type](player.prestigePoints[type]() + amount);
     }
 
     /**
      * Check if an upgrade is bought.
      */
     public static isUpgradeBought(upgradeId: number): boolean {
-        return player.prestigeUpgradesBought[upgradeId];
+        return player ? player.prestigeUpgradesBought[upgradeId]() : false;
     }
 
 
     /**
-     * Reset all player values except caughtShinyList, defeatedAmount, eggSlots, itemList, diamons, shardUpgrades, mineUpgrade, statistics, questXp, shinyCatches, all farm related stuff.
+     * Reset all player values except caughtShinyList, defeatedAmount, eggSlots, itemList, diamonds, shardUpgrades, mineUpgrade, statistics, questXp, shinyCatches, all farm related stuff.
      * Store money, dungeontokens and questpoints so they can be recovered.
      * Award prestigepoints.
      * Restart the game.
      */
     public static startPrestige(type: GameConstants.PrestigeType) {
-        this.awardPrestigePoints(type);
-        // TODO
+        if (!this.canPrestige())
+          return Notifier.notify(`You must beat the Elite 4 Champion before you can prestige!`, GameConstants.NotificationOption.danger);
+
+        // TODO: Calculate amount of points that should be awarded
+        const amount_of_points = this.prestigePointsEarned();
+
+        if (!confirm(`Are you sure you want to prestige, All Your progress will be reset.\n\nPrestige for ${amount_of_points} x ${GameConstants.PrestigeType[player.prestigeType]} points?`))
+          return;
+
+        // Apply prestige completion to statistics
+        GameHelper.incrementObservable(player.statistics.prestigesCompleted[player.prestigeType]);
+
+        this.awardPrestigePoints(player.prestigeType, amount_of_points);
+        this.addToBank();
+
+        // Set Players new prestige type
+        player.prestigeType = type;
+        // Give the player the dungeon ticket
+        player._keyItems(['Dungeon ticket']);
+        // Reset player data (only keeping specific things)
+        localStorage.setItem('player', JSON.stringify(player.toJSON(true)));
+        location.reload();
+    }
+
+    public static canPrestige(){
+      return player.hasBadge(GameConstants.Badge.Elite_Champion);
+    }
+
+    public static prestigePointsEarned(){
+      switch(true){
+        case player.hasBadge(GameConstants.Badge.Elite_JohtoChampion):
+          return 3;
+          break;
+        case player.hasBadge(GameConstants.Badge.Elite_Champion):
+          return 1;
+          break;
+        default:
+          return 0;
+      }
     }
 
     /**
      * Check if an upgrade can be bought
      */
     public static canBuyUpgrade(upgradeId: number): boolean {
+
+        if (upgradeId <= 0) return false;
+
         let prestigeUpgrade: PrestigeUpgrade = this.getUpgrade(upgradeId);
+
         if (this.isUpgradeBought(upgradeId)) {
-            Notifier.notify("Already bought this upgrade", GameConstants.NotificationOption.danger);
+            Notifier.notify('Already bought this upgrade', GameConstants.NotificationOption.danger);
             return false;
         }
+
         if (!this.canReachUpgrade(upgradeId)) {
-            Notifier.notify("Can't reach this upgrade yet", GameConstants.NotificationOption.danger);
+            Notifier.notify(`Can't reach this upgrade yet`, GameConstants.NotificationOption.danger);
             return false;
-
         }
-        if (player.prestigePoints[prestigeUpgrade.costType] < prestigeUpgrade.cost) {
-            Notifier.notify("Can't afford upgrade", GameConstants.NotificationOption.danger);
+
+        if (player.prestigePoints[prestigeUpgrade.costType]() < prestigeUpgrade.cost) {
+            Notifier.notify(`Can't afford upgrade`, GameConstants.NotificationOption.danger);
             return false;
-
         }
+
         return true;
     }
 
@@ -128,69 +171,76 @@ class Prestige {
 
     public static initialize() {
         // TODO add correct description and bonuses
-        this.addUpgrade(new PrestigeUpgrade(1, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(2, "Harvest time decreased by 33%", 1, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(3, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(4, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(5, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(6, "Harvest time decreased by 33%", 1, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(7, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(8, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(9, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(10, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(11, "Harvest time decreased by 33%", 3, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(12, "Harvest time decreased by 33%", 6, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(13, "Harvest time decreased by 33%", 3, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(14, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Hard, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(15, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(16, "Harvest time decreased by 33%", 1, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(17, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(18, "Harvest time decreased by 33%", 3, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(19, "Harvest time decreased by 33%", 7, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(20, "Harvest time decreased by 33%", 3, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(21, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(22, "Harvest time decreased by 33%", 1, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(23, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(24, "Harvest time decreased by 33%", 5, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(25, "Harvest time decreased by 33%", 4, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(26, "Harvest time decreased by 33%", 6, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(27, "Harvest time decreased by 33%", 4, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(28, "Harvest time decreased by 33%", 5, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(29, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(30, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(31, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(32, "Harvest time decreased by 33%", 1, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(33, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Medium, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(34, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(35, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(36, "Harvest time decreased by 33%", 1, GameConstants.PrestigeType.Easy, -0.33));
-        this.addUpgrade(new PrestigeUpgrade(37, "Harvest time decreased by 33%", 2, GameConstants.PrestigeType.Easy, -0.33));
+        this.addUpgrade(new PrestigeUpgrade(1, '[Farm]<br/>Harvest time decreased by 20%', 2, GameConstants.PrestigeType.Easy, 20));
+        this.addUpgrade(new PrestigeUpgrade(2, '[General]<br/>Gain 30% more dungeon tokens', 1, GameConstants.PrestigeType.Easy, 1.3));
+        this.addUpgrade(new PrestigeUpgrade(3, '[Underground]<br/>Max daily deals +1', 2, GameConstants.PrestigeType.Easy, 1));
+        this.addUpgrade(new PrestigeUpgrade(4, '[Underground]<br/>Max treasures +1', 2, GameConstants.PrestigeType.Easy, 1));
+        this.addUpgrade(new PrestigeUpgrade(5, '[Safari Zone]<br/>Flee chance -20%', 2, GameConstants.PrestigeType.Hard, 20));
+        this.addUpgrade(new PrestigeUpgrade(6, '[Underground]<br/>Chisel damage +1', 1, GameConstants.PrestigeType.Hard, 1));
+        this.addUpgrade(new PrestigeUpgrade(7, '______', 2, GameConstants.PrestigeType.Hard, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(8, '______', 2, GameConstants.PrestigeType.Easy, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(9, '[Farm]<br/>Fertilizer effect +20%', 2, GameConstants.PrestigeType.Easy, 1.2)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(10, '______', 6, GameConstants.PrestigeType.Hard, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(11, '[General]<br/>Routekills required decreased by 20%', 2, GameConstants.PrestigeType.Hard, 0.8)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(12, '[Quest]<br/>Unlock +1 quest slot', 3, GameConstants.PrestigeType.Easy, 1)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(13, '______', 3, GameConstants.PrestigeType.Hard, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(14, '[Quest]<br/>Quest skip cost halved', 2, GameConstants.PrestigeType.Hard, 0.5)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(15, '[Safari Zone]<br/>Max steps +200', 2, GameConstants.PrestigeType.Easy, 200)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(16, '[General]<br/>Gain 10% more exp', 1, GameConstants.PrestigeType.Easy, 1.1)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(17, '[General]<br/>Seed droprate + 20%', 2, GameConstants.PrestigeType.Easy, 1.2)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(18, '[Dungeons]<br/>Dungeons contain +1 treasure', 3, GameConstants.PrestigeType.Easy, 1)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(19, '[General]<br/>Catch time -250ms', 7, GameConstants.PrestigeType.Medium, -250)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(20, '[Breeding]<br/>Egg slot cost halved', 3, GameConstants.PrestigeType.Easy, 0.5)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(21, '[Oak Items]<br/>Oak item xp gain increased by 30%', 2, GameConstants.PrestigeType.Easy, 1.3)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(22, '[General]<br/>Gain 20% more money', 1, GameConstants.PrestigeType.Easy, 1.2)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(23, '[Dungeons]<br/>Dungeon enemies drop 3 more shards', 2, GameConstants.PrestigeType.Easy, 3)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(24, '[Gyms]<br/>Gym time limit is +10s', 5, GameConstants.PrestigeType.Medium, 1e4)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(25, '[Breeding]<br/>Hatched Pokémon start at level 50', 4, GameConstants.PrestigeType.Medium, 50)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(26, '[Underground]<br/>Energy regen time -10s', 6, GameConstants.PrestigeType.Easy, -1e4)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(27, '[General]<br/>Encounter 25% more shinies', 4, GameConstants.PrestigeType.Medium, 1.25)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(28, '______', 5, GameConstants.PrestigeType.Medium, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(29, '______', 2, GameConstants.PrestigeType.Easy, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(30, '______', 2, GameConstants.PrestigeType.Easy, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(31, '[Underground]<br/>Max energy +50', 2, GameConstants.PrestigeType.Medium, 50)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(32, '[Farm]<br/>Harvest Berry gain +20%', 1, GameConstants.PrestigeType.Medium, 1.2)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(33, '[Breeding]<br/>Breeding increases attack with +10%', 2, GameConstants.PrestigeType.Medium, 1.1)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(34, '______', 2, GameConstants.PrestigeType.Easy, 0)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(35, '[Quest]<br/>Gain 25% more quest points', 2, GameConstants.PrestigeType.Easy, 1.25)); // To implement bonus
+        this.addUpgrade(new PrestigeUpgrade(36, '[General]<br/>Catch rate +10%', 1, GameConstants.PrestigeType.Easy, 10));
+        this.addUpgrade(new PrestigeUpgrade(37, '______', 2, GameConstants.PrestigeType.Easy, 0)); // To implement bonus
     }
 
-    public static updateHTML() {
-        let html = "<table class='prestige-table'>";
-        for (let i = 0; i < this.upgradeLayout.length; i++) {
-            html += "<tr>";
-            for (let j = 0; j < this.upgradeLayout[i].length; j++) {
-                let id = this.upgradeLayout[i][j];
-                let cssClass = this.getUpgrade(id) !== undefined ? GameConstants.PrestigeType[this.getUpgrade(id).costType].toLocaleLowerCase() : "none";
-                let opacity = "prestige-locked";
-                if (this.isUpgradeBought(id) || id == 0) {
-                    opacity = ""
-                } else if (this.canReachUpgrade(id)) {
-                    opacity = "prestige-reachable";
-                }
-
-
-                html += "<td>";
-                html += `<div onclick=Prestige.buyUpgrade(${id}) class='prestige-upgrade prestige-${cssClass} ${opacity}'>${id}</div>`;
-                html += "</td>";
-            }
-
-            html += "</tr>";
-        }
-
-        $("#prestige-modal-body").html(html)
+    public static isLocked(upgradeId: number) {
+        return ko.pureComputed(function(){
+            return upgradeId != 0 && !Prestige.isUpgradeBought(upgradeId);
+        });
     }
 
+    public static isReachable(upgradeId: number) {
+        return ko.pureComputed(function(){
+            return upgradeId != 0 && !Prestige.isUpgradeBought(upgradeId) && Prestige.canReachUpgrade(upgradeId);
+        });
+    }
+
+    public static addToBank(){
+        GameHelper.incrementObservable(player.prestigeBank[GameConstants.Currency.money], player._money());
+        GameHelper.incrementObservable(player.prestigeBank[GameConstants.Currency.questPoint], player._questPoints());
+        GameHelper.incrementObservable(player.prestigeBank[GameConstants.Currency.dungeontoken], player._dungeonTokens());
+        GameHelper.incrementObservable(player.prestigeBank[GameConstants.Currency.diamond], player._diamonds());
+        player._money(0);
+        player._questPoints(0);
+        player._dungeonTokens(0);
+        player._diamonds(0);
+    }
+
+    public static takeFromBank(){
+        GameHelper.incrementObservable(player._money, player.prestigeBank[GameConstants.Currency.money]());
+        GameHelper.incrementObservable(player._questPoints, player.prestigeBank[GameConstants.Currency.questPoint]());
+        GameHelper.incrementObservable(player._dungeonTokens, player.prestigeBank[GameConstants.Currency.dungeontoken]());
+        GameHelper.incrementObservable(player._diamonds, player.prestigeBank[GameConstants.Currency.diamond]());
+        player.prestigeBank[GameConstants.Currency.money](0);
+        player.prestigeBank[GameConstants.Currency.questPoint](0);
+        player.prestigeBank[GameConstants.Currency.dungeontoken](0);
+        player.prestigeBank[GameConstants.Currency.diamond](0);
+    }
 }

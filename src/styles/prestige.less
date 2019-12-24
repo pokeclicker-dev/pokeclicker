@@ -1,5 +1,6 @@
 .prestige-table {
-  width: 90%;
+  width: 60% !important;
+  margin: auto;
 }
 .prestige-table td {
   width: 14.2857143%;
@@ -31,11 +32,27 @@
 }
 
 .prestige-locked {
-  filter: contrast(10%);
+  background-color: #333;
   z-index: 2;
 }
 
 .prestige-reachable {
-  filter: contrast(10%) blur(0.5px);
+  filter: opacity(70%);
   z-index: 1;
+}
+
+.prestige-coins {
+  width: 20px;
+}
+
+.prestige-coin-0 {
+  filter: hue-rotate(30deg);
+}
+
+.prestige-coin-1 {
+  filter: hue-rotate(200deg);
+}
+
+.prestige-coin-2 {
+  filter: hue-rotate(300deg);
 }

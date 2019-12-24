@@ -11,15 +11,16 @@ class Safari {
     private static playerXY = {"x": 0, "y": 0};
     private static origin;
     static inBattle: KnockoutObservable<boolean> = ko.observable(false);
-    static balls: KnockoutObservable<number> = ko.observable(30);
+    static balls: KnockoutObservable<number> = ko.observable();
     static sprite: Motio;
 
     public static load() {
         this.grid = [];
-        this.playerXY.x = 12;
-        this.playerXY.y = 20;
+        this.playerXY.x = 0;
+        this.playerXY.y = 0;
         Safari.lastDirection = "up";
         Safari.inBattle(false);
+        Safari.balls(this.calculateStartPokeballs());
         for( let i = 0; i<GameConstants.Safari.SizeY; i++){
             let row = Array.apply(null, Array(GameConstants.Safari.SizeX)).map(Number.prototype.valueOf, 0);
             this.grid.push(row);
@@ -49,7 +50,7 @@ class Safari {
         Safari.addRandomBody(new GrassBody());
         Safari.addRandomBody(new GrassBody());
         Safari.addRandomBody(new GrassBody());
-        
+
         Safari.show();
     }
 
@@ -113,7 +114,7 @@ class Safari {
         let html = "";
 
         for (let i=0; i<this.grid.length; i++) {
-            html += "<div class='row'>";
+            html += "<div class='row m-0'>";
             for (let j=0; j<this.grid[0].length; j++) {
                 html += Safari.square(i, j);
             }
@@ -149,7 +150,7 @@ class Safari {
     }
 
     public static move(dir: string) {
-        if(!Safari.walking && !Safari.isMoving) {
+        if(!Safari.walking && !Safari.isMoving && !Safari.inBattle()) {
             Safari.queue = [];
             Safari.walking = true;
             Safari.queue.unshift(dir);
@@ -280,11 +281,15 @@ class Safari {
         }
         return false;
     }
+
+    private static calculateStartPokeballs(){
+        return GameConstants.SAFARI_BASE_POKEBALL_COUNT;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    $('#safariModal').on('hide.bs.modal', function () {
+    $('#safariModal').on('hidden.bs.modal', function () {
         MapHelper.moveToTown("Fuchsia City");
     });
 
@@ -294,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             fps: 8,
             frames: 4
         }).on('frame', function() {
-            if (Safari.sprite.frame%2 == 0) {
+            if (Safari.sprite.frame % 2 == 0) {
                 Safari.sprite.pause();
             }
         });

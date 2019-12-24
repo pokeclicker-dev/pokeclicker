@@ -2,21 +2,29 @@ class buyKeyItem extends Item {
     
         type: GameConstants.KeyItemType;
     
-        constructor(type: GameConstants.KeyItemType, price: number = 1000) {
-            let basePrice = price;
+        constructor(type: GameConstants.KeyItemType) {
+            let basePrice = GameConstants.ItemPrice[GameConstants.KeyItemType[type]];
             let priceMultiplier = 1;
             super(GameConstants.KeyItemType[type], basePrice, priceMultiplier, GameConstants.Currency.questPoint);
             this.type = type;
-            this.totalPrice = ko.computed(function(){return this.basePrice}, this);
+        }
+
+        totalPrice(amt: number) {
+            return this.basePrice;
         }
     
-        buy(amt: number) {
+        gain(amt: number) {
             player.gainKeyItem(GameConstants.KeyItemType[this.type].replace("_", " "))
         }
     
         use() {
         }
-    }
+
+        isAvailable(): boolean {
+            return super.isAvailable() && !player.hasKeyItem(this.name().replace("_", " "));
+        }
+}
     
     
-    ItemList['Dungeon_ticket'] = new buyKeyItem(GameConstants.KeyItemType.Dungeon_ticket, 250);
+ItemList['Dungeon_ticket'] = new buyKeyItem(GameConstants.KeyItemType.Dungeon_ticket);
+ItemList['Explorer_kit'] = new buyKeyItem(GameConstants.KeyItemType.Explorer_kit);
