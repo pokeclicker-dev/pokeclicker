@@ -272,6 +272,7 @@ dungeonList['Meteor Falls'] = new Dungeon('Meteor Falls',
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xExp],
     103000,
     [
+
       new DungeonBossPokemon('Solrock', 320000, 20),
       new DungeonBossPokemon('Lunatone', 320000, 20),
     ],
@@ -288,6 +289,7 @@ dungeonList['Jagged Pass'] = new Dungeon('Jagged Pass',
     ['Machop', 'Numel', 'Spoink'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xExp],
     120000,
+
     [
       new DungeonBossPokemon('Machop', 400000, 20),
       new DungeonBossPokemon('Numel', 400000, 20),
