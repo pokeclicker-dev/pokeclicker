@@ -257,7 +257,7 @@ dungeonList['Granite Cave'] = new Dungeon('Granite Cave',
     ['Zubat', 'Abra', 'Geodude', 'Makuhita', 'Aron', 'Sableye'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xExp],
     101000,
-    [new DungeonBossPokemon('Mawile', 260000, 20), new DungeonBossPokemon('Nosepass', 100000, 20)],
+    [new DungeonBossPokemon('Mawile', 260000, 20), new DungeonBossPokemon('260000', 100000, 20)],
     12000, BadgeCase.Badge.Stone, 101, 5);
 
 dungeonList['Fiery Path'] = new Dungeon('Fiery Path',
