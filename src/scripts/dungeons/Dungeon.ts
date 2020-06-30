@@ -201,7 +201,7 @@ dungeonList['Whirl Islands'] = new Dungeon('Whirl Islands',
     ['Zubat', 'Golbat', 'Seel', 'Krabby', 'Horsea'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xExp],
     46800,
-    [new DungeonBossPokemon('Dewgong', 170000, 40), new DungeonBossPokemon('Kingler', 7000, 40), new DungeonBossPokemon('Lugia', 300000, 70)],
+    [new DungeonBossPokemon('Dewgong', 170000, 40), new DungeonBossPokemon('Kingler', 170000, 40), new DungeonBossPokemon('Lugia', 300000, 70)],
     5000, BadgeCase.Badge.Storm, 41, 25
 );
 
