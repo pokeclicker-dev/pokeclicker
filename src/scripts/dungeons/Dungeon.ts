@@ -177,7 +177,7 @@ dungeonList['Ilex Forest'] = new Dungeon('Ilex Forest',
     ['Caterpie', 'Metapod', 'Weedle', 'Kakuna', 'Zubat', 'Oddish', 'Paras', 'Hoothoot'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Token_collector],
     41200,
-    [new DungeonBossPokemon('Noctowl', 150000, 30), new DungeonBossPokemon('Beedrill', 5000, 30), new DungeonBossPokemon('Butterfree', 5000, 30), new DungeonBossPokemon('Celebi', 300000, 50)],
+    [new DungeonBossPokemon('Noctowl', 150000, 30), new DungeonBossPokemon('Beedrill', 150000, 30), new DungeonBossPokemon('Butterfree', 150000, 30), new DungeonBossPokemon('Celebi', 300000, 50)],
     4000, BadgeCase.Badge.Hive, 34, 15
 );
 
