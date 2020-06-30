@@ -185,7 +185,7 @@ dungeonList['Burned Tower'] = new Dungeon('Burned Tower',
     ['Rattata', 'Zubat', 'Koffing', 'Raticate'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Lucky_incense],
     44500,
-    [new DungeonBossPokemon('Golbat', 160000, 35), new DungeonBossPokemon('Weezing', 6000, 35), new DungeonBossPokemon('Shuckle', 300000, 50)],
+    [new DungeonBossPokemon('Golbat', 160000, 35), new DungeonBossPokemon('Weezing', 160000, 35), new DungeonBossPokemon('Shuckle', 300000, 50)],
     4500, BadgeCase.Badge.Fog, 37, 20
 );
 
@@ -193,7 +193,7 @@ dungeonList['Tin Tower'] = new Dungeon('Tin Tower',
     ['Rattata', 'Gastly'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     44500,
-    [new DungeonBossPokemon('Raticate', 160000, 35), new DungeonBossPokemon('Haunter', 6000, 35), new DungeonBossPokemon('Ho-Oh', 300000, 70)],
+    [new DungeonBossPokemon('Raticate', 160000, 35), new DungeonBossPokemon('Haunter', 160000, 35), new DungeonBossPokemon('Ho-Oh', 300000, 70)],
     4500, BadgeCase.Badge.Fog, 37, 20
 );
 
