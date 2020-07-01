@@ -7,6 +7,7 @@ class Game {
     public static achievementCounter = 0;
 
     // Features
+    public update: Update;
     public breeding: Breeding;
     public pokeballs: Pokeballs;
     public wallet: Wallet;
@@ -26,6 +27,7 @@ class Game {
      * TODO(@Isha) pass all features through the constructor
      */
     constructor(
+        update: Update,
         breeding: Breeding,
         pokeballs: Pokeballs,
         wallet: Wallet,
@@ -39,6 +41,7 @@ class Game {
         codes: RedeemableCodes,
         statistics: Statistics
     ) {
+        this.update = update;
         this.breeding = breeding;
         this.pokeballs = pokeballs;
         this.wallet = wallet;
@@ -80,6 +83,7 @@ class Game {
         this.oakItems.initialize();
         this.farming.initialize();
         this.load();
+        this.update.check();
 
         // TODO refactor to proper initialization methods
         Battle.generateNewEnemy();

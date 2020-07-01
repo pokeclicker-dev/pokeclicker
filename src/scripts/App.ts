@@ -8,9 +8,10 @@ class App {
             Object.freeze(GameConstants);
         }
 
-        Preload.load(App.debug).then(function () {
+        Preload.load(App.debug).then(() => {
             UndergroundItem.initialize();
             App.game = new Game(
+                new Update(),
                 new Breeding(),
                 new Pokeballs(),
                 new Wallet(),
