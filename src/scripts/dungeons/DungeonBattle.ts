@@ -11,12 +11,17 @@ class DungeonBattle extends Battle {
         }
         App.game.party.gainExp(this.enemyPokemon().exp, this.enemyPokemon().level, false);
         this.gainShardsAfterBattle();
-        player.defeatedAmount[this.enemyPokemon().id](player.defeatedAmount[this.enemyPokemon().id]() + 1);
-        App.game.breeding.progressEggs(Math.floor(Math.sqrt(DungeonRunner.dungeon.itemRoute)));
+        GameHelper.incrementObservable(player.statistics.pokemonDefeated[this.enemyPokemon().id]);
+        GameHelper.incrementObservable(player.statistics.totalPokemonDefeated);
+        App.game.breeding.progressEggsBattle(DungeonRunner.dungeon.itemRoute, player.region);
         DungeonRunner.map.currentTile().type(GameConstants.DungeonTile.empty);
         DungeonRunner.map.currentTile().calculateCssClass();
 
         const isShiny: boolean = this.enemyPokemon().shiny;
+        if (isShiny){
+            GameHelper.incrementObservable(player.statistics.shinyPokemonDefeated[this.enemyPokemon().id]);
+            GameHelper.incrementObservable(player.statistics.totalShinyPokemonDefeated);
+        }
         const pokeBall: GameConstants.Pokeball = App.game.pokeballs.calculatePokeballToUse(this.enemyPokemon().id, isShiny);
 
         if (pokeBall !== GameConstants.Pokeball.None) {
@@ -40,7 +45,12 @@ class DungeonBattle extends Battle {
         this.counter = 0;
         this.enemyPokemon(PokemonFactory.generateDungeonPokemon(DungeonRunner.dungeon.pokemonList, DungeonRunner.chestsOpened, DungeonRunner.dungeon.baseHealth, DungeonRunner.dungeon.level));
 
-        if (this.enemyPokemon().shiny) {
+        const enemyPokemon = this.enemyPokemon();
+        GameHelper.incrementObservable(player.statistics.pokemonEncountered[enemyPokemon.id]);
+        GameHelper.incrementObservable(player.statistics.totalPokemonEncountered);
+        if (enemyPokemon.shiny) {
+            GameHelper.incrementObservable(player.statistics.shinyPokemonEncountered[enemyPokemon.id]);
+            GameHelper.incrementObservable(player.statistics.totalShinyPokemonEncountered);
             App.game.logbook.newLog(LogBookTypes.SHINY, `You encountered a Shiny ${this.enemyPokemon().name} at ${player.town().dungeon().name()}.`);
         } else if (!App.game.party.alreadyCaughtPokemon(this.enemyPokemon().id)) {
             App.game.logbook.newLog(LogBookTypes.NEW, `You encountered a wild ${this.enemyPokemon().name} at ${player.town().dungeon().name()}.`);

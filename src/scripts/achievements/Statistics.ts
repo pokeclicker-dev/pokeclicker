@@ -31,15 +31,19 @@ class Statistics {
         'totalShards': GameHelper.enumLength(PokemonType) - 1,  // remove "None" pokemon type
         'oakItemUses': GameHelper.enumLength(OakItems.OakItem),
         'berriesHarvested': GameHelper.enumLength(BerryType) - 1,  // remove "None" berry
-        'routeKills': GameConstants.AMOUNT_OF_ROUTES + 1,
+        'routeKills': GameConstants.HIGHEST_ROUTE_NUMBER + 1, // Add 1 for "route 0"
+        'pokemonCaptured': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
+        'pokemonDefeated': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
+        'pokemonEncountered': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
+        'shinyPokemonCaptured': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
+        'shinyPokemonDefeated': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
+        'shinyPokemonEncountered': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
     };
 
     constructor(saved = {}) {
         const observables = [
             'clicks',
             'hatchedEggs',
-            'pokemonCaptured',
-            'pokemonDefeated',
             'digItems',
             'digDeeper',
             'totalMoney',
@@ -47,6 +51,12 @@ class Statistics {
             'totalQuestPoints',
             'totalDiamonds',
             'totalFarmPoints',
+            'totalPokemonCaptured',
+            'totalPokemonDefeated',
+            'totalPokemonEncountered',
+            'totalShinyPokemonCaptured',
+            'totalShinyPokemonDefeated',
+            'totalShinyPokemonEncountered',
         ];
 
         const arrayObservables = [
@@ -58,6 +68,12 @@ class Statistics {
             'oakItemUses',
             'berriesHarvested',
             'routeKills',
+            'pokemonCaptured',
+            'pokemonDefeated',
+            'pokemonEncountered',
+            'shinyPokemonCaptured',
+            'shinyPokemonDefeated',
+            'shinyPokemonEncountered',
         ];
 
         for (const prop of observables) {

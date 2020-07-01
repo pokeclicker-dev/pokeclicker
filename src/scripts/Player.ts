@@ -94,8 +94,6 @@ class Player {
         }
         this._questXP = ko.observable(savedPlayer._questXP || 0);
 
-        this._shinyCatches = ko.observable(savedPlayer._shinyCatches || 0);
-
         this._lastSeen = Date.now();
         this.statistics = new Statistics(savedPlayer.statistics);
 
@@ -124,7 +122,6 @@ class Player {
     public _questXP: KnockoutObservable<number>;
     public _lastSeen: number;
     public currentQuests: KnockoutObservableArray<any>;
-    private _shinyCatches: KnockoutObservable<number>;
 
     public effectList: { [name: string]: KnockoutObservable<number> } = {};
     public effectTimer: { [name: string]: KnockoutObservable<string> } = {};
@@ -263,14 +260,6 @@ class Player {
         return 100 * (this.questXP - requiredForCurrent) / (requiredForNext - requiredForCurrent);
     }
 
-    get shinyCatches(): number {
-        return this._shinyCatches();
-    }
-
-    set shinyCatches(value: number) {
-        this._shinyCatches(value);
-    }
-
     get questXP(): number {
         return this._questXP();
     }
@@ -298,7 +287,6 @@ class Player {
             '_questXP',
             '_lastSeen',
             'currentQuests',
-            '_shinyCatches',
             'gymDefeats',
             'statistics',
             'achievementsCompleted',
