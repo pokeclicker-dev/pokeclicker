@@ -5,18 +5,18 @@ class Statistics {
 
     clicks: KnockoutObservable<number>;
     hatchedEggs: KnockoutObservable<number>;
-    pokemonCaptured: KnockoutObservable<number>;
-    pokemonDefeated: KnockoutObservable<number>;
-    pokemonEncountered: KnockoutObservable<number>;
-    shinyPokemonCaptured: KnockoutObservable<number>;
-    shinyPokemonDefeated: KnockoutObservable<number>;
-    shinyPokemonEncountered: KnockoutObservable<number>;
-    totalPokemonCaptured: Array<KnockoutObservable<number>>;
-    totalPokemonDefeated: Array<KnockoutObservable<number>>;
-    totalPokemonEncountered: Array<KnockoutObservable<number>>;
-    totalShinyPokemonCaptured: Array<KnockoutObservable<number>>;
-    totalShinyPokemonDefeated: Array<KnockoutObservable<number>>;
-    totalShinyPokemonEncountered: Array<KnockoutObservable<number>>;
+    pokemonCaptured: Array<KnockoutObservable<number>>;
+    pokemonDefeated: Array<KnockoutObservable<number>>;
+    pokemonEncountered: Array<KnockoutObservable<number>>;
+    shinyPokemonCaptured: Array<KnockoutObservable<number>>;
+    shinyPokemonDefeated: Array<KnockoutObservable<number>>;
+    shinyPokemonEncountered: Array<KnockoutObservable<number>>;
+    totalPokemonCaptured: KnockoutObservable<number>;
+    totalPokemonDefeated: KnockoutObservable<number>;
+    totalPokemonEncountered: KnockoutObservable<number>;
+    totalShinyPokemonCaptured: KnockoutObservable<number>;
+    totalShinyPokemonDefeated: KnockoutObservable<number>;
+    totalShinyPokemonEncountered: KnockoutObservable<number>;
     gymsDefeated: Array<KnockoutObservable<number>>;
     dungeonsCleared: Array<KnockoutObservable<number>>;
     digItems: KnockoutObservable<number>; // Total treasure found in underground
