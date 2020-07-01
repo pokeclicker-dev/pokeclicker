@@ -21,7 +21,8 @@ class App {
                 new Shards(),
                 new Farming(),
                 new LogBook(),
-                new RedeemableCodes()
+                new RedeemableCodes(),
+                new Statistics(),
             );
 
             Notifier.notify('Game loaded', GameConstants.NotificationOption.info);

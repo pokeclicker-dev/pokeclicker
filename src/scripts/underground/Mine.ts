@@ -146,7 +146,7 @@ class Mine {
                 const itemName = Underground.getMineItemById(Mine.rewardNumbers[i]).name;
                 Notifier.notify(`You found ${GameHelper.anOrA(itemName)} ${itemName}`, GameConstants.NotificationOption.success);
                 Mine.itemsFound(Mine.itemsFound() + 1);
-                GameHelper.incrementObservable(player.statistics.digItems);
+                GameHelper.incrementObservable(App.game.statistics.digItems);
                 Mine.rewardNumbers.splice(i, 1);
                 i--;
                 Mine.checkCompleted();
@@ -173,7 +173,7 @@ class Mine {
         if (Mine.itemsFound() >= Mine.itemsBuried) {
             setTimeout(Mine.completed, 1500);
             Mine.loadingNewLayer = true;
-            GameHelper.incrementObservable(player.statistics.digDeeper);
+            GameHelper.incrementObservable(App.game.statistics.digDeeper);
             App.game.oakItems.use(OakItems.OakItem.Cell_Battery);
         }
     }

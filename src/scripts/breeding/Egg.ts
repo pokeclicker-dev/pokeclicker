@@ -112,7 +112,7 @@ class Egg implements Saveable {
             App.game.party.gainPokemonById(PokemonHelper.getPokemonByName(baseForm).id, shiny);
         }
 
-        GameHelper.incrementObservable(player.statistics.hatchedEggs);
+        GameHelper.incrementObservable(App.game.statistics.hatchedEggs);
         App.game.oakItems.use(OakItems.OakItem.Blaze_Cassette);
     }
 

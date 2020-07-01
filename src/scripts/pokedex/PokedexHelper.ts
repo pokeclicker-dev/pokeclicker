@@ -21,7 +21,7 @@ class PokedexHelper {
     public static pokemonSeen(id: number): KnockoutComputed<boolean> {
         return ko.pureComputed(function () {
             try {
-                return player.statistics.pokemonEncountered[id]() > 0 || player.statistics.pokemonDefeated[id]() > 0 || player.statistics.pokemonCaptured[id]() > 0;
+                return App.game.statistics.pokemonEncountered[id]() > 0 || App.game.statistics.pokemonDefeated[id]() > 0 || App.game.statistics.pokemonCaptured[id]() > 0;
             } catch (error) {
                 return false;
             }
@@ -53,7 +53,7 @@ class PokedexHelper {
     public static getList(): Array<object> {
         const filter = PokedexHelper.getFilters();
 
-        const highestDefeated = player.statistics.pokemonDefeated.reduce((highest, pokemon, index) => pokemon() && index > highest ? index : highest, 0);
+        const highestDefeated = App.game.statistics.pokemonDefeated.reduce((highest, pokemon, index) => pokemon() && index > highest ? index : highest, 0);
         const highestCaught = App.game.party.caughtPokemon.reduce((highest, pokemon) => pokemon.id > highest ? pokemon.id : highest, 0);
         const highestDex = Math.max(highestDefeated, highestCaught);
 
@@ -67,7 +67,7 @@ class PokedexHelper {
                 return false;
             }
 
-            if (filter['caught'] && player.statistics.pokemonCaptured[pokemon.id]() == 0) {
+            if (filter['caught'] && App.game.statistics.pokemonCaptured[pokemon.id]() == 0) {
                 return false;
             }
 
@@ -75,7 +75,7 @@ class PokedexHelper {
                 return false;
             }
 
-            if (filter['uncaught'] && player.statistics.pokemonCaptured[pokemon.id]() !== 0) {
+            if (filter['uncaught'] && App.game.statistics.pokemonCaptured[pokemon.id]() !== 0) {
                 return false;
             }
 

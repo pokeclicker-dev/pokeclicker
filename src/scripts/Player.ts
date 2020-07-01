@@ -88,7 +88,6 @@ class Player {
         this._questXP = ko.observable(savedPlayer._questXP || 0);
 
         this._lastSeen = Date.now();
-        this.statistics = new Statistics(savedPlayer.statistics);
 
         this.effectList = Save.initializeEffects(savedPlayer.effectList || {});
         this.effectTimer = Save.initializeEffectTimer(savedPlayer.effectTimer || {});
@@ -107,8 +106,6 @@ class Player {
 
     public clickAttackObservable: KnockoutComputed<number>;
     public pokemonAttackObservable: KnockoutComputed<number>;
-
-    public statistics: Statistics;
 
     public completedQuestList: Array<KnockoutObservable<boolean>>;
     public questRefreshes: number;
@@ -261,7 +258,6 @@ class Player {
             '_lastSeen',
             'currentQuests',
             'gymDefeats',
-            'statistics',
             'achievementsCompleted',
             'effectList',
             'effectTimer',

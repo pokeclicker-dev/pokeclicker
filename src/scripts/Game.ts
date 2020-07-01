@@ -17,8 +17,8 @@ class Game {
     public shards: Shards;
     public farming: Farming;
     public logbook: LogBook;
-
     public redeemableCodes: RedeemableCodes;
+    public statistics: Statistics;
 
     private _gameState: KnockoutObservable<GameConstants.GameState>;
 
@@ -36,7 +36,8 @@ class Game {
         shards: Shards,
         farming: Farming,
         logbook: LogBook,
-        codes: RedeemableCodes
+        codes: RedeemableCodes,
+        statistics: Statistics
     ) {
         this.breeding = breeding;
         this.pokeballs = pokeballs;
@@ -49,6 +50,7 @@ class Game {
         this.farming = farming;
         this.logbook = logbook;
         this.redeemableCodes = codes;
+        this.statistics = statistics;
 
         this._gameState = ko.observable(GameConstants.GameState.paused);
 
@@ -73,8 +75,8 @@ class Game {
             this.shards.fromJSON(saveObject[this.shards.saveKey]);
             this.farming.fromJSON(saveObject[this.farming.saveKey]);
             this.logbook.fromJSON(saveObject[this.logbook.saveKey]);
-
             this.redeemableCodes.fromJSON(saveObject[this.redeemableCodes.saveKey]);
+            this.statistics.fromJSON(saveObject[this.statistics.saveKey] || {});
         }
     }
 

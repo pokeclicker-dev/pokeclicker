@@ -1,7 +1,10 @@
 ///<reference path="../oakItems/OakItems.ts"/>
 ///<reference path="../farming/BerryType.ts"/>
 ///<reference path="../pokemons/PokemonType.ts"/>
-class Statistics {
+class Statistics implements Saveable {
+    saveKey = 'statistics';
+
+    defaults = {};
 
     clicks: KnockoutObservable<number>;
     hatchedEggs: KnockoutObservable<number>;
@@ -32,6 +35,39 @@ class Statistics {
     oakItemUses: Array<KnockoutObservable<number>>;
     berriesHarvested: Array<KnockoutObservable<number>>;
     routeKills: Array<KnockoutObservable<number>>;
+    observables = [
+        'clicks',
+        'hatchedEggs',
+        'digItems',
+        'digDeeper',
+        'totalMoney',
+        'totalTokens',
+        'totalQuestPoints',
+        'totalDiamonds',
+        'totalFarmPoints',
+        'totalPokemonCaptured',
+        'totalPokemonDefeated',
+        'totalPokemonEncountered',
+        'totalShinyPokemonCaptured',
+        'totalShinyPokemonDefeated',
+        'totalShinyPokemonEncountered',
+    ];
+    arrayObservables = [
+        'gymsDefeated',
+        'dungeonsCleared',
+        'pokeballsUsed',
+        'pokeballsBought',
+        'totalShards',
+        'oakItemUses',
+        'berriesHarvested',
+        'routeKills',
+        'pokemonCaptured',
+        'pokemonDefeated',
+        'pokemonEncountered',
+        'shinyPokemonCaptured',
+        'shinyPokemonDefeated',
+        'shinyPokemonEncountered',
+    ];
 
     private static readonly arraySizes = {
         'gymsDefeated': GameConstants.RegionGyms.flat().length,
@@ -50,49 +86,14 @@ class Statistics {
         'shinyPokemonEncountered': GameConstants.TotalPokemonsPerRegion[GameConstants.MAX_AVAILABLE_REGION] + 1,
     };
 
-    constructor(saved = {}) {
-        const observables = [
-            'clicks',
-            'hatchedEggs',
-            'digItems',
-            'digDeeper',
-            'totalMoney',
-            'totalTokens',
-            'totalQuestPoints',
-            'totalDiamonds',
-            'totalFarmPoints',
-            'totalPokemonCaptured',
-            'totalPokemonDefeated',
-            'totalPokemonEncountered',
-            'totalShinyPokemonCaptured',
-            'totalShinyPokemonDefeated',
-            'totalShinyPokemonEncountered',
-        ];
-
-        const arrayObservables = [
-            'gymsDefeated',
-            'dungeonsCleared',
-            'pokeballsUsed',
-            'pokeballsBought',
-            'totalShards',
-            'oakItemUses',
-            'berriesHarvested',
-            'routeKills',
-            'pokemonCaptured',
-            'pokemonDefeated',
-            'pokemonEncountered',
-            'shinyPokemonCaptured',
-            'shinyPokemonDefeated',
-            'shinyPokemonEncountered',
-        ];
-
-        for (const prop of observables) {
-            this[prop] = ko.observable(saved[prop] || 0);
+    constructor() {
+        for (const prop of this.observables) {
+            this[prop] = ko.observable(0);
         }
 
-        for (const array of arrayObservables) {
+        for (const array of this.arrayObservables) {
             this[array] = [...Array(Statistics.arraySizes[array])].map((value, index) => {
-                return ko.observable(saved[array] ? saved[array][index] || 0 : 0);
+                return ko.observable(0);
             });
         }
     }
@@ -105,6 +106,34 @@ class Statistics {
     public static getDungeonIndex(dungeon: string) {
         const dungeons = GameConstants.RegionDungeons.flat();
         return dungeons.indexOf(dungeon);
+    }
+
+    toJSON(): object {
+        const saveObject = {};
+
+        for (const prop of this.observables) {
+            saveObject[prop] = this[prop]();
+        }
+
+        for (const array of this.arrayObservables) {
+            saveObject[array] = this[array].map(x => x());
+        }
+
+        return saveObject;
+    }
+
+    fromJSON(json: object): void {
+        console.log('statistics load:', json);
+
+        for (const prop of this.observables) {
+            this[prop] = ko.observable(json[prop] || 0);
+        }
+
+        for (const array of this.arrayObservables) {
+            this[array] = [...Array(Statistics.arraySizes[array])].map((value, index) => {
+                return ko.observable(json[array] ? json[array][index] || 0 : 0);
+            });
+        }
     }
 
 }

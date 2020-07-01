@@ -36,12 +36,12 @@ class Party implements Feature {
     }
 
     gainPokemon(pokemon: PartyPokemon, shiny = false, suppressNotification = false) {
-        GameHelper.incrementObservable(player.statistics.pokemonCaptured[pokemon.id]);
-        GameHelper.incrementObservable(player.statistics.totalPokemonCaptured);
+        GameHelper.incrementObservable(App.game.statistics.pokemonCaptured[pokemon.id]);
+        GameHelper.incrementObservable(App.game.statistics.totalPokemonCaptured);
 
         if (shiny) {
-            GameHelper.incrementObservable(player.statistics.shinyPokemonCaptured[pokemon.id]);
-            GameHelper.incrementObservable(player.statistics.totalShinyPokemonCaptured);
+            GameHelper.incrementObservable(App.game.statistics.shinyPokemonCaptured[pokemon.id]);
+            GameHelper.incrementObservable(App.game.statistics.totalShinyPokemonCaptured);
         }
         // Already have it shiny
         if (this.alreadyCaughtPokemon(pokemon.id, true)) {

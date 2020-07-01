@@ -30,8 +30,7 @@ class Shards implements Feature {
         }
         this.shardWallet[typeNum] += amt;
         if (amt > 0) {
-            GameHelper.incrementObservable(
-                player.statistics.totalShards[typeNum], amt);
+            GameHelper.incrementObservable(App.game.statistics.totalShards[typeNum], amt);
         }
     }
 

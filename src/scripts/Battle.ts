@@ -40,7 +40,7 @@ class Battle {
             return;
         }
         App.game.oakItems.use(OakItems.OakItem.Poison_Barb);
-        GameHelper.incrementObservable(player.statistics.clicks);
+        GameHelper.incrementObservable(App.game.statistics.clicks);
         this.enemyPokemon().damage(App.game.party.calculateClickAttack());
         if (!this.enemyPokemon().isAlive()) {
             this.defeatPokemon();
@@ -52,19 +52,19 @@ class Battle {
      */
     public static defeatPokemon() {
         const enemyPokemon = this.enemyPokemon();
-        GameHelper.incrementObservable(player.statistics.pokemonDefeated[enemyPokemon.id]);
-        GameHelper.incrementObservable(player.statistics.totalPokemonDefeated);
+        GameHelper.incrementObservable(App.game.statistics.pokemonDefeated[enemyPokemon.id]);
+        GameHelper.incrementObservable(App.game.statistics.totalPokemonDefeated);
         App.game.wallet.gainMoney(enemyPokemon.money);
         App.game.party.gainExp(enemyPokemon.exp, enemyPokemon.level, false);
         this.gainShardsAfterBattle();
 
-        GameHelper.incrementObservable(player.statistics.routeKills[player.route()]);
+        GameHelper.incrementObservable(App.game.statistics.routeKills[player.route()]);
 
         App.game.breeding.progressEggsBattle(player.route(), player.region);
         const isShiny: boolean = enemyPokemon.shiny;
         if (isShiny){
-            GameHelper.incrementObservable(player.statistics.shinyPokemonDefeated[enemyPokemon.id]);
-            GameHelper.incrementObservable(player.statistics.totalShinyPokemonDefeated);
+            GameHelper.incrementObservable(App.game.statistics.shinyPokemonDefeated[enemyPokemon.id]);
+            GameHelper.incrementObservable(App.game.statistics.totalShinyPokemonDefeated);
         }
         const pokeBall: GameConstants.Pokeball = App.game.pokeballs.calculatePokeballToUse(enemyPokemon.id, isShiny);
 
@@ -100,11 +100,11 @@ class Battle {
         this.counter = 0;
         this.enemyPokemon(PokemonFactory.generateWildPokemon(player.route(), player.region));
         const enemyPokemon = this.enemyPokemon();
-        GameHelper.incrementObservable(player.statistics.pokemonEncountered[enemyPokemon.id]);
-        GameHelper.incrementObservable(player.statistics.totalPokemonEncountered);
+        GameHelper.incrementObservable(App.game.statistics.pokemonEncountered[enemyPokemon.id]);
+        GameHelper.incrementObservable(App.game.statistics.totalPokemonEncountered);
         if (enemyPokemon.shiny) {
-            GameHelper.incrementObservable(player.statistics.shinyPokemonEncountered[enemyPokemon.id]);
-            GameHelper.incrementObservable(player.statistics.totalShinyPokemonEncountered);
+            GameHelper.incrementObservable(App.game.statistics.shinyPokemonEncountered[enemyPokemon.id]);
+            GameHelper.incrementObservable(App.game.statistics.totalShinyPokemonEncountered);
             App.game.logbook.newLog(LogBookTypes.SHINY, `You encountered a Shiny ${Battle.enemyPokemon().name} on route ${player.route()}.`);
         } else if (!App.game.party.alreadyCaughtPokemon(Battle.enemyPokemon().id)) {
             App.game.logbook.newLog(LogBookTypes.NEW, `You encountered a wild ${Battle.enemyPokemon().name} on route ${player.route()}.`);

@@ -73,7 +73,7 @@ class GymRunner {
 
             $('#receiveBadgeModal').modal('show');
         }
-        GameHelper.incrementObservable(player.statistics.gymsDefeated[Statistics.getGymIndex(gym.town)]);
+        GameHelper.incrementObservable(App.game.statistics.gymsDefeated[Statistics.getGymIndex(gym.town)]);
         player.town(TownList[gym.town]);
         App.game.gameState = GameConstants.GameState.town;
     }

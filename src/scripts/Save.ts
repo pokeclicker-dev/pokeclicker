@@ -27,8 +27,8 @@ class Save {
         saveObject[App.game.shards.saveKey] = App.game.shards.toJSON();
         saveObject[App.game.farming.saveKey] = App.game.farming.toJSON();
         saveObject[App.game.logbook.saveKey] = App.game.logbook.toJSON();
-
         saveObject[App.game.redeemableCodes.saveKey] = App.game.redeemableCodes.toJSON();
+        saveObject[App.game.statistics.saveKey] = App.game.statistics.toJSON();
 
         return saveObject;
     }
