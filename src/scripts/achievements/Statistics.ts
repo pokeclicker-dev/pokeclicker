@@ -3,25 +3,35 @@
 ///<reference path="../pokemons/PokemonType.ts"/>
 class Statistics {
 
-    public clicks: KnockoutObservable<number>;
-    public hatchedEggs: KnockoutObservable<number>;
-    public pokemonCaptured: KnockoutObservable<number>;
-    public pokemonDefeated: KnockoutObservable<number>;
-    public gymsDefeated: Array<KnockoutObservable<number>>;
-    public dungeonsCleared: Array<KnockoutObservable<number>>;
-    public digItems: KnockoutObservable<number>; // Total treasure found in underground
-    public digDeeper: KnockoutObservable<number>; // Total underground layers completed
-    public totalMoney: KnockoutObservable<number>;
-    public totalTokens: KnockoutObservable<number>;
-    public totalQuestPoints: KnockoutObservable<number>;
-    public totalDiamonds: KnockoutObservable<number>;
-    public totalFarmPoints: KnockoutObservable<number>;
-    public pokeballsUsed: Array<KnockoutObservable<number>>;
-    public pokeballsBought: Array<KnockoutObservable<number>>;
-    public totalShards: Array<KnockoutObservable<number>>;
-    public oakItemUses: Array<KnockoutObservable<number>>;
-    public berriesHarvested: Array<KnockoutObservable<number>>;
-    public routeKills: Array<KnockoutObservable<number>>;
+    clicks: KnockoutObservable<number>;
+    hatchedEggs: KnockoutObservable<number>;
+    pokemonCaptured: KnockoutObservable<number>;
+    pokemonDefeated: KnockoutObservable<number>;
+    pokemonEncountered: KnockoutObservable<number>;
+    shinyPokemonCaptured: KnockoutObservable<number>;
+    shinyPokemonDefeated: KnockoutObservable<number>;
+    shinyPokemonEncountered: KnockoutObservable<number>;
+    totalPokemonCaptured: Array<KnockoutObservable<number>>;
+    totalPokemonDefeated: Array<KnockoutObservable<number>>;
+    totalPokemonEncountered: Array<KnockoutObservable<number>>;
+    totalShinyPokemonCaptured: Array<KnockoutObservable<number>>;
+    totalShinyPokemonDefeated: Array<KnockoutObservable<number>>;
+    totalShinyPokemonEncountered: Array<KnockoutObservable<number>>;
+    gymsDefeated: Array<KnockoutObservable<number>>;
+    dungeonsCleared: Array<KnockoutObservable<number>>;
+    digItems: KnockoutObservable<number>; // Total treasure found in underground
+    digDeeper: KnockoutObservable<number>; // Total underground layers completed
+    totalMoney: KnockoutObservable<number>;
+    totalTokens: KnockoutObservable<number>;
+    totalQuestPoints: KnockoutObservable<number>;
+    totalDiamonds: KnockoutObservable<number>;
+    totalFarmPoints: KnockoutObservable<number>;
+    pokeballsUsed: Array<KnockoutObservable<number>>;
+    pokeballsBought: Array<KnockoutObservable<number>>;
+    totalShards: Array<KnockoutObservable<number>>;
+    oakItemUses: Array<KnockoutObservable<number>>;
+    berriesHarvested: Array<KnockoutObservable<number>>;
+    routeKills: Array<KnockoutObservable<number>>;
 
     private static readonly arraySizes = {
         'gymsDefeated': GameConstants.RegionGyms.flat().length,
