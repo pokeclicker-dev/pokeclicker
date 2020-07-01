@@ -67,7 +67,7 @@ class PokedexHelper {
                 return false;
             }
 
-            if (filter['caught'] && player.caughtAmount[pokemon.id]() == 0) {
+            if (filter['caught'] && player.statistics.pokemonCaptured[pokemon.id]() == 0) {
                 return false;
             }
 
@@ -75,7 +75,7 @@ class PokedexHelper {
                 return false;
             }
 
-            if (filter['uncaught'] && player.caughtAmount[pokemon.id]() !== 0) {
+            if (filter['uncaught'] && player.statistics.pokemonCaptured[pokemon.id]() !== 0) {
                 return false;
             }
 

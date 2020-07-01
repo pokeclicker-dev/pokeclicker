@@ -36,7 +36,6 @@ class Party implements Feature {
     }
 
     gainPokemon(pokemon: PartyPokemon, shiny = false, suppressNotification = false) {
-        GameHelper.incrementObservable(player.caughtAmount[pokemon.id]);
         GameHelper.incrementObservable(player.statistics.pokemonCaptured[pokemon.id]);
         GameHelper.incrementObservable(player.statistics.totalPokemonCaptured);
 
