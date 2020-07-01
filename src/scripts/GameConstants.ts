@@ -20,7 +20,7 @@ namespace GameConstants {
     export const ACHIEVEMENT_TICK = 1000;
     export const MIN_LOAD_TIME = 500;
 
-    export const MAX_AVAILABLE_REGION = 1;
+    export const MAX_AVAILABLE_REGION = 2; // Hoenn
 
     export const TotalPokemonsPerRegion = [
         151, // 151
@@ -40,6 +40,7 @@ namespace GameConstants {
     export const RoamingPokemon = {
         0: ['Mew'],
         1: ['Raikou', 'Entei', 'Suicune'],
+        2: ['Latios', 'Latias', 'Regice', 'Regirock', 'Registeel', 'Jirachi', 'Deoxys'],
     };
 
     // Shinies
@@ -56,7 +57,6 @@ namespace GameConstants {
     export const PLATE_VALUE = 100;
 
     // Breeding
-    export const BREEDING_AMOUNT = 1;
     export const BREEDING_ATTACK_BONUS = 25;
 
     export const BerryDistribution = [0.39, 0.63, 0.78, 0.87, 0.93, 0.96, 0.98, 1];
@@ -134,7 +134,7 @@ namespace GameConstants {
     export const GAIN_TOKENS_BASE_REWARD      = CAPTURE_POKEMONS_BASE_REWARD / 13; // <route number> tokens gained for every capture
     export const HATCH_EGGS_BASE_REWARD       = questBase * 33;      // Dimava
     export const MINE_LAYERS_BASE_REWARD      = questBase * 720;     // Average of 1/4 squares revealed = 75 energy ~ 12 minutes ~ 720 pokemons
-    export const SHINY_BASE_REWARD            = questBase * 6000;    // Dimava
+    export const SHINY_BASE_REWARD            = questBase * 3000;    // Dimava
     export const USE_OAK_ITEM_BASE_REWARD     = DEFEAT_POKEMONS_BASE_REWARD; // not balanced at all for some oak items
 
     export const ACTIVE_QUEST_MULTIPLIER      = 4;
@@ -291,7 +291,7 @@ namespace GameConstants {
     ];
 
     // Map navigation
-    export const AMOUNT_OF_ROUTES = 134;
+    export const HIGHEST_ROUTE_NUMBER = 134;
     export const AMOUNT_OF_ROUTES_KANTO = 25;
 
     export const ROUTE_KILLS_NEEDED = 10;
@@ -339,6 +339,7 @@ namespace GameConstants {
             46: [45],
             26: [46],
             27: [26],
+            48: [47],
         },
         2: {
             102: [101],
@@ -403,6 +404,7 @@ namespace GameConstants {
             43: BadgeCase.Badge.Glacier,
             44: BadgeCase.Badge.Glacier,
             45: BadgeCase.Badge.Rising,
+            47: BadgeCase.Badge.Elite_JohtoChampion,
         },
         2: {
             116: BadgeCase.Badge.Stone,
@@ -681,7 +683,6 @@ namespace GameConstants {
         'Victory Road Hoenn',
         'Petalburg Woods',
         'New Mauville',
-        'Sea Mauville',
         // These aren't implemented anywhere yet
         /*
         "Island Cave",
