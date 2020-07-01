@@ -64,8 +64,12 @@ class DungeonBattle extends Battle {
         this.catching(false);
         this.counter = 0;
         this.enemyPokemon(PokemonFactory.generateDungeonBoss(DungeonRunner.dungeon.bossList, DungeonRunner.chestsOpened));
+        GameHelper.incrementObservable(player.statistics.pokemonEncountered[this.enemyPokemon().id]);
+        GameHelper.incrementObservable(player.statistics.totalPokemonEncountered);
 
         if (this.enemyPokemon().shiny) {
+            GameHelper.incrementObservable(player.statistics.shinyPokemonEncountered[this.enemyPokemon().id]);
+            GameHelper.incrementObservable(player.statistics.totalShinyPokemonEncountered);
             App.game.logbook.newLog(LogBookTypes.SHINY, `You encountered a Shiny ${this.enemyPokemon().name} at ${player.town().dungeon().name()}.`);
         } else if (!App.game.party.alreadyCaughtPokemon(this.enemyPokemon().id)) {
             App.game.logbook.newLog(LogBookTypes.NEW, `You encountered a wild ${this.enemyPokemon().name} at ${player.town().dungeon().name()}.`);
