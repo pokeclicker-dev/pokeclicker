@@ -18,7 +18,7 @@ class DungeonBattle extends Battle {
         DungeonRunner.map.currentTile().calculateCssClass();
 
         const isShiny: boolean = this.enemyPokemon().shiny;
-        if (isShiny){
+        if (isShiny) {
             GameHelper.incrementObservable(App.game.statistics.shinyPokemonDefeated[this.enemyPokemon().id]);
             GameHelper.incrementObservable(App.game.statistics.totalShinyPokemonDefeated);
         }

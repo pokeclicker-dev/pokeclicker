@@ -1,6 +1,6 @@
 class RedeemableCodes implements Saveable {
     defaults: object;
-    saveKey = 'redeemable-codes';
+    saveKey = 'redeemableCodes';
 
     codeList: RedeemableCode[];
 

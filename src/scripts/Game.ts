@@ -63,20 +63,13 @@ class Game {
     load() {
         // TODO(@Isha) Refactor this saving logic
         const saveJSON = localStorage.getItem('save');
+
         if (saveJSON !== null) {
             const saveObject = JSON.parse(saveJSON);
-            this.breeding.fromJSON(saveObject[this.breeding.saveKey]);
-            this.pokeballs.fromJSON(saveObject[this.pokeballs.saveKey]);
-            this.wallet.fromJSON(saveObject[this.wallet.saveKey]);
-            this.keyItems.fromJSON(saveObject[this.keyItems.saveKey]);
-            this.badgeCase.fromJSON(saveObject[this.badgeCase.saveKey]);
-            this.oakItems.fromJSON(saveObject[this.oakItems.saveKey]);
-            this.party.fromJSON(saveObject[this.party.saveKey]);
-            this.shards.fromJSON(saveObject[this.shards.saveKey]);
-            this.farming.fromJSON(saveObject[this.farming.saveKey]);
-            this.logbook.fromJSON(saveObject[this.logbook.saveKey]);
-            this.redeemableCodes.fromJSON(saveObject[this.redeemableCodes.saveKey]);
-            this.statistics.fromJSON(saveObject[this.statistics.saveKey] || {});
+
+            Object.keys(saveObject).filter(key => this[key]?.saveKey).forEach(key => {
+                this[key].fromJSON(saveObject[key]);
+            });
         }
     }
 

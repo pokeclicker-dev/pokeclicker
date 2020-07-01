@@ -62,7 +62,7 @@ class Battle {
 
         App.game.breeding.progressEggsBattle(player.route(), player.region);
         const isShiny: boolean = enemyPokemon.shiny;
-        if (isShiny){
+        if (isShiny) {
             GameHelper.incrementObservable(App.game.statistics.shinyPokemonDefeated[enemyPokemon.id]);
             GameHelper.incrementObservable(App.game.statistics.totalShinyPokemonDefeated);
         }

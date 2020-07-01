@@ -197,7 +197,7 @@ class Underground {
 
     public static load(saveObject: object): void {
         if (!saveObject) {
-            console.log('Underground not loaded.');
+            console.warn('Underground not loaded.');
             return;
         }
 

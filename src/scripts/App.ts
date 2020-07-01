@@ -22,7 +22,7 @@ class App {
                 new Farming(),
                 new LogBook(),
                 new RedeemableCodes(),
-                new Statistics(),
+                new Statistics()
             );
 
             Notifier.notify('Game loaded', GameConstants.NotificationOption.info);

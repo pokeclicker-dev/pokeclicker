@@ -17,18 +17,10 @@ class Save {
         const saveObject = {};
 
         saveObject[Underground.saveKey] = Underground.save();
-        saveObject[App.game.breeding.saveKey] = App.game.breeding.toJSON();
-        saveObject[App.game.pokeballs.saveKey] = App.game.pokeballs.toJSON();
-        saveObject[App.game.wallet.saveKey] = App.game.wallet.toJSON();
-        saveObject[App.game.keyItems.saveKey] = App.game.keyItems.toJSON();
-        saveObject[App.game.badgeCase.saveKey] = App.game.badgeCase.toJSON();
-        saveObject[App.game.oakItems.saveKey] = App.game.oakItems.toJSON();
-        saveObject[App.game.party.saveKey] = App.game.party.toJSON();
-        saveObject[App.game.shards.saveKey] = App.game.shards.toJSON();
-        saveObject[App.game.farming.saveKey] = App.game.farming.toJSON();
-        saveObject[App.game.logbook.saveKey] = App.game.logbook.toJSON();
-        saveObject[App.game.redeemableCodes.saveKey] = App.game.redeemableCodes.toJSON();
-        saveObject[App.game.statistics.saveKey] = App.game.statistics.toJSON();
+
+        Object.keys(App.game).filter(key => App.game[key].saveKey).forEach(key => {
+            saveObject[App.game[key].saveKey] = App.game[key].toJSON();
+        });
 
         return saveObject;
     }
