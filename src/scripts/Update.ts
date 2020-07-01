@@ -33,7 +33,7 @@ class Update implements Saveable {
         }
 
         if (this.saveVersion != this.version) {
-            Notifier.notify(`[v${this.version}] Game has been updated!`, GameConstants.NotificationOption.info, {delay: 10000});
+            Notifier.notify(`[v${this.version}] Game has been updated!`, GameConstants.NotificationOption.warning, {delay: 30000, placement: { from: 'top', align: 'right' }});
         }
     }
 

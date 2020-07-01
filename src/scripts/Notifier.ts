@@ -44,7 +44,6 @@ class Notifier {
         };
         ($ as any).notify({
             // options
-            icon: 'glyphicon glyphicon-warning-sign',
             title: '',
             message: GameConstants.humanifyString(message),
             url: '',
