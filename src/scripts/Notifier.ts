@@ -17,7 +17,6 @@ class Notifier {
         $('#toaster').prepend(toastHTML);
         $('.toast').toast('show');
         $(`#${toastID}`).on('shown.bs.toast', function (el) {
-            console.log(el);
             setTimeout(()=>{ $(`#${toastID}`).toast('hide'); }, timeout);
         });
         $(`#${toastID}`).on('hidden.bs.toast', function () {
