@@ -31,13 +31,13 @@ class PokemonHelper {
     }
 
     public static getPokemonById(id: number): DataPokemon {
-        return this.getPokemonByName(pokemonMapId[id].name);
+        return this.getPokemonByName(pokemonMap[id].name);
     }
 
     public static getPokemonByName(name: string): DataPokemon {
         const basePokemon = pokemonMap[name];
         if (!basePokemon) {
-            console.log('Could not find pokemon', name);
+            console.warn('Could not find pokemon', name);
             return;
         }
 
@@ -81,13 +81,8 @@ class PokemonHelper {
     public static calcNativeRegion(pokemonName: string) {
         const pokemon = PokemonHelper.getPokemonByName(pokemonName);
         const id = pokemon.id;
-        if (id > 251) {
-            return GameConstants.Region.hoenn;
-        } else if (id > 151) {
-            return GameConstants.Region.johto;
-        } else {
-            return GameConstants.Region.kanto;
-        }
+        const region = GameConstants.TotalPokemonsPerRegion.findIndex(maxRegionID => maxRegionID >= id);
+        return region >= 0 ? region : Infinity;
     }
 
 }
