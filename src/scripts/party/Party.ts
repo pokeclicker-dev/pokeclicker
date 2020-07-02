@@ -50,7 +50,7 @@ class Party implements Feature {
 
         if (shiny) {
             this.shinyPokemon.push(pokemon.id);
-            Notifier.notify(`✨ You have captured a shiny ${pokemon.name}! ✨`, GameConstants.NotificationOption.warning);
+            Notifier.notify({ message: `✨ You have captured a shiny ${pokemon.name}! ✨`, type: GameConstants.NotificationOption.warning });
             App.game.logbook.newLog(LogBookTypes.CAUGHT, `You have captured a shiny ${pokemon.name}!`);
         }
 
@@ -59,7 +59,7 @@ class Party implements Feature {
         }
 
         if (!suppressNotification) {
-            Notifier.notify(`You have captured ${GameHelper.anOrA(pokemon.name)} ${pokemon.name}!`, GameConstants.NotificationOption.success);
+            Notifier.notify({ message: `You have captured ${GameHelper.anOrA(pokemon.name)} ${pokemon.name}!`, type: GameConstants.NotificationOption.success });
         }
 
         App.game.logbook.newLog(LogBookTypes.CAUGHT, `You have captured ${GameHelper.anOrA(pokemon.name)} ${pokemon.name}!`);

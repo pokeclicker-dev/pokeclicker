@@ -170,10 +170,10 @@ class Save {
                     localStorage.setItem('save', JSON.stringify(json.save));
                     location.reload();
                 } else {
-                    Notifier.notify('This is not a valid decoded savefile', GameConstants.NotificationOption.danger);
+                    Notifier.notify({ message: 'This is not a valid decoded savefile', type: GameConstants.NotificationOption.danger });
                 }
             } catch (err) {
-                Notifier.notify('This is not a valid savefile', GameConstants.NotificationOption.danger);
+                Notifier.notify({ message: 'This is not a valid savefile', type: GameConstants.NotificationOption.danger });
             }
         }, 1000);
     }
@@ -186,7 +186,7 @@ class Save {
             Save.convertShinies(p.caughtPokemonList);
             $('#saveModal').modal('hide');
         } catch (e) {
-            Notifier.notify('Invalid save data.', GameConstants.NotificationOption.danger);
+            Notifier.notify({ message: 'Invalid save data.', type: GameConstants.NotificationOption.danger });
         }
     }
 
@@ -201,9 +201,9 @@ class Save {
             }
         }
         if (converted.length > 0) {
-            Notifier.notify(`You have gained the following shiny Pokémon:</br>${converted.join(',</br>')}`, GameConstants.NotificationOption.success);
+            Notifier.notify({ message: `You have gained the following shiny Pokémon:</br>${converted.join(',</br>')}`, type: GameConstants.NotificationOption.success });
         } else {
-            Notifier.notify('No new shiny Pokémon to import.', GameConstants.NotificationOption.info);
+            Notifier.notify({ message: 'No new shiny Pokémon to import.', type: GameConstants.NotificationOption.info });
         }
     }
 }

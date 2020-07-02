@@ -26,7 +26,7 @@ class App {
                 new Statistics()
             );
 
-            Notifier.notify('Game loaded', GameConstants.NotificationOption.info);
+            Notifier.notify({ message: 'Game loaded', type: GameConstants.NotificationOption.info });
 
             GameController.bindToolTips();
             GameController.addKeyListeners();

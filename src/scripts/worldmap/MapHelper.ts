@@ -63,7 +63,7 @@ class MapHelper {
                 }
             }
 
-            Notifier.notify(`You don't have access to that route yet.${reqsList}`, GameConstants.NotificationOption.warning);
+            Notifier.notify({ message: `You don't have access to that route yet.${reqsList}`, type: GameConstants.NotificationOption.warning });
         }
     };
 
@@ -197,7 +197,7 @@ class MapHelper {
                 }
             }
 
-            Notifier.notify(`You don't have access to that location yet.${reqsList}`, GameConstants.NotificationOption.warning);
+            Notifier.notify({ message: `You don't have access to that location yet.${reqsList}`, type: GameConstants.NotificationOption.warning });
         }
     };
 
@@ -226,7 +226,7 @@ class MapHelper {
                     return;
                 }
         }
-        Notifier.notify('You cannot access this dock yet', GameConstants.NotificationOption.warning);
+        Notifier.notify({ message: 'You cannot access this dock yet', type: GameConstants.NotificationOption.warning });
     }
 
     public static ableToTravel() {

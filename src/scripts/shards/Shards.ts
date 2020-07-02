@@ -103,9 +103,7 @@ class Shards implements Feature {
         if (this.canAccess()) {
             $('#shardModal').modal('show');
         } else {
-            Notifier.notify(
-                'You do not have the Shard Case',
-                GameConstants.NotificationOption.warning);
+            Notifier.notify({ message: 'You do not have the Shard Case', type: GameConstants.NotificationOption.warning });
         }
     }
 }
