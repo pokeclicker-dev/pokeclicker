@@ -5129,6 +5129,7 @@ const pokemonList: {
             'levelType': LevelType.erratic,
             'exp': 160,
             'catchRate': 120,
+            'evolutions': [new LevelEvolution('Ninjask', 'Shedinja', 1)],
             'base': {
                 'hitpoints': 61,
                 'attack': 90,
