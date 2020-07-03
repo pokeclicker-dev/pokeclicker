@@ -23,13 +23,13 @@ namespace GameConstants {
     export const MAX_AVAILABLE_REGION = 2; // Hoenn
 
     export const TotalPokemonsPerRegion = [
-        151, // 151
-        251, // 100
-        386, // 135
-        493, // 107
-        649, // 156
-        721, // 72
-        809, // 88
+        151, // 151 - Kanto
+        251, // 100 - Johto
+        386, // 135 - Hoenn
+        493, // 107 - Sinnoh
+        649, // 156 - Unova
+        721, // 72 - Kalos
+        809, // 88 - Alola
     ];
 
     export const ITEM_USE_TIME = 30;
@@ -486,6 +486,7 @@ namespace GameConstants {
         'Mr. Mime': 1500,
         'Lickitung': 1000,
         'Togepi': 2500,
+        'Beldum': 5000,
 
         // TODO: Set prices for different kinds of eggs and stones
         'Egg': 1000,
@@ -525,6 +526,7 @@ namespace GameConstants {
         'Mr. Mime',
         'Lickitung',
         'Togepi',
+        'Beldum',
     }
 
     export enum PokeBlockColor {

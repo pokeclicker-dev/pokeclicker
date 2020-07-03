@@ -34,7 +34,23 @@ const unreleasedChangelogItems = [new Changelog(changelogType.INFO, 'Do not add 
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
-    // Unreleased
+    // v0.4.3
+    new Changelog(changelogType.VERSION, 'v0.4.3'),
+    new Changelog(changelogType.NEW, 'Add setting to disable currency animations'),
+    new Changelog(changelogType.CHANGE, 'Increase some notifications display time'),
+    new Changelog(changelogType.FIXED, 'Tidy up Key items, Evolution stones selector'),
+    new Changelog(changelogType.FIXED, 'Sketchy theme checkboxes and close icons should display correctly now'),
+
+    // v0.4.2
+    new Changelog(changelogType.VERSION, 'v0.4.2'),
+    new Changelog(changelogType.FIXED, 'Fixed some Key items not being given when supposed to'),
+
+    // v0.4.1
+    new Changelog(changelogType.VERSION, 'v0.4.1 - More fixes'),
+    new Changelog(changelogType.NEW, 'More items added to underground'),
+    new Changelog(changelogType.CHANGE, 'All Hoenn Pokemon should be obtainable now'),
+    new Changelog(changelogType.FIXED, 'Pokedex filtering should be working again'),
+    new Changelog(changelogType.FIXED, 'Some items showing _ in their name in notifications'),
 
     // v0.4.0
     new Changelog(changelogType.VERSION, 'v0.4.0 - Statistics update'),
