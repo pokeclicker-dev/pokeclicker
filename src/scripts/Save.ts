@@ -10,7 +10,7 @@ class Save {
         localStorage.setItem('save', JSON.stringify(this.getSaveObject()));
 
         this.counter = 0;
-        console.log('Game saved');
+        console.log('%cGame saved', 'color:skyblue;font-weight:900;');
     }
 
     public static getSaveObject() {
@@ -91,7 +91,7 @@ class Save {
         const filtered = {};
         let prop;
         for (prop in object) {
-            if (keep.indexOf(prop) > -1) {
+            if (keep.includes(prop)) {
                 filtered[prop] = object[prop];
             }
         }
@@ -201,7 +201,7 @@ class Save {
             }
         }
         if (converted.length > 0) {
-            Notifier.notify({ message: `You have gained the following shiny Pokémon:</br>${converted.join(',</br>')}`, type: GameConstants.NotificationOption.success });
+            Notifier.notify({ message: `You have gained the following shiny Pokémon:</br>${converted.join(',</br>')}`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
         } else {
             Notifier.notify({ message: 'No new shiny Pokémon to import.', type: GameConstants.NotificationOption.info });
         }

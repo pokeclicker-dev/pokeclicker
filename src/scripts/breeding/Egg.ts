@@ -52,6 +52,9 @@ class Egg implements Saveable {
         if (this.isNone() || this.notified) {
             return;
         }
+        if (!+amount) {
+            amount = 1;
+        }
         this.steps(this.steps() + amount);
         if (App.game.oakItems.isActive(OakItems.OakItem.Shiny_Charm)) {
             this.shinySteps += amount;
@@ -77,23 +80,18 @@ class Egg implements Saveable {
         const shinyChance = GameConstants.SHINY_CHANCE_BREEDING - (0.5 * GameConstants.SHINY_CHANCE_BREEDING * Math.min(1, this.shinySteps / this.steps()));
         const shiny = PokemonFactory.generateShiny(shinyChance);
 
-        for (let i = 0; i < App.game.party.caughtPokemon.length; i++) {
-            if (App.game.party.caughtPokemon[i].name == this.pokemon) {
-                const partyPokemon = App.game.party.caughtPokemon[i];
-                if (partyPokemon.breeding) {
-                    if (partyPokemon.evolutions !== undefined) {
-                        partyPokemon.evolutions.forEach(evo => evo instanceof LevelEvolution ? evo.triggered = false : undefined);
-                    }
-                    partyPokemon.exp = 0;
-                    partyPokemon.level = 1;
-                    partyPokemon.breeding = false;
-                    partyPokemon.level = partyPokemon.calculateLevelFromExp();
-                    partyPokemon.attackBonus += GameConstants.BREEDING_ATTACK_BONUS;
-                    partyPokemon.attack = partyPokemon.calculateAttack();
-                    partyPokemon.checkForLevelEvolution();
-                    break;
-                }
+        const partyPokemon = App.game.party.caughtPokemon.find(p => p.name == this.pokemon);
+        if (partyPokemon?.breeding) {
+            if (partyPokemon.evolutions !== undefined) {
+                partyPokemon.evolutions.forEach(evo => evo instanceof LevelEvolution ? evo.triggered = false : undefined);
             }
+            partyPokemon.exp = 0;
+            partyPokemon.level = 1;
+            partyPokemon.breeding = false;
+            partyPokemon.level = partyPokemon.calculateLevelFromExp();
+            partyPokemon.attackBonus += GameConstants.BREEDING_ATTACK_BONUS;
+            partyPokemon.attack = partyPokemon.calculateAttack();
+            partyPokemon.checkForLevelEvolution();
         }
 
         if (shiny) {

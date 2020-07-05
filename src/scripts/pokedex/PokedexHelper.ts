@@ -4,7 +4,7 @@ class PokedexHelper {
     public static getBackgroundColors(name: string): string {
         const pokemon = PokemonHelper.getPokemonByName(name);
 
-        if (!PokedexHelper.pokemonSeen(pokemon.id)()) {
+        if (!this.pokemonSeen(pokemon.id)()) {
             return 'grey';
         }
         if (pokemon.type2 == PokemonType.None) {
@@ -21,7 +21,7 @@ class PokedexHelper {
     public static pokemonSeen(id: number): KnockoutComputed<boolean> {
         return ko.pureComputed(function () {
             try {
-                return App.game.statistics.pokemonEncountered[id]() > 0 || App.game.statistics.pokemonDefeated[id]() > 0 || App.game.statistics.pokemonCaptured[id]() > 0;
+                return App.game.statistics.pokemonEncountered[id]() > 0 || App.game.statistics.pokemonDefeated[id]() > 0 || App.game.statistics.pokemonCaptured[id]() > 0 || App.game.party.alreadyCaughtPokemon(id);
             } catch (error) {
                 return false;
             }
@@ -58,7 +58,12 @@ class PokedexHelper {
         const highestDex = Math.max(highestDefeated, highestCaught);
 
         return pokemonList.filter(function (pokemon) {
-            if ((filter['name'] || '') != '' && pokemon.name.toLowerCase().indexOf(filter['name'].toLowerCase()) == -1) {
+            // If the Pokemon shouldn't be unlocked yet
+            if (PokemonHelper.calcNativeRegion(pokemon.name) > GameConstants.MAX_AVAILABLE_REGION) {
+                return false;
+            }
+
+            if (filter['name'] && !pokemon.name.toLowerCase().includes(filter['name'].toLowerCase())) {
                 return false;
             }
             const type1: PokemonType = parseInt(filter['type1'] || PokemonType.None);

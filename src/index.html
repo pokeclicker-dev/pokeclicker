@@ -86,7 +86,7 @@
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155132556-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171657234-1"></script>
     <script>
         if ($INIT_GOOGLE_ANALYTICS) {
             window.dataLayer = window.dataLayer || [];
@@ -97,7 +97,7 @@
 
             gtag('js', new Date());
 
-            gtag('config', 'UA-155132556-1');
+            gtag('config', 'UA-171657234-1');
         }
     </script>
 
@@ -125,7 +125,7 @@
     </style>
 
 </head>
-<body class="no-select">
+<body class="no-select" data-bind="class: 'no-select ' + Settings.getSetting('theme').observableValue()">
 <div id="toaster"></div>
 <link href="https://bootswatch.com/4/yeti/bootstrap.min.css" rel="stylesheet" data-bind="attr: {href: 'https://bootswatch.com/4/' + Settings.getSetting('theme').observableValue() + '/bootstrap.min.css'}">
 
@@ -300,8 +300,8 @@
                                 </div>
                             </div>
 
-                            <!-- ko if: (DungeonRunner.fighting() || DungeonBattle.catching) -->
-                            <div>
+                            <!-- ko if: (DungeonRunner.fighting() || DungeonBattle.catching)  -->
+                            <div data-bind="if: DungeonBattle.enemyPokemon()?.health()">
                                 <span data-bind="text: DungeonBattle.enemyPokemon().name">Pokemon name</span>
                                 <span data-bind="template: { name: 'caughtStatusTemplate', data: {'status': PartyController.getCaughtStatus(DungeonBattle.enemyPokemon().id)}}"></span>
                                 <div>
@@ -439,6 +439,9 @@
 <!-- Achievements Modal -->
 @import "achievements.html"
 
+<!-- Statistics Modal-->
+@import "statisticsModal.html"
+
 <!-- Log Book Modal-->
 @import "logBookModal.html"
 
@@ -471,6 +474,9 @@
 
 <!-- Pokedex Modal-->
 @import "pokedex.html"
+
+<!-- Statistics Modal-->
+@import "pokemonStatisticsModal.html"
 
 <!-- Badge Case Modal-->
 @import "badgeCase.html"

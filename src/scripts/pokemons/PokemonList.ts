@@ -5112,7 +5112,10 @@ const pokemonList: {
             'levelType': LevelType.erratic,
             'exp': 53,
             'catchRate': 255,
-            'evolutions': [new LevelEvolution('Nincada', 'Ninjask', 20)],
+            'evolutions': [
+                new LevelEvolution('Nincada', 'Ninjask', 20),
+                new LevelEvolution('Nincada', 'Shedinja', 20),
+            ],
             'base': {
                 'hitpoints': 31,
                 'attack': 45,
@@ -6437,7 +6440,10 @@ const pokemonList: {
             'levelType': LevelType.erratic,
             'exp': 69,
             'catchRate': 255,
-            'evolutions': [new StoneEvolution('Clamperl', 'Huntail', GameConstants.StoneType.Trade_stone)],
+            'evolutions': [
+                new StoneEvolution('Clamperl', 'Huntail', GameConstants.StoneType.Trade_stone),
+                new StoneEvolution('Clamperl', 'Gorebyss', GameConstants.StoneType.Trade_stone),
+            ],
             'base': {
                 'hitpoints': 35,
                 'attack': 64,
@@ -14167,6 +14173,59 @@ const pokemonList: {
                 'speed': 34,
             },
         },
+        // Event Pokemon only
+        {
+            'id': 0,
+            'name': 'MissingNo.',
+            'catchRate': 45,
+            'type': [PokemonType.Flying, PokemonType.Normal],
+            'levelType': LevelType.mediumslow,
+            'exp': 64,
+            'eggCycles': 20,
+            'evolutions': [new LevelEvolution('Bulbasaur', 'Ivysaur', 16)],
+            'base': {
+                'hitpoints': 178,
+                'attack': 19,
+                'specialAttack': 23,
+                'defense': 11,
+                'specialDefense': 23,
+                'speed': 0,
+            },
+        },
+        {
+            'id': -1,
+            'name': 'Flying Pikachu',
+            'catchRate': 50,
+            'type': [PokemonType.Electric, PokemonType.Flying],
+            'levelType': LevelType.mediumfast,
+            'exp': 112,
+            'eggCycles': 20,
+            'base': {
+                'hitpoints': 35,
+                'attack': 55,
+                'specialAttack': 50,
+                'defense': 40,
+                'specialDefense': 50,
+                'speed': 90,
+            },
+        },
+        {
+            'id': -2,
+            'name': 'Surfing Pikachu',
+            'catchRate': 50,
+            'type': [PokemonType.Electric, PokemonType.Water],
+            'levelType': LevelType.mediumfast,
+            'exp': 112,
+            'eggCycles': 20,
+            'base': {
+                'hitpoints': 35,
+                'attack': 55,
+                'specialAttack': 50,
+                'defense': 40,
+                'specialDefense': 50,
+                'speed': 90,
+            },
+        },
     ];
 
 
@@ -14182,17 +14241,24 @@ pokemonList.forEach(p => {
     }
 });
 
-const pokemonMap = new Proxy(pokemonList, {
-    get: (obj, prop: string) => {
+const pokemonMap: any = new Proxy(pokemonList, {
+    get: (pokemon, prop: string) => {
         if (+prop) {
             const id: number = +prop;
-            return obj.find(p => p.id == id);
+            return pokemon.find(p => p.id == id);
         }
         switch (prop) {
             case 'random':
-                return () => obj[Math.floor(Math.random() * obj.length)];
+                return (_max = 0, _min = 0) => {
+                    // minimum 0
+                    const min = Math.max(0, Math.min(_min, _max));
+                    // maximum is same as however many pokemon are available
+                    const max = Math.min(pokemon.length, Math.max(_min, _max));
+                    const random = Math.floor(Math.random() * (max ? max : pokemon.length) + min);
+                    return pokemon[random];
+                };
             default:
-                return obj.find(p => p.name.toLowerCase() == prop.toLowerCase());
+                return pokemon.find(p => p.name.toLowerCase() == prop.toLowerCase()) || pokemon[prop];
         }
     },
 });

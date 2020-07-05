@@ -23,13 +23,13 @@ namespace GameConstants {
     export const MAX_AVAILABLE_REGION = 2; // Hoenn
 
     export const TotalPokemonsPerRegion = [
-        151, // 151
-        251, // 100
-        386, // 135
-        493, // 107
-        649, // 156
-        721, // 72
-        809, // 88
+        151, // 151 - Kanto
+        251, // 100 - Johto
+        386, // 135 - Hoenn
+        493, // 107 - Sinnoh
+        649, // 156 - Unova
+        721, // 72 - Kalos
+        809, // 88 - Alola
     ];
 
     export const ITEM_USE_TIME = 30;
@@ -51,7 +51,7 @@ namespace GameConstants {
     export const SHINY_CHANCE_STONE = 4096;
     export const SHINY_CHANCE_SAFARI = 2048;
 
-    export const ITEM_PRICE_MULTIPLIER = 1.001;
+    export const ITEM_PRICE_MULTIPLIER = 1.00045;
     export const ITEM_PRICE_DEDUCT = 1.0005;
 
     export const PLATE_VALUE = 100;
@@ -217,6 +217,10 @@ namespace GameConstants {
 
     export function humanifyString(str: string) {
         return str.replace(/_/g, ' ');
+    }
+
+    export function camelCaseToString(str: string) {
+        return str.replace(/([A-Z])/g, ' $1').replace(/\b\w/g, (w) => (w.replace(/\w/, (c) => c.toUpperCase())));
     }
 
     export function formatTime(time) {
@@ -486,6 +490,7 @@ namespace GameConstants {
         'Mr. Mime': 1500,
         'Lickitung': 1000,
         'Togepi': 2500,
+        'Beldum': 5000,
 
         // TODO: Set prices for different kinds of eggs and stones
         'Egg': 1000,
@@ -525,6 +530,7 @@ namespace GameConstants {
         'Mr. Mime',
         'Lickitung',
         'Togepi',
+        'Beldum',
     }
 
     export enum PokeBlockColor {
@@ -579,6 +585,8 @@ namespace GameConstants {
         'Helix Fossil': 'Omanyte',
         'Dome Fossil': 'Kabuto',
         'Old Amber': 'Aerodactyl',
+        'Root Fossil': 'Lileep',
+        'Claw Fossil': 'Anorith',
     };
 
     //Used for image name
@@ -586,6 +594,8 @@ namespace GameConstants {
         'Omanyte': 'helix',
         'Kabuto': 'dome',
         'Aerodactyl': 'amber',
+        'Lileep': 'root',
+        'Anorith': 'claw',
 
     };
 

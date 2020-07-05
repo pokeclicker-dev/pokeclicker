@@ -3,7 +3,6 @@
  */
 class Game {
     interval;
-    undergroundCounter: number;
     public static achievementCounter = 0;
 
     // Features
@@ -64,7 +63,6 @@ class Game {
     }
 
     load() {
-        // TODO(@Isha) Refactor this saving logic
         const saveJSON = localStorage.getItem('save');
 
         if (saveJSON !== null) {
@@ -102,7 +100,7 @@ class Game {
     }
 
     start() {
-        console.log('game started');
+        console.log('%cGame started', 'color:limegreen;font-weight:900;');
         if (player.starter === GameConstants.Starter.None) {
             StartSequenceRunner.start();
         }
@@ -115,7 +113,6 @@ class Game {
 
     gameTick() {
         // Update tick counters
-        this.undergroundCounter += GameConstants.TICK_TIME;
         EffectEngineRunner.counter += GameConstants.TICK_TIME;
         Game.achievementCounter += GameConstants.TICK_TIME;
         if (Game.achievementCounter > GameConstants.ACHIEVEMENT_TICK) {
@@ -160,7 +157,7 @@ class Game {
                 QuestHelper.clearQuests();
                 QuestHelper.generateQuests(player.questLevel, player.questRefreshes, now);
                 DailyDeal.generateDeals(Underground.getDailyDealsMax(), now);
-                Notifier.notify({ message: 'It\'s a new day! Your quests and underground deals have been updated.', type: GameConstants.NotificationOption.info });
+                Notifier.notify({ message: 'It\'s a new day! Your quests and underground deals have been updated.', type: GameConstants.NotificationOption.info, timeout: 1e4 });
             }
             player._lastSeen = Date.now();
             Save.store(player);

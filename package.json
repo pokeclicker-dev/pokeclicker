@@ -9,23 +9,24 @@
     "test": "npm run ts-test && npm run eslint",
     "ts-test": "gulp scripts",
     "eslint": "eslint --config ./.eslintrc.js --ext ts ./src/scripts",
-    "eslint-fix": "eslint --config ./.eslintrc.js --ext ts --fix ./src/scripts"
+    "eslint-fix": "eslint --config ./.eslintrc.js --ext ts --fix ./src/scripts",
+    "publish": "git push origin develop:master"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ishadijcks/pokeclicker.git"
+    "url": "git+https://github.com/pokeclicker-dev/pokeclicker.git"
   },
   "babel": {
     "presets": [
       "env"
     ]
   },
-  "author": "IshaD",
+  "author": "RedSparr0w",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ishadijcks/pokeclicker/issues"
+    "url": "https://github.com/pokeclicker-dev/pokeclicker/issues"
   },
-  "homepage": "https://github.com/Ishadijcks/pokeclicker#readme",
+  "homepage": "https://github.com/pokeclicker-dev/pokeclicker#readme",
   "devDependencies": {
     "@types/jquery": "^3.3.31",
     "babel-core": "^6.26.3",

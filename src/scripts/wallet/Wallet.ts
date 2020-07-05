@@ -34,7 +34,7 @@ class Wallet implements Feature {
 
         tokens = Math.floor(tokens);
 
-        GameHelper.incrementObservable(App.game.statistics.totalTokens, tokens);
+        GameHelper.incrementObservable(App.game.statistics.totalDungeonTokens, tokens);
         GameController.animateCurrency(tokens, 'playerMoneyDungeon');
 
         this.addAmount(new Amount(tokens, Currency.dungeonToken));
@@ -72,13 +72,9 @@ class Wallet implements Feature {
     }
 
     private addAmount(amount: Amount) {
-        if (isNaN(amount.amount)) {
-            console.error(`Could not add amount ${amount}`);
-            return;
-        }
-
-        if (amount.amount <= 0) {
-            console.error(`We can only add positive amounts, ${amount} is not valid`);
+        if (isNaN(amount.amount) || amount.amount <= 0) {
+            console.trace('Could not add amount:', amount);
+            amount.amount = 1;
         }
 
         this.currencies[amount.currency] += amount.amount;
@@ -89,6 +85,11 @@ class Wallet implements Feature {
     };
 
     public loseAmount(amount: Amount) {
+        if (isNaN(amount.amount) || amount.amount <= 0) {
+            console.trace('Could not remove amount:', amount);
+            amount.amount = 1;
+        }
+
         this.currencies[amount.currency] -= amount.amount;
     };
 
