@@ -14261,7 +14261,7 @@ const pokemonList: {
             },
         },
         {
-            'id': -5
+            'id': -5,
             'name': 'Mega Charizard Y',
             'type': [PokemonType.Fire, PokemonType.Flying],
             'eggCycles': 20,
