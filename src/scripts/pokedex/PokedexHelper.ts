@@ -53,9 +53,10 @@ class PokedexHelper {
     public static getList(): Array<object> {
         const filter = PokedexHelper.getFilters();
 
-        const highestDefeated = App.game.statistics.pokemonDefeated.reduce((highest, pokemon, index) => pokemon() && index > highest ? index : highest, 0);
-        const highestCaught = App.game.party.caughtPokemon.reduce((highest, pokemon) => pokemon.id > highest ? pokemon.id : highest, 0);
-        const highestDex = Math.max(highestDefeated, highestCaught);
+        const highestEncountered = App.game.statistics.pokemonEncountered.highestID;
+        const highestDefeated = App.game.statistics.pokemonDefeated.highestID;
+        const highestCaught = App.game.statistics.pokemonCaptured.highestID;
+        const highestDex = Math.max(highestEncountered, highestDefeated, highestCaught);
 
         return pokemonList.filter(function (pokemon) {
             // If the Pokemon shouldn't be unlocked yet
@@ -63,28 +64,44 @@ class PokedexHelper {
                 return false;
             }
 
+            // If we haven't seen a pokemon this high yet
+            if (pokemon.id > highestDex) {
+                return false;
+            }
+
+            // Check if the name contains the string
             if (filter['name'] && !pokemon.name.toLowerCase().includes(filter['name'].toLowerCase())) {
                 return false;
             }
+
+            // Check if either of the types match
             const type1: PokemonType = parseInt(filter['type1'] || PokemonType.None);
             const type2: PokemonType = parseInt(filter['type2'] || PokemonType.None);
             if ((type1 != PokemonType.None && !pokemon.type.includes(type1)) || (type2 != PokemonType.None && !pokemon.type.includes(type2))) {
                 return false;
             }
 
-            if (filter['caught'] && App.game.statistics.pokemonCaptured[pokemon.id]() == 0) {
+            // Checks based on caught/shiny status
+            const alreadyCaught = App.game.party.alreadyCaughtPokemon(pokemon.id);
+            const alreadyCaughtShiny = App.game.party.alreadyCaughtPokemon(pokemon.id, true);
+
+            // If not caught
+            if (filter['caught'] && !alreadyCaught) {
                 return false;
             }
 
-            if (filter['shiny'] && !App.game.party.alreadyCaughtPokemon(pokemon.id, true)) {
+            // If not caught shiny variant
+            if (filter['shiny'] && !alreadyCaughtShiny) {
                 return false;
             }
 
-            if (filter['uncaught'] && App.game.statistics.pokemonCaptured[pokemon.id]() !== 0) {
+            // If not caught, or already caught shiny
+            if (filter['not-shiny'] && (!alreadyCaught || alreadyCaughtShiny)) {
                 return false;
             }
 
-            if (pokemon.id > highestDex) {
+            // If already caught
+            if (filter['uncaught'] && alreadyCaught) {
                 return false;
             }
 
@@ -102,6 +119,7 @@ class PokedexHelper {
         res['caught'] = (<HTMLInputElement> document.getElementById('pokedex-filter-caught')).checked;
         res['uncaught'] = (<HTMLInputElement> document.getElementById('pokedex-filter-uncaught')).checked;
         res['shiny'] = (<HTMLInputElement> document.getElementById('pokedex-filter-shiny')).checked;
+        res['not-shiny'] = (<HTMLInputElement> document.getElementById('pokedex-filter-not-shiny')).checked;
         return res;
     }
 
