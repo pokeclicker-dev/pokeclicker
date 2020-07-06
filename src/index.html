@@ -88,7 +88,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171657234-1"></script>
     <script>
-        if ($INIT_GOOGLE_ANALYTICS) {
+        if (!window.location.hostname.includes('localhost')) {
             window.dataLayer = window.dataLayer || [];
 
             function gtag() {
@@ -301,7 +301,7 @@
                             </div>
 
                             <!-- ko if: (DungeonRunner.fighting() || DungeonBattle.catching)  -->
-                            <div data-bind="if: DungeonBattle.enemyPokemon()?.health()">
+                            <div data-bind="if: DungeonBattle.enemyPokemon">
                                 <span data-bind="text: DungeonBattle.enemyPokemon().name">Pokemon name</span>
                                 <span data-bind="template: { name: 'caughtStatusTemplate', data: {'status': PartyController.getCaughtStatus(DungeonBattle.enemyPokemon().id)}}"></span>
                                 <div>
