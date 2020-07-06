@@ -14230,10 +14230,10 @@ const pokemonList: {
             'id': -3,
             'name': 'Mega Venusaur',
             'type': [PokemonType.Grass, PokemonType.Poison],
-            'eggCycles': 120,
+            'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 281,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 80,
                 'attack': 100,
@@ -14250,7 +14250,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 285,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 78,
                 'attack': 130,
@@ -14267,7 +14267,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 285,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 78,
                 'attack': 104,
@@ -14284,7 +14284,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 284,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 79,
                 'attack': 103,
@@ -14301,7 +14301,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumfast,
             'exp': 223,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 65,
                 'attack': 150,
@@ -14318,7 +14318,7 @@ const pokemonList: {
             'eggCycles': 15,
             'levelType': LevelType.mediumfast,
             'exp': 261,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 83,
                 'attack': 80,
@@ -14335,7 +14335,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 270,
-            'catchRate': 50,
+            'catchRate': 35,
             'base': {
                 'hitpoints': 55,
                 'attack': 50,
@@ -14352,7 +14352,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumfast,
             'exp': 207,
-            'catchRate': 75,
+            'catchRate': 50,
             'base': {
                 'hitpoints': 95,
                 'attack': 75,
@@ -14369,7 +14369,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 207,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 60,
                 'attack': 65,
@@ -14386,7 +14386,7 @@ const pokemonList: {
             'eggCycles': 20,
             'levelType': LevelType.mediumslow,
             'exp': 207,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 105,
                 'attack': 125,
@@ -14403,7 +14403,7 @@ const pokemonList: {
             'eggCycles': 25,
             'levelType': LevelType.mediumslow,
             'exp': 210,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 65,
                 'attack': 155,
@@ -14420,7 +14420,7 @@ const pokemonList: {
             'eggCycles': 5,
             'levelType': LevelType.slow,
             'exp': 224,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 95,
                 'attack': 125,
@@ -14437,7 +14437,7 @@ const pokemonList: {
             'eggCycles': 35,
             'levelType': LevelType.mediumslow,
             'exp': 215,
-            'catchRate': 45,
+            'catchRate': 30,
             'base': {
                 'hitpoints': 80,
                 'attack': 135,
@@ -14454,7 +14454,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.slow,
             'exp': 351,
-            'catchRate': 3,
+            'catchRate': 2,
             'base': {
                 'hitpoints': 106,
                 'attack': 190,
@@ -14471,7 +14471,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.slow,
             'exp': 351,
-            'catchRate': 3,
+            'catchRate': 2,
             'base': {
                 'hitpoints': 106,
                 'attack': 150,
@@ -14488,7 +14488,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.slow,
             'exp': 351,
-            'catchRate': 3,
+            'catchRate': 2,
             'base': {
                 'hitpoints': 105,
                 'attack': 180,
@@ -14505,7 +14505,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.slow,
             'exp': 347,
-            'catchRate': 3,
+            'catchRate': 2,
             'base': {
                 'hitpoints': 100,
                 'attack': 180,
@@ -14522,7 +14522,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.slow,
             'exp': 347,
-            'catchRate': 5,
+            'catchRate': 2,
             'base': {
                 'hitpoints': 100,
                 'attack': 150,
