@@ -14233,7 +14233,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 281,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 80,
                 'attack': 100,
@@ -14250,7 +14250,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 285,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 78,
                 'attack': 130,
@@ -14267,7 +14267,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 285,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 78,
                 'attack': 104,
@@ -14284,7 +14284,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 284,
-            'catchRate': 130,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 79,
                 'attack': 103,
@@ -14301,7 +14301,7 @@ const pokemonList: {
             'eggCycles': 80,
             'levelType': LevelType.mediumfast,
             'exp': 223,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 65,
                 'attack': 150,
@@ -14318,7 +14318,7 @@ const pokemonList: {
             'eggCycles': 80,
             'levelType': LevelType.mediumfast,
             'exp': 261,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 83,
                 'attack': 80,
@@ -14335,7 +14335,7 @@ const pokemonList: {
             'eggCycles': 80,
             'levelType': LevelType.mediumslow,
             'exp': 270,
-            'catchRate': 35,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 55,
                 'attack': 50,
@@ -14352,7 +14352,7 @@ const pokemonList: {
             'eggCycles': 80,
             'levelType': LevelType.mediumfast,
             'exp': 207,
-            'catchRate': 50,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 95,
                 'attack': 75,
@@ -14369,7 +14369,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 207,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 60,
                 'attack': 65,
@@ -14386,7 +14386,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 207,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 105,
                 'attack': 125,
@@ -14403,7 +14403,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 210,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 65,
                 'attack': 155,
@@ -14420,7 +14420,7 @@ const pokemonList: {
             'eggCycles': 125,
             'levelType': LevelType.slow,
             'exp': 224,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 95,
                 'attack': 125,
@@ -14437,7 +14437,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
             'exp': 215,
-            'catchRate': 30,
+            'catchRate': 20,
             'base': {
                 'hitpoints': 80,
                 'attack': 135,
@@ -14488,7 +14488,7 @@ const pokemonList: {
             'eggCycles': 120,
             'levelType': LevelType.slow,
             'exp': 351,
-            'catchRate': 2,
+            'catchRate': 1,
             'base': {
                 'hitpoints': 105,
                 'attack': 180,
