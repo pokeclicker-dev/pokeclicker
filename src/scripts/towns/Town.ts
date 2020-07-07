@@ -176,6 +176,7 @@ TownList['Fallarbor Town'] = new Town('Fallarbor Town', [113]);
 TownList['Fortree City'] = new Town('Fortree City', [119]);
 
 const LilyCoveCityShop = new Shop(['Pokeball', 'Greatball', 'Ultraball', 'SmallRestore', 'MediumRestore', 'LargeRestore', 'xAttack', 'xClick', 'xExp', 'Token_collector', 'Item_magnet', 'Lucky_incense']);
+const BattleFrontierShop = new Shop(['Ultraball', 'Masterball']);
 TownList['LilyCove City'] = new Town('LilyCove City', [121], LilyCoveCityShop, null, 'Mt. Pyre');
 const MossdeepCityShop = new Shop(['Beldum']);
 TownList['Mossdeep City'] = new Town('Mossdeep City', [125], MossdeepCityShop, null, 'Shoal Cave');
@@ -183,6 +184,7 @@ TownList['Sootopolis City'] = new Town('Sootopolis City', [126], null, null, 'Ca
 TownList['Ever Grande City'] = new Town('Ever Grande City', [128]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [128], null, null, 'Victory Road Hoenn');
 TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [131]);
+TownList['Battle Frontier'] = new Town('Battle Frontier', [], BattleFrontierShop, null, BadgeCase.Badge.Elite_HoennChampion);
 
 //Hoenn Dungeons
 TownList['Petalburg Woods'] = new DungeonTown('Petalburg Woods', [104]);
