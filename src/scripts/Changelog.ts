@@ -29,12 +29,21 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.4.7
+    new Changelog(changelogType.UPDATE, 'v0.4.7 - Layout'),
+    new Changelog(changelogType.NEW, 'Added option to sort Pokémon list by base attack'),
+    new Changelog(changelogType.CHANGE, 'Added information and confirmation check before traveling to next available region'),
+    new Changelog(changelogType.CHANGE, 'Updated the Oak Items layout'),
+    new Changelog(changelogType.CHANGE, 'Updated the Hoenn map'),
+    new Changelog(changelogType.FIXED, 'Event Pokémon no longer count towards achievements or being able to travel to next region'),
+    new Changelog(changelogType.FIXED, 'Mt. Chimney dungeon is now more powerful'),
+
     // v0.4.6
     new Changelog(changelogType.UPDATE, 'v0.4.6 - Bug fixes'),
     new Changelog(changelogType.NEW, 'Old save can be backed up when the game updates incase anything goes wrong<br/><i>You can disable auto download in the settings</i>'),
     new Changelog(changelogType.NEW, 'Add events modal'),
     new Changelog(changelogType.CHANGE, 'Safari now uses a Safari Ball'),
-    new Changelog(changelogType.CHANGE, 'Added ability to track event Pokemon statistics'),
+    new Changelog(changelogType.CHANGE, 'Added ability to track event Pokémon statistics'),
     new Changelog(changelogType.CHANGE, 'Update Discord link'),
     new Changelog(changelogType.FIXED, 'Pokeball should appear in dungeons again'),
     new Changelog(changelogType.FIXED, 'Fix Eeveelutions'),
@@ -44,7 +53,7 @@ const changelogItems = [
     new Changelog(changelogType.EVENT, 'Flying Pikachu Event'),
     new Changelog(changelogType.NEW, 'Special events can now appear in game'),
     new Changelog(changelogType.CHANGE, 'Modified the look of the dock'),
-    new Changelog(changelogType.CHANGE, 'Always add caught Shiny Pokemon to the Log Book'),
+    new Changelog(changelogType.CHANGE, 'Always add caught Shiny Pokémon to the Log Book'),
     new Changelog(changelogType.CHANGE, 'Added close button on the top right of more modals'),
     new Changelog(changelogType.FIXED, 'Dungeon layout should be shuffled again'),
     new Changelog(changelogType.FIXED, 'Hopefully fixed some values becoming NaN'),
@@ -53,18 +62,18 @@ const changelogItems = [
     new Changelog(changelogType.UPDATE, 'v0.4.4 - Statistics 2.0'),
     new Changelog(changelogType.NEW, 'Add some new game codes'),
     new Changelog(changelogType.NEW, 'Statistics can now be viewed from the Start Menu'),
-    new Changelog(changelogType.NEW, 'Pokemon statistics can be viewed by clicking a Pokemon in the Pokedex'),
+    new Changelog(changelogType.NEW, 'Pokémon statistics can be viewed by clicking a Pokémon in the Pokedex'),
     new Changelog(changelogType.CHANGE, 'Update some game codes'),
     new Changelog(changelogType.REMOVED, 'Remove old game codes'),
     new Changelog(changelogType.FIXED, 'Can no longer breed fossils from regions you have not reached yet'),
-    new Changelog(changelogType.FIXED, 'Added missing notifications for stone evolution Pokemon'),
+    new Changelog(changelogType.FIXED, 'Added missing notifications for stone evolution Pokémon'),
 
     // v0.4.3
     new Changelog(changelogType.UPDATE, 'v0.4.3'),
     new Changelog(changelogType.NEW, 'Add setting to disable currency animations'),
     new Changelog(changelogType.CHANGE, 'Increase some notifications display time'),
     new Changelog(changelogType.CHANGE, 'Decreased price multiplier'),
-    new Changelog(changelogType.CHANGE, 'Modified pokemon list reverse checkbox to show arrows instead'),
+    new Changelog(changelogType.CHANGE, 'Modified Pokémon list reverse checkbox to show arrows instead'),
     new Changelog(changelogType.CHANGE, 'Updated changelog layout'),
     new Changelog(changelogType.FIXED, 'Fix LilyCove City naming and image'),
     new Changelog(changelogType.FIXED, 'Tidy up Key items, Evolution stones selector'),
@@ -77,7 +86,7 @@ const changelogItems = [
     // v0.4.1
     new Changelog(changelogType.UPDATE, 'v0.4.1 - More fixes'),
     new Changelog(changelogType.NEW, 'More items added to underground'),
-    new Changelog(changelogType.CHANGE, 'All Hoenn Pokemon should be obtainable now'),
+    new Changelog(changelogType.CHANGE, 'All Hoenn Pokémon should be obtainable now'),
     new Changelog(changelogType.FIXED, 'Pokedex filtering should be working again'),
     new Changelog(changelogType.FIXED, 'Some items showing _ in their name in notifications'),
 
@@ -87,7 +96,7 @@ const changelogItems = [
     new Changelog(changelogType.NEW, 'More statistics have been added'),
     new Changelog(changelogType.CHANGE, 'Updated the way statistics are stored'),
     new Changelog(changelogType.CHANGE, 'Updated notifications'),
-    new Changelog(changelogType.FIXED, 'Fix some missing Hoenn Pokemon'),
+    new Changelog(changelogType.FIXED, 'Fix some missing Hoenn Pokémon'),
     new Changelog(changelogType.FIXED, 'Fix some missing images'),
 
     // v0.3.1
@@ -101,8 +110,8 @@ const changelogItems = [
     // v0.3.0
     new Changelog(changelogType.UPDATE, 'v0.3.0 - Hoenn Update'),
     new Changelog(changelogType.NEW, 'Add initial Hoenn region'),
-    new Changelog(changelogType.CHANGE, 'Shiny Pokemon now increase click damage at a 50% rate compared to normal Pokemon'),
-    new Changelog(changelogType.CHANGE, 'Allow better control of which type of ball to use when capturing a Pokemon'),
+    new Changelog(changelogType.CHANGE, 'Shiny Pokémon now increase click damage at a 50% rate compared to normal Pokémon'),
+    new Changelog(changelogType.CHANGE, 'Allow better control of which type of ball to use when capturing a Pokémon'),
 
     // v0.2.1
     new Changelog(changelogType.UPDATE, 'v0.2.1'),
@@ -124,14 +133,14 @@ const changelogItems = [
     new Changelog(changelogType.UPDATE, 'v0.0.5'),
     new Changelog(changelogType.NEW, 'Can now use spacebar to start Gym/Dungeon'),
     new Changelog(changelogType.FIXED, 'Stones now work with multiple evolutions'),
-    new Changelog(changelogType.FIXED, 'Pokemon will no longer evolve into evolutions you have already obtained'),
-    new Changelog(changelogType.FIXED, 'Can obtain Pokemon from future generations by re-breeding'),
+    new Changelog(changelogType.FIXED, 'Pokémon will no longer evolve into evolutions you have already obtained'),
+    new Changelog(changelogType.FIXED, 'Can obtain Pokémon from future generations by re-breeding'),
     new Changelog(changelogType.FIXED, 'Devolutions are obtained when breeding evolved forms'),
     new Changelog(changelogType.NEW, 'Add setting to toggle egg percentage/step count'),
-    new Changelog(changelogType.CHANGE, 'Total shiny Pokemon caught no longer adds to your click attack'),
+    new Changelog(changelogType.CHANGE, 'Total shiny Pokémon caught no longer adds to your click attack'),
     new Changelog(changelogType.CHANGE, 'Halve xp needed to upgrade Oak items'),
     new Changelog(changelogType.FIXED, 'BattleItems now buy correctly'),
-    new Changelog(changelogType.CHANGE, 'Increase dungeon tokens received when catching Pokemon'),
+    new Changelog(changelogType.CHANGE, 'Increase dungeon tokens received when catching Pokémon'),
     new Changelog(changelogType.CHANGE, 'Going to the breeder will no longer send you to route 5'),
     new Changelog(changelogType.CHANGE, 'You will now start the game with 25 Pokeballs'),
     new Changelog(changelogType.CHANGE, 'Tutorial quest buy Pokeballs amount reduced'),
@@ -139,9 +148,9 @@ const changelogItems = [
 
     // v0.0.4 - 01-01-2020
     new Changelog(changelogType.UPDATE, 'v0.0.4'),
-    new Changelog(changelogType.NEW, 'Show pokeball image by caught Pokemon in the Pokedex'),
+    new Changelog(changelogType.NEW, 'Show pokeball image by caught Pokémon in the Pokedex'),
     new Changelog(changelogType.CHANGE, 'Show the reason you cannot access a location'),
-    new Changelog(changelogType.CHANGE, 'Total shiny Pokemon caught now add to your total click attack'),
+    new Changelog(changelogType.CHANGE, 'Total shiny Pokémon caught now add to your total click attack'),
     new Changelog(changelogType.FIXED, 'Display floored dungeon tokens amount'),
 
     // v0.0.3

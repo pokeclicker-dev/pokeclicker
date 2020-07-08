@@ -188,7 +188,7 @@
                             </td>
                             <td width="33.33%">
                                 <span style="display: inline;">
-                                    <img title="Dungeon Tokens&#013;&#010;Gained by capturing Pokemon" src="assets/images/currency/dungeonToken.png" height="25px">
+                                    <img title="Dungeon Tokens&#013;&#010;Gained by capturing Pokémon" src="assets/images/currency/dungeonToken.png" height="25px">
                                     <span id="playerMoneyDungeon" data-bind="text: App.game.wallet.currencies[GameConstants.Currency.dungeonToken].toLocaleString('en-US')">0</span>
                                 </span>
                             </td>
@@ -418,7 +418,7 @@
         <div class="col-lg-3 col-md-6">
 
             <!-- Oak Items -->
-            @import "oakItems.html"
+            @import "oakItemsContainer.html"
 
             <!-- Current Quest -->
             @import "questDisplay.html"
@@ -438,6 +438,9 @@
 
 <!-- Achievements Modal -->
 @import "achievements.html"
+
+<!-- Oak Items Modal-->
+@import "OakItemsModal.html"
 
 <!-- Statistics Modal-->
 @import "statisticsModal.html"
@@ -465,6 +468,9 @@
 
 <!-- Hall of Fame Modal -->
 @import "hallOfFame.html"
+
+<!-- Log Book Modal-->
+@import "nextRegionModal.html"
 
 <!-- Shards Modal -->
 @import "shards.html"
