@@ -591,6 +591,13 @@
         , databind: "click:function(){MapHelper.openShipModal()}, attr: { class: MapHelper.calculateTownCssClass('Slateport City') }"
         })
      %>
+        
+     <%- include('templates/mapPOI',
+        { name: Battle Frontier"
+        , x: 480, y: 336
+        , databind: "click:function(){Underground.openUndergroundModal()}, attr: { class: Underground.canAccess() ? 'city unlockedTown' : 'city lockedTown' }"
+        })
+     %>
 
 
 
