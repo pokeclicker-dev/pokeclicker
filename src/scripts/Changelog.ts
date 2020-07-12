@@ -29,12 +29,26 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.4.8
+    new Changelog(changelogType.UPDATE, 'v0.4.8'),
+    new Changelog(changelogType.NEW, 'More events'),
+    new Changelog(changelogType.NEW, 'Added caught status indicator to Safari Zone entrance'),
+    new Changelog(changelogType.NEW, 'Added caught status indicator to Dungeons'),
+    new Changelog(changelogType.CHANGE, 'Show Oak Item details on hover on main screen'),
+    new Changelog(changelogType.CHANGE, 'Updated Oak Items modal to show current experience on hover'),
+    new Changelog(changelogType.CHANGE, 'Animate town and dungeon background images'),
+    new Changelog(changelogType.CHANGE, 'Updated battle views of routes and dungeons'),
+    new Changelog(changelogType.FIXED, 'Event notifications showing way before event start'),
+    new Changelog(changelogType.FIXED, 'Reduce lag when hatching Pokémon'),
+
     // v0.4.7
     new Changelog(changelogType.UPDATE, 'v0.4.7 - Layout'),
     new Changelog(changelogType.NEW, 'Added option to sort Pokémon list by base attack'),
     new Changelog(changelogType.CHANGE, 'Added information and confirmation check before traveling to next available region'),
     new Changelog(changelogType.CHANGE, 'Updated the Oak Items layout'),
+    new Changelog(changelogType.CHANGE, 'Updated layout of Towns and Dungeons'),
     new Changelog(changelogType.CHANGE, 'Updated the Hoenn map'),
+    new Changelog(changelogType.CHANGE, 'Show the amount of Pokémon visible in Pokedex with filters active'),
     new Changelog(changelogType.FIXED, 'Event Pokémon no longer count towards achievements or being able to travel to next region'),
     new Changelog(changelogType.FIXED, 'Mt. Chimney dungeon is now more powerful'),
 
