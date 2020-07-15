@@ -16,8 +16,8 @@
                 <h1>Current BP: <knockout data-bind="text: '120'">120</knockout></h1>
                 <a class="btn btn-block btn-success" onclick="BattleFrontier.start()">Start Battles!</a>
               </div>
-              <div class="battle-view" data-bind="if: App.game.gameState == GameConstants.GameState.battleFrontier">
-                <div class="row justify-content-center no-gutters" data-bind="if: BattleFrontierBattle.enemyPokemon">
+              <div class="battle-view">
+                <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState == GameConstants.GameState.battleFrontier">
                   <div class="col no-gutters clickable" data-bind="click: function() {BattleFrontierBattle.clickAttack()}" style="height: 220px; display: block;">
                       <h2 class="pageItemTitle" style="display: block;">
 

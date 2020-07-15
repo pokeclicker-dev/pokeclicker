@@ -177,7 +177,8 @@
                                      App.game.gameState === GameConstants.GameState.dungeon ||
                                      App.game.gameState === GameConstants.GameState.paused ||
                                      App.game.gameState === GameConstants.GameState.town ||
-                                     App.game.gameState === GameConstants.GameState.shop)">
+                                     App.game.gameState === GameConstants.GameState.shop ||
+                                     App.game.gameState == GameConstants.GameState.battleFrontier)">
                     <table width="100%">
                         <tr>
                             <td width="33.33%">
@@ -206,8 +207,10 @@
                 <!--Use the base battle layout for fighting and dungeons.-->
 
                 <div id="routeBattleView" class="battle-view card-body p-0 justify-content-center no-gutters no-select"
-                    data-bind="if: (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.dungeon || App.game.gameState === GameConstants.GameState.paused || App.game.gameState === GameConstants.GameState.town),
+                    data-bind="if: (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.dungeon || App.game.gameState === GameConstants.GameState.paused || App.game.gameState === GameConstants.GameState.town || App.game.gameState == GameConstants.GameState.battleFrontier),
                         class: MapHelper.calculateBattleCssClass()">
+
+                    <!--If the player is fighting on a route-->
                     <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState === GameConstants.GameState.fighting">
                         <div class="col no-gutters clickable" data-bind="click: function() {Battle.clickAttack()}" style="height: 220px; display: block;">
                             <h2 class="pageItemTitle" style="display: block;">
@@ -352,6 +355,48 @@
                             </div>
                             <!-- /ko -->
                         </div>
+                    </div>
+
+                    <!--If the player is in the Battle Frontier-->
+                    <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState == GameConstants.GameState.battleFrontier">
+                      <div class="col no-gutters clickable" data-bind="click: function() {BattleFrontierBattle.clickAttack()}" style="height: 220px; display: block;">
+                          <h2 class="pageItemTitle" style="display: block;">
+    
+                              <knockout class="routeInfo">
+                                  Stage <knockout data-bind="text: BattleFrontierBattle.stage">0</knockout>
+                              </knockout>
+    
+                              <knockout>
+                                  <knockout data-bind="text: BattleFrontierBattle.enemyPokemon().name">Pokemon name</knockout>
+                              </knockout>
+    
+                              <knockout class="routeProgress" data-bind="html: BattleFrontierRunner.pokemonLeftImages">
+                              </knockout>
+    
+                              <div class="progress timer">
+                                  <div class="progress-bar bg-danger" role="progressbar"
+                                       data-bind="attr:{ style: 'width:' + BattleFrontierRunner.timeLeftPercentage() + '%' },
+                                       css: { 'bg-danger': BattleFrontierRunner.timeLeftSeconds() < 20, 'bg-primary': BattleFrontierRunner.timeLeftSeconds() >= 20 }"
+                                       aria-valuemin="0" aria-valuemax="100">
+                                       <span data-bind="text: BattleFrontierRunner.timeLeftSeconds() + 's'" style="font-size: 12px;"></span>
+                                  </div>
+                              </div>
+    
+                          </h2>
+    
+                          <div>
+                              <img id="enemy"
+                                    data-bind="attr:{ src: PokemonHelper.getImage(BattleFrontierBattle.enemyPokemon(), BattleFrontierBattle.enemyPokemon().shiny) }"
+                                    src=""/>
+                          </div>
+                          <div class="progress hitpoints" style="height: 20px;">
+                              <div class="progress-bar bg-danger" role="progressbar"
+                                   data-bind="attr:{ style: 'width:' + BattleFrontierBattle.enemyPokemon().healthPercentage() + '%' }"
+                                   aria-valuemin="0" aria-valuemax="100">
+                                   <span data-bind="text: BattleFrontierBattle.enemyPokemon().health() + ' / ' + BattleFrontierBattle.enemyPokemon().maxHealth()" style="font-size: 12px;"></span>
+                              </div>
+                          </div>
+                      </div>
                     </div>
 
                     <!--TownView-->
