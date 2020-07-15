@@ -183,8 +183,8 @@ TownList['Sootopolis City'] = new Town('Sootopolis City', [126], null, null, 'Ca
 TownList['Ever Grande City'] = new Town('Ever Grande City', [128]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [128], null, null, 'Victory Road Hoenn');
 TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [131]);
-const BattleFrontierExchangeShop = new Shop(['Ultraball', 'Masterball']);
-TownList['Battle Frontier Exchange'] = new Town('Battle Frontier Exchange', [], BattleFrontierExchangeShop, null, 'Victory Road Hoenn');
+const BattleFrontierShop = new Shop(['Ultraball', 'Masterball']);
+TownList['Battle Frontier'] = new Town('Battle Frontier', [], BattleFrontierShop, null, 'Victory Road Hoenn');
 
 //Hoenn Dungeons
 TownList['Petalburg Woods'] = new DungeonTown('Petalburg Woods', [104]);

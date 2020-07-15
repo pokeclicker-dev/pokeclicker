@@ -6,7 +6,7 @@ class BattleFrontier {
 
     public static canAccess() {
         // TODO: check if player can access yet
-        return TownList['Battle Frontier Exchange'].isUnlocked();
+        return TownList['Battle Frontier'].isUnlocked();
     }
 
     public static openModal() {
@@ -42,6 +42,6 @@ class BattleFrontier {
 
 document.addEventListener('DOMContentLoaded', function (event) {
     $('#battleFrontierModal').on('hide.bs.modal', function () {
-        MapHelper.moveToTown('Battle Frontier Exchange');
+        MapHelper.moveToTown('Battle Frontier');
     });
 });

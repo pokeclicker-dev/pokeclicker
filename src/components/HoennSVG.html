@@ -477,7 +477,7 @@
         
      <!--Battle Frontier-->
     <%- include('templates/mapTown',
-        { name: "Battle Frontier Exchange"
+        { name: "Battle Frontier"
         , x: 507, y: 336
         , type: "O"
         })
@@ -599,13 +599,6 @@
         { name: "Dock"
         , x: 209, y: 290
         , databind: "click:function(){MapHelper.openShipModal()}, attr: { class: MapHelper.calculateTownCssClass('Slateport City') }"
-        })
-     %>
-        
-     <%- include('templates/mapPOI',
-        { name: "Battle Frontier"
-        , x: 480, y: 336
-        , databind: "click:function(){BattleFrontier.openModal()}, attr: { class: BattleFrontier.canAccess() ? 'city unlockedTown' : 'city lockedTown' }"
         })
      %>
 
