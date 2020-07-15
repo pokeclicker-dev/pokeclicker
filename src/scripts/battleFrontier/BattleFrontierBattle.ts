@@ -1,7 +1,7 @@
 ///<reference path="../Battle.ts"/>
 class BattleFrontierBattle extends Battle {
     static pokemonIndex: KnockoutObservable<number> = ko.observable(0);
-    static trainerIndex: KnockoutObservable<number> = ko.observable(0);
+    static stage: KnockoutObservable<number> = ko.observable(1); // Start at stage 1
     static totalPokemons: KnockoutObservable<number> = ko.observable(0);
     // IDK
     static trainer: KnockoutObservable<number> = ko.observable(0);
@@ -12,17 +12,18 @@ class BattleFrontierBattle extends Battle {
     public static defeatPokemon() {
         App.game.party.gainExp(this.enemyPokemon().exp, this.enemyPokemon().level, false);
         // TODO: figure this shit out aswell
-        App.game.breeding.progressEggsBattle(this.trainerIndex(), player.region);
+        App.game.breeding.progressEggsBattle(this.stage() + 1, player.region);
         // TODO: Still gain shards?
         this.gainShardsAfterBattle();
         GameHelper.incrementObservable(this.pokemonIndex);
 
-        if (this.pokemonIndex() >= this.trainer[this.trainerIndex()].pokemons.length) {
+        if (this.pokemonIndex() >= 3) {
             // Move on to next trainer, add 20s?, do something
-        } else {
-            // Create the next Pokemon to fight
-            this.generateNewEnemy();
+            GameHelper.incrementObservable(this.stage);
+            this.pokemonIndex(0);
         }
+        // Create the next Pokemon to fight
+        this.generateNewEnemy();
     }
 
     /**
@@ -30,15 +31,17 @@ class BattleFrontierBattle extends Battle {
      * Reset the counter.
      */
     public static generateNewEnemy() {
-        this.counter = 0;
         // TODO: Do we want any random Pokemon from Kanto → Hoenn
         const enemy = pokemonMap.random(GameConstants.TotalPokemonsPerRegion[player.highestRegion()]);
         // TODO: figure out a health formula
-        const health = Math.floor(Math.random() * 1e9);
+        const health = PokemonFactory.routeHealth(this.stage(), GameConstants.Region.kanto);
         // TODO: figure out a level formula
-        const level = Math.floor(Math.random() * 100);
+        const level = Math.min(100, this.stage());
+        // TODO: figure out a money formula
+        const money = level * 100;
+        const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_BATTLE);
         // TODO: this better
-        const enemyPokemon = new BattlePokemon(enemy.name, enemy.id, enemy.type[0] || PokemonType.None, enemy.type[1] || PokemonType.None, health, level, enemy.catchRate, enemy.exp, 1, false);
+        const enemyPokemon = new BattlePokemon(enemy.name, enemy.id, enemy.type[0] || PokemonType.None, enemy.type[1] || PokemonType.None, health, level, 0, enemy.exp, money, shiny);
         this.enemyPokemon(enemyPokemon);
     }
 

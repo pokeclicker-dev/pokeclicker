@@ -9,14 +9,44 @@
            </div>
 
            <div class="modal-body p-0">
-             <div id="battle-frontier-main-menu">
+              <div data-bind="ifnot: BattleFrontier.fighting">
                 <img width="100%" src="assets/images/towns/Battle Frontier Exchange.png"/>
                 <h1>Highest Stage: <knockout data-bind="text: BattleFrontier.highestStage">0</knockout></h1>
                 <h1>Next reward unlocked at: <knockout data-bind="text: '35'">35</knockout></h1>
                 <h1>Current BP: <knockout data-bind="text: '120'">120</knockout></h1>
-                <a class="btn btn-block btn-success">Begin</a>
+                <a class="btn btn-block btn-success" onclick="BattleFrontier.start()">Begin</a>
                 <a class="btn btn-block btn-success">IDK</a>
-             </div>
+              </div>
+              <div class="battle-view" data-bind="if: BattleFrontier.fighting">
+                <div class="row justify-content-center no-gutters" data-bind="if: BattleFrontierBattle.enemyPokemon">
+                  <div class="col no-gutters clickable" data-bind="click: function() {BattleFrontierBattle.clickAttack()}" style="height: 220px; display: block;">
+                      <h2 class="pageItemTitle" style="display: block;">
+
+                          <knockout class="routeInfo">
+                              Stage <knockout data-bind="text: BattleFrontierBattle.stage">0</knockout>
+                          </knockout>
+
+                          <knockout>
+                              <knockout data-bind="text: BattleFrontierBattle.enemyPokemon().name">Pokemon name</knockout>
+                          </knockout>
+
+                      </h2>
+
+                      <div>
+                          <img id="enemy"
+                                data-bind="attr:{ src: PokemonHelper.getImage(BattleFrontierBattle.enemyPokemon(), BattleFrontierBattle.enemyPokemon().shiny) }"
+                                src=""/>
+                      </div>
+                      <div class="progress hitpoints" style="height: 20px;">
+                          <div class="progress-bar bg-danger" role="progressbar"
+                               data-bind="attr:{ style: 'width:' + BattleFrontierBattle.enemyPokemon().healthPercentage() + '%' }"
+                               aria-valuemin="0" aria-valuemax="100">
+                               <span data-bind="text: BattleFrontierBattle.enemyPokemon().health() + ' / ' + BattleFrontierBattle.enemyPokemon().maxHealth()" style="font-size: 12px;"></span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
            </div>
 
            <div class="modal-footer">
