@@ -23,7 +23,7 @@ class BattleFrontier implements Saveable {
             App.game.gameState = GameConstants.GameState.battleFrontier;
             $('#battleFrontierModal').modal({backdrop: 'static', keyboard: false});
         } else {
-            Notifier.notify({ message: 'You need to beat the Hoenn Champion before challenging the Battle Frontier', type: GameConstants.NotificationOption.warning });
+            Notifier.notify({ message: 'You need to beat the Hoenn Elite Four and Champion before you can challenge the Battle Frontier', type: GameConstants.NotificationOption.warning });
         }
     }
 
