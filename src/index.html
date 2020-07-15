@@ -441,6 +441,17 @@
             </div>
             <!-- /ko -->
 
+            <!-- ko if: App.game.gameState === GameConstants.GameState.battleFrontier -->
+            <div class="card border-secondary mb-3 battle-frontier no-select">
+                <div class="card-header p-0">
+                    <span>Battle Frontier</span>
+                </div>
+                <div class="card-body p-0 text-center" style="min-height: 220px;">
+                    <span>Battle Frontier Content Here</span>
+                </div>
+            </div>
+            <!-- /ko -->
+
             <div data-bind="if:App.game.keyItems.hasKeyItem(KeyItems.KeyItem.Town_map)">
                 <div data-bind="if: (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.gym || App.game.gameState === GameConstants.GameState.town||
                     App.game.gameState === GameConstants.GameState.shop || App.game.gameState === GameConstants.GameState.farm || App.game.gameState === GameConstants.GameState.paused)">
