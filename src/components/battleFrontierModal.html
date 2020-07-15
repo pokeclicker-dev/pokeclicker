@@ -1,5 +1,5 @@
 <div class="modal fade noselect" id="battleFrontierModal" tabindex="-1" role="dialog" aria-badgeledby="battleFrontierModal">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
        <div class="modal-content">
            <div class="modal-header">
                <h5>Battle Frontier</h5>
@@ -9,7 +9,14 @@
            </div>
 
            <div class="modal-body p-0">
-             Content Here...
+             <div id="battle-frontier-main-menu">
+                <img width="100%" src="assets/images/towns/Battle Frontier Exchange.png"/>
+                <h1>Highest Stage: <knockout data-bind="text: BattleFrontier.highestStage">0</knockout></h1>
+                <h1>Next reward unlocked at: <knockout data-bind="text: '35'">35</knockout></h1>
+                <h1>Current BP: <knockout data-bind="text: '120'">120</knockout></h1>
+                <a class="btn btn-block btn-success">Begin</a>
+                <a class="btn btn-block btn-success">IDK</a>
+             </div>
            </div>
 
            <div class="modal-footer">
