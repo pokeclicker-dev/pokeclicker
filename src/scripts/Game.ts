@@ -154,11 +154,11 @@ class Game {
                 break;
             }
             case GameConstants.GameState.battleFrontier: {
-                BattleFrontier.counter += GameConstants.TICK_TIME;
-                if (BattleFrontier.counter > GameConstants.BATTLE_TICK) {
+                BattleFrontierBattle.counter += GameConstants.TICK_TIME;
+                if (BattleFrontierBattle.counter > GameConstants.BATTLE_TICK) {
                     BattleFrontierBattle.tick();
                 }
-                BattleFrontier.tick();
+                BattleFrontierRunner.tick();
                 break;
             }
         }

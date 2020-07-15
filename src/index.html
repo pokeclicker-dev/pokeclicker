@@ -305,7 +305,7 @@
                                     <h4><strong data-bind="text: DungeonRunner.timeLeftSeconds() + 's'"></strong></h4>
                                 </knockout>
 
-                                <div class="progress dungeonTimer">
+                                <div class="progress timer">
                                     <div class="progress-bar bg-danger" role="progressbar"
                                          data-bind="attr:{ style: 'width:' + DungeonRunner.timeLeftPercentage() + '%' },
                                          css: { 'bg-danger': DungeonRunner.timeLeftSeconds() < 20, 'bg-primary': DungeonRunner.timeLeftSeconds() >= 20 }"
