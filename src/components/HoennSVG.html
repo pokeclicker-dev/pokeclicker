@@ -477,7 +477,7 @@
         
      <!--Battle Frontier-->
     <%- include('templates/mapTown',
-        { name: "Battle Frontier"
+        { name: "Battle Frontier Exchange"
         , x: 507, y: 336
         , type: "O"
         })
@@ -605,7 +605,7 @@
      <%- include('templates/mapPOI',
         { name: "Battle Frontier"
         , x: 480, y: 336
-        , databind: "click:function(){Underground.openUndergroundModal()}, attr: { class: Underground.canAccess() ? 'city unlockedTown' : 'city lockedTown' }"
+        , databind: "click:function(){BattleFrontier.openModal()}, attr: { class: BattleFrontier.canAccess() ? 'city unlockedTown' : 'city lockedTown' }"
         })
      %>
 
