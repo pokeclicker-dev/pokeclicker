@@ -9,21 +9,6 @@ class BattleFrontier {
         return TownList['Battle Frontier'].isUnlocked();
     }
 
-    public static openModal() {
-        if (this.canAccess()) {
-            App.game.gameState = GameConstants.GameState.paused;
-            $('#battleFrontierModal').modal({backdrop: 'static', keyboard: false});
-        } else {
-            Notifier.notify({ message: 'You need to beat the Hoenn Elite Four and Champion before you can challenge the Battle Frontier', type: GameConstants.NotificationOption.warning });
-        }
-    }
-
-    public static closeModal() {
-        if (!BattleFrontierRunner.started) {
-            $('#battleFrontierModal').modal('hide');
-        }
-    }
-
     public static start() {
         BattleFrontierRunner.start();
     }
@@ -39,9 +24,3 @@ class BattleFrontier {
     }
 
 }
-
-document.addEventListener('DOMContentLoaded', function (event) {
-    $('#battleFrontierModal').on('hide.bs.modal', function () {
-        MapHelper.moveToTown('Battle Frontier');
-    });
-});
