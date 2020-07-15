@@ -37,14 +37,14 @@ class BattleFrontierRunner {
 
     // TODO: implement
     public static battleLost() {
-        Notifier.notify({ message: `You made it to stage ${BattleFrontierBattle.stage()}`, type: GameConstants.NotificationOption.info });
+        Notifier.notify({ message: `You made it to stage ${BattleFrontierBattle.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
         App.game.gameState = GameConstants.GameState.idle;
         this.started = false;
     }
 
     // TODO: implement
     public static battleWon(gym: Gym) {
-        Notifier.notify({ message: 'You won the game?... I guess...', type: GameConstants.NotificationOption.success });
+        Notifier.notify({ message: 'You won the game?... I guess...', type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
         App.game.gameState = GameConstants.GameState.idle;
         this.started = false;
     }

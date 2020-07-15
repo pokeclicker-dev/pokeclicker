@@ -4,7 +4,7 @@ class Wallet implements Feature {
     currencies: ArrayOfObservables<number>;
 
     defaults = {
-        currencies: [0, 0, 0, 0, 0],
+        currencies: new Array(GameHelper.enumLength(GameConstants.Currency)).fill(0),
     };
 
     constructor() {
@@ -116,6 +116,7 @@ class Wallet implements Feature {
                 currenciesJson[GameConstants.Currency.dungeonToken],
                 currenciesJson[GameConstants.Currency.diamond],
                 currenciesJson[GameConstants.Currency.farmPoint],
+                currenciesJson[GameConstants.Currency.battlePoint],
             ]);
         }
     }
@@ -128,6 +129,7 @@ class Wallet implements Feature {
                 this.currencies[GameConstants.Currency.dungeonToken],
                 this.currencies[GameConstants.Currency.diamond],
                 this.currencies[GameConstants.Currency.farmPoint],
+                this.currencies[GameConstants.Currency.battlePoint],
             ],
         };
     }
