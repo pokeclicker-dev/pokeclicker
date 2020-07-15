@@ -29,9 +29,21 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.4.10
+    new Changelog(changelogType.UPDATE, 'v0.4.10 - Minor update'),
+    new Changelog(changelogType.NEW, 'Added preload progress indicator'),
+    new Changelog(changelogType.NEW, 'Game will still load if not all the images preload correctly'),
+
     // v0.4.9
     new Changelog(changelogType.UPDATE, 'v0.4.9'),
     new Changelog(changelogType.NEW, 'Added option to disable found berries notifications'),
+    new Changelog(changelogType.NEW, 'Added different background images when battling Pokémon depending on route/dungeon'),
+    new Changelog(changelogType.CHANGE, 'Updated Bootstrap, TypeScript and other dependencies, please report any problems you may notice'),
+    new Changelog(changelogType.CHANGE, 'Limit maximum Quest Points for Dungeon and Gym quests'),
+    new Changelog(changelogType.CHANGE, 'Updated quest list layout'),
+    new Changelog(changelogType.CHANGE, 'Format numbers in shop and pokeball selector'),
+    new Changelog(changelogType.FIXED, 'Dungeons should now award Dungeon Tokens when catching a Pokémon'),
+    new Changelog(changelogType.FIXED, 'Badge names should display correctly now'),
 
     // v0.4.8
     new Changelog(changelogType.UPDATE, 'v0.4.8'),

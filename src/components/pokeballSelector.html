@@ -8,7 +8,7 @@
             data-bind="tooltip: { title: 'Select which Pokéball to use on Pokémon depending on their status', trigger: 'hover', placement:'left' }">
         ?
     </button>
-    <div id="pokeballSelectorBody" class="card-body p-0 show">
+    <div id="pokeballSelectorBody" class="card-body p-0 show table-responsive">
         <table class="table table-sm m-0">
             <thead>
             <tr>
@@ -43,7 +43,7 @@
                  click: function(){App.game.pokeballs.alreadyCaughtShinySelection = $data.ball}, css: {'pokeball-selected': App.game.pokeballs.alreadyCaughtShinySelection === $data.ball}"/>
     </td>
     <td>
-        <span data-bind="text: $data.amount"></span>
+        <span data-bind="text: GameConstants.formatNumber($data.amount), tooltip: {title: $data.amount.toLocaleString('en-US'), trigger: 'hover', animation: false}"></span>
     </td>
     <td>
         <img class="pokeball-small clickable"

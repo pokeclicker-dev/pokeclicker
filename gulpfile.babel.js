@@ -13,11 +13,12 @@ const ejs = require("gulp-ejs");
 const plumber = require("gulp-plumber");
 const replace = require('gulp-replace');
 const connect = require('gulp-connect');
+const version = process.env.npm_package_version || '0.0.0';
 
 /**
  * Push build to gh-pages
  */
-gulp.task('deploy', () => gulp.src("./dist/**/*")
+gulp.task('deploy', () => gulp.src('./dist/**/*')
     .pipe(deploy()));
 
 const srcs = {
@@ -27,7 +28,8 @@ const srcs = {
     ejsTemplates: ['src/templates/*.ejs'],
     styles: 'src/styles/**/*.less',
     assets: 'src/assets/**/*',
-    libs: ['node_modules/bootstrap/dist/js/bootstrap.min.js',
+    libs: [
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
@@ -71,18 +73,18 @@ gulp.task('browserSync', () => {
 
 gulp.task('compile-html', (done) => {
     const htmlDest = './build';
-
-    let stream = gulp.src('./src/index.html');
+    const stream = gulp.src('./src/index.html');
     if (process.env.HEROKU) {
-        stream.pipe(replace("<!--$DEV_BANNER-->", "@import \"developmentBanner.html\""))
+        stream.pipe(replace('<!--$DEV_BANNER-->', '@import "developmentBanner.html"'))
     }
-    stream.pipe(replace("$INIT_SENTRY", process.env.HEROKU !== undefined));
-    stream.pipe(replace("$INIT_GOOGLE_ANALYTICS", process.env.HEROKU !== undefined));
+    stream.pipe(replace('$VERSION', version));
+    stream.pipe(replace('$INIT_SENTRY', process.env.HEROKU !== undefined));
+    stream.pipe(replace('$INIT_GOOGLE_ANALYTICS', process.env.HEROKU !== undefined));
 
     stream.pipe(plumber())
         .pipe(gulpImport('./src/components/'))
-        .pipe(replace("$GIT_BRANCH", process.env.GIT_BRANCH))
-        .pipe(replace("$DEV_DESCRIPTION", process.env.DEV_DESCRIPTION !== undefined ? process.env.DEV_DESCRIPTION : ""))
+        .pipe(replace('$GIT_BRANCH', process.env.GIT_BRANCH))
+        .pipe(replace('$DEV_DESCRIPTION', process.env.DEV_DESCRIPTION !== undefined ? process.env.DEV_DESCRIPTION : ''))
         .pipe(ejs())
         .pipe(gulp.dest(htmlDest))
         .pipe(browserSync.reload({stream: true}));
@@ -100,8 +102,9 @@ gulp.task('html', () => {
 });
 
 gulp.task('scripts', () => {
-    let tsProject = typescript.createProject('tsconfig.json');
+    const tsProject = typescript.createProject('tsconfig.json');
     return tsProject.src()
+        .pipe(replace('$VERSION', version))
         .pipe(tsProject())
         .pipe(gulp.dest(dests.scripts))
         .pipe(browserSync.reload({stream: true}));
@@ -135,7 +138,7 @@ gulp.task('serveProd', function () {
     connect.server({
         root: ['build'],
         port: process.env.PORT || 3000,
-        host: "0.0.0.0",
+        host: '0.0.0.0',
         livereload: false
     });
 });

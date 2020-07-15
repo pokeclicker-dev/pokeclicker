@@ -34,7 +34,7 @@ class MapHelper {
 
             if (!MapHelper.hasBadgeReq(route, region)) {
                 const badgeNumber = GameConstants.routeBadgeRequirements[region][route];
-                reqsList += `<br>Requires the ${BadgeCase.Badge[badgeNumber]} badge.`;
+                reqsList += `<br>Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[badgeNumber])} badge.`;
             }
 
             if (!MapHelper.hasDungeonReq(route, region)) {
@@ -98,6 +98,24 @@ class MapHelper {
         return this.routeExist(route, region) && this.hasBadgeReq(route, region) && this.hasDungeonReq(route, region) && this.hasRouteKillReq(route, region);
     };
 
+    public static calculateBattleCssClass(): string {
+        const area = player.route() || player.town()?.name() || undefined;
+
+        if (GameConstants.WaterAreas[player.region].has(area)) {
+            return 'water';
+        } else if (GameConstants.IceAreas[player.region].has(area)) {
+            return 'ice';
+        } else if (GameConstants.ForestAreas[player.region].has(area)) {
+            return 'forest';
+        } else if (GameConstants.CaveAreas[player.region].has(area)) {
+            return 'cave';
+        } else if (GameConstants.GemCaveAreas[player.region].has(area)) {
+            return 'cave-gem';
+        } else if (GameConstants.PowerPlantAreas[player.region].has(area)) {
+            return 'power-plant';
+        }
+    }
+
     public static calculateRouteCssClass(route: number, region: GameConstants.Region): string {
         let cls;
 
@@ -114,7 +132,7 @@ class MapHelper {
         }
 
         // Water routes
-        if (GameConstants.WaterRoutes[region].has(route)) {
+        if (GameConstants.WaterAreas[region].has(route)) {
             cls = `${cls} waterRoute`;
         }
 
@@ -150,7 +168,7 @@ class MapHelper {
             return false;
         }
         return town.isUnlocked();
-    };
+    }
 
     public static moveToTown(townName: string) {
         if (MapHelper.accessToTown(townName)) {
@@ -168,7 +186,7 @@ class MapHelper {
 
             if (town instanceof DungeonTown) {
                 if (town.badgeReq && !App.game.badgeCase.hasBadge(town.badgeReq)) {
-                    reqsList += `<br/>Requires the ${BadgeCase.Badge[town.badgeReq]} badge.`;
+                    reqsList += `<br/>Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[town.badgeReq])} badge.`;
                 }
             }
 
@@ -199,7 +217,7 @@ class MapHelper {
 
             Notifier.notify({ message: `You don't have access to that location yet.${reqsList}`, type: GameConstants.NotificationOption.warning });
         }
-    };
+    }
 
     public static validRoute(route = 0, region: GameConstants.Region = 0): boolean {
         return route >= GameConstants.RegionRoute[region][0] && route <= GameConstants.RegionRoute[region][1];

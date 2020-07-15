@@ -18,7 +18,8 @@ namespace GameConstants {
     export const GYM_COUNTDOWN = 1000;
     export const GYM_TICK = 10;
     export const ACHIEVEMENT_TICK = 1000;
-    export const MIN_LOAD_TIME = 500;
+    export const MIN_LOAD_TIME = 500; // 0.5 Seconds
+    export const MAX_LOAD_TIME = 15000; // 15 Seconds
 
     export const MAX_AVAILABLE_REGION = 2; // Hoenn
 
@@ -220,15 +221,19 @@ namespace GameConstants {
         Very = 2
     }
 
-    export function humanifyString(str: string) {
-        return str.replace(/_/g, ' ');
+    export function humanifyString(str: string): string {
+        return str.replace(/[_-]+/g, ' ');
     }
 
-    export function camelCaseToString(str: string) {
-        return str.replace(/([A-Z])/g, ' $1').replace(/\b\w/g, (w) => (w.replace(/\w/, (c) => c.toUpperCase())));
+    export function camelCaseToString(str: string): string {
+        return str.replace(/[\s_-]?([A-Z])/g, ' $1').replace(/\b\w/g, (w) => (w.replace(/\w/, (c) => c.toUpperCase()))).trim();
     }
 
-    export function formatTime(time) {
+    export function formatDate(date: Date): string {
+        return date.toISOString().replace(/T/, ' ').replace(/.\d+Z/,'');
+    }
+
+    export function formatTime(time: number | Date): string {
         if (time == 0) {
             return 'Ready';
         }
@@ -259,6 +264,26 @@ namespace GameConstants {
         return `${time % GameConstants.MINUTE ? '< ' : ''}${minutes} min${minutes == 1 ? '' : 's'}`;
     }
 
+    export function formatNumber(num: number): string {
+        if (isNaN(+num)) {
+            return '0';
+        } else if (num >= 1e9) {
+            num = Math.floor(num / 1e8);
+            num = num < 100 ? num / 10 : Math.floor(num / 10);
+            return `${num}B`;
+        } else if (num >= 1e6) {
+            num = Math.floor(num / 1e5);
+            num = num < 100 ? num / 10 : Math.floor(num / 10);
+            return `${num}M`;
+        } else if (num >= 1e3) {
+            num = Math.floor(num / 1e2);
+            num = num < 100 ? num / 10 : Math.floor(num / 10);
+            return `${num}K`;
+        } else {
+            return num.toString();
+        }
+    }
+
     export enum Region {
         kanto = 0,
         johto = 1,
@@ -274,7 +299,7 @@ namespace GameConstants {
         text: string;
         value: any;
 
-        constructor(text, value) {
+        constructor(text: string, value: any) {
             this.text = text;
             this.value = value;
         }
@@ -287,15 +312,15 @@ namespace GameConstants {
         2: [101, 134],
     };
 
-    export function randomIntBetween(min: number, max: number) {
+    export function randomIntBetween(min: number, max: number): number {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    export function randomElement(array: any[]) {
+    export function randomElement(array: any[]): any {
         return array[GameConstants.randomIntBetween(0, array.length - 1)];
     }
 
-    export function clipNumber(num: number, min: number, max: number) {
+    export function clipNumber(num: number, min: number, max: number): number {
         return Math.min(Math.max(num, min), max);
     }
 
@@ -450,10 +475,52 @@ namespace GameConstants {
         },
     };
 
-    export const WaterRoutes = {
-        0: new Set([19,20,21]),
-        1: new Set([40,41]),
-        2: new Set([105,106,107,108,109,122,124,125,126,127,128,129,130,131,132,133,134]),
+    export const WaterAreas = {
+        0: new Set([19, 20, 21]),
+        1: new Set([40, 41, 'Slowpoke Well']),
+        2: new Set([105, 106, 107, 108, 109, 122, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 'Shoal Cave', 'Seafloor Cavern']),
+    };
+
+    export const IceAreas = {
+        0: new Set(['Seafoam Islands']),
+        1: new Set(['Ice Path', 'Whirl Islands']),
+        2: new Set([]),
+    };
+
+    export const ForestAreas = {
+        0: new Set(['Viridian Forest']),
+        1: new Set(['Ilex Forest']),
+        2: new Set(['Petalburg Woods']),
+    };
+
+    export const CaveAreas = {
+        0: new Set(['Digletts Cave', 'Mt. Moon', 'Rock Tunnel', 'Victory Road']),
+        1: new Set(['Ruins of Alph', 'Union Cave', 'Mt Mortar', 'Dark Cave']),
+        2: new Set(['Rusturf Tunnel', 'Granite Cave', 'New Mauville', 'Meteor Falls', 'Victory Road Hoenn']),
+    };
+
+    export const GemCaveAreas = {
+        0: new Set(['Cerulean Cave']),
+        1: new Set(['Mt Silver']),
+        2: new Set(['Cave of Origin', 'Sky Pillar']),
+    };
+
+    export const PowerPlantAreas = {
+        0: new Set(['Power Plant']),
+        1: new Set(['Tin Tower']),
+        2: new Set([]),
+    };
+
+    export const MansionAreas = {
+        0: new Set(['Pokemon Mansion']),
+        1: new Set(['Burned Tower']),
+        2: new Set(['Jagged Pass', 'Fiery Path', 'Mt. Chimney']),
+    };
+
+    export const GraveyardAreas = {
+        0: new Set(['Pokemon Tower']),
+        1: new Set([]),
+        2: new Set(['Mt. Pyre']),
     };
 
     export const routeDungeonRequirements = {
