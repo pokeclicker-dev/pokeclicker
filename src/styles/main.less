@@ -211,13 +211,16 @@ body:hover {
   margin: -10px;
 }
 
-.pokemon-list-container {
+#pokemonListContainer {
   max-height: 300px;
-  overflow: auto;
+
+  .card-body {
+    overflow: auto;
+  }
 }
 
 @media (min-width: 992px) {
-  .pokemon-list-container {
+  #pokemonListContainer {
     max-height: 400px;
   }
 }
@@ -324,7 +327,7 @@ img {
   display:none;
 }
 
-#enemy {
+.enemy {
   min-height: 96px;
   margin-top: 25px;
 }
@@ -384,20 +387,6 @@ img {
     line-height: 1.5;
   }
 
-  .routeProgress {
-    position: absolute;
-    right: 4px;
-    top: 4px;
-    font-size: 16px;
-  }
-
-  .routeInfo {
-    position: absolute;
-    left: 4px;
-    top: 4px;
-    font-size: 16px;
-  }
-
   .timer {
     position: absolute;
     width: 100%;
@@ -427,6 +416,43 @@ img {
   color: whitesmoke;
   background-color: rgba(0,0,0,0.7);
   margin: 0px;
+
+  .right {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    font-size: 16px;
+  }
+
+  .left {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    font-size: 16px;
+  }
+}
+
+.pageItemFooter {
+  width: 100%;
+  color: whitesmoke;
+  background-color: rgba(0,0,0,0.7);
+  margin: 0px;
+  position: absolute;
+  bottom: 0px;
+
+  .right {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    font-size: 16px;
+  }
+
+  .left {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    font-size: 16px;
+  }
 }
 
 *::-webkit-scrollbar-track
