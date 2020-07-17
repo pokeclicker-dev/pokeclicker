@@ -119,28 +119,16 @@ class Wallet implements Feature {
         if (json['currencies'] == null) {
             this.currencies = new ArrayOfObservables(this.defaults.currencies);
         } else {
-            const currenciesJson = json['currencies'];
-            this.currencies = new ArrayOfObservables([
-                currenciesJson[GameConstants.Currency.money],
-                currenciesJson[GameConstants.Currency.questPoint],
-                currenciesJson[GameConstants.Currency.dungeonToken],
-                currenciesJson[GameConstants.Currency.diamond],
-                currenciesJson[GameConstants.Currency.farmPoint],
-                currenciesJson[GameConstants.Currency.battlePoint],
-            ]);
+            const currenciesJson = json.currencies;
+            currenciesJson.forEach((value, index) => {
+                this.currencies[index] = value;
+            });
         }
     }
 
     toJSON(): Record<string, any> {
         return {
-            'currencies': [
-                this.currencies[GameConstants.Currency.money],
-                this.currencies[GameConstants.Currency.questPoint],
-                this.currencies[GameConstants.Currency.dungeonToken],
-                this.currencies[GameConstants.Currency.diamond],
-                this.currencies[GameConstants.Currency.farmPoint],
-                this.currencies[GameConstants.Currency.battlePoint],
-            ],
+            currencies: [...this.currencies],
         };
     }
 
