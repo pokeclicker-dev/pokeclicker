@@ -39,8 +39,9 @@ class BattleFrontierRunner {
     // TODO: implement
     public static battleLost() {
         // TODO: Give Battle Points based on how far the user got
-        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
+        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}. You gained ${BattleFrontierBattle.stage() + 1} BP`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
         App.game.gameState = GameConstants.GameState.town;
+        App.game.wallet.gainBattlePoints(BattleFrontierBattle.stage() + 1);
         this.started = false;
     }
 
