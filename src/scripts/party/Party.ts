@@ -98,7 +98,8 @@ class Party implements Feature {
         let attack = 0;
         for (const pokemon of this.caughtPokemon) {
             let multiplier = 1;
-            if (player.region !== GameHelper.getRegion(pokemon.id)) {
+            const nativeRegion = PokemonHelper.calcNativeRegion(pokemon.name);
+            if (nativeRegion != player.region && nativeRegion != Infinity) {
                 // Pokemon only retain 20% of their total damage in other regions.
                 multiplier = 0.2;
             }
@@ -164,7 +165,7 @@ class Party implements Feature {
         return true;
     }
 
-    fromJSON(json: object): void {
+    fromJSON(json: Record<string, any>): void {
         if (json == null) {
             return;
         }
@@ -182,7 +183,7 @@ class Party implements Feature {
     initialize(): void {
     }
 
-    toJSON(): object {
+    toJSON(): Record<string, any> {
         return {
             caughtPokemon: this._caughtPokemon().map(x => x.toJSON()),
             shinyPokemon: this.shinyPokemon.map(x => x),

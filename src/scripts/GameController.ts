@@ -33,7 +33,7 @@ class GameController {
             pos = $('#gameTitle').offset();
             pos.top += 45;
             pos.left -= 100;
-        };
+        }
 
         const left = ((Math.random() * ((pos.left + 25) - (pos.left - 25)) + (pos.left - 25))).toFixed(2);
         const place = amount.toString().length;
@@ -49,6 +49,29 @@ class GameController {
         function () {
             $(this).remove();
         });
+    }
+
+    static simulateKey(keyCode: number, type = 'keydown', modifiers = {}) {
+        const evtName = type.startsWith('key') ? type : `key${type}`;
+
+        const event = document.createEvent('HTMLEvents') as KeyboardEvent;
+        Object.defineProperties(event, {
+            keyCode: {value: keyCode},
+        });
+        event.initEvent(evtName, true, false);
+
+        for (const i in modifiers) {
+            event[i] = modifiers[i];
+        }
+
+        document.dispatchEvent(event);
+    }
+
+    static simulateKeyPress(keyCode: number, modifiers = {}) {
+        this.simulateKey(keyCode, 'down', modifiers);
+        setTimeout(() => {
+            this.simulateKey(keyCode, 'up', modifiers);
+        }, 20);
     }
 
     static bindToolTips() {

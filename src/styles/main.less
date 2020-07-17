@@ -27,6 +27,24 @@
   }
 }
 
+  
+@media (min-width: 768px) {
+  #left-column, #middle-sort-column, #right-column {
+    &:empty {
+      height: 30px;
+      border-color: rgba(30, 30, 30, 0.3);
+      border-style: dashed;
+      border-width: 1px;
+      &::after {
+        color: rgba(30, 30, 30, 0.3);
+        font-size: 10px;
+        content: 'DRAG AND DROP MODULES HERE';
+      }
+      margin-bottom: 15px;
+    }
+  }
+}
+
 .modal.show .bg-ocean {
   background: url('../assets/images/safari/5.png');
   animation: animatedOcean 60s linear infinite;
@@ -42,6 +60,24 @@
 	0% { background-position: 0 0; }
 	50% { background-position: 100% -50%; }
 	100% { background-position: 200% -100%;  }
+}
+
+@-webkit-keyframes bounceBackground {
+    from {
+        background-position: top;
+    }
+    to {
+        background-position: bottom;
+    }
+}
+
+@keyframes bounceBackground {
+    from {
+        background-position: top;
+    }
+    to {
+        background-position: bottom;
+    }
 }
 
 .flash{
@@ -88,7 +124,7 @@
   cursor: pointer;
 }
 
-#interactionView {
+#battleContainer {
   min-height: 200px;
 }
 
@@ -175,13 +211,16 @@ body:hover {
   margin: -10px;
 }
 
-.pokemon-list-container {
+#pokemonListContainer {
   max-height: 300px;
-  overflow: auto;
+
+  .card-body {
+    overflow: auto;
+  }
 }
 
 @media (min-width: 992px) {
-  .pokemon-list-container {
+  #pokemonListContainer {
     max-height: 400px;
   }
 }
@@ -288,12 +327,132 @@ img {
   display:none;
 }
 
-#enemy {
+.enemy {
   min-height: 96px;
+  margin-top: 25px;
 }
 
-#routeBattleView span {
-  line-height: 1.5;
+.battle-view {
+  color: whitesmoke;
+
+  background-image: url(../assets/images/battleBackground/default.png);
+  background-size: cover;
+  background-position: bottom;
+
+  &.forest {
+      background-image: url(../assets/images/battleBackground/forest.png);
+      background-position: top;
+  }
+
+  &.water {
+      background-image: url(../assets/images/battleBackground/water.png);
+      background-position: top;
+  }
+
+  &.ice {
+      background-image: url(../assets/images/battleBackground/ice.png);
+      background-position: top;
+  }
+
+  &.cave {
+      background-image: url(../assets/images/battleBackground/cave.png);
+      background-position: top;
+  }
+
+  &.gem, &.cave-gem {
+      background-image: url(../assets/images/battleBackground/cave-gem.png);
+      background-position: center;
+  }
+
+  &.power-plant {
+      background-image: url(../assets/images/battleBackground/power-plant.png);
+      background-position: center;
+  }
+
+  &.mansion {
+      background-image: url(../assets/images/battleBackground/mansion.png);
+      background-position: center;
+  }
+
+  &.graveyard {
+      background-image: url(../assets/images/battleBackground/graveyard.png);
+      background-position: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  span {
+    line-height: 1.5;
+  }
+
+  .dungeonTimer {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 36px;
+  }
+
+  .pokeball-animated {
+    margin-top: 25px;
+  }
+
+  .catchChance {
+    color: black;
+  }
+
+  .hitpoints {
+    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+    left: 5%;
+  }
+}
+
+.pageItemTitle {
+  width: 100%;
+  color: whitesmoke;
+  background-color: rgba(0,0,0,0.7);
+  margin: 0px;
+
+  .right {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    font-size: 16px;
+  }
+
+  .left {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    font-size: 16px;
+  }
+}
+
+.pageItemFooter {
+  width: 100%;
+  color: whitesmoke;
+  background-color: rgba(0,0,0,0.7);
+  margin: 0px;
+  position: absolute;
+  bottom: 0px;
+
+  .right {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    font-size: 16px;
+  }
+
+  .left {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    font-size: 16px;
+  }
 }
 
 *::-webkit-scrollbar-track

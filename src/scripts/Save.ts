@@ -10,7 +10,7 @@ class Save {
         localStorage.setItem('save', JSON.stringify(this.getSaveObject()));
 
         this.counter = 0;
-        console.log('%cGame saved', 'color:skyblue;font-weight:900;');
+        console.log('%cGame saved', 'color:#3498db;font-weight:900;');
     }
 
     public static getSaveObject() {
@@ -48,9 +48,8 @@ class Save {
     public static download() {
         const element = document.createElement('a');
         element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(btoa(JSON.stringify({player, save: this.getSaveObject()})))}`);
-        const currentdate = new Date();
-        const datestr = currentdate.toISOString().replace('T', ' ').slice(0, 19);
-        const filename = `PokeClickerSave_${datestr}.txt`;
+        const datestr = GameConstants.formatDate(new Date());
+        const filename = `[v${App.game.update.version}] PokeClickerSave_${datestr}.txt`;
         element.setAttribute('download', filename);
 
         element.style.display = 'none';

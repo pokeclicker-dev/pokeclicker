@@ -29,14 +29,49 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.4.12
+    new Changelog(changelogType.UPDATE, 'v0.4.12'),
+    new Changelog(changelogType.NEW, 'Modules can now be sorted/arranged any way you like, just drag and drop'),
+    new Changelog(changelogType.FIXED, 'Some battle background images were not showing, they should now appear correctly'),
+    new Changelog(changelogType.FIXED, 'Town Map will now be fully hidden when it is supposed to be'),
+
+    // v0.4.11
+    new Changelog(changelogType.UPDATE, 'v0.4.11'),
+    new Changelog(changelogType.NEW, 'Towns will show as orange if you have not yet completed the gym'),
+    new Changelog(changelogType.NEW, 'Map is able to be hidden now'),
+    new Changelog(changelogType.NEW, 'Added mobile support to the Safari Zone'),
+    new Changelog(changelogType.CHANGE, 'The Cell Battery Oak Item will now gain points each time you find an item'),
+    new Changelog(changelogType.CHANGE, 'Updated the layout of the Shard modal'),
+    new Changelog(changelogType.CHANGE, 'Updated the layout of the Safari Zone'),
+    new Changelog(changelogType.FIXED, 'Stone evolutions will now only show the Pokéball if all possible evolutions have been caught'),
+
+    // v0.4.10
+    new Changelog(changelogType.UPDATE, 'v0.4.10 - Minor update'),
+    new Changelog(changelogType.NEW, 'Added preload progress indicator'),
+    new Changelog(changelogType.NEW, 'Game will still load if not all the images preload correctly'),
+
+    // v0.4.9
+    new Changelog(changelogType.UPDATE, 'v0.4.9'),
+    new Changelog(changelogType.NEW, 'Added option to disable found berries notifications'),
+    new Changelog(changelogType.NEW, 'Added different background images when battling Pokémon depending on route/dungeon'),
+    new Changelog(changelogType.CHANGE, 'Updated Bootstrap, TypeScript and other dependencies, please report any problems you may notice'),
+    new Changelog(changelogType.CHANGE, 'Limit maximum Quest Points for Dungeon and Gym quests'),
+    new Changelog(changelogType.CHANGE, 'Updated quest list layout'),
+    new Changelog(changelogType.CHANGE, 'Format numbers in shop and Pokéball selector'),
+    new Changelog(changelogType.FIXED, 'Dungeons should now award Dungeon Tokens when catching a Pokémon'),
+    new Changelog(changelogType.FIXED, 'Badge names should display correctly now'),
+
     // v0.4.8
     new Changelog(changelogType.UPDATE, 'v0.4.8'),
     new Changelog(changelogType.NEW, 'More events'),
-    new Changelog(changelogType.NEW, 'Added pokeball indicator to Safari Zone entrance'),
+    new Changelog(changelogType.NEW, 'Added caught status indicator to Safari Zone entrance'),
+    new Changelog(changelogType.NEW, 'Added caught status indicator to Dungeons'),
     new Changelog(changelogType.CHANGE, 'Show Oak Item details on hover on main screen'),
     new Changelog(changelogType.CHANGE, 'Updated Oak Items modal to show current experience on hover'),
+    new Changelog(changelogType.CHANGE, 'Animate town and dungeon background images'),
+    new Changelog(changelogType.CHANGE, 'Updated battle views of routes and dungeons'),
     new Changelog(changelogType.FIXED, 'Event notifications showing way before event start'),
-    new Changelog(changelogType.FIXED, 'Reduce lag when hatching'),
+    new Changelog(changelogType.FIXED, 'Reduce lag when hatching Pokémon'),
 
     // v0.4.7
     new Changelog(changelogType.UPDATE, 'v0.4.7 - Layout'),
@@ -45,7 +80,7 @@ const changelogItems = [
     new Changelog(changelogType.CHANGE, 'Updated the Oak Items layout'),
     new Changelog(changelogType.CHANGE, 'Updated layout of Towns and Dungeons'),
     new Changelog(changelogType.CHANGE, 'Updated the Hoenn map'),
-    new Changelog(changelogType.CHANGE, 'Show the amount of Pokémon visible in Pokedex with filters active'),
+    new Changelog(changelogType.CHANGE, 'Show the amount of Pokémon visible in Pokédex with filters active'),
     new Changelog(changelogType.FIXED, 'Event Pokémon no longer count towards achievements or being able to travel to next region'),
     new Changelog(changelogType.FIXED, 'Mt. Chimney dungeon is now more powerful'),
 
@@ -56,7 +91,7 @@ const changelogItems = [
     new Changelog(changelogType.CHANGE, 'Safari now uses a Safari Ball'),
     new Changelog(changelogType.CHANGE, 'Added ability to track event Pokémon statistics'),
     new Changelog(changelogType.CHANGE, 'Update Discord link'),
-    new Changelog(changelogType.FIXED, 'Pokeball should appear in dungeons again'),
+    new Changelog(changelogType.FIXED, 'Pokéball should appear in dungeons again'),
     new Changelog(changelogType.FIXED, 'Fix Eeveelutions'),
 
     // v0.4.5
@@ -73,7 +108,7 @@ const changelogItems = [
     new Changelog(changelogType.UPDATE, 'v0.4.4 - Statistics 2.0'),
     new Changelog(changelogType.NEW, 'Add some new game codes'),
     new Changelog(changelogType.NEW, 'Statistics can now be viewed from the Start Menu'),
-    new Changelog(changelogType.NEW, 'Pokémon statistics can be viewed by clicking a Pokémon in the Pokedex'),
+    new Changelog(changelogType.NEW, 'Pokémon statistics can be viewed by clicking a Pokémon in the Pokédex'),
     new Changelog(changelogType.CHANGE, 'Update some game codes'),
     new Changelog(changelogType.REMOVED, 'Remove old game codes'),
     new Changelog(changelogType.FIXED, 'Can no longer breed fossils from regions you have not reached yet'),
@@ -98,7 +133,7 @@ const changelogItems = [
     new Changelog(changelogType.UPDATE, 'v0.4.1 - More fixes'),
     new Changelog(changelogType.NEW, 'More items added to underground'),
     new Changelog(changelogType.CHANGE, 'All Hoenn Pokémon should be obtainable now'),
-    new Changelog(changelogType.FIXED, 'Pokedex filtering should be working again'),
+    new Changelog(changelogType.FIXED, 'Pokédex filtering should be working again'),
     new Changelog(changelogType.FIXED, 'Some items showing _ in their name in notifications'),
 
     // v0.4.0
@@ -153,13 +188,13 @@ const changelogItems = [
     new Changelog(changelogType.FIXED, 'BattleItems now buy correctly'),
     new Changelog(changelogType.CHANGE, 'Increase dungeon tokens received when catching Pokémon'),
     new Changelog(changelogType.CHANGE, 'Going to the breeder will no longer send you to route 5'),
-    new Changelog(changelogType.CHANGE, 'You will now start the game with 25 Pokeballs'),
-    new Changelog(changelogType.CHANGE, 'Tutorial quest buy Pokeballs amount reduced'),
+    new Changelog(changelogType.CHANGE, 'You will now start the game with 25 Pokéballs'),
+    new Changelog(changelogType.CHANGE, 'Tutorial quest buy Pokéballs amount reduced'),
     new Changelog(changelogType.FIXED, 'Selecting "max" in store will no longer freeze the game for key items'),
 
     // v0.0.4 - 01-01-2020
     new Changelog(changelogType.UPDATE, 'v0.0.4'),
-    new Changelog(changelogType.NEW, 'Show pokeball image by caught Pokémon in the Pokedex'),
+    new Changelog(changelogType.NEW, 'Show Pokéball image by caught Pokémon in the Pokédex'),
     new Changelog(changelogType.CHANGE, 'Show the reason you cannot access a location'),
     new Changelog(changelogType.CHANGE, 'Total shiny Pokémon caught now add to your total click attack'),
     new Changelog(changelogType.FIXED, 'Display floored dungeon tokens amount'),
