@@ -17,6 +17,11 @@ class BattleFrontier {
         BattleFrontierRunner.start();
     }
 
+    public static leave() {
+        // Put the user back in the town
+        App.game.gameState = GameConstants.GameState.town;
+    }
+
     fromJSON(json): void {
         if (!json) {
             return;

@@ -6,13 +6,13 @@ class BattleFrontierRunner {
     // TODO: move this to BattleFrontierRunner or whatever..
     public static counter = 0;
 
-    public static started: boolean;
+    public static started = ko.observable(false);
 
     constructor() {}
 
     // TODO: Count down the timer..
     public static tick() {
-        if (!this.started) {
+        if (!this.started()) {
             return;
         }
         if (this.timeLeft() < 0) {
@@ -23,8 +23,8 @@ class BattleFrontierRunner {
     }
 
     public static start() {
-        this.started = true;
-        BattleFrontierBattle.stage(0);
+        this.started(true);
+        BattleFrontierBattle.stage(1);
         BattleFrontierBattle.generateNewEnemy();
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
         BattleFrontierRunner.timeLeftPercentage(100);
@@ -32,9 +32,7 @@ class BattleFrontierRunner {
     }
 
     public static end() {
-        // Put the user back in the town
-        App.game.gameState = GameConstants.GameState.town;
-        this.started = false;
+        this.started(false);
     }
 
     public static resetTimer() {
@@ -47,6 +45,7 @@ class BattleFrontierRunner {
         const battlePointsEarned = BattleFrontierBattle.stage();
 
         Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
+
         // Award battle points
         App.game.wallet.gainBattlePoints(battlePointsEarned);
 

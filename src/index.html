@@ -440,9 +440,14 @@
                     <span>Battle Frontier</span>
                 </div>
                 <div class="card-body p-0 text-center" style="min-height: 220px;">
-                    <span>Battle Frontier Content Here</span>
-                    <a class="btn btn-block btn-success" onclick="BattleFrontierRunner.start()">Start</a>
-                    <a class="btn btn-block btn-danger" onclick="BattleFrontierRunner.end()">Leave</a>
+                    <knockout data-bind="ifnot: BattleFrontierRunner.started">
+                        <span>Battle Frontier Content Here</span>
+                        <a class="btn btn-block btn-success" onclick="BattleFrontierRunner.start()">Start</a>
+                        <a class="btn btn-block btn-danger" onclick="BattleFrontier.leave()">Leave</a>
+                    </knockout>
+                    <knockout data-bind="if: BattleFrontierRunner.started">
+                        <a class="btn btn-block btn-danger" onclick="BattleFrontierRunner.battleQuit()">Quit Battle</a>
+                    </knockout>
                 </div>
             </div>
             <!-- /ko -->
