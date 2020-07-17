@@ -25,6 +25,7 @@ class BattleFrontierRunner {
     public static start() {
         this.started(true);
         BattleFrontierBattle.stage(1);
+        BattleFrontierBattle.pokemonIndex(0);
         BattleFrontierBattle.generateNewEnemy();
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
         BattleFrontierRunner.timeLeftPercentage(100);
