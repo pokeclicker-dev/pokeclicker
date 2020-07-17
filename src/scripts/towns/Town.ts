@@ -232,6 +232,13 @@ const LilyCoveCityShop = new Shop([
 const MossdeepCityShop = new Shop([
     ItemList['Beldum'],
 ]);
+const BattleFrontierShop = new Shop([
+    new PokeballItem(GameConstants.Pokeball.Ultraball, 10, GameConstants.Currency.battlePoint),
+    new PokeballItem(GameConstants.Pokeball.Masterball, 1000, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.SmallRestore, 20, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.MediumRestore, 40, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.LargeRestore, 80, GameConstants.Currency.battlePoint),
+]);
 
 //Hoenn Towns
 TownList['Littleroot Town'] = new Town('Littleroot Town', [], LittleRootTownShop);
@@ -251,7 +258,6 @@ TownList['Sootopolis City'] = new Town('Sootopolis City', [126], null, null, 'Ca
 TownList['Ever Grande City'] = new Town('Ever Grande City', [128]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [128], null, null, 'Victory Road Hoenn');
 TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [131]);
-const BattleFrontierShop = new Shop(['Ultraball', 'Masterball']);
 TownList['Battle Frontier'] = new Town('Battle Frontier', [], BattleFrontierShop, null, 'Victory Road Hoenn');
 
 //Hoenn Dungeons
