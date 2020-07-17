@@ -70,6 +70,16 @@ class Wallet implements Feature {
 
         this.addAmount(new Amount(points, Currency.farmPoint));
     }
+    
+    public gainBattlePoints(base: number) {
+        let bPoints = base;
+
+        bPoints = Math.floor(points);
+
+        GameHelper.incrementObservable(App.game.statistics.totalBattlePoints, bPoints);
+
+        this.addAmount(new Amount(bPoints, Currency.battlePoint));
+    }
 
     private addAmount(amount: Amount) {
         if (isNaN(amount.amount) || amount.amount <= 0) {
