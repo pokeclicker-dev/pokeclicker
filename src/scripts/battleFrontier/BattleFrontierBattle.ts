@@ -45,7 +45,7 @@ class BattleFrontierBattle extends Battle {
         // TODO: figure out a money formula
         const money = (level + 1) * 100;
         // TODO : BP gain
-        const bp = this.stage + 1;
+        const bp = this.stage;
         const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_BATTLE);
         // TODO: this better
         const enemyPokemon = new BattlePokemon(enemy.name, enemy.id, enemy.type[0] || PokemonType.None, enemy.type[1] || PokemonType.None, health, level, 0, enemy.exp, money, shiny);
