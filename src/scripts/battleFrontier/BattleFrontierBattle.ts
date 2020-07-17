@@ -33,6 +33,8 @@ class BattleFrontierBattle extends Battle {
         if (BattleFrontierRunner.started()) {
             // Create the next Pokemon to fight
             this.generateNewEnemy();
+        } else {
+            this.enemyPokemon(null);
         }
     }
 
