@@ -231,8 +231,8 @@ body:hover {
 
 #pokemonListContainer {
   max-height: 300px;
-
-  .card-body {
+  #pokemonListBody {
+    max-height: 250px;
     overflow: auto;
   }
 }
@@ -240,6 +240,9 @@ body:hover {
 @media (min-width: 992px) {
   #pokemonListContainer {
     max-height: 400px;
+    #pokemonListBody {
+      max-height: 350px;
+    }
   }
 }
 
@@ -351,6 +354,8 @@ img {
 }
 
 .battle-view {
+  min-height: 220px !important;
+
   color: whitesmoke;
 
   background-image: url(../assets/images/battleBackground/default.png);
