@@ -24,6 +24,7 @@ class Statistics implements Saveable {
     totalQuestPoints: KnockoutObservable<number>;
     totalDiamonds: KnockoutObservable<number>;
     totalFarmPoints: KnockoutObservable<number>;
+    totalBattlePoints: KnockoutObservable<number>;
     // arrayObservables
     pokeballsUsed: Array<KnockoutObservable<number>>;
     pokeballsBought: Array<KnockoutObservable<number>>;
@@ -51,6 +52,7 @@ class Statistics implements Saveable {
         'totalQuestPoints',
         'totalDiamonds',
         'totalFarmPoints',
+        'totalBattlePoints',
         'totalPokemonCaptured',
         'totalPokemonDefeated',
         'totalPokemonEncountered',
