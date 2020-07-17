@@ -31,25 +31,33 @@ class BattleFrontierRunner {
         App.game.gameState = GameConstants.GameState.battleFrontier;
     }
 
+    public static end() {
+        // Put the user back in the town
+        App.game.gameState = GameConstants.GameState.town;
+        this.started = false;
+    }
+
     public static resetTimer() {
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
         BattleFrontierRunner.timeLeftPercentage(100);
     }
 
-    // TODO: implement
     public static battleLost() {
-        // TODO: Give Battle Points based on how far the user got
-        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}. You gained ${BattleFrontierBattle.stage() + 1} BP`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
-        App.game.gameState = GameConstants.GameState.town;
-        App.game.wallet.gainBattlePoints(BattleFrontierBattle.stage());
-        this.started = false;
+        // Give Battle Points based on how far the user got
+        const battlePointsEarned = BattleFrontierBattle.stage();
+
+        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
+        // Award battle points
+        App.game.wallet.gainBattlePoints(battlePointsEarned);
+
+        this.end();
     }
 
-    // Don't give any points, user quit the challenge
     public static battleQuit() {
+        // Don't give any points, user quit the challenge
         Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
-        App.game.gameState = GameConstants.GameState.town;
-        this.started = false;
+
+        this.end();
     }
 
     public static timeLeftSeconds = ko.pureComputed(function () {
