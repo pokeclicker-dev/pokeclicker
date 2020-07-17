@@ -51,13 +51,6 @@ class BattleFrontierRunner {
         this.started = false;
     }
 
-    // TODO: implement, if it's even possible to "win"?
-    public static battleWon(gym: Gym) {
-        Notifier.notify({ title: 'Battle Frontier', message: 'You won the game?... I guess...', type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
-        App.game.gameState = GameConstants.GameState.town;
-        this.started = false;
-    }
-
     public static timeLeftSeconds = ko.pureComputed(function () {
         return (Math.ceil(BattleFrontierRunner.timeLeft() / 10) / 10).toFixed(1);
     })
