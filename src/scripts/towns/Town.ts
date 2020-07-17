@@ -232,6 +232,7 @@ const LilyCoveCityShop = new Shop([
 const MossdeepCityShop = new Shop([
     ItemList['Beldum'],
 ]);
+// TODO: decide items and prices
 const BattleFrontierShop = new Shop([
     new PokeballItem(GameConstants.Pokeball.Ultraball, 10, GameConstants.Currency.battlePoint),
     new PokeballItem(GameConstants.Pokeball.Masterball, 1000, GameConstants.Currency.battlePoint),

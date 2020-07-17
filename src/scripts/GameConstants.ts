@@ -200,6 +200,7 @@ namespace GameConstants {
         dungeonToken,
         diamond,
         farmPoint,
+        // TODO: add icons for BP
         battlePoint,
     }
 
