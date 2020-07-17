@@ -197,7 +197,7 @@
                 </div>
 
                 <!--RouteBattleView-->
-                <!--Use the base battle layout for fighting and dungeons.-->
+                <!--Use the base battle layout for fighting, dungeons and battle frontier.-->
 
                 <div class="battle-view card-body p-0 justify-content-center no-gutters no-select"
                     data-bind="if: (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.dungeon || App.game.gameState === GameConstants.GameState.paused || App.game.gameState === GameConstants.GameState.town || App.game.gameState == GameConstants.GameState.battleFrontier),
@@ -352,7 +352,7 @@
 
                     <!--If the player is in the Battle Frontier-->
                     <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState == GameConstants.GameState.battleFrontier">
-                      <div class="col no-gutters clickable" data-bind="click: function() {BattleFrontierBattle.clickAttack()}" style="height: 220px; display: block;">
+                      <div class="col no-gutters clickable" data-bind="if: BattleFrontierBattle.enemyPokemon, click: function() { BattleFrontierBattle.clickAttack() }" style="height: 220px; display: block;">
                           <h2 class="pageItemTitle" style="display: block;">
     
                               <knockout class="routeInfo">
@@ -441,7 +441,8 @@
                 </div>
                 <div class="card-body p-0 text-center" style="min-height: 220px;">
                     <span>Battle Frontier Content Here</span>
-                    <a class="btn btn-block btn-danger" onclick="BattleFrontierRunner.battleQuit()">Quit</a>
+                    <a class="btn btn-block btn-success" onclick="BattleFrontierRunner.start()">Start</a>
+                    <a class="btn btn-block btn-danger" onclick="BattleFrontierRunner.end()">Leave</a>
                 </div>
             </div>
             <!-- /ko -->

@@ -9,6 +9,10 @@ class BattleFrontier {
         return TownList['Battle Frontier'].isUnlocked();
     }
 
+    public static enter() {
+        App.game.gameState = GameConstants.GameState.battleFrontier;
+    }
+
     public static start() {
         BattleFrontierRunner.start();
     }
