@@ -74,7 +74,7 @@ class Wallet implements Feature {
     public gainBattlePoints(base: number) {
         let bPoints = base;
 
-        bPoints = Math.floor(points);
+        bPoints = Math.floor(bPoints);
 
         GameHelper.incrementObservable(App.game.statistics.totalBattlePoints, bPoints);
 
