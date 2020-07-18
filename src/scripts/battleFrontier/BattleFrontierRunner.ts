@@ -45,7 +45,7 @@ class BattleFrontierRunner {
     public static battleLost() {
         // Give Battle Points based on how far the user got
         const battlePointsMultiplier = Math.max(BattleFrontierBattle.stage(BattleFrontierBattle.stage() / 100), 1)
-        const battlePointsEarned = BattleFrontierBattle.stage() * battlePointMultiplier;
+        const battlePointsEarned = BattleFrontierBattle.stage() * battlePointsMultiplier;
         const moneyEarned = BattleFrontierBattle.stage() * 100;
 
         Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
