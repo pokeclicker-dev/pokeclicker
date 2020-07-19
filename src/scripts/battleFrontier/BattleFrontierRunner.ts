@@ -44,7 +44,7 @@ class BattleFrontierRunner {
 
     public static battleLost() {
         // Give Battle Points based on how far the user got
-        const battlePointsMultiplier = Math.max(BattleFrontierBattle.stage() / 100, 1)
+        const battlePointsMultiplier = Math.max(BattleFrontierBattle.stage() / 100, 1);
         const battlePointsEarned = BattleFrontierBattle.stage() * battlePointsMultiplier;
         const moneyEarned = BattleFrontierBattle.stage() * 100;
 
