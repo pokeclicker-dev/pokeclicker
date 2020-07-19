@@ -354,47 +354,8 @@
                     <!-- Gym Battles -->
                     @import "gymView.html"
 
-                    <!--If the player is in the Battle Frontier-->
-                    <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState == GameConstants.GameState.battleFrontier">
-                      <div class="col no-gutters clickable" data-bind="if: BattleFrontierBattle.enemyPokemon, click: function() { BattleFrontierBattle.clickAttack() }" style="height: 220px; display: block;">
-                          <h2 class="pageItemTitle" style="display: block;">
-
-                              <knockout class="routeInfo">
-                                  Stage <knockout data-bind="text: BattleFrontierBattle.stage">0</knockout>
-                              </knockout>
-
-                              <knockout>
-                                  <knockout data-bind="text: BattleFrontierBattle.enemyPokemon().name">Pokemon name</knockout>
-                              </knockout>
-
-                              <knockout class="routeProgress" data-bind="html: BattleFrontierRunner.pokemonLeftImages">
-                              </knockout>
-
-                              <div class="progress timer">
-                                  <div class="progress-bar bg-danger" role="progressbar"
-                                       data-bind="attr:{ style: 'width:' + BattleFrontierRunner.timeLeftPercentage() + '%' },
-                                       css: { 'bg-danger': BattleFrontierRunner.timeLeftSeconds() < 20, 'bg-primary': BattleFrontierRunner.timeLeftSeconds() >= 20 }"
-                                       aria-valuemin="0" aria-valuemax="100">
-                                       <span data-bind="text: BattleFrontierRunner.timeLeftSeconds() + 's'" style="font-size: 12px;"></span>
-                                  </div>
-                              </div>
-
-                          </h2>
-
-                          <div>
-                              <img class="enemy"
-                                    data-bind="attr:{ src: PokemonHelper.getImage(BattleFrontierBattle.enemyPokemon(), BattleFrontierBattle.enemyPokemon().shiny) }"
-                                    src=""/>
-                          </div>
-                          <div class="progress hitpoints" style="height: 20px;">
-                              <div class="progress-bar bg-danger" role="progressbar"
-                                   data-bind="attr:{ style: 'width:' + BattleFrontierBattle.enemyPokemon().healthPercentage() + '%' }"
-                                   aria-valuemin="0" aria-valuemax="100">
-                                   <span data-bind="text: BattleFrontierBattle.enemyPokemon().health() + ' / ' + BattleFrontierBattle.enemyPokemon().maxHealth()" style="font-size: 12px;"></span>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
+                    <!-- Battle Frontier Battles -->
+                    @import "battleFrontierView.html"
 
                     <!--TownView-->
                     @import "townView.html"
@@ -441,9 +402,14 @@
                 <div class="card-header p-0">
                     <span>Battle Frontier</span>
                 </div>
-                <div class="card-body p-0 text-center" style="min-height: 220px;">
+                <div class="card-body text-center" style="min-height: 220px;">
                     <knockout data-bind="ifnot: BattleFrontierRunner.started">
-                        <span>Battle Frontier Content Here</span>
+                        <h5>Welcome to the Battle Frontier!</h5>
+                        <p>
+                            Here you will be battling through many stages to earn Battle Points.<br/>
+                            But be aware, if you leave early, You will not earn anything.<br/>
+                            When you are ready, click Start!
+                        </p>
                         <a class="btn btn-block btn-success text-light" onclick="BattleFrontierRunner.start()">Start</a>
                         <a class="btn btn-block btn-danger text-light" onclick="BattleFrontier.leave()">Leave</a>
                     </knockout>
