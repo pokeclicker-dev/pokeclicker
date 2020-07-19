@@ -38,7 +38,8 @@ class BattleFrontier {
     }
 
     public static nextMileStone() {
-        return this.milestoneRewards.filter(r => r.stage > this.highestStage() && r.stage > BattleFrontierBattle.stage())[0];
+        // If we have already earned this reward, or we just passed it
+        return this.milestoneRewards.filter(r => r.stage > this.highestStage() && r.stage >= BattleFrontierRunner.stage())[0];
     }
 
     public static nextMileStoneStage() {

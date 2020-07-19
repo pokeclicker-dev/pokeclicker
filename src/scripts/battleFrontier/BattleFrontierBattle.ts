@@ -1,7 +1,6 @@
 ///<reference path="../Battle.ts"/>
 class BattleFrontierBattle extends Battle {
     static pokemonIndex: KnockoutObservable<number> = ko.observable(0);
-    static stage: KnockoutObservable<number> = ko.observable(1); // Start at stage 1
     static totalPokemons: KnockoutObservable<number> = ko.observable(3);
     
     // Looks like we don't need this, unless we want to put a random trainer name or similar
@@ -14,8 +13,8 @@ class BattleFrontierBattle extends Battle {
      */
     public static defeatPokemon() {
         App.game.party.gainExp(this.enemyPokemon().exp, this.enemyPokemon().level, false);
-        // TODO: figure this shit out aswell
-        App.game.breeding.progressEggsBattle(this.stage(), player.region);
+        // TODO: Help with breeding?
+        App.game.breeding.progressEggsBattle(BattleFrontierRunner.stage(), player.region);
         // TODO: Still gain shards?
         this.gainShardsAfterBattle();
         // Next pokemon
@@ -24,8 +23,7 @@ class BattleFrontierBattle extends Battle {
         if (this.pokemonIndex() >= 3) {
             // TODO: is this all?..
             // Move on to next stage, reset timer
-            BattleFrontierRunner.resetTimer();
-            GameHelper.incrementObservable(this.stage);
+            BattleFrontierRunner.nextStage();
             this.pokemonIndex(0);
         }
 
@@ -45,12 +43,9 @@ class BattleFrontierBattle extends Battle {
     public static generateNewEnemy() {
         // TODO: Do we want any random Pokemon from Kanto → Hoenn/highest region
         const enemy = pokemonMap.random(GameConstants.TotalPokemonsPerRegion[player.highestRegion()]);
-        // TODO: figure out a health formula
-        const health = PokemonFactory.routeHealth(this.stage() + 10, GameConstants.Region.kanto);
-        // TODO: figure out a level formula
-        const level = Math.min(100, this.stage());
-        // TODO: figure out a money formula
-        // Award 0 money, per pokemon defeated, award money at the end?
+        const health = PokemonFactory.routeHealth(BattleFrontierRunner.stage() + 10, GameConstants.Region.kanto);
+        const level = Math.min(100, BattleFrontierRunner.stage());
+        // Don't award money per pokemon defeated, award money at the end
         const money = 0;
         const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_BATTLE);
 

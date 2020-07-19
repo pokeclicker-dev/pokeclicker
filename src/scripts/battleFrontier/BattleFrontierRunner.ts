@@ -2,6 +2,7 @@
 class BattleFrontierRunner {
     public static timeLeft: KnockoutObservable<number> = ko.observable(GameConstants.GYM_TIME);
     public static timeLeftPercentage: KnockoutObservable<number> = ko.observable(100);
+    static stage: KnockoutObservable<number> = ko.observable(1); // Start at stage 1
 
     // TODO: move this to BattleFrontierRunner or whatever..
     public static counter = 0;
@@ -24,7 +25,7 @@ class BattleFrontierRunner {
 
     public static start() {
         this.started(true);
-        BattleFrontierBattle.stage(1);
+        this.stage(1);
         BattleFrontierBattle.pokemonIndex(0);
         BattleFrontierBattle.generateNewEnemy();
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
@@ -32,24 +33,27 @@ class BattleFrontierRunner {
         App.game.gameState = GameConstants.GameState.battleFrontier;
     }
 
-    public static end() {
-        BattleFrontierBattle.enemyPokemon(null);
-        BattleFrontierBattle.stage(1);
-        this.started(false);
-    }
-
-    public static resetTimer() {
+    public static nextStage() {
+        GameHelper.incrementObservable(this.stage);
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
         BattleFrontierRunner.timeLeftPercentage(100);
     }
 
-    public static battleLost() {
-        // Give Battle Points based on how far the user got
-        const battlePointsMultiplier = Math.max(BattleFrontierBattle.stage() / 100, 1);
-        const battlePointsEarned = BattleFrontierBattle.stage() * battlePointsMultiplier;
-        const moneyEarned = BattleFrontierBattle.stage() * 100;
+    public static end() {
+        BattleFrontierBattle.enemyPokemon(null);
+        this.stage(1);
+        this.started(false);
+    }
 
-        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
+    public static battleLost() {
+        // Current stage - 1 as the player didn't beat the current stage
+        const stageBeaten = this.stage() - 1;
+        // Give Battle Points and Money based on how far the user got
+        const battlePointsMultiplier = Math.max(stageBeaten / 100, 1);
+        const battlePointsEarned = stageBeaten * battlePointsMultiplier;
+        const moneyEarned = stageBeaten * 100;
+
+        Notifier.notify({ title: 'Battle Frontier', message: `You managed to beat stage ${stageBeaten}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
 
         // Award battle points
         App.game.wallet.gainBattlePoints(battlePointsEarned);
@@ -60,7 +64,7 @@ class BattleFrontierRunner {
 
     public static battleQuit() {
         // Don't give any points, user quit the challenge
-        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${BattleFrontierBattle.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
+        Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${this.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
 
         this.end();
     }
