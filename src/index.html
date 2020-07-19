@@ -414,6 +414,8 @@
                         <a class="btn btn-block btn-danger text-light" onclick="BattleFrontier.leave()">Leave</a>
                     </knockout>
                     <knockout data-bind="if: BattleFrontierRunner.started">
+                        <p>Next milestone reward at Stage <strong data-bind="text: BattleFrontier.nextMileStoneStage()"></strong>!</p>
+                        <p data-bind="text: BattleFrontier.nextMileStoneReward()"></p>
                         <a class="btn btn-block btn-danger text-light" onclick="BattleFrontierRunner.battleQuit()">Quit Battle</a>
                     </knockout>
                 </div>
