@@ -2,6 +2,7 @@ class BattleFrontier {
     //Move to stats later on, so it saves
     public static highestStage = ko.observable(0).extend({ numeric: 0 });
     // TODO: rafactor to MilstoneReward class
+    /*
     private static readonly milestoneRewards = [
         {item: 'Pokeball', amount: 10, stage: 10},
         {item: 'Greatball', amount: 10, stage: 20},
@@ -16,6 +17,7 @@ class BattleFrontier {
         {item: 'Togepi', amount: 1, stage: 400},
         {item: 'Beldum', amount: 1, stage: 500},
     ];
+    */
 
     constructor() {}
 
@@ -36,7 +38,7 @@ class BattleFrontier {
         // Put the user back in the town
         App.game.gameState = GameConstants.GameState.town;
     }
-
+    /*
     public static nextMileStone() {
         // If we have already earned this reward, or we just passed it
         return this.milestoneRewards.filter(r => r.stage > this.highestStage() && r.stage >= BattleFrontierRunner.stage())[0];
@@ -59,7 +61,7 @@ class BattleFrontier {
             return 'Nothing';
         }
     }
-
+    */
     fromJSON(json): void {
         if (!json) {
             return;
@@ -69,5 +71,6 @@ class BattleFrontier {
     toJSON(): Record<string, any> {
         return {};
     }
+    
 
 }
