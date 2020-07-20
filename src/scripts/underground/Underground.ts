@@ -179,7 +179,6 @@ class Underground {
 
     public static openUndergroundModal() {
         if (this.canAccess()) {
-            App.game.gameState = GameConstants.GameState.paused;
             $('#mineModal').modal('show');
         } else {
             Notifier.notify({ message: 'You need the Explorer Kit to access this location.<br/><i>Check out the shop at Cinnabar Island</i>', type: GameConstants.NotificationOption.warning });
@@ -237,14 +236,6 @@ class Underground {
 $(document).ready(function () {
     $('body').on('click', '.mineSquare', function () {
         Mine.click(parseInt(this.dataset.i), parseInt(this.dataset.j));
-    });
-
-    $('#mineModal').on('hidden.bs.modal', function () {
-        if (player.route() == 11) {
-            App.game.gameState = GameConstants.GameState.fighting;
-        } else {
-            MapHelper.moveToRoute(11, GameConstants.Region.kanto);
-        }
     });
 });
 
