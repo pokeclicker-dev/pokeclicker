@@ -58,6 +58,7 @@ class BattleFrontierRunner {
         // Award battle points
         App.game.wallet.gainBattlePoints(battlePointsEarned);
         App.game.wallet.gainMoney(moneyEarned);
+        player.gainItem(BattleFrontierMilestones.nextMileStoneRewardItem(), BattleFrontierMilestones.nextMileStoneRewardAmount());
 
         this.end();
     }
