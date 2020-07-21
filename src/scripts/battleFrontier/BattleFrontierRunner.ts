@@ -55,8 +55,8 @@ class BattleFrontierRunner {
         const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
         const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
         //debug stuffs
-        console.log(BattleFrontierMilestones.nextMileStoneRewardItem());
-        console.log(BattleFrontierMilestones.nextMileStoneRewardAmount());
+        console.log(milestoneAmount);
+        console.log(milestoneReward);
 
         Notifier.notify({ title: 'Battle Frontier', message: `You managed to beat stage ${stageBeaten}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
 
