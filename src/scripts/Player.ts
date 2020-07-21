@@ -178,6 +178,9 @@ class Player {
 
     public gainItem(itemName: string, amount: number) {
         this._itemList[itemName](this._itemList[itemName]() + amount);
+        console.log(`${itemName}`);
+        // more debug stuffs
+    //    debugger;
     }
 
     public loseItem(itemName: string, amount: number) {
