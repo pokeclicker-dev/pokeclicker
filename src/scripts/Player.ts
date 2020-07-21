@@ -177,7 +177,10 @@ class Player {
     }
 
     public gainItem(itemName: string, amount: number) {
+        console.log(`${itemName}`);
+        console.log(`${amount}`);
         this._itemList[itemName](this._itemList[itemName]() + amount);
+        console.log(`${amount}`);
         console.log(`${itemName}`);
         // more debug stuffs
     //    debugger;
