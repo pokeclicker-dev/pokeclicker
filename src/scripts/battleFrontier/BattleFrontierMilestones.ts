@@ -36,4 +36,22 @@ class BattleFrontierMilestones {
             return 'Nothing';
         }
     }
+    
+    public static nextMileStoneReward() {
+        const reward = this.nextMileStone();
+        if (reward) {
+            return `${reward.item}`;
+        } else {
+            return 'Nothing';
+        }
+    }
+    
+    public static nextMileStoneReward() {
+        const reward = this.nextMileStone();
+        if (reward) {
+            return reward.amount;
+        } else {
+            return 0;
+        }
+
 }
