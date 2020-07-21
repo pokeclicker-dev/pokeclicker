@@ -53,5 +53,5 @@ class BattleFrontierMilestones {
         } else {
             return 0;
         }
-
+    }
 }
