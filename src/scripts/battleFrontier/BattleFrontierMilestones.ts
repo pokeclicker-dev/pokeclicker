@@ -37,7 +37,7 @@ class BattleFrontierMilestones {
         }
     }
     
-    public static nextMileStoneReward() {
+    public static nextMileStoneRewardItem() {
         const reward = this.nextMileStone();
         if (reward) {
             return `${reward.item}`;
@@ -46,7 +46,7 @@ class BattleFrontierMilestones {
         }
     }
     
-    public static nextMileStoneReward() {
+    public static nextMileStoneRewardAmount() {
         const reward = this.nextMileStone();
         if (reward) {
             return reward.amount;
