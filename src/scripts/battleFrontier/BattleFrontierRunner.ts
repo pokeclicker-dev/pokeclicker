@@ -53,13 +53,17 @@ class BattleFrontierRunner {
         const battlePointsEarned = stageBeaten * battlePointsMultiplier;
         const moneyEarned = stageBeaten * 100;
         const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
+        const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
+        //debug stuffs
+        console.log(BattleFrontierMilestones.nextMileStoneRewardItem());
+        console.log(BattleFrontierMilestones.nextMileStoneRewardAmount());
 
         Notifier.notify({ title: 'Battle Frontier', message: `You managed to beat stage ${stageBeaten}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
 
         // Award battle points
         App.game.wallet.gainBattlePoints(battlePointsEarned);
         App.game.wallet.gainMoney(moneyEarned);
-        player.gainItem(BattleFrontierMilestones.nextMileStoneRewardItem(), milestoneAmount);
+        player.gainItem(milestoneReward, milestoneAmount);
 
         this.end();
     }
