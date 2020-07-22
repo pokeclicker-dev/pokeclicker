@@ -86,14 +86,14 @@ class BattleFrontierRunner {
         const mStage = BattleFrontierMilestones.milestoneRewards.find(r=>r.stage == cStage);
         ItemList[mStage.item].gain(mStage.amount);
     }
-
+    */
     public static battleQuit() {
         // Don't give any points, user quit the challenge
         Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${this.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
 
         this.end();
     }
-    */
+
     public static timeLeftSeconds = ko.pureComputed(function () {
         return (Math.ceil(BattleFrontierRunner.timeLeft() / 10) / 10).toFixed(1);
     })
