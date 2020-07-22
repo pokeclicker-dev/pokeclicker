@@ -1,9 +1,8 @@
 class BattleFrontierMilestones {
 
     public static readonly milestoneRewards = [
-        {item: 'Pokeball', amount: 10, stage: 10},
-        {item: 'Greatball', amount: 10, stage: 20},
-        {item: 'Ultraball', amount: 10, stage: 30},
+        {item: 'Pokeball', amount: 50, stage: 10},
+        {item: 'Greatball', amount: 50, stage: 20},
         {item: 'Ultraball', amount: 50, stage: 30},
         {item: 'Masterball', amount: 1, stage: 50},
         {item: 'Masterball', amount: 1, stage: 100},
@@ -32,11 +31,7 @@ class BattleFrontierMilestones {
     public static nextMileStoneReward() {
         const reward = this.nextMileStone();
         if (reward) {
-            //this.gainStuff()
-
-            // if (BattleFrontierRunner.stage() === reward.stage) {
-            //     this.gainStuff()
-            // }
+            this.gainItemForStage(BattleFrontierRunner.stage());
             return `${reward.amount} × ${reward.item}`;
         } else {
             return 'Nothing';
@@ -65,5 +60,11 @@ class BattleFrontierMilestones {
         const milestoneAmount = Number(this.nextMileStoneRewardAmount());
         const milestoneReward = this.nextMileStoneRewardItem();
         ItemList[milestoneReward].gain(milestoneAmount);
+    }
+
+    public static gainItemForStage(cStage: number) {
+        const reward = this.nextMileStone();
+        const mStage = this.milestoneRewards.find(r=>r.stage == cStage);
+        ItemList[mStage.item].gain(mStage.amount);
     }
 }

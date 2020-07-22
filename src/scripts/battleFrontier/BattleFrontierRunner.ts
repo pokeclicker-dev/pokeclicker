@@ -66,20 +66,25 @@ class BattleFrontierRunner {
         const reward = BattleFrontierMilestones.nextMileStone();
         // ItemList[milestoneReward].gain(milestoneAmount);
         //BattleFrontierMilestones.milestoneRewards[milestoneReward].forEach(this.gainMilestoneItem);
-        for (let stage = BattleFrontier.highestStage(); stage < this.stage(); stage++){
-            if (reward) {
-              this.gainMilestoneItem()
-              BattleFrontier.highestStage(reward.stage);
-            }
-        }
+        // for (let stage = BattleFrontier.highestStage(); stage < this.stage(); stage++){
+        //     if (reward) {
+        //       this.gainItemForStage(stageBeaten);
+        //       BattleFrontier.highestStage(reward.stage);
+        //     }
+        // }
 
         this.end();
     }
-
+/*
     public static gainMilestoneItem() {
         const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
         const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
         ItemList[milestoneReward].gain(milestoneAmount);
+    }
+
+    public static gainItemForStage(cStage: number) {
+        const mStage = BattleFrontierMilestones.milestoneRewards.find(r=>r.stage == cStage);
+        ItemList[mStage.item].gain(mStage.amount);
     }
 
     public static battleQuit() {
@@ -88,7 +93,7 @@ class BattleFrontierRunner {
 
         this.end();
     }
-
+*/
     public static timeLeftSeconds = ko.pureComputed(function () {
         return (Math.ceil(BattleFrontierRunner.timeLeft() / 10) / 10).toFixed(1);
     })
