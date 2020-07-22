@@ -8,15 +8,26 @@ class BattleFrontierMilestones {
         {item: 'Masterball', amount: 1, stage: 50},
     ];
     // I did the item this way because I'm weird
+    public static readonly milestoneRewards2 = [
+        {item: 'Pokeball', amount: 50, stage: 10},
+        {item: 'Greatball', amount: 50, stage: 30},
+        {item: 'Ultraball', amount: 50, stage: 30},
+        {item: 'Masterball', amount: 1, stage: 50},
+    ];
 
     public static nextMileStone() {
         return this.milestoneRewards.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
     }
 
+    public static nextVisualMilestone() {
+        return this.milestoneRewards2.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
+    }
+
     public static nextMileStoneStage() {
         const reward = this.nextMileStone();
+        const visual = this.nextVisualMilestone();
         if (reward) {
-            return reward.stage;
+            return visual.stage;
         } else {
             return Infinity;
         }
@@ -24,6 +35,7 @@ class BattleFrontierMilestones {
 
     public static nextMileStoneReward() {
         const reward = this.nextMileStone();
+        const visual = this.nextVisualMilestone();
         if (reward) {
             //this.gainStuff()
 
@@ -36,7 +48,7 @@ class BattleFrontierMilestones {
                   BattleFrontier.highestStage(reward.stage);
                 }
             }
-            return `${reward.amount} × ${reward.item}`;
+            return `${visual.amount} × ${visual.item}`;
         } else {
             return 'Nothing';
         }
@@ -44,6 +56,7 @@ class BattleFrontierMilestones {
     
     public static nextMileStoneRewardItem() {
         const reward = this.nextMileStone();
+        const visual = this.nextVisualMilestone();
         if (reward) {
             return `${reward.item}`;
         } else {
@@ -53,6 +66,7 @@ class BattleFrontierMilestones {
     
     public static nextMileStoneRewardAmount() {
         const reward = this.nextMileStone();
+        const visual = this.nextVisualMilestone();
         if (reward) {
             return `${reward.amount}`;
         } else {
