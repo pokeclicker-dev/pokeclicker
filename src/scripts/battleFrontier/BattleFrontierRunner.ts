@@ -63,8 +63,15 @@ class BattleFrontierRunner {
         // Award battle points
         App.game.wallet.gainBattlePoints(battlePointsEarned);
         App.game.wallet.gainMoney(moneyEarned);
+        const reward = BattleFrontierMilestones.nextMileStone();
         // ItemList[milestoneReward].gain(milestoneAmount);
-        BattleFrontierMilestones.milestoneRewards[milestoneReward].forEach(this.gainMilestoneItem);
+        //BattleFrontierMilestones.milestoneRewards[milestoneReward].forEach(this.gainMilestoneItem);
+        for (let stage = BattleFrontier.highestStage(); stage < this.stage(); stage++){
+            if (reward) {
+              this.gainMilestoneItem()
+              BattleFrontier.highestStage(reward.stage);
+            }
+        }
 
         this.end();
     }

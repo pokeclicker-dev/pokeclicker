@@ -14,11 +14,11 @@ class BattleFrontierMilestones {
         {item: 'Togepi', amount: 1, stage: 400},
         {item: 'Beldum', amount: 1, stage: 500},
     ];
-    // I did the item this way because I'm weird
 
     public static nextMileStone() {
         return this.milestoneRewards.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
     }
+
 
     public static nextMileStoneStage() {
         const reward = this.nextMileStone();
@@ -37,12 +37,6 @@ class BattleFrontierMilestones {
             // if (BattleFrontierRunner.stage() === reward.stage) {
             //     this.gainStuff()
             // }
-            for (let stage = BattleFrontier.highestStage(); stage < BattleFrontierRunner.stage(); stage++){
-                if (reward) {
-                  this.gainStuff()
-                  BattleFrontier.highestStage(reward.stage);
-                }
-            }
             return `${reward.amount} × ${reward.item}`;
         } else {
             return 'Nothing';
