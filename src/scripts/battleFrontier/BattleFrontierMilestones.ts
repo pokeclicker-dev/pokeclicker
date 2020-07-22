@@ -30,7 +30,10 @@ class BattleFrontierMilestones {
     public static nextMileStoneReward() {
         const reward = this.nextMileStone();
         if (reward) {
-            this.gainStuff()
+            //this.gainStuff()
+            if (BattleFrontierRunner.stage() == reward.stage) {
+                this.gainStuff()
+            }
             return `${reward.amount} × ${reward.item}`;
         } else {
             return 'Nothing';
