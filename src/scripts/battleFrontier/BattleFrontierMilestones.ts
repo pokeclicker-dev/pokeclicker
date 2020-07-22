@@ -1,33 +1,29 @@
 class BattleFrontierMilestones {
 
     public static readonly milestoneRewards = [
-        {item: 'Pokeball', amount: 0, stage: 10},
-        {item: 'Pokeball', amount: 50, stage: 20},
-        {item: 'Greatball', amount: 50, stage: 30},
-        {item: 'Ultraball', amount: 50, stage: 50},
-        {item: 'Masterball', amount: 1, stage: 50},
-    ];
-    // I did the item this way because I'm weird
-    public static readonly milestoneRewards2 = [
-        {item: 'Pokeball', amount: 50, stage: 10},
-        {item: 'Greatball', amount: 50, stage: 30},
+        {item: 'Pokeball', amount: 10, stage: 10},
+        {item: 'Greatball', amount: 10, stage: 20},
+        {item: 'Ultraball', amount: 10, stage: 30},
         {item: 'Ultraball', amount: 50, stage: 30},
         {item: 'Masterball', amount: 1, stage: 50},
+        {item: 'Masterball', amount: 1, stage: 100},
+        {item: 'Eevee', amount: 1, stage: 150},
+        {item: 'Porygon', amount: 1, stage: 200},
+        {item: 'Jynx', amount: 1, stage: 250},
+        {item: 'Lickitung', amount: 1, stage: 300},
+        {item: 'Togepi', amount: 1, stage: 400},
+        {item: 'Beldum', amount: 1, stage: 500},
     ];
+    // I did the item this way because I'm weird
 
     public static nextMileStone() {
         return this.milestoneRewards.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
     }
 
-    public static nextVisualMilestone() {
-        return this.milestoneRewards2.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
-    }
-
     public static nextMileStoneStage() {
         const reward = this.nextMileStone();
-        const visual = this.nextVisualMilestone();
         if (reward) {
-            return visual.stage;
+            return reward.stage;
         } else {
             return Infinity;
         }
@@ -35,7 +31,6 @@ class BattleFrontierMilestones {
 
     public static nextMileStoneReward() {
         const reward = this.nextMileStone();
-        const visual = this.nextVisualMilestone();
         if (reward) {
             //this.gainStuff()
 
@@ -48,7 +43,7 @@ class BattleFrontierMilestones {
                   BattleFrontier.highestStage(reward.stage);
                 }
             }
-            return `${visual.amount} × ${visual.item}`;
+            return `${reward.amount} × ${reward.item}`;
         } else {
             return 'Nothing';
         }
@@ -56,7 +51,6 @@ class BattleFrontierMilestones {
     
     public static nextMileStoneRewardItem() {
         const reward = this.nextMileStone();
-        const visual = this.nextVisualMilestone();
         if (reward) {
             return `${reward.item}`;
         } else {
@@ -66,7 +60,6 @@ class BattleFrontierMilestones {
     
     public static nextMileStoneRewardAmount() {
         const reward = this.nextMileStone();
-        const visual = this.nextVisualMilestone();
         if (reward) {
             return `${reward.amount}`;
         } else {
