@@ -52,11 +52,8 @@ class BattleFrontierRunner {
         const battlePointsMultiplier = Math.max(stageBeaten / 100, 1);
         const battlePointsEarned = Math.round(stageBeaten * battlePointsMultiplier);
         const moneyEarned = stageBeaten * 100;
-        //const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
         const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
-        //debug stuffs
-        // console.log(milestoneAmount);
-        // console.log(milestoneReward);
+
 
         Notifier.notify({ title: 'Battle Frontier', message: `You managed to beat stage ${stageBeaten}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
 
@@ -64,29 +61,9 @@ class BattleFrontierRunner {
         App.game.wallet.gainBattlePoints(battlePointsEarned);
         App.game.wallet.gainMoney(moneyEarned);
         const reward = BattleFrontierMilestones.nextMileStone();
-        // ItemList[milestoneReward].gain(milestoneAmount);
-        //BattleFrontierMilestones.milestoneRewards[milestoneReward].forEach(this.gainMilestoneItem);
-        // for (let stage = BattleFrontier.highestStage(); stage < this.stage(); stage++){
-        //     if (reward) {
-        //       this.gainItemForStage(stageBeaten);
-        //       BattleFrontier.highestStage(reward.stage);
-        //     }
-        // }
 
         this.end();
     }
-    /*
-    public static gainMilestoneItem() {
-        const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
-        const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
-        ItemList[milestoneReward].gain(milestoneAmount);
-    }
-
-    public static gainItemForStage(cStage: number) {
-        const mStage = BattleFrontierMilestones.milestoneRewards.find(r=>r.stage == cStage);
-        ItemList[mStage.item].gain(mStage.amount);
-    }
-    */
     public static battleQuit() {
         // Don't give any points, user quit the challenge
         Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${this.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
