@@ -5,7 +5,7 @@ class BattleFrontierMilestones {
         {item: 'Pokeball', amount: 50, stage: 20},
         {item: 'Greatball', amount: 50, stage: 30},
         {item: 'Ultraball', amount: 50, stage: 50},
-        {item: 'Masterball', amount: 1, stage: 100},
+        {item: 'Masterball', amount: 1, stage: 50},
     ];
     // I did the item this way because I'm weird
 
