@@ -1,18 +1,13 @@
 class BattleFrontierMilestones {
 
     public static readonly milestoneRewards = [
-        {item: 'Pokeball', amount: 50, stage: 10},
-        {item: 'Greatball', amount: 50, stage: 20},
-        {item: 'Ultraball', amount: 50, stage: 30},
-        {item: 'Masterball', amount: 1, stage: 50},
+        {item: 'Pokeball', amount: 0, stage: 10},
+        {item: 'Pokeball', amount: 50, stage: 20},
+        {item: 'Greatball', amount: 50, stage: 30},
+        {item: 'Ultraball', amount: 50, stage: 50},
         {item: 'Masterball', amount: 1, stage: 100},
-        {item: 'Eevee', amount: 1, stage: 150},
-        {item: 'Porygon', amount: 1, stage: 200},
-        {item: 'Jynx', amount: 1, stage: 250},
-        {item: 'Lickitung', amount: 1, stage: 300},
-        {item: 'Togepi', amount: 1, stage: 400},
-        {item: 'Beldum', amount: 1, stage: 500},
     ];
+    // I did the item this way because I'm weird
 
     public static nextMileStone() {
         return this.milestoneRewards.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
@@ -31,8 +26,15 @@ class BattleFrontierMilestones {
         const reward = this.nextMileStone();
         if (reward) {
             //this.gainStuff()
-            if (BattleFrontierRunner.stage() == reward.stage) {
-                this.gainStuff()
+
+            // if (BattleFrontierRunner.stage() === reward.stage) {
+            //     this.gainStuff()
+            // }
+            for (let stage = BattleFrontier.highestStage(); stage < BattleFrontierRunner.stage(); stage++){
+                if (reward) {
+                  this.gainStuff()
+                  BattleFrontier.highestStage(reward.stage);
+                }
             }
             return `${reward.amount} × ${reward.item}`;
         } else {

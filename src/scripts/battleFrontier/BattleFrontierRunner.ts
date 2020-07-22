@@ -50,10 +50,10 @@ class BattleFrontierRunner {
         const stageBeaten = this.stage() - 1;
         // Give Battle Points and Money based on how far the user got
         const battlePointsMultiplier = Math.max(stageBeaten / 100, 1);
-        const battlePointsEarned = stageBeaten * battlePointsMultiplier;
+        const battlePointsEarned = Math.round(stageBeaten * battlePointsMultiplier);
         const moneyEarned = stageBeaten * 100;
         //const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
-        //const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
+        const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
         //debug stuffs
         // console.log(milestoneAmount);
         // console.log(milestoneReward);
@@ -64,7 +64,7 @@ class BattleFrontierRunner {
         App.game.wallet.gainBattlePoints(battlePointsEarned);
         App.game.wallet.gainMoney(moneyEarned);
         // ItemList[milestoneReward].gain(milestoneAmount);
-        BattleFrontierMilestones.milestoneRewards.forEach(this.gainMilestoneItem);
+        BattleFrontierMilestones.milestoneRewards[milestoneReward].forEach(this.gainMilestoneItem);
 
         this.end();
     }
