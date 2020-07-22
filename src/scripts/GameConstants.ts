@@ -580,6 +580,7 @@ namespace GameConstants {
         'Lickitung',
         'Togepi',
         'Beldum',
+        'Mega Rayquaza',
     }
 
     export enum PokeBlockColor {

@@ -9,10 +9,7 @@ class BattleFrontierMilestones {
         {item: 'Masterball', amount: 1, stage: 100},
         {item: 'Eevee', amount: 1, stage: 150},
         {item: 'Porygon', amount: 1, stage: 200},
-        {item: 'Jynx', amount: 1, stage: 250},
-        {item: 'Lickitung', amount: 1, stage: 300},
-        {item: 'Togepi', amount: 1, stage: 400},
-        {item: 'Beldum', amount: 1, stage: 500},
+        {item: 'Mega Rayquaza', amount: 1, stage: 250},
     ];
 
     public static nextMileStone() {
