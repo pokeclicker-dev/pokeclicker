@@ -75,7 +75,7 @@ class BattleFrontierRunner {
 
         this.end();
     }
-/*
+    /*
     public static gainMilestoneItem() {
         const milestoneAmount = Number(BattleFrontierMilestones.nextMileStoneRewardAmount());
         const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
@@ -93,7 +93,7 @@ class BattleFrontierRunner {
 
         this.end();
     }
-*/
+    */
     public static timeLeftSeconds = ko.pureComputed(function () {
         return (Math.ceil(BattleFrontierRunner.timeLeft() / 10) / 10).toFixed(1);
     })
