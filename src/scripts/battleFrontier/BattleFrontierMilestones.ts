@@ -1,6 +1,7 @@
 class BattleFrontierMilestones {
 
     public static readonly milestoneRewards = [
+        {item: 'Pokeball', amount: 5, stage: 1},
         {item: 'Pokeball', amount: 50, stage: 10},
         {item: 'Greatball', amount: 50, stage: 20},
         {item: 'Ultraball', amount: 50, stage: 30},
