@@ -1,6 +1,6 @@
 class BattleFrontierMilestones {
 
-    private static readonly milestoneRewards = [
+    public static readonly milestoneRewards = [
         {item: 'Pokeball', amount: 50, stage: 10},
         {item: 'Greatball', amount: 50, stage: 20},
         {item: 'Ultraball', amount: 50, stage: 30},
@@ -30,6 +30,7 @@ class BattleFrontierMilestones {
     public static nextMileStoneReward() {
         const reward = this.nextMileStone();
         if (reward) {
+            this.gainStuff()
             return `${reward.amount} × ${reward.item}`;
         } else {
             return 'Nothing';
@@ -52,5 +53,11 @@ class BattleFrontierMilestones {
         } else {
             return 0;
         }
+    }
+
+    public static gainStuff() {
+        const milestoneAmount = Number(this.nextMileStoneRewardAmount());
+        const milestoneReward = this.nextMileStoneRewardItem();
+        ItemList[milestoneReward].gain(milestoneAmount);
     }
 }
