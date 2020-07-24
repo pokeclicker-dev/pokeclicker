@@ -28,6 +28,13 @@ class BattleFrontierMilestones {
     public static nextMileStoneReward() {
         const reward = this.nextMileStone();
         if (reward) {
+            // if (BattleFrontierRunner.stage() - 1 <= BattleFrontier.highestStage()) {
+            //     return;
+            // }
+            // BattleFrontier.highestStage(BattleFrontierRunner.stage() - 1);
+            // if (reward.stage < BattleFrontierRunner.stage()) {
+            //     debugger;
+            // }
             this.gainItemForStage(BattleFrontierRunner.stage());
             return `${reward.amount} × ${reward.item}`;
         } else {
@@ -63,5 +70,7 @@ class BattleFrontierMilestones {
         const reward = this.nextMileStone();
         const mStage = this.milestoneRewards.find(r => r.stage == cStage);
         ItemList[mStage.item].gain(mStage.amount);
+        // const mIndex = this.milestoneRewards.indexOf(mStage);
+        // this.milestoneRewards.splice(mIndex, 1);
     }
 }

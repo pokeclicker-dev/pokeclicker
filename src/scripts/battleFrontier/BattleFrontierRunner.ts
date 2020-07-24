@@ -52,8 +52,6 @@ class BattleFrontierRunner {
         const battlePointsMultiplier = Math.max(stageBeaten / 100, 1);
         const battlePointsEarned = Math.round(stageBeaten * battlePointsMultiplier);
         const moneyEarned = stageBeaten * 100;
-        const milestoneReward = BattleFrontierMilestones.nextMileStoneRewardItem();
-
 
         Notifier.notify({ title: 'Battle Frontier', message: `You managed to beat stage ${stageBeaten}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
 
