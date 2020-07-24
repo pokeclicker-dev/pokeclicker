@@ -39,52 +39,183 @@
 }
 
 .mineReward {
-    background-image: url('../assets/images/underground/rock0.png');
+    display:inline-block;
+    overflow:hidden;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding-top:100% !important;
+    &.size-1-1 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 100% 100%; }
+    }
+    &.size-1-2 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 100% 200%; }
+        &.pos-0-1 { background-position: 0.00000% 100.000%; background-size: 100% 200%; }
+    }
+    &.size-1-3 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 100% 300%; }
+        &.pos-0-1 { background-position: 0.00000% 50.0000%; background-size: 100% 300%; }
+        &.pos-0-2 { background-position: 0.00000% 100.000%; background-size: 100% 300%; }
+    }
+    &.size-1-4 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 100% 400%; }
+        &.pos-0-1 { background-position: 0.00000% 33.3333%; background-size: 100% 400%; }
+        &.pos-0-2 { background-position: 0.00000% 66.6666%; background-size: 100% 400%; }
+        &.pos-0-3 { background-position: 0.00000% 100.000%; background-size: 100% 400%; }
+    }
+    &.size-2-1 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 200% 100%; }
+        &.pos-1-0 { background-position: 100.000% 0.00000%; background-size: 200% 100%; }
+    }
+    &.size-2-2 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 200% 200%; }
+        &.pos-1-0 { background-position: 100.000% 0.00000%; background-size: 200% 200%; }
+        &.pos-0-1 { background-position: 0.00000% 100.000%; background-size: 200% 200%; }
+        &.pos-1-1 { background-position: 100.000% 100.000%; background-size: 200% 200%; }
+    }
+    &.size-2-3 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 200% 300%; }
+        &.pos-1-0 { background-position: 100.000% 0.00000%; background-size: 200% 300%; }
+        &.pos-0-1 { background-position: 0.00000% 50.0000%; background-size: 200% 300%; }
+        &.pos-1-1 { background-position: 100.000% 50.0000%; background-size: 200% 300%; }
+        &.pos-0-2 { background-position: 0.00000% 100.000%; background-size: 200% 300%; }
+        &.pos-1-2 { background-position: 100.000% 100.000%; background-size: 200% 300%; }
+    }
+    &.size-2-4 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 200% 400%; }
+        &.pos-1-0 { background-position: 100.000% 0.00000%; background-size: 200% 400%; }
+        &.pos-0-1 { background-position: 0.00000% 33.3333%; background-size: 200% 400%; }
+        &.pos-1-1 { background-position: 100.000% 33.3333%; background-size: 200% 400%; }
+        &.pos-0-2 { background-position: 0.00000% 66.6666%; background-size: 200% 400%; }
+        &.pos-1-2 { background-position: 100.000% 66.6666%; background-size: 200% 400%; }
+        &.pos-0-3 { background-position: 0.00000% 100.000%; background-size: 200% 400%; }
+        &.pos-1-3 { background-position: 100.000% 100.000%; background-size: 200% 400%; }
+    }
+    &.size-3-1 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 300% 100%; }
+        &.pos-1-0 { background-position: 50.0000% 0.00000%; background-size: 300% 100%; }
+        &.pos-2-0 { background-position: 100.000% 0.00000%; background-size: 300% 100%; }
+    }
+    &.size-3-2 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 300% 200%; }
+        &.pos-1-0 { background-position: 50.0000% 0.00000%; background-size: 300% 200%; }
+        &.pos-2-0 { background-position: 100.000% 0.00000%; background-size: 300% 200%; }
+        &.pos-0-1 { background-position: 0.00000% 100.000%; background-size: 300% 200%; }
+        &.pos-1-1 { background-position: 50.0000% 100.000%; background-size: 300% 200%; }
+        &.pos-2-1 { background-position: 100.000% 100.000%; background-size: 300% 200%; }
+    }
+    &.size-3-3 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 300% 300%; }
+        &.pos-1-0 { background-position: 50.0000% 0.00000%; background-size: 300% 300%; }
+        &.pos-2-0 { background-position: 100.000% 0.00000%; background-size: 300% 300%; }
+        &.pos-0-1 { background-position: 0.00000% 50.0000%; background-size: 300% 300%; }
+        &.pos-1-1 { background-position: 50.0000% 50.0000%; background-size: 300% 300%; }
+        &.pos-2-1 { background-position: 100.000% 50.0000%; background-size: 300% 300%; }
+        &.pos-0-2 { background-position: 0.00000% 100.000%; background-size: 300% 300%; }
+        &.pos-1-2 { background-position: 50.0000% 100.000%; background-size: 300% 300%; }
+        &.pos-2-2 { background-position: 100.000% 100.000%; background-size: 300% 300%; }
+    }
+    &.size-3-4 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 300% 400%; }
+        &.pos-1-0 { background-position: 50.0000% 0.00000%; background-size: 300% 400%; }
+        &.pos-2-0 { background-position: 100.000% 0.00000%; background-size: 300% 400%; }
+        &.pos-0-1 { background-position: 0.00000% 33.3333%; background-size: 300% 400%; }
+        &.pos-1-1 { background-position: 50.0000% 33.3333%; background-size: 300% 400%; }
+        &.pos-2-1 { background-position: 100.000% 33.3333%; background-size: 300% 400%; }
+        &.pos-0-2 { background-position: 0.00000% 66.6666%; background-size: 300% 400%; }
+        &.pos-1-2 { background-position: 50.0000% 66.6666%; background-size: 300% 400%; }
+        &.pos-2-2 { background-position: 100.000% 66.6666%; background-size: 300% 400%; }
+        &.pos-0-3 { background-position: 0.00000% 100.000%; background-size: 300% 400%; }
+        &.pos-1-3 { background-position: 50.0000% 100.000%; background-size: 300% 400%; }
+        &.pos-2-3 { background-position: 100.000% 100.000%; background-size: 300% 400%; }
+    }
+    &.size-4-1 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 400% 100%; }
+        &.pos-1-0 { background-position: 33.3333% 0.00000%; background-size: 400% 100%; }
+        &.pos-2-0 { background-position: 66.6666% 0.00000%; background-size: 400% 100%; }
+        &.pos-3-0 { background-position: 100.000% 0.00000%; background-size: 400% 100%; }
+    }
+    &.size-4-2 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 400% 200%; }
+        &.pos-1-0 { background-position: 33.3333% 0.00000%; background-size: 400% 200%; }
+        &.pos-2-0 { background-position: 66.6666% 0.00000%; background-size: 400% 200%; }
+        &.pos-3-0 { background-position: 100.000% 0.00000%; background-size: 400% 200%; }
+        &.pos-0-1 { background-position: 0.00000% 100.000%; background-size: 400% 200%; }
+        &.pos-1-1 { background-position: 33.3333% 100.000%; background-size: 400% 200%; }
+        &.pos-2-1 { background-position: 66.6666% 100.000%; background-size: 400% 200%; }
+        &.pos-3-1 { background-position: 100.000% 100.000%; background-size: 400% 200%; }
+    }
+    &.size-4-3 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 400% 300%; }
+        &.pos-1-0 { background-position: 33.3333% 0.00000%; background-size: 400% 300%; }
+        &.pos-2-0 { background-position: 66.6666% 0.00000%; background-size: 400% 300%; }
+        &.pos-3-0 { background-position: 100.000% 0.00000%; background-size: 400% 300%; }
+        &.pos-0-1 { background-position: 0.00000% 50.0000%; background-size: 400% 300%; }
+        &.pos-1-1 { background-position: 33.3333% 50.0000%; background-size: 400% 300%; }
+        &.pos-2-1 { background-position: 66.6666% 50.0000%; background-size: 400% 300%; }
+        &.pos-3-1 { background-position: 100.000% 50.0000%; background-size: 400% 300%; }
+        &.pos-0-2 { background-position: 0.00000% 100.000%; background-size: 400% 300%; }
+        &.pos-1-2 { background-position: 33.3333% 100.000%; background-size: 400% 300%; }
+        &.pos-2-2 { background-position: 66.6666% 100.000%; background-size: 400% 300%; }
+        &.pos-3-2 { background-position: 100.000% 100.000%; background-size: 400% 300%; }
+    }
+    &.size-4-4 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 400% 400%; }
+        &.pos-1-0 { background-position: 33.3333% 0.00000%; background-size: 400% 400%; }
+        &.pos-2-0 { background-position: 66.6666% 0.00000%; background-size: 400% 400%; }
+        &.pos-3-0 { background-position: 100.000% 0.00000%; background-size: 400% 400%; }
+        &.pos-0-1 { background-position: 0.00000% 33.3333%; background-size: 400% 400%; }
+        &.pos-1-1 { background-position: 33.3333% 33.3333%; background-size: 400% 400%; }
+        &.pos-2-1 { background-position: 66.6666% 33.3333%; background-size: 400% 400%; }
+        &.pos-3-1 { background-position: 100.000% 33.3333%; background-size: 400% 400%; }
+        &.pos-0-2 { background-position: 0.00000% 66.6666%; background-size: 400% 400%; }
+        &.pos-1-2 { background-position: 33.3333% 66.6666%; background-size: 400% 400%; }
+        &.pos-2-2 { background-position: 66.6666% 66.6666%; background-size: 400% 400%; }
+        &.pos-3-2 { background-position: 100.000% 66.6666%; background-size: 400% 400%; }
+        &.pos-0-3 { background-position: 0.00000% 100.000%; background-size: 400% 400%; }
+        &.pos-1-3 { background-position: 33.3333% 100.000%; background-size: 400% 400%; }
+        &.pos-2-3 { background-position: 66.6666% 100.000%; background-size: 400% 400%; }
+        &.pos-3-3 { background-position: 100.000% 100.000%; background-size: 400% 400%; }
+    }
+    &.size-6-3 {
+        &.pos-0-0 { background-position: 0.00000% 0.00000%; background-size: 600% 300%; }
+        &.pos-1-0 { background-position: 20.0000% 0.00000%; background-size: 600% 300%; }
+        &.pos-2-0 { background-position: 40.0000% 0.00000%; background-size: 600% 300%; }
+        &.pos-3-0 { background-position: 60.0000% 0.00000%; background-size: 600% 300%; }
+        &.pos-4-0 { background-position: 80.0000% 0.00000%; background-size: 600% 300%; }
+        &.pos-5-0 { background-position: 100.000% 0.00000%; background-size: 600% 300%; }
+        &.pos-0-1 { background-position: 0.00000% 50.0000%; background-size: 600% 300%; }
+        &.pos-1-1 { background-position: 20.0000% 50.0000%; background-size: 600% 300%; }
+        &.pos-2-1 { background-position: 40.0000% 50.0000%; background-size: 600% 300%; }
+        &.pos-3-1 { background-position: 60.0000% 50.0000%; background-size: 600% 300%; }
+        &.pos-4-1 { background-position: 80.0000% 50.0000%; background-size: 600% 300%; }
+        &.pos-5-1 { background-position: 100.000% 50.0000%; background-size: 600% 300%; }
+        &.pos-0-2 { background-position: 0.00000% 100.000%; background-size: 600% 300%; }
+        &.pos-1-2 { background-position: 20.0000% 100.000%; background-size: 600% 300%; }
+        &.pos-2-2 { background-position: 40.0000% 100.000%; background-size: 600% 300%; }
+        &.pos-3-2 { background-position: 60.0000% 100.000%; background-size: 600% 300%; }
+        &.pos-4-2 { background-position: 80.0000% 100.000%; background-size: 600% 300%; }
+        &.pos-5-2 { background-position: 100.000% 100.000%; background-size: 600% 300%; }
+    }
 }
 
+
 .restore-item {
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    margin: -5px;
 }
 
 .mineSquare {
     height: 0px;
     width:4% !important;
     margin: 0px !important;
-    padding:0px !important;
+    padding: 0px !important;
     padding-top:4% !important;
     text-align: center;
     max-width: 4% !important;
     background-size: contain;
-    img {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-    }
-}
-.mineSquare:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.rock1:hover:after,
-.rock2:hover:after,
-.rock3:hover:after,
-.rock4:hover:after,
-.rock5:hover:after,
-.hammerSelected.mineSquare:hover:after
-{
-    border: 1px solid red;
-}
-
-img.hammerSelected.mineReward:hover {
-    outline: 1px solid red;
-    z-index: 1;
 }
 
 .HammerSelected {
@@ -93,4 +224,46 @@ img.hammerSelected.mineReward:hover {
 
 .ChiselSelected {
     cursor: url('../assets/images/underground/chissel.png'), auto;
+            
+    &.mineSquare:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        pointer-events: none;
+    }
+
+    &.rock1:hover:after,
+    &.rock2:hover:after,
+    &.rock3:hover:after,
+    &.rock4:hover:after,
+    &.rock5:hover:after {
+        width: 100%;
+        height: 100%;
+        border: 1px solid red;
+    }
+}
+
+#mineBody {
+    .row:not(:first-child):not(:last-child) {
+        .HammerSelected:not(:first-child):not(:last-child) {
+
+            &.mineSquare:after {
+                content: "";
+                position: absolute;
+                top: -100%;
+                left: -100%;
+                z-index: 100;
+                pointer-events: none;
+            }
+
+            &.mineSquare:hover:after
+            {
+                width: 300%;
+                height: 300%;
+                border: 1px solid red;
+            }
+        }
+    }
 }
