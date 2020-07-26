@@ -6,9 +6,10 @@ class BattleFrontierMilestones {
         {item: 'Greatball', amount: 50, stage: 20},
         {item: 'Ultraball', amount: 50, stage: 30},
         {item: 'Masterball', amount: 1, stage: 50},
-        {item: 'Masterball', amount: 1, stage: 100},
-        {item: 'Eevee', amount: 1, stage: 150},
-        {item: 'Porygon', amount: 1, stage: 200},
+        {item: 'Masterball', amount: 2, stage: 100},
+        {item: 'Masterball', amount: 4, stage: 150},
+        {item: 'Masterball', amount: 8, stage: 200},
+        {item: 'Apple\'s blood, sweat and tears', amount: 1, stage: 69420666}, // placeholder
     ];
 
     public static nextMileStone() {
