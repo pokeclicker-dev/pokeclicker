@@ -566,7 +566,7 @@ namespace GameConstants {
     export enum BattleItemType {
         'xAttack' = 'xAttack',
         'xClick' = 'xClick',
-        'xExp' = 'xExp',
+        'Lucky_egg' = 'Lucky_egg',
         'Token_collector' = 'Token_collector',
         'Item_magnet' = 'Item_magnet',
         'Lucky_incense' = 'Lucky_incense'
@@ -640,11 +640,11 @@ namespace GameConstants {
 
     //Used for image name
     export const PokemonToFossil = {
-        'Omanyte': 'helix',
-        'Kabuto': 'dome',
-        'Aerodactyl': 'amber',
-        'Lileep': 'root',
-        'Anorith': 'claw',
+        'Omanyte': 'Helix Fossil',
+        'Kabuto': 'Dome Fossil',
+        'Aerodactyl': 'Old Amber',
+        'Lileep': 'Root Fossil',
+        'Anorith': 'Claw Fossil',
 
     };
 
