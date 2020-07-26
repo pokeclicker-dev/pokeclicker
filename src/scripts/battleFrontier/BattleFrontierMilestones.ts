@@ -60,13 +60,7 @@ class BattleFrontierMilestones {
             return 0;
         }
     }
-    /*
-    public static gainStuff() {
-        const milestoneAmount = Number(this.nextMileStoneRewardAmount());
-        const milestoneReward = this.nextMileStoneRewardItem();
-        ItemList[milestoneReward].gain(milestoneAmount);
-    }
-    */
+
     public static gainItemForStage(cStage: number) {
         const reward = this.nextMileStone();
         const mStage = this.milestoneRewards.find(r => r.stage == cStage);
