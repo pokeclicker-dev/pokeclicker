@@ -690,10 +690,10 @@ namespace GameConstants {
         'Fortree City',
         'Mossdeep City',
         'Sootopolis City',
-        'Elite Sidney',
-        'Elite Phoebe',
-        'Elite Glacia',
-        'Elite Drake',
+        'Hoenn Elite Sidney',
+        'Hoenn Elite Phoebe',
+        'Hoenn Elite Glacia',
+        'Hoenn Elite Drake',
         'Champion Wallace',
     ];
 
@@ -768,11 +768,11 @@ namespace GameConstants {
         "Weather Institute",
         "Safari Zone",
         "Mirage Island",
-        "Battle Tower",
+        "Battle Tower", // May remove later, as this is a part of the frontier
         "Trainer Hill",
         "Abandoned Ship",
         "Battle Maison",
-        "Battle Resort",
+        "Battle Resort", // May remove later, as this is the ORAS remake of the frontier
         "Mirage Spots",
         */
     ];
