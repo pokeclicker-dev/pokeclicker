@@ -658,10 +658,10 @@ namespace GameConstants {
         'Fuchsia City',
         'Cinnabar Island',
         'Viridian City',
-        'Kanto Elite Lorelei',
-        'Kanto Elite Bruno',
-        'Kanto Elite Agatha',
-        'Kanto Elite Lance',
+        'Elite Lorelei',
+        'Elite Bruno',
+        'Elite Agatha',
+        'Elite Lance',
         'Champion Blue',
     ];
 
@@ -674,10 +674,10 @@ namespace GameConstants {
         'Olivine City',
         'Mahogany Town',
         'Blackthorn City',
-        'Johto Elite Will',
-        'Johto Elite Koga',
-        'Johto Elite Bruno',
-        'Johto Elite Karen',
+        'Elite Will',
+        'Elite Koga',
+        'Elite Bruno2',
+        'Elite Karen',
         'Champion Lance',
     ];
 
