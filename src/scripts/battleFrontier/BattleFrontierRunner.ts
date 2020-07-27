@@ -49,9 +49,9 @@ class BattleFrontierRunner {
         // Current stage - 1 as the player didn't beat the current stage
         const stageBeaten = this.stage() - 1;
         // Give Battle Points and Money based on how far the user got
-        const battlePointsMultiplier = Math.max(stageBeaten / 100, 1);
-        const battlePointsEarned = Math.round(stageBeaten * battlePointsMultiplier);
-        const moneyEarned = stageBeaten * 100;
+        const battleMultiplier = Math.max(stageBeaten / 100, 1);
+        const battlePointsEarned = Math.round(stageBeaten * battleMultiplier);
+        const moneyEarned = stageBeaten * 100 * battleMultiplier;
 
         Notifier.notify({ title: 'Battle Frontier', message: `You managed to beat stage ${stageBeaten}.<br/>You received ${battlePointsEarned} BP`, type: GameConstants.NotificationOption.success, timeout: 5 * GameConstants.MINUTE });
 
