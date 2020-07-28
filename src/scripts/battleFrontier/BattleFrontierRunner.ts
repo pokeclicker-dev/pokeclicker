@@ -42,6 +42,7 @@ class BattleFrontierRunner {
         }
         // Move on to the next stage
         GameHelper.incrementObservable(this.stage);
+        GameHelper.incrementObservable(App.game.statistics.battleFrontierTotalStagesCompleted);
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
         BattleFrontierRunner.timeLeftPercentage(100);
         
