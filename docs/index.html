@@ -556,8 +556,7 @@
                                      App.game.gameState === GameConstants.GameState.paused ||
                                      App.game.gameState === GameConstants.GameState.town ||
                                      App.game.gameState === GameConstants.GameState.shop ||
-                                     App.game.gameState === GameConstants.GameState.gym ||
-                                     App.game.gameState == GameConstants.GameState.battleFrontier)">
+                                     App.game.gameState === GameConstants.GameState.gym)">
                     <table width="100%">
                         <tr>
                             <td width="33.33%">
@@ -583,12 +582,12 @@
                 </div>
 
                 <!--RouteBattleView-->
-                <!--Use the base battle layout for fighting, dungeons and battle frontier.-->
+                <!--Use the base battle layout for fighting and dungeons.-->
 
                 <div class="battle-view card-body p-0 justify-content-center no-gutters no-select"
-                    data-bind="if: (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.dungeon || App.game.gameState === GameConstants.GameState.paused || App.game.gameState === GameConstants.GameState.town || App.game.gameState === GameConstants.GameState.gym || App.game.gameState == GameConstants.GameState.battleFrontier),
+                    data-bind="if: (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.dungeon || App.game.gameState === GameConstants.GameState.paused || App.game.gameState === GameConstants.GameState.town || App.game.gameState === GameConstants.GameState.gym),
                         class: MapHelper.calculateBattleCssClass()">
-
+                    
                     <!-- Route Battles -->
                     <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState === GameConstants.GameState.fighting">
                         <div class="col no-gutters clickable" data-bind="click: function() {Battle.clickAttack()}" style="height: 220px; display: block;">
@@ -735,7 +734,7 @@
                             <!-- /ko -->
                         </div>
                     </div>
-
+                    
                     <!-- Gym Battles -->
                     
 <div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState === GameConstants.GameState.gym">
@@ -794,49 +793,6 @@
     </div>
 </div>
 
-
-                    <!-- Battle Frontier Battles -->
-                    
-<div class="row justify-content-center no-gutters" data-bind="if: App.game.gameState == GameConstants.GameState.battleFrontier">
-    <div class="col no-gutters clickable" data-bind="if: BattleFrontierBattle.enemyPokemon" style="height: 220px; display: block;">
-        <h2 class="pageItemTitle" style="display: block;">
-
-            <knockout class="left">
-                Stage <knockout data-bind="text: BattleFrontierRunner.stage">0</knockout>
-            </knockout>
-
-            <knockout>
-                <knockout data-bind="text: BattleFrontierBattle.enemyPokemon().name">Pokemon name</knockout>
-            </knockout>
-
-            <knockout class="right" data-bind="html: BattleFrontierRunner.pokemonLeftImages">
-            </knockout>
-
-            <div class="progress timer">
-                <div class="progress-bar bg-danger" role="progressbar"
-                        data-bind="attr:{ style: 'width:' + BattleFrontierRunner.timeLeftPercentage() + '%' },
-                        css: { 'bg-danger': BattleFrontierRunner.timeLeftSeconds() < 20, 'bg-primary': BattleFrontierRunner.timeLeftSeconds() >= 20 }"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <span data-bind="text: BattleFrontierRunner.timeLeftSeconds() + 's'" style="font-size: 12px;"></span>
-                </div>
-            </div>
-
-        </h2>
-
-        <div>
-            <img class="enemy"
-                    data-bind="attr:{ src: PokemonHelper.getImage(BattleFrontierBattle.enemyPokemon(), BattleFrontierBattle.enemyPokemon().shiny) }"
-                    src=""/>
-        </div>
-        <div class="progress hitpoints" style="height: 20px;">
-            <div class="progress-bar bg-danger" role="progressbar"
-                    data-bind="attr:{ style: 'width:' + BattleFrontierBattle.enemyPokemon().healthPercentage() + '%' }"
-                    aria-valuemin="0" aria-valuemax="100">
-                    <span data-bind="text: BattleFrontierBattle.enemyPokemon().health() + ' / ' + BattleFrontierBattle.enemyPokemon().maxHealth()" style="font-size: 12px;"></span>
-            </div>
-        </div>
-    </div>
-</div>
 
                     <!--TownView-->
                     <knockout data-bind="if: App.game.gameState === GameConstants.GameState.town">
@@ -906,11 +862,6 @@
                        data-bind="visible: player.town().dungeon() && (!(player.town() instanceof DungeonTown) && player.town() instanceof Town), if: player.town().dungeon()">
                    <span data-bind="text: player.town().dungeon().name()"></span>
                </button>
-               <button class="btn btn-secondary"
-                       onclick="BattleFrontier.enter()"
-                       data-bind="visible: player.town().name() == 'Battle Frontier'">
-                   <span>Enter Battle Frontier</span>
-               </button>
            </div>
        </div>
 
@@ -968,33 +919,6 @@
                 </div>
             </div>
             <!-- /ko -->
-
-            <!-- ko if: App.game.gameState === GameConstants.GameState.battleFrontier -->
-            <div id="battleFrontierInformation" class="card sortable-disabled border-secondary mb-3 battle-frontier no-select">
-                <div class="card-header p-0">
-                    <span>Battle Frontier (WIP)</span>
-                </div>
-                <div class="card-body text-center" style="min-height: 220px;">
-                    <knockout data-bind="ifnot: BattleFrontierRunner.started">
-                        <h5>Welcome to the Battle Frontier!</h5>
-                        <p>
-                            Here you will be battling through many stages to earn Battle Points.<br/>
-                            But be aware, if you leave early, You will not earn anything.<br/>
-                            When you are ready, click Start!
-                        </p>
-                        <a class="btn btn-block btn-success text-light" onclick="BattleFrontierRunner.start()">Start</a>
-                        <a class="btn btn-block btn-danger text-light" onclick="BattleFrontier.leave()">Leave</a>
-                        <i>NOTE: This is still a work in progress, no rewards will actually be given out yet.</i>
-                    </knockout>
-                    <knockout data-bind="if: BattleFrontierRunner.started">
-                        <p>Next milestone reward at Stage <strong data-bind="text: BattleFrontierMilestones.nextMileStoneStage()"></strong>!</p>
-                        <p data-bind="text: BattleFrontierMilestones.nextMileStoneRewardDescription()"></p>
-                        <a class="btn btn-block btn-danger text-light" onclick="BattleFrontierRunner.battleQuit()">Quit Battle</a>
-                    </knockout>
-                </div>
-            </div>
-            <!-- /ko -->
-
             <div id="middle-sort-column">
                 <div id="townMap" class="card sortable border-secondary mb-3" data-bind="visible: App.game.keyItems.hasKeyItem(KeyItems.KeyItem.Town_map) && (App.game.gameState === GameConstants.GameState.fighting || App.game.gameState === GameConstants.GameState.gym || App.game.gameState === GameConstants.GameState.town||
                     App.game.gameState === GameConstants.GameState.shop || App.game.gameState === GameConstants.GameState.farm || App.game.gameState === GameConstants.GameState.paused)">
@@ -4417,41 +4341,6 @@
         fill="url(#mx-gradient-f8cecc-1-ea583b-1-s-0)" stroke="#b85450"
         stroke-miterlimit="10" stroke-width="1.4">
 </path>
-        
-     <!--Battle Frontier-->
-    
-
-<path d="M 507 336 
-         l 8.29 -8.29 
-         h  11.42  
-         l 8.29 8.29 
-         v  11.42  
-         l -8.29 8.29 
-         h  -11.42  
-         l -8.29 -8.29 
-         Z"
-         
-      fill="#ffffff" stroke="#000000" stroke-miterlimit="10" stroke-width="1.4">
-</path>
-<path class="city" data-town="Battle Frontier"
-        data-bind="
-        click:function(){MapHelper.moveToTown('Battle Frontier')},
-        attr: { class: MapHelper.calculateTownCssClass('Battle Frontier') },
-        "
-
-        d="M 509.8 337.2 
-           l 6.63 -6.63 
-           h  9.14  
-           l 6.63 6.63 
-           v  9.14  
-           l -6.63 6.63 
-           h  -9.14 
-           l -6.63 -6.63 
-           Z"
-
-        fill="url(#mx-gradient-f8cecc-1-ea583b-1-s-0)" stroke="#b85450"
-        stroke-miterlimit="10" stroke-width="1.4">
-</path>
 
 
 
@@ -4948,10 +4837,6 @@
                     <img title="Quest points" src="assets/images/currency/questPoint.png" style="width: 32px;">
                     <span id="playerMoneyQuest" data-bind="text: GameConstants.formatNumber(App.game.wallet.currencies[GameConstants.Currency.questPoint])">0</span>
                 </h4>
-                <h4>
-                    <img title="Battle points" src="assets/images/currency/battlePoint.png" style="width: 32px;">
-                    <span id="playerMoneyBattle" data-bind="text: GameConstants.formatNumber(App.game.wallet.currencies[GameConstants.Currency.battlePoint])">0</span>
-                </h4>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -5273,57 +5158,21 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
                 </button>
             </div>
             <div class="modal-body p-0">
-                <ul class="nav nav-tabs nav-fill">
-                    <li class="nav-item"><a class="nav-link active" href="#settings-display" data-toggle="tab">Display</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#settings-sound" data-toggle="tab">Sound</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#settings-notifications" data-toggle="tab">Notifications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#settings-other" data-toggle="tab">Other</a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div class="tab-pane active" id="settings-display">
-                        <table class="table table-striped table-hover m-0">
-                            <!-- <thead>
-                              <tr>
-                                <th>Setting</th>
-                                <th>Option</th>
-                              </tr>
-                            </thead> -->
-                            <tbody>
-                              <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('theme')}"></tr>
-                              <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('breedingDisplay')}"></tr>
-                              <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('showCurrencyGainedAnimation')}"></tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="tab-pane" id="settings-sound">
-                        <table class="table table-striped table-hover m-0">
-                            <tbody>
-                              <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('sound.Achievement')}"></tr>
-                              <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('sound.Ready to Hatch')}"></tr>
-                              <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('sound.New Catch')}"></tr>
-                              <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('sound.Shiny')}"></tr>
-                            </tbody>
-                        </table>
-                    </div> 
-
-                    <div class="tab-pane" id="settings-notifications">
-                        <table class="table table-striped table-hover m-0">
-                            <tbody>
-                                <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableBerryNotifications')}"></tr>
-                            </tbody>
-                        </table>
-                    </div> 
-
-                    <div class="tab-pane" id="settings-other">
-                        <table class="table table-striped table-hover m-0">
-                            <tbody>
-                                <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableAutoDownloadBackupSaveOnUpdate')}"></tr>
-                            </tbody>
-                        </table>
-                    </div> 
-                </div>
+                <table class="table table-striped table-hover m-0">
+                    <thead>
+                      <tr>
+                        <th>Setting</th>
+                        <th>Option</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('theme')}"></tr>
+                      <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('breedingDisplay')}"></tr>
+                      <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('showCurrencyGainedAnimation')}"></tr>
+                      <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableBerryNotifications')}"></tr>
+                      <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableAutoDownloadBackupSaveOnUpdate')}"></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -5340,15 +5189,11 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
 </script>
 
 <script type="text/html" id="BooleanSettingTemplate">
+    <td data-bind="text: $data.displayName">setting name</td>
     <td>
-        <label data-bind="attr: { for: 'checkbox-' + $data.name }, text: $data.displayName">
-            setting name
-        </label>
-    </td>
-    <td>
-        <input class="clickable" type="checkbox"
-            data-bind="checked: Settings.getSetting($data.name).observableValue(), attr: {name, id: 'checkbox-' + $data.name }"
-            onchange="Settings.setSettingByName(this.name, this.checked)"/>
+      <input class="clickable" type="checkbox"
+           data-bind="checked: Settings.getSetting($data.name).observableValue(), attr: {name}"
+           onchange="Settings.setSettingByName(this.name, this.checked)"/>
     </td>
 </script>
 
