@@ -13,7 +13,7 @@ class BattleFrontierBattle extends Battle {
      */
     public static defeatPokemon() {
         App.game.party.gainExp(this.enemyPokemon().exp, BattleFrontierRunner.stage(), false);
-        // TODO: Help with breeding?
+        // Basically, the reason why it's kanto is because of the reduction for Hoenn and above
         App.game.breeding.progressEggsBattle(BattleFrontierRunner.stage(), GameConstants.Region.kanto);
         // TODO: Still gain shards?
         this.gainShardsAfterBattle();
