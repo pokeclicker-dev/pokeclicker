@@ -53,10 +53,12 @@ SpecialEvents.newEvent('Mewtwo strikes back!', 'Encounter Armored Mewtwo for a l
     // Start
     new Date(2020, 7, 3, 2), () => {
         dungeonList['Cerulean Cave'].bossList.push(new DungeonBossPokemon('Armored Mewtwo', 1000000, 80));
+        GameConstants.RoamingPokemon[GameConstants.Region.kanto].push(...['Bulbasaur (clone)', 'Charmander (clone)', 'Squirtle (clone)']);
     },
     // End
     new Date(2020, 7, 9, 2), () => {
         dungeonList['Cerulean Cave'].bossList = dungeonList['Cerulean Cave'].bossList.filter(boss => boss.name != 'Armored Mewtwo');
+        GameConstants.RoamingPokemon[GameConstants.Region.kanto] = GameConstants.RoamingPokemon[GameConstants.Region.kanto].filter(p => !['Bulbasaur (clone)', 'Charmander (clone)', 'Squirtle (clone)'].includes(p));
     }
 );
 
@@ -65,10 +67,12 @@ SpecialEvents.newEvent('Mewtwo strikes back!', 'Encounter Armored Mewtwo for a l
     // Start
     new Date(new Date().getFullYear(), 6, 18, 1), () => {
         dungeonList['Cerulean Cave'].bossList.push(new DungeonBossPokemon('Armored Mewtwo', 1000000, 80));
+        GameConstants.RoamingPokemon[GameConstants.Region.kanto].push(...['Bulbasaur (clone)', 'Charmander (clone)', 'Squirtle (clone)']);
     },
     // End
     new Date(new Date().getFullYear(), 6, 24, 23), () => {
         dungeonList['Cerulean Cave'].bossList = dungeonList['Cerulean Cave'].bossList.filter(boss => boss.name != 'Armored Mewtwo');
+        GameConstants.RoamingPokemon[GameConstants.Region.kanto] = GameConstants.RoamingPokemon[GameConstants.Region.kanto].filter(p => !['Bulbasaur (clone)', 'Charmander (clone)', 'Squirtle (clone)'].includes(p));
     }
 );
 SpecialEvents.newEvent('Halloween!', 'Encounter Spooky Pokemon for a limited time around Kanto, Johto and Hoenn.',
@@ -80,13 +84,13 @@ SpecialEvents.newEvent('Halloween!', 'Encounter Spooky Pokemon for a limited tim
             SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.kanto][route].land.push('Gastly') : null;
         });
         Object.keys(pokemonsPerRoute[GameConstants.Region.johto]).forEach(route => {
-            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.kanto][route].land.push('Spooky Togepi') : null;
-            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.kanto][route].land.push('Misdreavus') : null;
+            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.johto][route].land.push('Spooky Togepi') : null;
+            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.johto][route].land.push('Misdreavus') : null;
         });
         Object.keys(pokemonsPerRoute[GameConstants.Region.hoenn]).forEach(route => {
-            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.kanto][route].land.push('Pikachu (Gengar)') : null;
-            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.kanto][route].land.push('Shuppet') : null;
-            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.kanto][route].land.push('Duskull') : null;
+            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.hoenn][route].land.push('Pikachu (Gengar)') : null;
+            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.hoenn][route].land.push('Shuppet') : null;
+            SeededRand.boolean() ? pokemonsPerRoute[GameConstants.Region.hoenn][route].land.push('Duskull') : null;
         });
     },
     // End

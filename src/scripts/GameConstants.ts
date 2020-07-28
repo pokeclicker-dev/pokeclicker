@@ -1,4 +1,5 @@
 ///<reference path="./badgeCase/BadgeCase.ts" />
+///<reference path="utilities/Sound.ts"/>
 
 /**
  * Contains all game constants for easy access.
@@ -19,7 +20,7 @@ namespace GameConstants {
     export const GYM_TICK = 10;
     export const ACHIEVEMENT_TICK = 1000;
     export const MIN_LOAD_TIME = 500; // 0.5 Seconds
-    export const MAX_LOAD_TIME = 15000; // 15 Seconds
+    export const MAX_LOAD_TIME = 20000; // 20 Seconds
 
     export const MAX_AVAILABLE_REGION = 2; // Hoenn
 
@@ -89,6 +90,12 @@ namespace GameConstants {
         dark,
         light,
     }
+    export const NotificationSound = {
+        ready_to_hatch: new Sound('Ready to Hatch', 'assets/sounds/ready_to_hatch.mp3'),
+        shiny_long: new Sound('Shiny', 'assets/sounds/shiny_long.mp3'),
+        new_catch: new Sound('New Catch', 'assets/sounds/new_catch.mp3'),
+        achievement: new Sound('Achievement', 'assets/sounds/achievement.mp3'),
+    };
 
     export enum DungeonTile {
         empty,
