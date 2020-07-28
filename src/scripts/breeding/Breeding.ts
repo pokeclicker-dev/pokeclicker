@@ -12,7 +12,7 @@ class Breeding implements Feature {
     private _eggList: Array<KnockoutObservable<Egg>>;
     private _eggSlots: KnockoutObservable<number>;
 
-    private hatchList: { [name: number]: string[][] } = {};
+    public hatchList: { [name: number]: string[][] } = {};
 
     constructor() {
         this._eggList = this.defaults.eggList;
@@ -148,14 +148,14 @@ class Breeding implements Feature {
         }
     }
 
-    public gainPokemonEgg(pokemon: PartyPokemon): void {
+    public gainPokemonEgg(pokemon: PartyPokemon): boolean {
         if (!this.hasFreeEggSlot()) {
             Notifier.notify({ message: "You don't have any free egg slots", type: GameConstants.NotificationOption.warning });
-            return;
+            return false;
         }
         const egg = this.createEgg(pokemon.name);
         pokemon.breeding = true;
-        this.gainEgg(egg);
+        return this.gainEgg(egg);
     }
 
     public hatchPokemonEgg(index: number): void {

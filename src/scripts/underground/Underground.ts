@@ -39,8 +39,6 @@ class Underground {
 
     public static showMine() {
         let html = '';
-        const itemsFound = "Mine.itemsFound() + '/' + Mine.itemsBuried + ' items found'";
-        html += '</div>';
         for (let i = 0; i < Mine.grid.length; i++) {
             html += "<div class='row'>";
             for (let j = 0; j < Mine.grid[0].length; j++) {
@@ -48,19 +46,13 @@ class Underground {
             }
             html += '</div>';
         }
-
-        html += `<div class='row'>
-                  <button onClick='Mine.toolSelected(Mine.Tool.Hammer)' class='btn btn-danger'>Hammer (${Underground.HAMMER_ENERGY} energy)</button>
-                  <button onClick='Mine.toolSelected(Mine.Tool.Chisel)' class='btn btn-info'>Chisel (${Underground.CHISEL_ENERGY} energy)</button>
-                  <h3 data-bind='text: Mine.itemsFound() + "/" + Mine.itemsBuried + " items found"'></h3>
-                </div>`;
         $('#mineBody').html(html);
     }
 
     private static mineSquare(amount: number, i: number, j: number): string {
         if (Mine.rewardGrid[i][j] != 0 && Mine.grid[i][j]() === 0) {
             Mine.rewardGrid[i][j].revealed = 1;
-            return `<img src='assets/images/underground/${Mine.rewardGrid[i][j].value}/${Mine.rewardGrid[i][j].value}-${Mine.rewardGrid[i][j].y}-${Mine.rewardGrid[i][j].x}.png' data-bind='css: Underground.rewardCssClass' data-i='${i}' data-j='${j}'>`;
+            return `<div data-bind='css: Underground.calculateCssClass(${i},${j})()' data-i='${i}' data-j='${j}'><div class="mineReward size-${Mine.rewardGrid[i][j].sizeX}-${Mine.rewardGrid[i][j].sizeY} pos-${Mine.rewardGrid[i][j].x}-${Mine.rewardGrid[i][j].y}" style="background-image: url('assets/images/underground/${Mine.rewardGrid[i][j].value}.png');"></div></div>`;
         } else {
             return `<div data-bind='css: Underground.calculateCssClass(${i},${j})()' data-i='${i}' data-j='${j}'></div>`;
         }
@@ -75,8 +67,7 @@ class Underground {
                 if (Mine.grid[i][j]() == 0) {
                     if (Mine.rewardGrid[i][j] != 0 && Mine.rewardGrid[i][j].revealed != 1) {
                         Mine.rewardGrid[i][j].revealed = 1;
-                        $(`div[data-i=${i}][data-j=${j}]`).replaceWith(`<img src='assets/images/underground/${Mine.rewardGrid[i][j].value}/${Mine.rewardGrid[i][j].value}-${Mine.rewardGrid[i][j].y}-${Mine.rewardGrid[i][j].x}.png' data-bind='css: Underground.rewardCssClass' data-i='${i}' data-j='${j}'>`);
-                        ko.applyBindings(null, $(`img[data-i=${i}][data-j=${j}]`)[0]);
+                        $(`div[data-i=${i}][data-j=${j}]`).html(`<div class="mineReward size-${Mine.rewardGrid[i][j].sizeX}-${Mine.rewardGrid[i][j].sizeY} pos-${Mine.rewardGrid[i][j].x}-${Mine.rewardGrid[i][j].y}" style="background-image: url('assets/images/underground/${Mine.rewardGrid[i][j].value}.png');"></div>`);
                         Mine.checkItemsRevealed();
                     }
                 }
@@ -179,10 +170,9 @@ class Underground {
 
     public static openUndergroundModal() {
         if (this.canAccess()) {
-            App.game.gameState = GameConstants.GameState.paused;
             $('#mineModal').modal('show');
         } else {
-            Notifier.notify({ message: 'You do not have access to that location', type: GameConstants.NotificationOption.warning });
+            Notifier.notify({ message: 'You need the Explorer Kit to access this location.<br/><i>Check out the shop at Cinnabar Island</i>', type: GameConstants.NotificationOption.warning });
         }
     }
 
@@ -237,14 +227,6 @@ class Underground {
 $(document).ready(function () {
     $('body').on('click', '.mineSquare', function () {
         Mine.click(parseInt(this.dataset.i), parseInt(this.dataset.j));
-    });
-
-    $('#mineModal').on('hidden.bs.modal', function () {
-        if (player.route() == 11) {
-            App.game.gameState = GameConstants.GameState.fighting;
-        } else {
-            MapHelper.moveToRoute(11, GameConstants.Region.kanto);
-        }
     });
 });
 

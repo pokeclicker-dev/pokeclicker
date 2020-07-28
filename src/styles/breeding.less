@@ -89,8 +89,8 @@
 
 @eggAccentColors:
   "Bug" #5ab690,
-  "Dark" #040404,
-  "Dragon" #000000,
+  "Dark" #111,
+  "Dragon" #111,
   "Electric" #ccbb00,
   "Fairy" #a1382b,
   "Fighting" #b94a00,
@@ -110,10 +110,14 @@
 @import "for";
 
 .egg {
+  width: 60%;
+}
+
+.egg {
   .for(@eggMainColors); .-each(@value) {
     @type: extract(@value, 1);
     @color: extract(@value, 2);
-    &[data-type1='@{type}'] .egg-outline {
+    &[data-type1='@{type}'] .egg-main {
       fill: @color;
     }
   }

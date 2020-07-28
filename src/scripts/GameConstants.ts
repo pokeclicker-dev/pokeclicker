@@ -1,4 +1,5 @@
 ///<reference path="./badgeCase/BadgeCase.ts" />
+///<reference path="utilities/Sound.ts"/>
 
 /**
  * Contains all game constants for easy access.
@@ -19,7 +20,7 @@ namespace GameConstants {
     export const GYM_TICK = 10;
     export const ACHIEVEMENT_TICK = 1000;
     export const MIN_LOAD_TIME = 500; // 0.5 Seconds
-    export const MAX_LOAD_TIME = 15000; // 15 Seconds
+    export const MAX_LOAD_TIME = 20000; // 20 Seconds
 
     export const MAX_AVAILABLE_REGION = 2; // Hoenn
 
@@ -89,6 +90,12 @@ namespace GameConstants {
         dark,
         light,
     }
+    export const NotificationSound = {
+        ready_to_hatch: new Sound('Ready to Hatch', 'assets/sounds/ready_to_hatch.mp3'),
+        shiny_long: new Sound('Shiny', 'assets/sounds/shiny_long.mp3'),
+        new_catch: new Sound('New Catch', 'assets/sounds/new_catch.mp3'),
+        achievement: new Sound('Achievement', 'assets/sounds/achievement.mp3'),
+    };
 
     export enum DungeonTile {
         empty,
@@ -470,51 +477,51 @@ namespace GameConstants {
     };
 
     export const WaterAreas = {
-        0: new Set([19, 20, 21]),
+        0: new Set(['Cerulean City', 19, 20, 21]),
         1: new Set([40, 41, 'Slowpoke Well']),
         2: new Set([105, 106, 107, 108, 109, 122, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 'Shoal Cave', 'Seafloor Cavern']),
     };
 
     export const IceAreas = {
         0: new Set(['Seafoam Islands']),
-        1: new Set(['Ice Path', 'Whirl Islands']),
-        2: new Set([]),
+        1: new Set(['Mahogany Town', 'Ice Path', 'Whirl Islands']),
+        2: new Set(['Sootopolis City']),
     };
 
     export const ForestAreas = {
-        0: new Set(['Viridian Forest']),
-        1: new Set(['Ilex Forest']),
+        0: new Set(['Fuchsia City', 'Viridian Forest']),
+        1: new Set(['Azalea Town', 'Ilex Forest']),
         2: new Set(['Petalburg Woods']),
     };
 
     export const CaveAreas = {
-        0: new Set(['Digletts Cave', 'Mt. Moon', 'Rock Tunnel', 'Victory Road']),
-        1: new Set(['Ruins of Alph', 'Union Cave', 'Mt Mortar', 'Dark Cave']),
-        2: new Set(['Rusturf Tunnel', 'Granite Cave', 'New Mauville', 'Meteor Falls', 'Victory Road Hoenn']),
+        0: new Set(['Pewter City', 'Digletts Cave', 'Mt. Moon', 'Rock Tunnel', 'Victory Road']),
+        1: new Set(['Cianwood City', 'Ruins of Alph', 'Union Cave', 'Mt Mortar', 'Dark Cave']),
+        2: new Set(['Rustboro City', 'Dewford Town', 'Rusturf Tunnel', 'Granite Cave', 'New Mauville', 'Meteor Falls', 'Victory Road Hoenn']),
     };
 
     export const GemCaveAreas = {
-        0: new Set(['Cerulean Cave']),
-        1: new Set(['Mt Silver']),
+        0: new Set(['Viridian City', 'Cerulean Cave']),
+        1: new Set(['Blackthorn City', 'Mt Silver']),
         2: new Set(['Cave of Origin', 'Sky Pillar']),
     };
 
     export const PowerPlantAreas = {
-        0: new Set(['Power Plant']),
+        0: new Set(['Vermillion City', 'Power Plant']),
         1: new Set(['Tin Tower']),
-        2: new Set([]),
+        2: new Set(['Mauville City']),
     };
 
     export const MansionAreas = {
-        0: new Set(['Pokemon Mansion']),
-        1: new Set(['Burned Tower']),
-        2: new Set(['Jagged Pass', 'Fiery Path', 'Mt. Chimney']),
+        0: new Set(['Cinnabar Island', 'Pokemon Mansion']),
+        1: new Set(['Olivine City', 'Burned Tower']),
+        2: new Set(['Lavaridge Town', 'Petalburg City', 'Jagged Pass', 'Fiery Path', 'Mt. Chimney']),
     };
 
     export const GraveyardAreas = {
-        0: new Set(['Pokemon Tower']),
-        1: new Set([]),
-        2: new Set(['Mt. Pyre']),
+        0: new Set(['Saffron City', 'Pokemon Tower']),
+        1: new Set(['Ecruteak City']),
+        2: new Set(['Mossdeep City', 'Mt. Pyre']),
     };
 
     export const routeDungeonRequirements = {
@@ -544,44 +551,6 @@ namespace GameConstants {
         'Squirtle' = 2,
     }
 
-    export const ItemPrice = {
-        // Money
-        'Pokeball': 100,
-        'Greatball': 500,
-        'Ultraball': 2000,
-        'Masterball': 2500,
-
-        'xAttack': 600,
-        'xClick': 400,
-        'xExp': 800,
-        'Token_collector': 1000,
-        'Item_magnet': 1500,
-        'Lucky_incense': 2000,
-
-        'SmallRestore': 20000,
-        'MediumRestore': 40000,
-        'LargeRestore': 100000,
-
-        'PokeBlock': Infinity,
-
-        'Protein': Infinity,
-        'RareCandy': Infinity,
-
-        // Quest points
-        'Eevee': 5000,
-        'Porygon': 2000,
-        'Jynx': 2500,
-        'Mr. Mime': 1500,
-        'Lickitung': 1000,
-        'Togepi': 2500,
-        'Beldum': 5000,
-
-        // TODO: Set prices for different kinds of eggs and stones
-        'Egg': 1000,
-        'EvolutionStone': 2500,
-
-    };
-
     export enum StoneType {
         'None' = -1,
         'Fire_stone',
@@ -601,7 +570,7 @@ namespace GameConstants {
     export enum BattleItemType {
         'xAttack' = 'xAttack',
         'xClick' = 'xClick',
-        'xExp' = 'xExp',
+        'Lucky_egg' = 'Lucky_egg',
         'Token_collector' = 'Token_collector',
         'Item_magnet' = 'Item_magnet',
         'Lucky_incense' = 'Lucky_incense'
@@ -675,11 +644,11 @@ namespace GameConstants {
 
     //Used for image name
     export const PokemonToFossil = {
-        'Omanyte': 'helix',
-        'Kabuto': 'dome',
-        'Aerodactyl': 'amber',
-        'Lileep': 'root',
-        'Anorith': 'claw',
+        'Omanyte': 'Helix Fossil',
+        'Kabuto': 'Dome Fossil',
+        'Aerodactyl': 'Old Amber',
+        'Lileep': 'Root Fossil',
+        'Anorith': 'Claw Fossil',
 
     };
 
@@ -822,5 +791,11 @@ namespace GameConstants {
         'Pallet Town',
         'New Bark Town',
         'Littleroot Town',
+    ];
+
+    export const DockTowns = [
+        'Vermillion City',
+        'Olivine City',
+        'Slateport City',
     ];
 }

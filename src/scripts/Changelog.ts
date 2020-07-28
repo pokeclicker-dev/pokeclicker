@@ -29,9 +29,56 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.4.16
+    new Changelog(changelogType.UPDATE, 'v0.4.16'),
+    new Changelog(changelogType.NEW, 'Added sounds for specific events'),
+    new Changelog(changelogType.NEW, 'Added more settings'),
+    new Changelog(changelogType.CHANGE, 'Updated settings menu'),
+
+    // v0.4.15
+    new Changelog(changelogType.UPDATE, 'v0.4.15'),
+    new Changelog(changelogType.NEW, 'Eggs now have multiple different styles'),
+    new Changelog(changelogType.CHANGE, 'xExp is now the Lucky Egg'),
+    new Changelog(changelogType.CHANGE, 'Updated Currency, Item, Berry, Egg and Fossil images'),
+    new Changelog(changelogType.CHANGE, 'Day Care is now unlocked once you defeat Route 5'),
+    new Changelog(changelogType.CHANGE, 'Fossils will now show in the Hatchery'),
+    new Changelog(changelogType.CHANGE, 'Update Farm layout for smaller displays'),
+    new Changelog(changelogType.CHANGE, 'Update Safari Zone cost'),
+    new Changelog(changelogType.CHANGE, 'Underground now shows the 3 x 3 area which will be mined when using the hammer'),
+    new Changelog(changelogType.FIXED, 'Underground total items should now be correct'),
+
+    // v0.4.14
+    new Changelog(changelogType.UPDATE, 'v0.4.14'),
+    new Changelog(changelogType.NEW, 'Added Dratini to Route 45'),
+    new Changelog(changelogType.NEW, 'Underground should now work better on smaller screens'),
+    new Changelog(changelogType.CHANGE, 'Enlarge buttons in Shortcut menu, Safari Zone'),
+    new Changelog(changelogType.CHANGE, 'Make Shop items fit better'),
+    new Changelog(changelogType.CHANGE, 'Breeding display takes up less space on smaller screens now'),
+    new Changelog(changelogType.CHANGE, 'Add confirmation when refreshing quest list'),
+    new Changelog(changelogType.FIXED, 'Update Oak items tooltip when upgraded'),
+    new Changelog(changelogType.FIXED, 'Auto refresh Daily Deals when upgrade purchased'),
+
+    // v0.4.13
+    new Changelog(changelogType.UPDATE, 'v0.4.13'),
+    new Changelog(changelogType.NEW, 'Added shortcut module'),
+    new Changelog(changelogType.NEW, 'Added Poké Mart to shortcuts module'),
+    new Changelog(changelogType.CHANGE, 'Updated Masterball pricing'),
+    new Changelog(changelogType.CHANGE, 'Allow the game to continue running while Day Care is open'),
+    new Changelog(changelogType.CHANGE, 'Allow the game to continue running while Underground is open'),
+    new Changelog(changelogType.CHANGE, 'Don\'t send the player back to Route 11 when leaving the Underground'),
+    new Changelog(changelogType.CHANGE, 'Allow the game to continue running while Farm is open'),
+    new Changelog(changelogType.CHANGE, 'Don\'t send the player back to Route 14 when leaving the Farm'),
+    new Changelog(changelogType.CHANGE, 'Added button to open Dock for cities located nearby'),
+    new Changelog(changelogType.CHANGE, 'Moved shiny icon further into the corner in the Day Care view, to make it easier to spot already shiny Pokémon'),
+    new Changelog(changelogType.CHANGE, 'Dungeon size scales depending on region'),
+
     // v0.4.12
     new Changelog(changelogType.UPDATE, 'v0.4.12'),
     new Changelog(changelogType.NEW, 'Modules can now be sorted/arranged any way you like, just drag and drop'),
+    new Changelog(changelogType.NEW, 'Added confirmation when quiting a quest'),
+    new Changelog(changelogType.CHANGE, 'Updated dungeon token cost in Hoenn dungeons'),
+    new Changelog(changelogType.CHANGE, 'Updated the gym fight view'),
+    new Changelog(changelogType.CHANGE, 'Updated some messages shown when you cannot access a location yet'),
     new Changelog(changelogType.FIXED, 'Some battle background images were not showing, they should now appear correctly'),
     new Changelog(changelogType.FIXED, 'Town Map will now be fully hidden when it is supposed to be'),
 

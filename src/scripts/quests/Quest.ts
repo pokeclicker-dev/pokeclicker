@@ -25,7 +25,7 @@ abstract class Quest {
         this.notified = false;
     }
 
-    endQuest() {
+    endQuest(shouldConfirm = false) {
         if (this.isCompleted() && !this.claimed()) {
             App.game.wallet.gainQuestPoints(this.pointsReward);
             this.claimed(true);
@@ -45,6 +45,9 @@ abstract class Quest {
                 QuestHelper.refreshQuests(true);
             }
         } else {
+            if (shouldConfirm && !confirm('Are you sure you want to quit this quest?!')) {
+                return;
+            }
             this.initial(null);
         }
         player.currentQuests(player.currentQuests().filter(x => x.index != this.index));

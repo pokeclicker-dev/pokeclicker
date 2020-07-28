@@ -3,7 +3,7 @@ class Mine {
     public static sizeY = 12;
     public static grid: Array<Array<KnockoutObservable<number>>>;
     public static rewardGrid: Array<Array<any>>;
-    public static itemsFound: KnockoutObservable<number>;
+    public static itemsFound: KnockoutObservable<number> = ko.observable(0);
     public static itemsBuried: number;
     public static rewardNumbers: Array<number>;
 
@@ -15,7 +15,6 @@ class Mine {
         const tmpGrid = [];
         const tmpRewardGrid = [];
         Mine.rewardNumbers = [];
-        Mine.itemsFound = ko.observable(0);
         Mine.itemsBuried = 0;
         for (let i = 0; i < this.sizeY; i++) {
             const row = [];
@@ -40,6 +39,7 @@ class Mine {
             }
         }
         Mine.loadingNewLayer = false;
+        Mine.itemsFound(0);
         Underground.showMine();
     }
 
@@ -82,6 +82,8 @@ class Mine {
             for (let j = 0; j < reward.space[i].length; j++) {
                 if (reward.space[i][j] !== 0) {
                     Mine.rewardGrid[i + y][j + x] = {
+                        sizeX: reward.space[i].length,
+                        sizeY: reward.space.length,
                         x: j,
                         y: i,
                         value: reward.space[i][j],
@@ -144,7 +146,7 @@ class Mine {
             if (Mine.checkItemRevealed(Mine.rewardNumbers[i])) {
                 Underground.gainMineItem(Mine.rewardNumbers[i]);
                 const itemName = Underground.getMineItemById(Mine.rewardNumbers[i]).name;
-                Notifier.notify({ message: `You found ${GameHelper.anOrA(itemName)} ${itemName}`, type: GameConstants.NotificationOption.success });
+                Notifier.notify({ message: `You found ${GameHelper.anOrA(itemName)} ${GameConstants.humanifyString(itemName)}`, type: GameConstants.NotificationOption.success });
                 Mine.itemsFound(Mine.itemsFound() + 1);
                 GameHelper.incrementObservable(App.game.statistics.undergroundItemsFound);
                 Mine.rewardNumbers.splice(i, 1);
@@ -192,7 +194,7 @@ class Mine {
             });
         });
         this.rewardGrid = mine.rewardGrid;
-        this.itemsFound = ko.observable(mine.itemsFound);
+        this.itemsFound(mine.itemsFound);
         this.itemsBuried = mine.itemsBuried;
         this.rewardNumbers = mine.rewardNumbers;
         this.loadingNewLayer = false;
