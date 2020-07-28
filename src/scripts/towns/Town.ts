@@ -282,3 +282,12 @@ TownList['Cave of Origin'] = new DungeonTown('Cave of Origin', [126]);
 TownList['Seafloor Cavern'] = new DungeonTown('Seafloor Cavern', [127]);
 TownList['Sky Pillar'] = new DungeonTown('Sky Pillar', [131]);
 TownList['Victory Road Hoenn'] = new DungeonTown('Victory Road Hoenn', [128], BadgeCase.Badge.Rain);
+
+//Sinnoh Shops
+const TwinleafTownShop = new Shop([
+    ItemList['Pokeball'],
+]);
+
+//Sinnoh Towns
+TownList['Twinleaf Town'] = new Town('Twinleaf Town', [], TwinleafTownShop);
+TownList['Canalave City'] = new Town('Canalave City', [201]);
