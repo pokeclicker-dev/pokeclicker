@@ -13,7 +13,7 @@ class BattleFrontierMilestones {
     ];
 
     public static nextMileStone() {
-        return this.milestoneRewards.filter(r => r.stage > BattleFrontier.highestStage() && r.stage > BattleFrontierRunner.stage())[0];
+        return this.milestoneRewards.filter(r => r.stage < BattleFrontierRunner.stage())[0];
     }
 
 
