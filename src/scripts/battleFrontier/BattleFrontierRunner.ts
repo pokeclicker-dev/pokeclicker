@@ -34,11 +34,11 @@ class BattleFrontierRunner {
     }
 
     public static nextStage() {
-        if (BattleFrontier.highestStage() < this.stage()) {
+        if (App.game.statistics.battleFrontierHighestStageCompleted() < this.stage()) {
             // Gain any rewards we should have earned for defeating this stage
             BattleFrontierMilestones.gainReward(this.stage());
             // Update our highest stage
-            BattleFrontier.highestStage(this.stage());
+            App.game.statistics.battleFrontierHighestStageCompleted(this.stage());
         }
         // Move on to the next stage
         GameHelper.incrementObservable(this.stage);

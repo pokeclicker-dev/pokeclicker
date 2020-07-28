@@ -1,7 +1,4 @@
 class BattleFrontier {
-    //Move to stats later on, so it saves
-    public static highestStage = ko.observable(0).extend({ numeric: 0 });
-
     constructor() {}
 
     public static canAccess() {
@@ -21,15 +18,4 @@ class BattleFrontier {
         // Put the user back in the town
         App.game.gameState = GameConstants.GameState.town;
     }
-    fromJSON(json): void {
-        if (!json) {
-            return;
-        }
-    }
-
-    toJSON(): Record<string, any> {
-        return {};
-    }
-    
-
 }

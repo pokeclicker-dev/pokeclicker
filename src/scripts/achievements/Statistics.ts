@@ -8,7 +8,9 @@ class Statistics implements Saveable {
 
     selectedPokemonID = ko.observable(1);
 
-    // observables
+    /*
+     * observables
+     */
     clickAttacks: KnockoutObservable<number>;
     hatchedEggs: KnockoutObservable<number>;
     totalPokemonCaptured: KnockoutObservable<number>;
@@ -17,15 +19,22 @@ class Statistics implements Saveable {
     totalShinyPokemonCaptured: KnockoutObservable<number>;
     totalShinyPokemonDefeated: KnockoutObservable<number>;
     totalShinyPokemonEncountered: KnockoutObservable<number>;
-    undergroundItemsFound: KnockoutObservable<number>; // Total treasure found in underground
-    undergroundLayersMined: KnockoutObservable<number>; // Total underground layers completed
     totalMoney: KnockoutObservable<number>;
     totalDungeonTokens: KnockoutObservable<number>;
     totalQuestPoints: KnockoutObservable<number>;
     totalDiamonds: KnockoutObservable<number>;
     totalFarmPoints: KnockoutObservable<number>;
     totalBattlePoints: KnockoutObservable<number>;
-    // arrayObservables
+    // Underground statistics
+    undergroundItemsFound: KnockoutObservable<number>; // Total treasure found in underground
+    undergroundLayersMined: KnockoutObservable<number>; // Total underground layers completed
+    // Battle Frontier statistics
+    battleFrontierTotalStagesCompleted: KnockoutObservable<number>;
+    battleFrontierHighestStageCompleted: KnockoutObservable<number>;
+
+    /*
+     * arrayObservables
+     */
     pokeballsUsed: Array<KnockoutObservable<number>>;
     pokeballsBought: Array<KnockoutObservable<number>>;
     totalShards: Array<KnockoutObservable<number>>;
@@ -34,7 +43,10 @@ class Statistics implements Saveable {
     routeKills: Array<KnockoutObservable<number>>;
     gymsDefeated: Array<KnockoutObservable<number>>;
     dungeonsCleared: Array<KnockoutObservable<number>>;
-    // objectObservables
+
+    /*
+     * objectObservables
+     */
     pokemonCaptured: any;
     pokemonDefeated: any;
     pokemonEncountered: any;
@@ -45,8 +57,6 @@ class Statistics implements Saveable {
     observables = [
         'clickAttacks',
         'hatchedEggs',
-        'undergroundItemsFound',
-        'undergroundLayersMined',
         'totalMoney',
         'totalDungeonTokens',
         'totalQuestPoints',
@@ -59,6 +69,10 @@ class Statistics implements Saveable {
         'totalShinyPokemonCaptured',
         'totalShinyPokemonDefeated',
         'totalShinyPokemonEncountered',
+        'undergroundItemsFound',
+        'undergroundLayersMined',
+        'battleFrontierTotalStagesCompleted',
+        'battleFrontierHighestStageCompleted',
     ];
     arrayObservables = [
         'gymsDefeated',

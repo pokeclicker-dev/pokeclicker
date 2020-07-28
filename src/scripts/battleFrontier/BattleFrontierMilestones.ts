@@ -13,7 +13,7 @@ class BattleFrontierMilestones {
 
     public static nextMileStone() {
         // Get the next possible reward
-        return this.milestoneRewards.find(r => r.stage > BattleFrontier.highestStage());
+        return this.milestoneRewards.find(r => r.stage > App.game.statistics.battleFrontierHighestStageCompleted());
     }
 
 
@@ -40,7 +40,7 @@ class BattleFrontierMilestones {
     public static gainReward(defeatedStage: number): void {
         const reward = this.nextMileStone();
         if (reward && reward.stage == defeatedStage) {
-            Notifier.notify({ title: '[Battle Frontier]', message: `You've successfully defeated stage ${defeatedStage} and earned ${reward.description}!`, type: GameConstants.NotificationOption.warning, timeout: 1e4 });
+            Notifier.notify({ title: '[Battle Frontier]', message: `You've successfully defeated stage ${defeatedStage} and earned:<br/><code>${reward.description}</code>!`, type: GameConstants.NotificationOption.warning, timeout: 1e4 });
             reward.gain();
         }
     }
