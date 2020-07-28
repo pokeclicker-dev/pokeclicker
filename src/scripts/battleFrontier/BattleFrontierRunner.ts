@@ -34,9 +34,17 @@ class BattleFrontierRunner {
     }
 
     public static nextStage() {
+        if (BattleFrontier.highestStage() < this.stage()) {
+            // Gain any rewards we should have earned for defeating this stage
+            BattleFrontierMilestones.gainReward(this.stage());
+            // Update our highest stage
+            BattleFrontier.highestStage(this.stage());
+        }
+        // Move on to the next stage
         GameHelper.incrementObservable(this.stage);
         BattleFrontierRunner.timeLeft(GameConstants.GYM_TIME);
         BattleFrontierRunner.timeLeftPercentage(100);
+        
     }
 
     public static end() {

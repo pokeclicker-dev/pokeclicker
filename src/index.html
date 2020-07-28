@@ -378,7 +378,7 @@
                     </knockout>
                     <knockout data-bind="if: BattleFrontierRunner.started">
                         <p>Next milestone reward at Stage <strong data-bind="text: BattleFrontierMilestones.nextMileStoneStage()"></strong>!</p>
-                        <p data-bind="text: BattleFrontierMilestones.nextMileStoneReward()"></p>
+                        <p data-bind="text: BattleFrontierMilestones.nextMileStoneRewardDescription()"></p>
                         <a class="btn btn-block btn-danger text-light" onclick="BattleFrontierRunner.battleQuit()">Quit Battle</a>
                     </knockout>
                 </div>

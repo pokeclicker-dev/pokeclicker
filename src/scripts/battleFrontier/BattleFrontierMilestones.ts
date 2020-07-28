@@ -1,23 +1,24 @@
+///<reference path="BattleFrontierMilestone.ts"/>
+///<reference path="BattleFrontierMilestoneItem.ts"/>
+
 class BattleFrontierMilestones {
 
-    public static readonly milestoneRewards = [
-        {item: 'Pokeball', amount: 5, stage: 1},
-        {item: 'Pokeball', amount: 50, stage: 10},
-        {item: 'Greatball', amount: 50, stage: 20},
-        {item: 'Ultraball', amount: 50, stage: 30},
-        {item: 'Masterball', amount: 1, stage: 50},
-        {item: 'Masterball', amount: 2, stage: 100},
-        {item: 'Masterball', amount: 4, stage: 150},
-        {item: 'Masterball', amount: 8, stage: 200},
-        {item: 'Apple\'s blood, sweat and tears', amount: 1, stage: 69420666}, // placeholder
-    ];
+    public static milestoneRewards = [];
+
+    public static addMilestone(milestone: BattleFrontierMilestone) {
+        this.milestoneRewards.push(milestone);
+        // Sort the milestones by lowest to highest stage incase they are added out of order
+        this.milestoneRewards.sort((a, b) => a.stage - b.stage);
+    }
 
     public static nextMileStone() {
-        return this.milestoneRewards.filter(r => r.stage <= BattleFrontierRunner.stage() && r.stage > BattleFrontier.highestStage())[0];
+        // Get the next possible reward
+        return this.milestoneRewards.find(r => r.stage > BattleFrontier.highestStage());
     }
 
 
-    public static nextMileStoneStage() {
+    public static nextMileStoneStage(): number {
+        // Return the stage number the next reward is unlocked at
         const reward = this.nextMileStone();
         if (reward) {
             return reward.stage;
@@ -26,45 +27,34 @@ class BattleFrontierMilestones {
         }
     }
 
-    public static nextMileStoneReward() {
+    public static nextMileStoneRewardDescription(): string {
+        // Return the description of the next reward
         const reward = this.nextMileStone();
         if (reward) {
-            // if (BattleFrontierRunner.stage() - 1 <= BattleFrontier.highestStage()) {
-            //     return;
-            // }
-            // BattleFrontier.highestStage(BattleFrontierRunner.stage() - 1);
-            // if (reward.stage < BattleFrontierRunner.stage()) {
-            //     debugger;
-            // }
-            this.gainItemForStage(BattleFrontierRunner.stage());
-            return `${reward.amount} × ${reward.item}`;
+            return reward.description;
         } else {
             return 'Nothing';
-        }
-    }
-    
-    public static nextMileStoneRewardItem() {
-        const reward = this.nextMileStone();
-        if (reward) {
-            return `${reward.item}`;
-        } else {
-            return 'Nothing';
-        }
-    }
-    
-    public static nextMileStoneRewardAmount() {
-        const reward = this.nextMileStone();
-        if (reward) {
-            return `${reward.amount}`;
-        } else {
-            return 0;
         }
     }
 
-    public static gainItemForStage(cStage: number) {
-        const mStage = this.milestoneRewards.find(r => r.stage == cStage - 1);
-        if (mStage && ItemList[mStage.item]) {
-            ItemList[mStage.item].gain(mStage.amount);
+    public static gainReward(defeatedStage: number): void {
+        const reward = this.nextMileStone();
+        if (reward && reward.stage == defeatedStage) {
+            Notifier.notify({ title: '[Battle Frontier]', message: `You've successfully defeated stage ${defeatedStage} and earned ${reward.description}!`, type: GameConstants.NotificationOption.warning, timeout: 1e4 });
+            reward.gain();
         }
     }
 }
+
+// TODO: update rewards
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(5, 'Pokeball', 5));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestone(7, 'Flying Pikachu', () => {
+    App.game.party.gainPokemonById(-1);
+}));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(10, 'Pokeball', 50));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(20, 'Greatball', 50));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(30, 'Ultraball', 50));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(50, 'Masterball', 1));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(100, 'Masterball', 2));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(150, 'Masterball', 4));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(200, 'Masterball', 8));
