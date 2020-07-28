@@ -129,7 +129,8 @@ class Breeding implements Feature {
         return this.gainEgg(this.createRandomEgg());
     }
 
-    public progressEggsBattle(route: number, region: GameConstants.Region) {
+    // Default to kanto for things where the route number might decrease if you are in a different region
+    public progressEggsBattle(route: number, region: GameConstants.Region = GameConstants.Region.kanto) {
         switch (region) {
             // Hoenn starts at route 101 need to reduce the total money earned on those routes.
             case GameConstants.Region.hoenn:
