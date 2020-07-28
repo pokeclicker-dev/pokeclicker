@@ -62,9 +62,8 @@ class BattleFrontierMilestones {
     }
 
     public static gainItemForStage(cStage: number) {
-        const reward = this.nextMileStone();
-        const mStage = this.milestoneRewards.find(r => r.stage == cStage);
-        if (reward) {
+        const mStage = this.milestoneRewards.find(r => r.stage == cStage - 1);
+        if (mStage && ItemList[mStage.item]) {
             ItemList[mStage.item].gain(mStage.amount);
         }
     }
