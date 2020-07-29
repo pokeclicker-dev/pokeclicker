@@ -143,48 +143,48 @@ dungeonList['Cerulean Cave'] = new Dungeon('Cerulean Cave',
 dungeonList['Sprout Tower'] = new Dungeon('Sprout Tower',
     ['Rattata', 'Gastly', 'Hoothoot'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.Item_magnet],
-    56735,
-    [new DungeonBossPokemon('Bellsprout', 240000, 10)],
+    106735,
+    [new DungeonBossPokemon('Bellsprout', 500000, 10)],
     2500, BadgeCase.Badge.Elite_KantoChampion, 31, 5
 );
 
 dungeonList['Ruins of Alph'] = new Dungeon('Ruins of Alph',
     ['Natu', 'Wooper', 'Quagsire', 'Smeargle', 'Magikarp', 'Poliwag', 'Poliwhirl'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
-    60600,
-    [new DungeonBossPokemon('Unown', 260000, 14)],
+    120600,
+    [new DungeonBossPokemon('Unown', 530000, 14)],
     3000, BadgeCase.Badge.Zephyr, 32, 7
 );
 
 dungeonList['Union Cave'] = new Dungeon('Union Cave',
     ['Rattata', 'Sandshrew', 'Zubat', 'Geodude', 'Onix', 'Goldeen', 'Magikarp'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
-    63600,
-    [new DungeonBossPokemon('Wooper', 260000, 14)],
+    123600,
+    [new DungeonBossPokemon('Wooper', 540000, 14)],
     3000, BadgeCase.Badge.Zephyr, 32, 7
 );
 
 dungeonList['Slowpoke Well'] = new Dungeon('Slowpoke Well',
     ['Zubat', 'Slowpoke'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.Lucky_egg],
-    67900,
-    [new DungeonBossPokemon('Slowbro', 280000, 20)],
+    137900,
+    [new DungeonBossPokemon('Slowbro', 570000, 20)],
     3500, BadgeCase.Badge.Zephyr, 33, 12
 );
 
 dungeonList['Ilex Forest'] = new Dungeon('Ilex Forest',
     ['Caterpie', 'Metapod', 'Weedle', 'Kakuna', 'Zubat', 'Oddish', 'Paras', 'Hoothoot'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Token_collector],
-    82200,
-    [new DungeonBossPokemon('Noctowl', 300000, 30), new DungeonBossPokemon('Beedrill', 300000, 30), new DungeonBossPokemon('Butterfree', 300000, 30), new DungeonBossPokemon('Celebi', 600000, 50)],
+    162200,
+    [new DungeonBossPokemon('Noctowl', 600000, 30), new DungeonBossPokemon('Beedrill', 600000, 30), new DungeonBossPokemon('Butterfree', 600000, 30), new DungeonBossPokemon('Celebi', 1200000, 50)],
     4000, BadgeCase.Badge.Hive, 34, 15
 );
 
 dungeonList['Burned Tower'] = new Dungeon('Burned Tower',
     ['Rattata', 'Zubat', 'Koffing', 'Raticate'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Lucky_incense],
-    88500,
-    [new DungeonBossPokemon('Golbat', 320000, 35), new DungeonBossPokemon('Weezing', 320000, 35), new DungeonBossPokemon('Shuckle', 610000, 50)],
+    178500,
+    [new DungeonBossPokemon('Golbat', 320000, 35), new DungeonBossPokemon('Weezing', 640000, 35), new DungeonBossPokemon('Shuckle', 1230000, 50)],
     4500, BadgeCase.Badge.Fog, 37, 20
 );
 
@@ -192,7 +192,7 @@ dungeonList['Tin Tower'] = new Dungeon('Tin Tower',
     ['Rattata', 'Gastly'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     88500,
-    [new DungeonBossPokemon('Raticate', 320000, 35), new DungeonBossPokemon('Haunter', 320000, 35), new DungeonBossPokemon('Ho-Oh', 610000, 70)],
+    [new DungeonBossPokemon('Raticate', 320000, 35), new DungeonBossPokemon('Haunter', 640000, 35), new DungeonBossPokemon('Ho-Oh', 1230000, 70)],
     4500, BadgeCase.Badge.Fog, 37, 20
 );
 
@@ -200,7 +200,7 @@ dungeonList['Whirl Islands'] = new Dungeon('Whirl Islands',
     ['Zubat', 'Golbat', 'Seel', 'Krabby', 'Horsea'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Lucky_egg],
     92800,
-    [new DungeonBossPokemon('Dewgong', 340000, 40), new DungeonBossPokemon('Kingler', 340000, 40), new DungeonBossPokemon('Lugia', 660000, 70)],
+    [new DungeonBossPokemon('Dewgong', 340000, 40), new DungeonBossPokemon('Kingler', 340000, 40), new DungeonBossPokemon('Lugia', 1360000, 70)],
     5000, BadgeCase.Badge.Storm, 41, 25
 );
 
@@ -208,7 +208,7 @@ dungeonList['Mt Mortar'] = new Dungeon('Mt Mortar',
     ['Rattata', 'Zubat', 'Geodude', 'Marill', 'Raticate', 'Golbat', 'Graveler'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Token_collector],
     104100,
-    [new DungeonBossPokemon('Tyrogue', 360000, 45)],
+    [new DungeonBossPokemon('Tyrogue', 720000, 45)],
     5500, BadgeCase.Badge.Storm, 42, 30
 );
 
@@ -216,7 +216,7 @@ dungeonList['Ice Path'] = new Dungeon('Ice Path',
     ['Zubat', 'Jynx', 'Swinub'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.Lucky_incense],
     120400,
-    [new DungeonBossPokemon('Delibird', 380000, 50)],
+    [new DungeonBossPokemon('Delibird', 770000, 50)],
     6000, BadgeCase.Badge.Glacier, 44, 32
 );
 
@@ -224,7 +224,7 @@ dungeonList['Dark Cave'] = new Dungeon('Dark Cave',
     ['Zubat', 'Geodude', 'Golbat', 'Graveler', 'Wobbuffet'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     127000,
-    [new DungeonBossPokemon('Dunsparce', 400000, 55)],
+    [new DungeonBossPokemon('Dunsparce', 800000, 55)],
     6500, BadgeCase.Badge.Rising, 45, 35
 );
 
@@ -232,7 +232,7 @@ dungeonList['Mt Silver'] = new Dungeon('Mt Silver',
     ['Ponyta', 'Doduo', 'Tangela', 'Sneasel', 'Ursaring', 'Donphan', 'Teddiursa', 'Phanpy', 'Quagsire', 'Misdreavus'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.Lucky_egg],
     130500,
-    [new DungeonBossPokemon('Larvitar', 440000, 60)],
+    [new DungeonBossPokemon('Larvitar', 890000, 60)],
     10000, BadgeCase.Badge.Elite_Karen, 28, 50
 );
 
