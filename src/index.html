@@ -362,7 +362,7 @@
             <!-- ko if: App.game.gameState === GameConstants.GameState.battleFrontier -->
             <div id="battleFrontierInformation" class="card sortable-disabled border-secondary mb-3 battle-frontier no-select">
                 <div class="card-header p-0">
-                    <span>Battle Frontier (WIP)</span>
+                    <span>Battle Frontier</span>
                 </div>
                 <div class="card-body text-center" style="min-height: 220px;">
                     <knockout data-bind="ifnot: BattleFrontierRunner.started">
@@ -374,7 +374,6 @@
                         </p>
                         <a class="btn btn-block btn-success text-light" onclick="BattleFrontierRunner.start()">Start</a>
                         <a class="btn btn-block btn-danger text-light" onclick="BattleFrontier.leave()">Leave</a>
-                        <i>NOTE: This is still a work in progress, no rewards will actually be given out yet.</i>
                     </knockout>
                     <knockout data-bind="if: BattleFrontierRunner.started">
                         <p>Next milestone reward at Stage <strong data-bind="text: BattleFrontierMilestones.nextMileStoneStage()"></strong>!</p>
