@@ -242,7 +242,7 @@ gymList['Azalea Town'] = new Gym(
     'Azalea Town',
     [
         new GymPokemon('Metapod', 103000, 15),
-        new GymPokemon('Kakuna', 11500, 15),
+        new GymPokemon('Kakuna', 101500, 15),
         new GymPokemon('Scyther', 119000, 17),
     ],
     BadgeCase.Badge.Hive,
