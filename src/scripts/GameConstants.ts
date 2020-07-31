@@ -22,7 +22,7 @@ namespace GameConstants {
     export const MIN_LOAD_TIME = 500; // 0.5 Seconds
     export const MAX_LOAD_TIME = 20000; // 20 Seconds
 
-    export const MAX_AVAILABLE_REGION = 2; // Hoenn
+    export const MAX_AVAILABLE_REGION = 3; // Sinnoh
 
     export const TotalPokemonsPerRegion = [
         151, // 151 - Kanto
@@ -311,6 +311,7 @@ namespace GameConstants {
         0: [1, 25],
         1: [26, 48],
         2: [101, 134],
+        3: [201, 230],
     };
 
     export function randomIntBetween(min: number, max: number): number {
@@ -346,10 +347,6 @@ namespace GameConstants {
         '#B7B7CE', // Steel
         '#D685AD', // Fairy
     ];
-
-    // Map navigation
-    export const HIGHEST_ROUTE_NUMBER = 134;
-    export const AMOUNT_OF_ROUTES_KANTO = 25;
 
     export const ROUTE_KILLS_NEEDED = 10;
     /**
@@ -433,6 +430,10 @@ namespace GameConstants {
             133: [132],
             134: [133],
         },
+        // TODO: SINNOH
+        3: {
+
+        },
     };
 
     export const routeBadgeRequirements = {
@@ -474,54 +475,67 @@ namespace GameConstants {
             126: BadgeCase.Badge.Mind,
             127: BadgeCase.Badge.Rain,
         },
+        // TODO: SINNOH
+        3: {
+
+        },
     };
 
+    // TODO: SINNOH
     export const WaterAreas = {
         0: new Set(['Cerulean City', 19, 20, 21]),
         1: new Set([40, 41, 'Slowpoke Well']),
         2: new Set([105, 106, 107, 108, 109, 122, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 'Shoal Cave', 'Seafloor Cavern']),
+        3: new Set([]),
     };
 
     export const IceAreas = {
         0: new Set(['Seafoam Islands']),
         1: new Set(['Mahogany Town', 'Ice Path', 'Whirl Islands']),
         2: new Set(['Sootopolis City']),
+        3: new Set([]),
     };
 
     export const ForestAreas = {
         0: new Set(['Fuchsia City', 'Viridian Forest']),
         1: new Set(['Azalea Town', 'Ilex Forest']),
         2: new Set(['Petalburg Woods']),
+        3: new Set([]),
     };
 
     export const CaveAreas = {
         0: new Set(['Pewter City', 'Digletts Cave', 'Mt. Moon', 'Rock Tunnel', 'Victory Road']),
         1: new Set(['Cianwood City', 'Ruins of Alph', 'Union Cave', 'Mt Mortar', 'Dark Cave']),
         2: new Set(['Rustboro City', 'Dewford Town', 'Rusturf Tunnel', 'Granite Cave', 'New Mauville', 'Meteor Falls', 'Victory Road Hoenn']),
+        3: new Set([]),
     };
 
     export const GemCaveAreas = {
         0: new Set(['Viridian City', 'Cerulean Cave']),
         1: new Set(['Blackthorn City', 'Mt Silver']),
         2: new Set(['Cave of Origin', 'Sky Pillar']),
+        3: new Set([]),
     };
 
     export const PowerPlantAreas = {
         0: new Set(['Vermillion City', 'Power Plant']),
         1: new Set(['Tin Tower']),
         2: new Set(['Mauville City']),
+        3: new Set([]),
     };
 
     export const MansionAreas = {
         0: new Set(['Cinnabar Island', 'Pokemon Mansion']),
         1: new Set(['Olivine City', 'Burned Tower']),
         2: new Set(['Lavaridge Town', 'Petalburg City', 'Jagged Pass', 'Fiery Path', 'Mt. Chimney']),
+        3: new Set([]),
     };
 
     export const GraveyardAreas = {
         0: new Set(['Saffron City', 'Pokemon Tower']),
         1: new Set(['Ecruteak City']),
         2: new Set(['Mossdeep City', 'Mt. Pyre']),
+        3: new Set([]),
     };
 
     export const routeDungeonRequirements = {
@@ -541,6 +555,10 @@ namespace GameConstants {
             112: 'Jagged Pass',
             124: 'Mt. Pyre',
             128: 'Seafloor Cavern',
+        },
+        // TODO: SINNOH
+        3: {
+
         },
     };
 
@@ -701,10 +719,17 @@ namespace GameConstants {
         'Champion Wallace',
     ];
 
+    // TODO: SINNOH
+    export const SinnohGyms = [
+        'None',
+        'None',
+    ];
+
     export const RegionGyms = [
         KantoGyms,
         JohtoGyms,
         HoennGyms,
+        SinnohGyms,
     ];
 
     export const KantoDungeons = [
@@ -781,21 +806,30 @@ namespace GameConstants {
         */
     ];
 
+    export const SinnohDungeons = [
+        // TODO: SINNOH
+        'test',
+        'test',
+    ];
+
     export const RegionDungeons = [
         KantoDungeons,
         JohtoDungeons,
         HoennDungeons,
+        SinnohDungeons,
     ];
 
     export const StartingTowns = [
         'Pallet Town',
         'New Bark Town',
         'Littleroot Town',
+        'Twinleaf Town',
     ];
 
     export const DockTowns = [
         'Vermillion City',
         'Olivine City',
         'Slateport City',
+        'Canalave City',
     ];
 }

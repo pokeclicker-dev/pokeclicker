@@ -174,8 +174,7 @@ class AchievementHandler {
         AchievementHandler.addAchievement('Ultra Clicker', 'Click 1,000 Times', new ClickRequirement(1000, 1), 0.10);
         AchievementHandler.addAchievement('Need a new mouse yet?', 'Click 10,000 Times', new ClickRequirement(10000, 1), 0.25);
 
-        for (let i = 1; i <= GameConstants.AMOUNT_OF_ROUTES_KANTO; i++) {
-
+        for (let i = GameConstants.RegionRoute[GameConstants.Region.kanto][0]; i <= GameConstants.RegionRoute[GameConstants.Region.kanto][1]; i++) {
             AchievementHandler.addAchievement(`Route ${i} traveler`, `Defeat 100 Pokémon on route ${i}`, new RouteKillRequirement(100, i), 0.02);
             AchievementHandler.addAchievement(`Route ${i} explorer`, `Defeat 1,000 Pokémon on route ${i}`, new RouteKillRequirement(1000, i), 0.05);
             AchievementHandler.addAchievement(`Route ${i} conqueror`, `Defeat 10,000 Pokémon on route ${i}`, new RouteKillRequirement(10000, i), 0.10);
