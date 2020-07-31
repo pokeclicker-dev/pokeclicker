@@ -572,5 +572,6 @@ const pokemonsPerRoute = {
             water: ['Golduck', 'Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacruel', 'Seel', 'Dewgong', 'Spheal', 'Sealeo', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Wailmer', 'Wailord'],
             headbutt: [],
         },
+
     },
 };
