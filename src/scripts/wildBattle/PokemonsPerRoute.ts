@@ -420,4 +420,12 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
     },
+    // TODO: SINNOH
+    3: {
+        201: {
+            land: ['Rattata'],
+            water: [],
+            headbutt: [],
+        },
+    },
 };

@@ -1,0 +1,77 @@
+<g data-bind='if: player.region == GameConstants.Region.sinnoh'>
+    <image width="100%" xlink:href="assets/images/sinnoh.png"></image>
+
+    <!-- ------ -->
+    <!-- ROUTES -->
+    <!-- ------ -->
+
+    <!--Route 201-->
+    <%- include('templates/mapRoute',
+        { route: 201, region: 3
+        , height: 28, width: 71
+        , x: 226, y: -97
+        , textx: 259, texty: -79
+        , rotate: true
+        })
+     %>
+
+    <!--Route 202-->
+    <%- include('templates/mapRoute',
+        { route: 202, region: 3
+        , height: 54, width: 28
+        , x: 283, y: 341
+        , noText: true
+        })
+     %>
+    <!--Extra bit of Route 202 because it goes around a corner-->
+    <%- include('templates/mapRoute',
+        { route: 202, region: 3
+        , height: 28, width: 95
+        , x: 188, y: 367
+        , textx: 235, texty: 387
+        })
+     %>
+
+    <!-- ----- -->
+    <!-- TOWNS -->
+    <!-- ----- -->
+
+    <!--Pallet Town-->
+    <%- include('templates/mapTown',
+        { name: "Twinleaf Town"
+        , x: 69, y: 298
+        , type: "O"
+        , home: true
+        })
+     %>
+
+     <!--Viridian City-->
+     <%- include('templates/mapTown',
+         { name: "Sandgem Town"
+         , x: 69, y: 213
+         , type: "O"
+         })
+      %>
+
+    <!-- -------- -->
+    <!-- DUNGEONS -->
+    <!-- -------- -->
+
+    <!--Viridian Forest-->
+    <%- include('templates/mapDungeon',
+        { name: "Maniac Tunnel"
+        , x: 76, y: 156
+        })
+     %>
+
+    <!-- ------------------ -->
+    <!-- PLACES OF INTEREST -->
+    <!-- ------------------ -->
+
+    <%- include('templates/mapPOI',
+        { name: "Dock"
+        , x: 325, y: 240
+        , databind: "click: function(){MapHelper.openShipModal()}, attr: { class: MapHelper.calculateTownCssClass('Canalave City') }"
+        })
+     %>
+</g>
