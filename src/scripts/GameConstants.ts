@@ -104,6 +104,7 @@ namespace GameConstants {
         battle_item_timer: new BooleanSetting('notification.battle_item_timer', 'Battle item about to wear off', true),
         encountered_shiny: new BooleanSetting('notification.encountered_shiny', 'Encountered a shiny Pokemon', true),
         quest_ready_to_complete: new BooleanSetting('notification.quest_ready_to_complete', 'Quest is ready to be completed', true),
+        event_start_end: new BooleanSetting('notification.event_start_end', 'Event start/end information', true),
     };
 
     export enum DungeonTile {
