@@ -95,6 +95,8 @@ namespace GameConstants {
         shiny_long: new Sound('assets/sounds/shiny_long.mp3', 'Shiny Pokemon encountered/hatched'),
         new_catch: new Sound('assets/sounds/new_catch.mp3', 'New pokemon/shiny captured'),
         achievement: new Sound('assets/sounds/achievement.mp3', 'New achievement earned'),
+        underground_energy_full: new Sound('assets/sounds/underground_energy_full.mp3', 'Mining energy reached maximum capacity'),
+        ready_to_harvest: new Sound('assets/sounds/ready_to_harvest.mp3', 'Farm ready to harvest'),
     };
 
     export enum DungeonTile {
