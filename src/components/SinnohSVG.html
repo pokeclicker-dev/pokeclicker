@@ -90,6 +90,50 @@
         })
     %>
 
+    <!--Route 209-->
+    <%- include('templates/mapRoute',
+        { route: 209, region: 3
+        , height: 3, width: 6
+        , x: 54, y: 38
+        , rotate: true
+        })
+    %>
+
+    <!--Route 29 extra bit-->
+    <%- include('templates/mapRoute',
+        { route: 209, region: 3
+        , height: 3, width: 1
+        , x: 53, y: 41
+        , noText: true
+        })
+    %>
+
+    <!--Route 210-->
+    <%- include('templates/mapRoute',
+        { route: 210, region: 3
+        , height: 5, width: 3
+        , x: 54, y: 30
+        , rotate: true
+        , noText : true
+        })
+    %>
+
+    <!--Route 211-->
+    <%- include('templates/mapRoute',
+        { route: 211, region: 3
+        , height: 3, width: 5
+        , x: 34, y: 27
+        })
+    %>
+
+    <!--Route 211 extra-->
+    <%- include('templates/mapRoute',
+        { route: 211, region: 3
+        , height: 3, width: 3
+        , x: 44, y: 27
+        , noText: true
+        })
+    %>
 
     <!-- ----- -->
     <!-- TOWNS -->
@@ -102,15 +146,15 @@
         , height: 5, width: 5
         , home: true
         })
-     %>
+    %>
 
-     <!--Sandgem City-->
-     <%- include('templates/mapTown',
-         { name: "Sandgem Town"
-         , x: 17, y: 49
-         , height: 4, width: 4
-         })
-      %>
+    <!--Sandgem City-->
+    <%- include('templates/mapTown',
+        { name: "Sandgem Town"
+        , x: 17, y: 49
+        , height: 4, width: 4
+        })
+    %>
 
     <!-- -------- -->
     <!-- DUNGEONS -->
