@@ -15,9 +15,13 @@ class Sound {
             this.initialized = true;
             // This is needed to be able to play sounds on mobile devices
             $(document).one('click', () => {
-                this.sound.play();
-                this.sound.pause();
-                this.sound.src = src;
+                this.sound.play().then(() => {
+                    this.sound.pause();
+                    this.sound.src = src;
+                }).catch(() => {
+                    this.sound.pause();
+                    this.sound.src = src;
+                });
             });
         });
     }
