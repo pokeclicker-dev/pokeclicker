@@ -33,16 +33,25 @@
     <!--Route 204-->
     <%- include('templates/mapRoute',
         { route: 204, region: 3
-        , height: 3, width: 6
+        , height: 3, width: 1
+        , x: 18, y: 41
+        , rotate: true
+        })
+    %>
+
+    <!--Route 204 extra-->
+    <%- include('templates/mapRoute',
+        { route: 204, region: 3
+        , height: 3, width: 1
         , x: 18, y: 37
         , rotate: true
         })
     %>
 
-    <!--Route 205-->
+    <!--Route 205 extra-->
     <%- include('templates/mapRoute',
         { route: 205, region: 3
-        , height: 7, width: 6
+        , height: 4, width: 2
         , x: 18, y: 29
         })
      %>
@@ -50,19 +59,36 @@
      <!--Route 205 extra bit 1-->
     <%- include('templates/mapRoute',
         { route: 205, region: 3
+        , height: 4, width: 3
+        , x: 21, y: 32
+        , noText: true
+        })
+    %>
+
+    <!--Route 205 extra bit 3-->
+    <%- include('templates/mapRoute',
+        { route: 205, region: 3
         , height: 3, width: 2
         , x: 24, y: 33
         , noText: true
+     })
+    %>
+
+    <!--Route 205-->
+    <%- include('templates/mapRoute',
+        { route: 205, region: 3
+        , height: 2, width: 9
+        , x: 21, y: 27
         })
     %>
 
     <!--Route 205 extra bit 2-->
     <%- include('templates/mapRoute',
         { route: 205, region: 3
-        , height: 3, width: 9
-        , x: 21, y: 27
+        , height: 1, width: 6
+        , x: 24, y: 29
         , noText: true
-        })
+    })
     %>
 
     <!--Route 206-->
