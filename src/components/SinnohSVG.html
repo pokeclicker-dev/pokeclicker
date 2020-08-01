@@ -88,17 +88,36 @@
         , height: 1, width: 6
         , x: 24, y: 29
         , noText: true
-    })
+        })
+    %>
+
+    <!--Route 205 extra bit 2-->
+    <%- include('templates/mapRoute',
+        { route: 205, region: 3
+        , height: 2, width: 1
+        , x: 20, y: 32
+        , noText: true
+        })
     %>
 
     <!--Route 206-->
     <%- include('templates/mapRoute',
         { route: 206, region: 3
-        , height: 3, width: 11
+        , height: 3, width: 4
         , x: 31, y: 30
         , rotate: true
         })
-     %>
+    %>
+
+    <!--Route 206 extra-->
+    <%- include('templates/mapRoute',
+        { route: 206, region: 3
+        , height: 3, width: 5
+        , x: 31, y: 37
+        , rotate: true
+        , noText: true
+        })
+    %>
 
     <!--Route 207-->
     <%- include('templates/mapRoute',
@@ -116,6 +135,15 @@
         })
     %>
 
+    <!--Route 208 extra-->
+    <%- include('templates/mapRoute',
+        { route: 208, region: 3
+        , height: 1, width: 3
+        , x: 44, y: 43
+        , noText: true
+        })
+    %>
+
     <!--Route 209-->
     <%- include('templates/mapRoute',
         { route: 209, region: 3
@@ -130,6 +158,15 @@
         { route: 209, region: 3
         , height: 3, width: 1
         , x: 53, y: 41
+        , noText: true
+        })
+    %>
+
+    <!--Route 209 extra 1-->
+    <%- include('templates/mapRoute',
+        { route: 209, region: 3
+        , height: 1, width: 3
+        , x: 50, y: 43
         , noText: true
         })
     %>
@@ -200,6 +237,15 @@
         , height: 3, width: 19
         , x: 70, y: 33
         , rotate: true
+        })
+    %>
+
+    <!--Route 214 extra-->
+    <%- include('templates/mapRoute',
+        { route: 214, region: 3
+        , height: 4, width: 1
+        , x: 73, y: 40
+        , noText: true
         })
     %>
 
@@ -294,6 +340,15 @@
         })
     %>
 
+    <!--Route 225 extra-->
+    <%- include('templates/mapRoute',
+        { route: 225, region: 3
+        , height: 1, width: 3
+        , x: 63, y: 7
+        , noText: true
+        })
+    %>
+
     <!--Route 226-->
     <%- include('templates/mapRoute',
         { route: 226, region: 3
@@ -326,6 +381,15 @@
         , x: 78, y: 15
         })
     %>
+
+    <!--Route 229 extra-->
+    <%- include('templates/mapRoute',
+        { route: 229, region: 3
+        , height: 1, width: 3
+        , x: 82, y: 18
+        , noText: true
+        })
+    %
 
     <!--Route 230-->
     <%- include('templates/mapRoute',
