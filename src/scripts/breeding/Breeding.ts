@@ -270,4 +270,21 @@ class Breeding implements Feature {
         this._eggList = value;
     }
 
+    getAllCaughtStatus(): CaughtStatus {
+        return GameHelper.enumNumbers(EggType).reduce((status: CaughtStatus, type: EggType) => {
+            return this.hatchList[type]
+                ? Math.min(status, this.getTypeCaughtStatus(type))
+                : status;
+        }, CaughtStatus.CaughtShiny);
+    }
+
+    getTypeCaughtStatus(type: EggType): CaughtStatus {
+        const hatchList = this.hatchList[type];
+        const hatchable = hatchList.slice(0, player.highestRegion() + 1).flat();
+
+        return hatchable.reduce((status: CaughtStatus, pname: string) => {
+            return Math.min(status, PartyController.getCaughtStatusByName(pname));
+        }, CaughtStatus.CaughtShiny);
+    }
+
 }
