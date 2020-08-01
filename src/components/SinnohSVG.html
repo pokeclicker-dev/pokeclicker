@@ -39,6 +39,57 @@
         })
     %>
 
+    <!--Route 205-->
+    <%- include('templates/mapRoute',
+        { route: 205, region: 3
+        , height: 7, width: 6
+        , x: 18, y: 29
+        })
+     %>
+
+     <!--Route 205 extra bit 1-->
+    <%- include('templates/mapRoute',
+        { route: 205, region: 3
+        , height: 3, width: 2
+        , x: 24, y: 33
+        , noText: true
+        })
+    %>
+
+    <!--Route 205 extra bit 2-->
+    <%- include('templates/mapRoute',
+        { route: 205, region: 3
+        , height: 3, width: 9
+        , x: 21, y: 27
+        , noText: true
+        })
+    %>
+
+    <!--Route 206-->
+    <%- include('templates/mapRoute',
+        { route: 206, region: 3
+        , height: 3, width: 11
+        , x: 31, y: 30
+        , rotate: true
+        })
+     %>
+
+    <!--Route 207-->
+    <%- include('templates/mapRoute',
+        { route: 207, region: 3
+        , height: 3, width: 8
+        , x: 31, y: 41
+        })
+    %>
+
+    <!--Route 208-->
+    <%- include('templates/mapRoute',
+        { route: 208, region: 3
+        , height: 3, width: 5
+        , x: 39, y: 41
+        })
+    %>
+
 
     <!-- ----- -->
     <!-- TOWNS -->
@@ -47,8 +98,8 @@
     <!--Twinleaf Town-->
     <%- include('templates/mapTown',
         { name: "Twinleaf Town"
-        , x: 69, y: 298
-        , type: "O"
+        , x: 7, y: 52
+        , height: 5, width: 5
         , home: true
         })
      %>
@@ -56,8 +107,8 @@
      <!--Sandgem City-->
      <%- include('templates/mapTown',
          { name: "Sandgem Town"
-         , x: 69, y: 213
-         , type: "O"
+         , x: 17, y: 49
+         , height: 4, width: 4
          })
       %>
 
