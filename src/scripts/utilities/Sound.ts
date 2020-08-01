@@ -23,6 +23,10 @@ class Sound {
                     this.sound.pause();
                     this.sound.src = src;
                 });
+                setTimeout(() => {
+                    this.sound.pause();
+                    this.sound.src = src;
+                }, 1000);
             });
         });
     }
