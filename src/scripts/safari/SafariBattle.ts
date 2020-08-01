@@ -22,7 +22,6 @@ class SafariBattle {
         // Generate enemy
         SafariBattle.enemy = SafariPokemon.random();
         Safari.inBattle(true);
-        Notifier.notify({ message: 'Battle', type: GameConstants.NotificationOption.info });
         SafariBattle.text('What will you do?');
         SafariBattle.unlockButtons();
         SafariBattle.escapeAttempts = 0;
@@ -242,9 +241,10 @@ class SafariBattle {
     }
 
     private static endBattle() {
-        Safari.inBattle(false);
-        SafariBattle.busy = false;
-        $('#safariBattleModal').modal('hide');
+        $('#safariBattleModal').one('hidden.bs.modal', () => {
+            Safari.inBattle(false);
+            SafariBattle.busy = false;
+        }).modal('hide');
     }
 
     private static gameOver() {
