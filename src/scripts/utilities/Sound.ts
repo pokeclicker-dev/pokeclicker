@@ -3,8 +3,9 @@ class Sound {
     public name: string;
     public initialized = false;
 
-    constructor (src: string, name: string) {
-        this.name = name;
+    constructor (fileName: string, soundName: string) {
+        const src = `assets/sounds/${fileName}.mp3`;
+        this.name = soundName;
         this.sound.setAttribute('preload', 'auto');
         this.sound.setAttribute('controls', 'none');
         this.sound.style.display = 'none';

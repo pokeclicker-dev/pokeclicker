@@ -92,13 +92,13 @@ namespace GameConstants {
         light,
     }
     export const NotificationSound = {
-        ready_to_hatch: new Sound('assets/sounds/ready_to_hatch.mp3', 'Egg is ready to hatch'),
-        shiny_long: new Sound('assets/sounds/shiny_long.mp3', 'Shiny Pokemon encountered/hatched'),
-        new_catch: new Sound('assets/sounds/new_catch.mp3', 'New pokemon/shiny captured'),
-        achievement: new Sound('assets/sounds/achievement.mp3', 'New achievement earned'),
-        battle_item_timer: new Sound('assets/sounds/battle_item_timer.mp3', 'Battle item about to wear off'),
-        quest_ready_to_complete: new Sound('assets/sounds/quest_ready_to_complete.mp3', 'Quest is ready to be completed'),
-        underground_energy_full: new Sound('assets/sounds/underground_energy_full.mp3', 'Mining energy reached maximum capacity'),
+        ready_to_hatch: new Sound('ready_to_hatch', 'Egg ready to hatch'),
+        shiny_long: new Sound('shiny_long', 'Shiny Pokemon encountered/hatched'),
+        new_catch: new Sound('new_catch', 'New pokemon/shiny captured'),
+        achievement: new Sound('achievement', 'New achievement earned'),
+        battle_item_timer: new Sound('battle_item_timer', 'Battle item about to wear off'),
+        quest_ready_to_complete: new Sound('quest_ready_to_complete', 'Quest is ready to be completed'),
+        underground_energy_full: new Sound('underground_energy_full', 'Mining energy reached maximum capacity'),
         // TODO: needs a notification
         ready_to_harvest: new Sound('assets/sounds/ready_to_harvest.mp3', 'Farm ready to harvest'),
     };
