@@ -101,6 +101,7 @@ namespace GameConstants {
         ready_to_hatch: new BooleanSetting('notification.ready_to_hatch', 'Egg ready to hatch', true),
         route_item_found: new BooleanSetting('notification.route_item_found', 'Item found during route battle', true),
         dungeon_item_found: new BooleanSetting('notification.dungeon_item_found', 'Item found in dungeon chest', true),
+        battle_item_timer: new BooleanSetting('notification.battle_item_timer', 'Battle item about to wear off', true),
     };
 
     export enum DungeonTile {
