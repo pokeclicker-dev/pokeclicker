@@ -98,6 +98,7 @@ namespace GameConstants {
         achievement: new Sound('Achievement', 'assets/sounds/achievement.mp3'),
     };
     export const NotificationSetting = {
+        ready_to_hatch: new BooleanSetting('notification.ready_to_hatch', 'Egg ready to hatch', true),
         route_item_found: new BooleanSetting('notification.route_item_found', 'Item found during route battle', true),
         dungeon_item_found: new BooleanSetting('notification.dungeon_item_found', 'Item found in dungeon chest', true),
     };
