@@ -98,6 +98,7 @@ namespace GameConstants {
         achievement: new Sound('achievement', 'New achievement earned'),
         battle_item_timer: new Sound('battle_item_timer', 'Battle item about to wear off'),
         quest_ready_to_complete: new Sound('quest_ready_to_complete', 'Quest is ready to be completed'),
+        quest_level_up: new Sound('quest_level_up', 'Quest level up'),
         underground_energy_full: new Sound('underground_energy_full', 'Mining energy reached maximum capacity'),
         // TODO: needs a notification
         ready_to_harvest: new Sound('assets/sounds/ready_to_harvest.mp3', 'Farm ready to harvest'),
