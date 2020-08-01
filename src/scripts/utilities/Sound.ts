@@ -3,7 +3,7 @@ class Sound {
     public name: string;
     public initialized = false;
 
-    constructor (name: string, src: string) {
+    constructor (src: string, name: string) {
         this.name = name;
         this.sound.setAttribute('preload', 'auto');
         this.sound.setAttribute('controls', 'none');

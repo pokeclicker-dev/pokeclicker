@@ -91,10 +91,10 @@ namespace GameConstants {
         light,
     }
     export const NotificationSound = {
-        ready_to_hatch: new Sound('Ready to Hatch', 'assets/sounds/ready_to_hatch.mp3'),
-        shiny_long: new Sound('Shiny', 'assets/sounds/shiny_long.mp3'),
-        new_catch: new Sound('New Catch', 'assets/sounds/new_catch.mp3'),
-        achievement: new Sound('Achievement', 'assets/sounds/achievement.mp3'),
+        ready_to_hatch: new Sound('assets/sounds/ready_to_hatch.mp3', 'Egg is ready to hatch'),
+        shiny_long: new Sound('assets/sounds/shiny_long.mp3', 'Shiny Pokemon encountered/hatched'),
+        new_catch: new Sound('assets/sounds/new_catch.mp3', 'New pokemon/shiny captured'),
+        achievement: new Sound('assets/sounds/achievement.mp3', 'New achievement earned'),
     };
 
     export enum DungeonTile {
