@@ -1,5 +1,6 @@
 ///<reference path="./badgeCase/BadgeCase.ts" />
 ///<reference path="utilities/Sound.ts"/>
+///<reference path="settings/BooleanSetting.ts"/>
 
 /**
  * Contains all game constants for easy access.
@@ -95,6 +96,10 @@ namespace GameConstants {
         shiny_long: new Sound('Shiny', 'assets/sounds/shiny_long.mp3'),
         new_catch: new Sound('New Catch', 'assets/sounds/new_catch.mp3'),
         achievement: new Sound('Achievement', 'assets/sounds/achievement.mp3'),
+    };
+    export const NotificationSetting = {
+        route_item_found: new BooleanSetting('notification.route_item_found', 'Item found during route battle', true),
+        dungeon_item_found: new BooleanSetting('notification.dungeon_item_found', 'Item found in dungeon chest', true),
     };
 
     export enum DungeonTile {
@@ -295,17 +300,6 @@ namespace GameConstants {
         alola = 6,
         galar = 7,
     }
-
-    export class Option {
-        text: string;
-        value: any;
-
-        constructor(text: string, value: any) {
-            this.text = text;
-            this.value = value;
-        }
-    }
-
 
     export const RegionRoute = {
         0: [1, 25],
