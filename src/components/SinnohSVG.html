@@ -8,35 +8,43 @@
     <!--Route 201-->
     <%- include('templates/mapRoute',
         { route: 201, region: 3
-        , height: 28, width: 71
-        , x: 226, y: -97
-        , textx: 259, texty: -79
-        , rotate: true
+        , height: 3, width: 11
+        , x: 7, y: 50
         })
      %>
 
     <!--Route 202-->
     <%- include('templates/mapRoute',
         { route: 202, region: 3
-        , height: 54, width: 28
-        , x: 283, y: 341
-        , noText: true
+        , height: 3, width: 4
+        , x: 18, y: 46
+        , rotate: true
         })
      %>
-    <!--Extra bit of Route 202 because it goes around a corner-->
+
+    <!--Route 203-->
     <%- include('templates/mapRoute',
-        { route: 202, region: 3
-        , height: 28, width: 95
-        , x: 188, y: 367
-        , textx: 235, texty: 387
+        { route: 203, region: 3
+        , height: 3, width: 7
+        , x: 23, y: 43
         })
-     %>
+    %>
+
+    <!--Route 204-->
+    <%- include('templates/mapRoute',
+        { route: 204, region: 3
+        , height: 3, width: 6
+        , x: 18, y: 37
+        , rotate: true
+        })
+    %>
+
 
     <!-- ----- -->
     <!-- TOWNS -->
     <!-- ----- -->
 
-    <!--Pallet Town-->
+    <!--Twinleaf Town-->
     <%- include('templates/mapTown',
         { name: "Twinleaf Town"
         , x: 69, y: 298
@@ -45,7 +53,7 @@
         })
      %>
 
-     <!--Viridian City-->
+     <!--Sandgem City-->
      <%- include('templates/mapTown',
          { name: "Sandgem Town"
          , x: 69, y: 213
