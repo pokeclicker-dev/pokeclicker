@@ -1,5 +1,6 @@
 ///<reference path="./badgeCase/BadgeCase.ts" />
 ///<reference path="utilities/Sound.ts"/>
+///<reference path="settings/BooleanSetting.ts"/>
 
 /**
  * Contains all game constants for easy access.
@@ -97,6 +98,16 @@ namespace GameConstants {
         achievement: new Sound('assets/sounds/achievement.mp3', 'New achievement earned'),
         underground_energy_full: new Sound('assets/sounds/underground_energy_full.mp3', 'Mining energy reached maximum capacity'),
         ready_to_harvest: new Sound('assets/sounds/ready_to_harvest.mp3', 'Farm ready to harvest'),
+    };
+    export const NotificationSetting = {
+        ready_to_hatch: new BooleanSetting('notification.ready_to_hatch', 'Egg ready to hatch', true),
+        route_item_found: new BooleanSetting('notification.route_item_found', 'Item found during route battle', true),
+        dungeon_item_found: new BooleanSetting('notification.dungeon_item_found', 'Item found in dungeon chest', true),
+        battle_item_timer: new BooleanSetting('notification.battle_item_timer', 'Battle item about to wear off', true),
+        encountered_shiny: new BooleanSetting('notification.encountered_shiny', 'Encountered a shiny Pokemon', true),
+        quest_ready_to_complete: new BooleanSetting('notification.quest_ready_to_complete', 'Quest is ready to be completed', true),
+        underground_energy_full: new BooleanSetting('notification.underground_energy_full', 'Mining energy reached maximum capacity', true),
+        event_start_end: new BooleanSetting('notification.event_start_end', 'Event start/end information', true),
     };
 
     export enum DungeonTile {
@@ -297,17 +308,6 @@ namespace GameConstants {
         alola = 6,
         galar = 7,
     }
-
-    export class Option {
-        text: string;
-        value: any;
-
-        constructor(text: string, value: any) {
-            this.text = text;
-            this.value = value;
-        }
-    }
-
 
     export const RegionRoute = {
         0: [1, 25],
