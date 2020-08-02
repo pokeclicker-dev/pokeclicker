@@ -867,7 +867,7 @@ namespace GameConstants {
         'Lake Valor',
         'Lake Acuity',
         'Distortion World',
-        'Sinnoh Victory Road',
+        'Victory Road Sinnoh',
         'Spear Pillar',
         'Hall of Origin',
         'Fullmoon Island',
