@@ -308,3 +308,25 @@ TownList['Pokémon League'] = new Town('Pokémon League', [], null, null, 'Sinno
 TownList['Fight Area'] = new Town('Fight Area', [], null, null, 'Spear Pillar');
 TownList['Survival Area'] = new Town('Survival Area', [225]);
 TownList['Resort Area'] = new Town('Resort Area', [229]);
+
+//Sinnoh Dungeons
+TownList['Oreburgh Gate'] = new DungeonTown('Oreburgh Gate', [203]);
+TownList['Ravaged Path'] = new DungeonTown('Ravaged Path', [204], BadgeCase.Badge.Coal);
+TownList['Eterna Forest'] = new DungeonTown('Eterna Forest', [205], BadgeCase.Badge.Coal);
+TownList['Old Chateau'] = new DungeonTown('Old Chateau', [205], BadgeCase.Badge.Forest);
+TownList['Wayward Cave'] = new DungeonTown('Wayward Cave', [206]);
+TownList['Mt. Coronet South'] = new DungeonTown('Mt Coronet South', [207]);
+TownList['Iron Island'] = new DungeonTown('Iron Island', [218]);
+TownList['Mt. Coronet North'] = new DungeonTown('Mt Coronet North', [211], BadgeCase.Badge.Mine);
+TownList['Distortion World'] = new DungeonTown('Distortion World', [114], BadgeCase.Badge.Icicle);
+TownList['Lake Valor'] = new DungeonTown('Lake Valor', [213], BadgeCase.Badge.Icicle);
+TownList['Lake Verity'] = new DungeonTown('Lake Verity', [201], BadgeCase.Badge.Icicle);
+TownList['Lake Acuity'] = new DungeonTown('Lake Acuity', [217], BadgeCase.Badge.Icicle);
+TownList['Victory Road Sinnoh'] = new DungeonTown('Victory Road Sinnoh', [223], BadgeCase.Badge.Beacon);
+TownList['Spear Pillar'] = new DungeonTown('Spear Pillar', [211], BadgeCase.Badge.Elite_SinnohChampion);
+TownList['Hall of Origin'] = new DungeonTown('Hall of Origin', [211], BadgeCase.Badge.Elite_SinnohChampion);
+TownList['Fullmoon Island'] = new DungeonTown('Fullmoon Island', [], BadgeCase.Badge.Elite_SinnohChampion);
+TownList['Newmoon Island'] = new DungeonTown('Newmoon Island', [], BadgeCase.Badge.Elite_SinnohChampion);
+TownList['Flower Paradise'] = new DungeonTown('Flower Paradise', [224], BadgeCase.Badge.Elite_SinnohChampion);
+TownList['Stark Mountain'] = new DungeonTown('Stark Mountain', [227], BadgeCase.Badge.Elite_SinnohChampion);
+TownList['Snowpoint Temple'] = new DungeonTown('Snowpoint Temple', [217], BadgeCase.Badge.Elite_SinnohChampion);
