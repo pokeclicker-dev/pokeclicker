@@ -12,8 +12,8 @@
                 <div style='margin-top:20px' data-bind="foreach: GameHelper.enumStrings(GameConstants.Region)">
                     <button class='btn btn-block btn-success'
                         data-dismiss='modal'
-                        data-bind='visible: player.region != $index && $index <= GameConstants.MAX_AVAILABLE_REGION,
-                        click: () => { MapHelper.moveToTown(GameConstants.DockTowns[$index]); player.region = $index; },
+                        data-bind='visible: player.region != GameConstants.Region[$data] && GameConstants.Region[$data] <= player.highestRegion() && GameConstants.Region[$data] <= GameConstants.MAX_AVAILABLE_REGION,
+                        click: () => { MapHelper.moveToTown(GameConstants.DockTowns[GameConstants.Region[$data]]); player.region = GameConstants.Region[$data]; },
                         text: GameConstants.camelCaseToString($data)'>
                         Region
                     </button>
