@@ -37,7 +37,7 @@ abstract class Quest {
             Notifier.notify({ message: `You have completed your quest and claimed ${this.pointsReward} quest points!`, type: GameConstants.NotificationOption.success });
             // Refresh the list each time a player levels up
             if (oldLevel < player.questLevel) {
-                Notifier.notify({ message: 'Your quest level has increased!', type: GameConstants.NotificationOption.success, timeout: 1e4, sound: GameConstants.NotificationSound.quest_level_up });
+                Notifier.notify({ message: 'Your quest level has increased!', type: GameConstants.NotificationOption.success, timeout: 1e4, sound: GameConstants.NotificationSound.quest_level_increased });
                 QuestHelper.refreshQuests(true);
             }
             // Once the player completes every available quest, refresh the list for free
