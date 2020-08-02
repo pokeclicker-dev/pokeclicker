@@ -6,14 +6,12 @@ class TimedStoneEvolution extends StoneEvolution {
     stone: GameConstants.StoneType;
     startHour: number; // including
     endHour: number; // excluding
-    evolution: string;
 
     constructor(basePokemon: string, evolution: string, startHour: number, endHour: number, stone: GameConstants.StoneType = GameConstants.StoneType.Time_stone) {
         super(basePokemon, evolution, stone);
         this.startHour = startHour;
         this.endHour = endHour;
         this.stone = stone;
-        this.evolution = evolution;
     }
 
     isSatisfied(): boolean {
