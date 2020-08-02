@@ -705,7 +705,7 @@ gymList['Sunyshore City'] = new Gym(
 );
 gymList['Elite Aaron'] = new Gym(
     'Aaron',
-    'Sinnoh League',
+    'Elite Aaron',
     [
         new GymPokemon('Yanmega', 45330, 49),
         new GymPokemon('Scizor', 48300, 49),
@@ -720,7 +720,7 @@ gymList['Elite Aaron'] = new Gym(
 );
 gymList['Elite Bertha'] = new Gym(
     'Bertha',
-    'Sinnoh League',
+    'Elite Bertha',
     [
         new GymPokemon('Whiscash', 45330, 50),
         new GymPokemon('Gliscor', 48300, 53),
@@ -735,7 +735,7 @@ gymList['Elite Bertha'] = new Gym(
 );
 gymList['Elite Flint'] = new Gym(
     'Flint',
-    'Sinnoh League',
+    'Elite Flint',
     [
         new GymPokemon('Houndoom', 45330, 52),
         new GymPokemon('Flareon', 48300, 55),
@@ -750,7 +750,7 @@ gymList['Elite Flint'] = new Gym(
 );
 gymList['Elite Lucian'] = new Gym(
     'Lucian',
-    'Sinnoh League',
+    'Elite Lucian',
     [
         new GymPokemon('Mr.Mime', 48300, 53),
         new GymPokemon('Espeon', 52000, 55),
@@ -765,7 +765,7 @@ gymList['Elite Lucian'] = new Gym(
 );
 gymList['Champion Cynthia'] = new Gym(
     'Cynthia',
-    'Sinnoh League',
+    'Champion Cynthia',
     [
         new GymPokemon('Spiritomb', 58300, 58),
         new GymPokemon('Roserade', 62000, 58),
