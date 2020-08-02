@@ -595,7 +595,7 @@ namespace GameConstants {
             208: 'Mt. Coronet South',
             216: 'Mt. Coronet North',
             222: 'Distortion World',
-            224: 'Sinnoh Victory Road',
+            224: 'Victory Road Sinnoh',
         },
     };
 
