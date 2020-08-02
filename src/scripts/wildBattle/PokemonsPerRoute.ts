@@ -528,7 +528,7 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
         222: {
-            land: ['Magnemite', 'Magneton', 'Mr. Mime', 'Electrabuzz', 'Luxio', 'Glameow', 'Purugly', 'Chatot'],
+            land: ['Magnemite', 'Magneton', 'Mr. Mime', 'Electabuzz', 'Luxio', 'Glameow', 'Purugly', 'Chatot'],
             water: ['Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
             headbutt: [],
         },
