@@ -6,7 +6,7 @@ class StoneEvolution extends Evolution {
     evolvedPokemon: string
 
     constructor(basePokemon: string, evolvedPokemon: string, stone: GameConstants.StoneType) {
-        super(basePokemon, EvolutionType.Level);
+        super(basePokemon, EvolutionType.Stone);
         this.stone = stone;
         this.evolvedPokemon = evolvedPokemon;
     }
