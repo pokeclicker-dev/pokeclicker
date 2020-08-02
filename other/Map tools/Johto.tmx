@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.4" tiledversion="2020.07.21" orientation="orthogonal" renderorder="right-down" width="100" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="19" nextobjectid="4">
- <tileset firstgid="1" source="johto.tsx"/>
- <tileset firstgid="2" source="tiles_FRLG.tsx"/>
- <tileset firstgid="1318" source="tiles_Advanced.tsx"/>
- <tileset firstgid="9302" source="sprouttower.tsx"/>
+ <tileset firstgid="1" source="tiles_FRLG.tsx"/>
+ <tileset firstgid="1317" source="tiles_Advanced.tsx"/>
+ <tileset firstgid="9301" source="sprouttower.tsx"/>
  <layer id="1" name="Water Dark" width="100" height="60" locked="1" tintcolor="#c8c8c8">
   <data encoding="base64" compression="zstd">
    KLUv/WDAXGUAACBcAQAAAQC53bsjAg==
@@ -61,7 +60,7 @@
  </layer>
  <layer id="9" name="Dungeons" width="100" height="60">
   <data encoding="base64" compression="zstd">
-   KLUv/WDAXG0SAAYeUzjAHgkoPOQGC6CgQuEGUW3YR2OK0VUkU1gLvePqNbI5tZK8JJLjBcEAC0BRFMUpgugSxbEQPIyQB0MAPwBCAA1DlA/Kk8/J1+TCZqHCRmGbwORbouRL8iGRsEWAsD3YHBz5jBT5iHxDrMHGYMGmYEsg5AsC5Pvx+Xg6vqYcH47vxgEkqhkyVjG+fF6+Lh+Xb8un5cuCZLQVbUTb0TaE5bvyWfmqfFS+KZ8UIaDtZ/PZgrYenm1HZ8vZcDhsGzRsGQYvEDyvnZfOK+fCeX14eXh1uE8IPh34ZKAAgU8DhKxarIKsgDwJCPAJgI6mVQ4zX5mPzDfmE/OF+cCYWNqUtqStxBYsmJLerNyoNmzWrNSkQbM609RjxWO1w8aqxooGjNWLlQsWKVYrVipQnFgxLSmtkpBeRy+jVxHRa+g14iVC6BX0Anr9+Lx6XiECYahhKSECDCDQaIHlsAIEgHQABhLAECA4hADhQgQrBA8R/GsYAqPLA+GAJpmjkeKZjHVMCCGOhkqavB4hfgkH5YhfoskyMkv8n3njj8xjsvQFpYX7TQU4ef4owJ9OtR/Ai7kYhRaX/+J1UjmGsDqJOuCad61Ac0aS/+VTJdek1e94sj06/jtO9EKQfZf8d5x80h4PY1H2NHnBUXkDZgAvgAggFsBJSn6sFE7ASVZQWCbBB44mxasQe4tp8nwowjRJ6o9TJnh9dKGdJEVHNCjdSSt0fOhG8lgM3UgKm1CTgOOT3rehJgffJ7tHQ00OfjzPKb8CNQkxSDmAR/nBbJQ=
+   KLUv/WDAXF0SAPZdUjfQHAkoDHXsV3XVVZf9/vsvgg3wMzCwMLFzPrrYViT5TST5TSQ36ay//35ERARMGFipkmWtorA8QwA/AEIA7cKTz0mTj8m3xMJWgcI2YZOg5EuC5DvyGYmwQXiwOdgaFPmIDPmEfEGMwbZAwZZgQwDk++Hj6/HxeDi+phufja/GASOqGDBWL7p8XL4tn5Yvy4flu3JUtBFtQ5vRJmTlq/JR+aZ8Ur4oH5Sgn81n69mANp6dTSdnw9luNmwaMmwYBiBeH3ZeOq+cF8518/Lw6vDiYODTgU8FPp0IDPgkAMhqxerHysdTAACfcDStbpD5xnxivjAfmO/L56WE0pa0IW0ktkxLSG1WbNQaNWlWaM6YWZVp2rHSscpBYzVjJcPFqsWKBROKlYpVihMmVktKSSuko5fRq+hFNPQSeol4hQh6Ab1+Xj49L55XYahhKSHAAgg0WmA5sAIEgHQABhLAECA4hADhQgQrBA8R/GsYAqPLA+GAJpmjkeKZjHVMCCGOhkqavB4hfgkH5YhfoskyMkv8n3njj8xjsvQFpY37TQU4ef5owJ/OpR/AjbkYhRaX/+J1UjmGsDKJOuCad61Ac0aS/+VTJdek1e94kj1a/jtO9EKQfZX8d5x80h4Lo1H2NHlBUbkDRgAfgAQgDsBJRn6MFE7ASXYQWCbBB5ImhaoQ61tek0eHIUyTpP44ZYLXxxCqSVJ/RIPSnbRCxyfdSH6L0o2ksAM1CTRy0vcWanLgzWTXSKjJ0Y/HOaVXoCahBikH6Cg/mI0S
   </data>
  </layer>
  <layer id="5" name="Towns" width="100" height="60" locked="1">
