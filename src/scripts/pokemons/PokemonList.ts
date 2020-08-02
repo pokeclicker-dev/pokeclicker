@@ -1,36 +1,37 @@
 ///<reference path="../party/evolutions/LevelEvolution.ts"/>
 ///<reference path="../party/evolutions/StoneEvolution.ts"/>
-///<reference path="../party/evolutions/TimedStoneEvolution.ts"/>
-///<reference path="../party/evolutions/TimedLevelEvolution.ts"/>
+///<reference path="../party/evolutions/TimedEvolution.ts"/>
 ///<reference path="../GameConstants.ts"/>
 ///<reference path="../party/LevelType.ts"/>
 ///<reference path="PokemonType.ts"/>
 
 const pokemonDevolutionMap: { [name: string]: string } = {};
 
+type PokemonListData = {
+  id: number;
+  name: string;
+  catchRate: number;
+  evolutions?: Evolution[];
+  type: PokemonType[];
+  base: {
+    hitpoints: number;
+    attack: number;
+    specialAttack: number;
+    defense: number;
+    specialDefense: number;
+    speed: number;
+  };
+  levelType: LevelType;
+  exp: number;
+  eggCycles: number;
+  baby?: boolean;
+  attack?: number;
+}
+
 /**
  * Datalist that contains all Pokémon data
  */
-const pokemonList: {
-    id: number;
-    name: string;
-    catchRate: number;
-    evolutions?: Evolution[];
-    type: PokemonType[];
-    base: {
-        hitpoints: number;
-        attack: number;
-        specialAttack: number;
-        defense: number;
-        specialDefense: number;
-        speed: number;
-    };
-    levelType: LevelType;
-    exp: number;
-    eggCycles: number;
-    baby?: boolean;
-    attack?: number;
-}[] =
+const pokemonList: PokemonListData[] =
     [
         {
             'id': 1,
@@ -2363,8 +2364,8 @@ const pokemonList: {
                 new StoneEvolution('Eevee', 'Vaporeon', GameConstants.StoneType.Water_stone),
                 new StoneEvolution('Eevee', 'Jolteon', GameConstants.StoneType.Thunder_stone),
                 new StoneEvolution('Eevee', 'Flareon', GameConstants.StoneType.Fire_stone),
-                new DayTimedStoneEvolution('Eevee', 'Espeon'),
-                new NightTimedStoneEvolution('Eevee', 'Umbreon'),
+                new DayTimedStoneEvolution('Eevee', 'Espeon', GameConstants.StoneType.Time_stone),
+                new NightTimedStoneEvolution('Eevee', 'Umbreon', GameConstants.StoneType.Time_stone),
             ],
             'base': {
                 'hitpoints': 55,
