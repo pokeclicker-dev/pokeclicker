@@ -1,6 +1,7 @@
 ///<reference path="../party/evolutions/LevelEvolution.ts"/>
 ///<reference path="../party/evolutions/StoneEvolution.ts"/>
 ///<reference path="../party/evolutions/TimedStoneEvolution.ts"/>
+///<reference path="../party/evolutions/TimedLevelEvolution.ts"/>
 ///<reference path="../GameConstants.ts"/>
 ///<reference path="../party/LevelType.ts"/>
 ///<reference path="PokemonType.ts"/>
@@ -3792,6 +3793,7 @@ const pokemonList: {
             'levelType': LevelType.mediumslow,
             'exp': 86,
             'eggCycles': 20,
+            'evolutions': [new NightTimedLevelEvolution('Sneasel', 'Weavile', 100)],
             'base': {
                 'hitpoints': 55,
                 'attack': 95,
@@ -7141,7 +7143,7 @@ const pokemonList: {
             'levelType': LevelType.mediumslow,
             'exp': 56,
             'catchRate': 255,
-            'evolutions': [new LevelEvolution('Budew', 'Roselia', 100)],
+            'evolutions': [new DayTimedLevelEvolution('Budew', 'Roselia', 100)],
             'baby': true,
             'base': {
                 'hitpoints': 40,
