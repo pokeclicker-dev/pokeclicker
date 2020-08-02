@@ -17,6 +17,7 @@ class StoneEvolution extends Evolution {
     }
 
     isSatisfied(): boolean {
-        return true;
+        // Check that evolution is within reached regions
+        return PokemonHelper.calcNativeRegion(this.evolvedPokemon) <= player.highestRegion();
     }
 }

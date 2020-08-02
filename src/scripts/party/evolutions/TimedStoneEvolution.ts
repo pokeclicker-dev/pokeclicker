@@ -18,7 +18,10 @@ class TimedStoneEvolution extends StoneEvolution {
 
     isSatisfied(): boolean {
         const currentHour = new Date().getHours();
-        return currentHour >= this.startHour && currentHour < this.endHour;
+        // Check that evolution is within reached regions
+        return PokemonHelper.calcNativeRegion(this.evolvedPokemon) <= player.highestRegion()
+        // Check current time within evolution hours
+        && currentHour >= this.startHour && currentHour < this.endHour;
     }
 }
 

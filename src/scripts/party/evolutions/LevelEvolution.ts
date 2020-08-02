@@ -17,7 +17,10 @@ class LevelEvolution extends Evolution {
     }
 
     isSatisfied(): boolean {
-        return App.game.party.getPokemon(PokemonHelper.getPokemonByName(this.basePokemon).id).level >= this.level;
+        // Check if within region
+        return PokemonHelper.calcNativeRegion(this.evolvedPokemon) <= player.highestRegion()
+        // Check high enough level
+        && App.game.party.getPokemon(PokemonHelper.getPokemonByName(this.basePokemon).id).level >= this.level;
     }
 
     evolve(): boolean {
