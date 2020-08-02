@@ -448,7 +448,7 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
         206: {
-            land: ['Zubat', 'Machop', 'Geodude', 'Ponyta', 'Gliger', 'Kricketot', 'Kricketune', 'Stunky', 'Bronzor'],
+            land: ['Zubat', 'Machop', 'Geodude', 'Ponyta', 'Gligar', 'Kricketot', 'Kricketune', 'Stunky', 'Bronzor'],
             water: [],
             headbutt: [],
         },
