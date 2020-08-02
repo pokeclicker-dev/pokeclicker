@@ -855,8 +855,26 @@ namespace GameConstants {
 
     export const SinnohDungeons = [
         // TODO: SINNOH
-        'test',
-        'test',
+        'Oreburgh Gate',
+        'Ravaged Path',
+        'Eterna Forest',
+        'Old Chateau',
+        'Wayward Cave',
+        'Mt. Coronet South',
+        'Iron Island',
+        'Mt. Coronet North',
+        'Lake Verity',
+        'Lake Valor',
+        'Lake Acuity',
+        'Distortion World',
+        'Sinnoh Victory Road',
+        'Spear Pillar',
+        'Hall of Origin',
+        'Fullmoon Island',
+        'Newmoon Island',
+        'Flower Paradise',
+        'Snowpoint Temple',
+        'Stark Mountain',
     ];
 
     export const RegionDungeons = [
