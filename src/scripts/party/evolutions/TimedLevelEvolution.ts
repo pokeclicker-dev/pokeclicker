@@ -1,0 +1,32 @@
+class TimedLevelEvolution extends LevelEvolution {
+
+    startHour: number; // including
+    endHour: number; // excluding
+
+    constructor(basePokemon: string, evolution: string, level: number, startHour: number, endHour: number) {
+        super(basePokemon, evolution, level);
+        this.startHour = startHour;
+        this.endHour = endHour;
+    }
+
+    isSatisfied(): boolean {
+        const currentHour = new Date().getHours();
+        // Check that evolution is within reached regions
+        return PokemonHelper.calcNativeRegion(this.evolvedPokemon) <= player.highestRegion()
+        // Check current time within evolution hours
+        && currentHour >= this.startHour && currentHour < this.endHour
+        // Check high enough level
+        && App.game.party.getPokemon(PokemonHelper.getPokemonByName(this.basePokemon).id).level >= this.level;
+    }
+}
+
+class DayTimedLevelEvolution extends TimedLevelEvolution {
+    constructor(basePokemon: string, evolution: string, level: number) {
+        super(basePokemon, evolution, level, 6, 18);
+    }
+}
+class NightTimedLevelEvolution extends TimedLevelEvolution {
+    constructor(basePokemon: string, evolution: string, level: number) {
+        super(basePokemon, evolution, level, 18, 6);
+    }
+}
