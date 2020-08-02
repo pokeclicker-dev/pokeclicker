@@ -8,7 +8,15 @@
     <!--Route 201-->
     <%- include('templates/mapRoute',
         { route: 201, region: 3
-        , height: 3, width: 10
+        , height: 3, width: 5
+        , x: 12, y: 50
+        })
+    %>
+
+    <!--Route 201 extra-->
+    <%- include('templates/mapRoute',
+        { route: 201, region: 3
+        , height: 2, width: 5
         , x: 7, y: 50
         })
     %>
@@ -16,9 +24,8 @@
     <!--Route 202-->
     <%- include('templates/mapRoute',
         { route: 202, region: 3
-        , height: 3, width: 4
+        , height: 3, width: 3
         , x: 18, y: 46
-        , rotate: true
         })
     %>
 
@@ -69,16 +76,16 @@
     <!--Route 205-->
     <%- include('templates/mapRoute',
         { route: 205, region: 3
-        , height: 2, width: 9
-        , x: 21, y: 27
+        , height: 3, width: 6
+        , x: 24, y: 27
         })
     %>
 
     <!--Route 205 extra bit 2-->
     <%- include('templates/mapRoute',
         { route: 205, region: 3
-        , height: 1, width: 6
-        , x: 24, y: 29
+        , height: 2, width: 3
+        , x: 21, y: 25
         , noText: true
         })
     %>
@@ -315,6 +322,7 @@
         { route: 219, region: 3
         , height: 2, width: 3
         , x: 18, y: 53
+        , rotate: true
         })
     %>
 
@@ -354,8 +362,9 @@
     <!--Route 224-->
     <%- include('templates/mapRoute',
         { route: 224, region: 3
-        , height: 4, width: 3
+        , height: 4, width: 2
         , x: 90, y: 25
+        , rotate: true
         })
     %>
 
@@ -406,7 +415,7 @@
     <!--Route 229-->
     <%- include('templates/mapRoute',
         { route: 229, region: 3
-        , height: 3, width: 5
+        , height: 2, width: 5
         , x: 78, y: 15
         })
     %>
@@ -414,8 +423,8 @@
     <!--Route 229 extra-->
     <%- include('templates/mapRoute',
         { route: 229, region: 3
-        , height: 1, width: 3
-        , x: 82, y: 18
+        , height: 1, width: 4
+        , x: 82, y: 17
         , noText: true
         , rotate: true
         })
@@ -436,8 +445,8 @@
     <!--Twinleaf Town-->
     <%- include('templates/mapTown',
         { name: "Twinleaf Town"
-        , x: 7, y: 53
-        , height: 4, width: 5
+        , x: 7, y: 52
+        , height: 5, width: 5
         , home: true
         })
     %>
@@ -466,11 +475,27 @@
         })
     %>
 
+    <!--Jubilife City extra-->
+    <%- include('templates/mapTown',
+        { name: "Jubilife City"
+        , x: 14, y: 41
+        , height: 1, width: 5
+        })
+    %>
+
     <!--Oreburgh City-->
     <%- include('templates/mapTown',
         { name: "Oreburgh City"
         , x: 30, y: 43
         , height: 3, width: 4
+        })
+    %>
+
+    <!--Oreburgh City extra-->
+    <%- include('templates/mapTown',
+        { name: "Oreburgh City"
+        , x: 31, y: 42
+        , height: 1, width: 3
         })
     %>
 
@@ -498,6 +523,14 @@
         })
     %>
 
+    <!--Hearthome City extra-->
+    <%- include('templates/mapTown',
+        { name: "Hearthome City"
+        , x: 44, y: 38
+        , height: 1, width: 5
+        })
+    %>
+
     <!--Celestic Town-->
     <%- include('templates/mapTown',
         { name: "Celestic Town"
@@ -511,6 +544,14 @@
         { name: "Veilstone City"
         , x: 64, y: 29
         , height: 4, width: 9
+        })
+    %>
+
+    <!--Veilstone City extra-->
+    <%- include('templates/mapTown',
+        { name: "Veilstone City"
+        , x: 64, y: 28
+        , height: 1, width: 5
         })
     %>
 
@@ -538,6 +579,14 @@
         })
     %>
 
+    <!--Sunyshore City extra-->
+    <%- include('templates/mapTown',
+        { name: "Sunyshore City"
+        , x: 78, y: 47
+        , height: 1, width: 5
+        })
+    %>
+
     <!--Snowpoint City-->
     <%- include('templates/mapTown',
         { name: "Snowpoint City"
@@ -549,8 +598,8 @@
     <!--Fight Area-->
     <%- include('templates/mapTown',
         { name: "Fight Area"
-        , x: 60, y: 13
-        , height: 4, width: 5
+        , x: 60, y: 14
+        , height: 5, width: 5
         })
     %>
 
@@ -565,16 +614,24 @@
     <!--Resort Area-->
     <%- include('templates/mapTown',
         { name: "Resort Area"
-        , x: 78, y: 18
-        , height: 3, width: 4
+        , x: 78, y: 17
+        , height: 4, width: 4
+        })
+    %>
+
+    <!--Pal Park-->
+    <%- include('templates/mapTown',
+        { name: "Pal Park"
+        , x: 33, y: 54
+        , height: 4, width: 4
         })
     %>
 
     <!--Sinnoh League-->
     <%- include('templates/mapTown',
         { name: "Sinnoh League"
-        , x: 81, y: 24
-        , height: 7, width: 9
+        , x: 82, y: 24
+        , height: 7, width: 11
         })
     %>
 
