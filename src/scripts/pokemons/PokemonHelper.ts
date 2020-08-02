@@ -23,7 +23,7 @@ class PokemonHelper {
                 return false;
             }
             for (const evolution of partyPokemon.evolutions) {
-                if (evolution instanceof StoneEvolution && evolution.stone == evoType && PokemonHelper.calcNativeRegion(evolution.getEvolvedPokemon()) <= player.highestRegion()) {
+                if (evolution instanceof StoneEvolution && evolution.stone == evoType && evolution.isSatisfied() && PokemonHelper.calcNativeRegion(evolution.getEvolvedPokemon()) <= player.highestRegion()) {
                     return true;
                 }
             }
