@@ -502,4 +502,4 @@ dungeonList['Stark Mountain'] = new Dungeon('Stark Mountain',
     3000,
     [new DungeonBossPokemon('Skarmory', 10000, 70), new DungeonBossPokemon('Heatran', 10000, 70)],
     6500, BadgeCase.Badge.Elite_SinnohChampion, 45, 35
-),
+);
