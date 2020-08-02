@@ -1,5 +1,6 @@
 ///<reference path="./badgeCase/BadgeCase.ts" />
 ///<reference path="utilities/Sound.ts"/>
+///<reference path="settings/BooleanSetting.ts"/>
 
 /**
  * Contains all game constants for easy access.
@@ -95,6 +96,16 @@ namespace GameConstants {
         shiny_long: new Sound('Shiny', 'assets/sounds/shiny_long.mp3'),
         new_catch: new Sound('New Catch', 'assets/sounds/new_catch.mp3'),
         achievement: new Sound('Achievement', 'assets/sounds/achievement.mp3'),
+    };
+    export const NotificationSetting = {
+        ready_to_hatch: new BooleanSetting('notification.ready_to_hatch', 'Egg ready to hatch', true),
+        route_item_found: new BooleanSetting('notification.route_item_found', 'Item found during route battle', true),
+        dungeon_item_found: new BooleanSetting('notification.dungeon_item_found', 'Item found in dungeon chest', true),
+        battle_item_timer: new BooleanSetting('notification.battle_item_timer', 'Battle item about to wear off', true),
+        encountered_shiny: new BooleanSetting('notification.encountered_shiny', 'Encountered a shiny Pokemon', true),
+        quest_ready_to_complete: new BooleanSetting('notification.quest_ready_to_complete', 'Quest is ready to be completed', true),
+        underground_energy_full: new BooleanSetting('notification.underground_energy_full', 'Mining energy reached maximum capacity', true),
+        event_start_end: new BooleanSetting('notification.event_start_end', 'Event start/end information', true),
     };
 
     export enum DungeonTile {
@@ -296,17 +307,6 @@ namespace GameConstants {
         galar = 7,
     }
 
-    export class Option {
-        text: string;
-        value: any;
-
-        constructor(text: string, value: any) {
-            this.text = text;
-            this.value = value;
-        }
-    }
-
-
     export const RegionRoute = {
         0: [1, 25],
         1: [26, 48],
@@ -430,8 +430,36 @@ namespace GameConstants {
             133: [132],
             134: [133],
         },
-        // TODO: SINNOH
         3: {
+            202: [201],
+            203: [202],
+            204: [202],
+            205: [204],
+            206: [205],
+            207: [206],
+            208: [207],
+            209: [208],
+            210: [209],
+            211: [213],
+            212: [213],
+            213: [214],
+            214: [215],
+            215: [210],
+            216: [218],
+            217: [216],
+            218: [213],
+            219: [213],
+            220: [219],
+            221: [220],
+            222: [217],
+            223: [222],
+            224: [223],
+            225: [224],
+            226: [225],
+            227: [226],
+            228: [226],
+            229: [228],
+            230: [229],
 
         },
     };
@@ -475,9 +503,15 @@ namespace GameConstants {
             126: BadgeCase.Badge.Mind,
             127: BadgeCase.Badge.Rain,
         },
-        // TODO: SINNOH
         3: {
-
+            206: BadgeCase.Badge.Forest,
+            209: BadgeCase.Badge.Relic,
+            211: BadgeCase.Badge.Fen,
+            212: BadgeCase.Badge.Fen,
+            218: BadgeCase.Badge.Fen,
+            219: BadgeCase.Badge.Fen,
+            223: BadgeCase.Badge.Beacon,
+            225: BadgeCase.Badge.Elite_SinnohChampion,
         },
     };
 
@@ -556,9 +590,12 @@ namespace GameConstants {
             124: 'Mt. Pyre',
             128: 'Seafloor Cavern',
         },
-        // TODO: SINNOH
         3: {
-
+            205: 'Ravaged Path',
+            208: 'Mt. Coronet South',
+            216: 'Mt. Coronet North',
+            222: 'Distortion World',
+            224: 'Sinnoh Victory Road',
         },
     };
 
@@ -719,10 +756,20 @@ namespace GameConstants {
         'Champion Wallace',
     ];
 
-    // TODO: SINNOH
     export const SinnohGyms = [
-        'None',
-        'None',
+        'Oreburgh City',
+        'Eterna City',
+        'Hearthome City',
+        'Veilstone City',
+        'Pastoria City',
+        'Canalave City',
+        'Snowpoint City',
+        'Sunyshore City',
+        'Elite Aaron',
+        'Elite Bertha',
+        'Elite Flint',
+        'Elite Lucian',
+        'Champion Cynthia',
     ];
 
     export const RegionGyms = [
@@ -808,8 +855,26 @@ namespace GameConstants {
 
     export const SinnohDungeons = [
         // TODO: SINNOH
-        'test',
-        'test',
+        'Oreburgh Gate',
+        'Ravaged Path',
+        'Eterna Forest',
+        'Old Chateau',
+        'Wayward Cave',
+        'Mt. Coronet South',
+        'Iron Island',
+        'Mt. Coronet North',
+        'Lake Verity',
+        'Lake Valor',
+        'Lake Acuity',
+        'Distortion World',
+        'Sinnoh Victory Road',
+        'Spear Pillar',
+        'Hall of Origin',
+        'Fullmoon Island',
+        'Newmoon Island',
+        'Flower Paradise',
+        'Snowpoint Temple',
+        'Stark Mountain',
     ];
 
     export const RegionDungeons = [
