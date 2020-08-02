@@ -8,7 +8,7 @@
     <!--Route 201-->
     <%- include('templates/mapRoute',
         { route: 201, region: 3
-        , height: 3, width: 11
+        , height: 3, width: 10
         , x: 7, y: 50
         })
     %>
@@ -44,6 +44,7 @@
         { route: 205, region: 3
         , height: 4, width: 2
         , x: 18, y: 29
+        , noText: true
         })
     %>
 
@@ -114,7 +115,16 @@
     <%- include('templates/mapRoute',
         { route: 207, region: 3
         , height: 3, width: 8
-        , x: 31, y: 41
+        , x: 33, y: 41
+        })
+    %>
+
+    <!--Route 207-->
+    <%- include('templates/mapRoute',
+        { route: 207, region: 3
+        , height: 1, width: 3
+        , x: 33, y: 41
+        , noText: true
         })
     %>
 
@@ -256,12 +266,39 @@
         })
     %>
 
+    <!--Route 216 extra-->
+    <%- include('templates/mapRoute',
+        { route: 216, region: 3
+        , height: 1, width: 3
+        , x: 40, y: 17
+        , noText: true
+        })
+    %>
+
     <!--Route 217-->
     <%- include('templates/mapRoute',
         { route: 217, region: 3
         , height: 3, width: 12
         , x: 30, y: 5
         , rotate: true
+        })
+    %>
+
+    <!--Route 217 extra-->
+    <%- include('templates/mapRoute',
+        { route: 217, region: 3
+        , height: 1, width: 8
+        , x: 33, y: 6
+        , noText: true
+        })
+    %>
+
+    <!--Route 217 extra-->
+    <%- include('templates/mapRoute',
+        { route: 217, region: 3
+        , height: 2, width: 1
+        , x: 9, y: 5
+        , noText: true
         })
     %>
 
@@ -292,7 +329,7 @@
     <!--Route 221-->
     <%- include('templates/mapRoute',
         { route: 221, region: 3
-        , height: 3, width: 8
+        , height: 3, width: 7
         , x: 26, y: 55
         })
     %>
@@ -399,8 +436,8 @@
     <!--Twinleaf Town-->
     <%- include('templates/mapTown',
         { name: "Twinleaf Town"
-        , x: 7, y: 52
-        , height: 5, width: 5
+        , x: 7, y: 53
+        , height: 4, width: 5
         , home: true
         })
     %>
@@ -432,8 +469,8 @@
     <!--Oreburgh City-->
     <%- include('templates/mapTown',
         { name: "Oreburgh City"
-        , x: 30, y: 42
-        , height: 4, width: 4
+        , x: 30, y: 43
+        , height: 3, width: 4
         })
     %>
 
@@ -513,7 +550,7 @@
     <%- include('templates/mapTown',
         { name: "Fight Area"
         , x: 60, y: 13
-        , height: 5, width: 5
+        , height: 4, width: 5
         })
     %>
 
@@ -528,16 +565,16 @@
     <!--Resort Area-->
     <%- include('templates/mapTown',
         { name: "Resort Area"
-        , x: 78, y: 17
-        , height: 4, width: 4
+        , x: 78, y: 18
+        , height: 3, width: 4
         })
     %>
 
     <!--Sinnoh League-->
     <%- include('templates/mapTown',
         { name: "Sinnoh League"
-        , x: 80, y: 24
-        , height: 7, width: 11
+        , x: 81, y: 24
+        , height: 7, width: 9
         })
     %>
 
@@ -601,6 +638,22 @@
         })
     %>
 
+    <!--Coronet North extra-->
+    <%- include('templates/mapDungeon',
+        { name: "Coronet North"
+        , x: 44, y: 26
+        , height: 1, width: 2
+        })
+    %>
+
+    <!--Coronet North extra 2-->
+    <%- include('templates/mapDungeon',
+        { name: "Coronet North"
+        , x: 40, y: 18
+        , height: 4, width: 4
+        })
+    %>
+
     <!--Spear Pillar-->
     <%- include('templates/mapDungeon',
         { name: "Spear Pillar"
@@ -613,7 +666,7 @@
     <%- include('templates/mapDungeon',
         { name: "Hall of Origin"
         , x: 39, y: 26
-        , height: 4, width: 4
+        , height: 5, width: 5
         })
     %>
 
@@ -622,6 +675,14 @@
         { name: "Coronet South"
         , x: 37, y: 33
         , height: 8, width: 3
+        })
+    %>
+
+    <!--Coronet South extra-->
+    <%- include('templates/mapDungeon',
+        { name: "Coronet South"
+        , x: 40, y: 37
+        , height: 4, width: 1
         })
     %>
 
@@ -712,7 +773,7 @@
     <%- include('templates/mapPOI',
         { name: "Dock"
         , x: 6, y: 38
-        , height: 5, width: 3
+        , height: 4, width: 3
         , databind: "click: function(){MapHelper.openShipModal()}, attr: { class: MapHelper.calculateTownCssClass('Canalave City') }"
         })
      %>
