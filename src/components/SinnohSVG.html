@@ -41,9 +41,17 @@
     <!--Route 204-->
     <%- include('templates/mapRoute',
         { route: 204, region: 3
-        , height: 3, width: 5
+        , height: 3, width: 4.5
         , x: 18, y: 37
         , rotate: true
+        })
+    %>
+    <!--Route 204 Extension-->
+    <%- include('templates/mapRoute',
+        { route: 204, region: 3
+        , height: 0.5, width: 2
+        , x: 19, y: 41.5
+        , noText: true
         })
     %>
 
@@ -372,12 +380,11 @@
     <!--Route 225-->
     <%- include('templates/mapRoute',
         { route: 225, region: 3
-        , height: 3, width: 7
+        , height: 3, width: 6.5
         , x: 60, y: 7
         , rotate: true
         })
     %>
-
     <!--Route 225 extra-->
     <%- include('templates/mapRoute',
         { route: 225, region: 3
@@ -599,8 +606,8 @@
     <!--Fight Area-->
     <%- include('templates/mapTown',
         { name: "Fight Area"
-        , x: 60, y: 14
-        , height: 4, width: 5
+        , x: 60, y: 13.5
+        , height: 4.5, width: 5
         })
     %>
 
@@ -631,8 +638,8 @@
     <!--Sinnoh League-->
     <%- include('templates/mapTown',
         { name: "Sinnoh League"
-        , x: 80, y: 24
-        , height: 7, width: 10.5
+        , x: 80.5, y: 24
+        , height: 7, width: 10
         })
     %>
 
