@@ -504,14 +504,14 @@ namespace GameConstants {
             127: BadgeCase.Badge.Rain,
         },
         3: {
-            206: BadgeCase.Badge.Forest
-            209: BadgeCase.Badge.Relic
-            211: BadgeCase.Badge.Fen
-            212: BadgeCase.Badge.Fen
-            218: BadgeCase.Badge.Fen
-            219: BadgeCase.Badge.Fen
-            223: BadgeCase.Badge.Beacon
-            225: BadgeCase.Badge.Elite_SinnohChampion
+            206: BadgeCase.Badge.Forest,
+            209: BadgeCase.Badge.Relic,
+            211: BadgeCase.Badge.Fen,
+            212: BadgeCase.Badge.Fen,
+            218: BadgeCase.Badge.Fen,
+            219: BadgeCase.Badge.Fen,
+            223: BadgeCase.Badge.Beacon,
+            225: BadgeCase.Badge.Elite_SinnohChampion,
         },
     };
 
@@ -756,10 +756,20 @@ namespace GameConstants {
         'Champion Wallace',
     ];
 
-    // TODO: SINNOH
     export const SinnohGyms = [
-        'None',
-        'None',
+        'Oreburgh City',
+        'Eterna City',
+        'Hearthome City',
+        'Veilstone City',
+        'Pastoria City',
+        'Canalave City',
+        'Snowpoint City',
+        'Sunyshore City',
+        'Elite Aaron',
+        'Elite Bertha',
+        'Elite Flint',
+        'Elite Lucian',
+        'Champion Cynthia',
     ];
 
     export const RegionGyms = [

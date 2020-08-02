@@ -108,5 +108,18 @@ namespace BadgeCase {
         'Elite_Glacia',
         'Elite_Drake',
         'Elite_HoennChampion',
+        'Coal',
+        'Forest',
+        'Relic',
+        'Cobble',
+        'Fen',
+        'Mine',
+        'Icicle',
+        'Beacon',
+        'Elite_Aaron',
+        'Elite_Bertha',
+        'Elite_Flint',
+        'Elite_Lucian',
+        'Elite_SinnohChampion',
     }
 }
