@@ -420,11 +420,156 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
     },
-    // TODO: SINNOH
     3: {
         201: {
-            land: ['Rattata'],
+            land: ['Starly', 'Bidoof', 'Kricketot'],
             water: [],
+            headbutt: [],
+        },
+    
+        202: {
+            land: ['Starly', 'Bidoof', 'Kricketot', 'Shinx'],
+            water: [],
+            headbutt: [],
+        },
+        203: {
+            land: ['Zubat', 'Abra', 'Starly', 'Bidoof', 'Kricketot', 'Shinx'],
+            water: ['Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Seaking', 'Gyarados'],
+            headbutt: [],
+        },
+        204: {
+            land: ['Zubat', 'Wurmple', 'Starly', 'Bidoof', 'Kricketot', 'Shinx', 'Budew'],
+            water: ['Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Seaking', 'Gyarados'],
+            headbutt: [],
+        },
+        205: {
+            land: ['Bidoof', 'Pachirisu', 'Hoothoot', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Kricketot', 'Budew'],
+            water: ['Wingull', 'Pelipper', 'Buizel', 'Tentacool', 'Tentacruel', 'Shellos', 'Gastrodon', 'Magikarp', 'Finneon', 'Shellder', 'Gyarados', 'Lumineon', 'Psyduck', 'Golduck', 'Barboach', 'Whiscash'],
+            headbutt: [],
+        },
+        206: {
+            land: ['Zubat', 'Machop', 'Geodude', 'Ponyta', 'Gliger', 'Kricketot', 'Kricketune', 'Stunky', 'Bronzor'],
+            water: [],
+            headbutt: [],
+        },
+        207: {
+            land: ['Zubat', 'Machop', 'Geodude', 'Ponyta', 'Kricketot'],
+            water: [],
+            headbutt: [],
+        },
+        208: {
+            land: ['Zubat', 'Machop', 'Ralts', 'Meditite', 'Roselia', 'Bidoof', 'Bibarel', 'Budew'],
+            water: ['Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Barboach', 'Gyarados', 'Whiscash', 'Seaking'],
+            headbutt: [],
+        },
+        209: {
+            land: ['Zubat', 'Gastly', 'Chansey', 'Ralts', 'Roselia', 'Duskull', 'Starly', 'Staravia', 'Bibarel', 'Bonsly', 'Mime Jr.'],
+            water: ['Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Seaking', 'Gyarados'],
+            headbutt: [],
+        },
+        210: {
+            land: ['Geodude', 'Ponyta', 'Chansey', 'Scyther', 'Hoothoot', 'Noctowl', 'Roselia', 'Staravia', 'Kricketune', 'Bonsly', 'Mime jr.', 'Machop', 'Machoke', 'Meditite', 'Swablu', 'Bidarel'],
+            water: ['Psyduck', 'Golduck', 'Magikarp', 'Barboach', 'Whiscash', 'Gyarados'],
+            headbutt: [],
+        },
+        211: {
+            land: ['Zubat', 'Machop', 'Geodude', 'Ponyta', 'Hoothoot', 'Meditite', 'Bidoof', 'Machoke', 'Graveler', 'Noctowl', 'Chingling', 'Bronzor'],
+            water: [],
+            headbutt: [],
+        },
+        212: {
+            land: ['Ralts', 'Kirlia', 'Roselia', 'Starly', 'Staravia', 'Kricketune', 'Budew'],
+            water: ['Marill', 'Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Gyarados', 'Seaking'],
+            headbutt: [],
+        },
+        213: {
+            land: ['Chatot'],
+            water: ['Buizel', 'Floatzel', 'Tentacool', 'Tentacruel', 'Wingull', 'Pelipper', 'Shellos', 'Gastrodon', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
+            headbutt: [],
+        },
+        214: {
+            land: ['Zubat', 'Geodude', 'Graveler', 'Ponyta', 'Rhyhorn', 'Sudowoodo', 'Girafarig', 'Houndour', 'kricketune', 'Stunky'],
+            water: ['Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Seaking', 'Gyarados'],
+            headbutt: [],
+        },
+        215: {
+            land: ['Abra', 'Kadabra', 'Geodude', 'Ponyta', 'Lickitung', 'Scyther', 'Staravia', 'Kricketune', 'Marill'],
+            water: [],
+            headbutt: [],
+        },
+        216: {
+            land: ['Zubat', 'Machoke', 'Graveler', 'Noctowl', 'Sneasel', 'Meditite', 'Snorunt', 'Snover'],
+            water: [],
+            headbutt: [],
+        },
+        217: {
+            land: ['Zubat', 'Machoke', 'Noctowl', 'Sneasel', 'Swinub', 'Meditite', 'Medicham', 'Snorunt', 'Snover'],
+            water: [],
+            headbutt: [],
+        },
+        218: {
+            land: ['Mr. Mime', 'Glameow', 'Chatot'],
+            water: ['Wingull', 'Floatzel', 'Shellos', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Pelipper', 'Magikarp', 'Finneon', 'Gyarados', 'Lumineon'],
+            headbutt: [],
+        },
+        219: {
+            land: [],
+            water: ['Tentacool', 'Tentacruel', 'Wingull', 'Pelipper', 'Magikarp', 'Finneon', 'Lumineon', 'Gyarados', 'Clamperl'],
+            headbutt: [],
+        },
+        220: {
+            land: [],
+            water: ['Tentacool', 'Tentacruel', 'Wingull', 'Pelipper', 'Magikarp', 'Finneon', 'Lumineon', 'Gyarados', 'Chinchou', 'Lanturn'],
+            headbutt: [],
+        },
+        221: {
+            land: ['Sudowoodo', 'Girafarig', 'Roselia', 'Stunky', 'Skuntank'],
+            water: ['Wingull', 'Floatzel', 'Shellos', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Pelipper', 'Magikarp', 'Finneon', 'Lumineon', 'Gyarados', 'Clamperl'],
+            headbutt: [],
+        },
+        222: {
+            land: ['Magnemite', 'Magneton', 'Mr. Mime', 'Electrabuzz', 'Luxio', 'Glameow', 'Purugly', 'Chatot'],
+            water: ['Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
+            headbutt: [],
+        },
+        223: {
+            land: [],
+            water: ['Tentacruel', 'Pelipper', 'Mantyke', 'Magikarp', 'Remoraid', 'Octillery', 'Gyarados', 'Wailmer', 'Wailord'],
+            headbutt: [],
+        },
+        224: {
+            land: ['Oddish', 'Gloom', 'Bellsprout', 'Weepinbell', 'Beautifly', 'Dustox', 'Roselia', 'Chatot'],
+            water: ['Pelipper', 'Buizel', 'Floatzel', 'Shellos', 'Gastrodon', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Luvdisc'],
+            headbutt: [],
+        },
+        225: {
+            land: ['Rattata', 'Raticate', 'Spearow', 'Fearow', 'Machoke', 'Graveler', 'Roselia', 'Skuntank', 'Banette'],
+            water: ['Psyduck', 'Golduck', 'Poliwhirl', 'Magikarp', 'Barboach', 'Gyarados', 'Whiscash'],
+            headbutt: [],
+        },
+        226: {
+            land: ['Rattata', 'Raticate', 'Spearow', 'Fearow', 'Machoke', 'Graveler', 'Banette'],
+            water: ['Golduck', 'Tentacruel', 'Seel', 'Dewgong', 'Wingull', 'Pelipper', 'Spheal', 'Sealeo', 'Magikarp', 'Horsea', 'Seadra', 'Gyarados', 'Relicanth'],
+            headbutt: [],
+        },
+        227: {
+            land: ['Fearow', 'Golbat', 'Graveler', 'Weezing', 'Rhyhorn', 'Rhydon', 'Skarmory', 'Numel', 'Camerupt', 'Banette'],
+            water: ['Poliwag', 'Poliwhirl', 'Magikarp', 'Barboach', 'Gyarados', 'Whiscash'],
+            headbutt: [],
+        },
+        228: {
+            land: ['Diglett', 'Dugtrio', 'Rhydon', 'Cacnea', 'Cacturne', 'Hippowdon'],
+            water: ['Poliwag', 'Poliwhirl', 'Magikarp', 'Barboach', 'Whiscash', 'Gyarados'],
+            headbutt: [],
+        },
+        229: {
+            land: ['Pidgey', 'Oddish', 'Gloom', 'Bellsprout', 'Weepinbell', 'Scyther', 'Pinsir', 'Ledian', 'Ariados', 'Beautifly', 'Dustox', 'Volbeat', 'Illumise', 'Roselia', 'Purugly'],
+            water: ['Wingull', 'Pelipper', 'Surskit', 'Masquerain', 'Magikarp', 'Goldeen', 'Gyarados', 'Seaking'],
+            headbutt: [],
+        },
+        230: {
+            land: ['Oddish', 'Gloom', 'Bellsprout', 'Weepinbell', 'Beautifly', 'Dustox', 'Roselia'],
+            water: ['Golduck', 'Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacruel', 'Seel', 'Dewgong', 'Spheal', 'Sealeo', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Wailmer', 'Wailord'],
             headbutt: [],
         },
     },
