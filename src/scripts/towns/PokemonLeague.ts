@@ -41,3 +41,8 @@ TownList['Indigo Plateau Johto'] = new PokemonLeague('Indigo Plateau Johto', [27
 const pokemonLeagueHoenn = ['Elite Sidney', 'Elite Phoebe', 'Elite Glacia', 'Elite Drake', 'Champion Wallace'];
 TownList['Pokemon League Hoenn'] = new PokemonLeague('Pokemon League Hoenn', [128], indigoPlateauShop, 'Victory Road Hoenn', pokemonLeagueHoenn);
 (<PokemonLeague>TownList['Pokemon League Hoenn']).setupGymTowns();
+
+const pokemonLeagueSinnoh = ['Elite Aaron', 'Elite Bertha', 'Elite Flint', 'Elite Lucian', 'Champion Cynthia'];
+TownList['Pokemon League Sinnoh'] = new PokemonLeague('Pokemon League Sinnoh', [223], indigoPlateauShop, 'Victory Road Sinnoh', pokemonLeagueSinnoh);
+(<PokemonLeague>TownList['Pokemon League Sinnoh']).setupGymTowns();
+

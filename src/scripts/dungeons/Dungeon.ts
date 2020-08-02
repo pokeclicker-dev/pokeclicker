@@ -480,7 +480,7 @@ dungeonList['Distortion World'] = new Dungeon('Distortion World',
     ],
     5500, BadgeCase.Badge.Icicle, 42, 30);
 
-dungeonList['Sinnoh Victory Road'] = new Dungeon('Sinnoh Victory Road',
+dungeonList['Victory Road Sinnoh'] = new Dungeon('Victory Road Sinnoh',
     ['Golbat', 'Graveler', 'Onix', 'Rhyhorn', 'Magneton', 'Azumarill', 'Floatzel'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     3000,
