@@ -1,6 +1,3 @@
-///<reference path="Evolution.ts"/>
-///<reference path="EvolutionType.ts"/>
-
 class TimedStoneEvolution extends StoneEvolution {
 
     stone: GameConstants.StoneType;
