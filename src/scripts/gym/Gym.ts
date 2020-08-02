@@ -664,7 +664,7 @@ gymList['Pastoria City'] = new Gym(
 );
 gymList['Canalave City'] = new Gym(
     'Byron',
-    'Calanalave City',
+    'Canalave City',
     [
         new GymPokemon('Magneton', 67000, 37),
         new GymPokemon('Steelix', 72000, 38),
