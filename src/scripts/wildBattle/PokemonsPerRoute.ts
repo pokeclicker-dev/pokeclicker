@@ -468,7 +468,7 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
         210: {
-            land: ['Geodude', 'Ponyta', 'Chansey', 'Scyther', 'Hoothoot', 'Noctowl', 'Roselia', 'Staravia', 'Kricketune', 'Bonsly', 'Mime jr.', 'Machop', 'Machoke', 'Meditite', 'Swablu', 'Bidarel'],
+            land: ['Geodude', 'Ponyta', 'Chansey', 'Scyther', 'Hoothoot', 'Noctowl', 'Roselia', 'Staravia', 'Kricketune', 'Bonsly', 'Mime jr.', 'Machop', 'Machoke', 'Meditite', 'Swablu', 'Bibarel'],
             water: ['Psyduck', 'Golduck', 'Magikarp', 'Barboach', 'Whiscash', 'Gyarados'],
             headbutt: [],
         },
@@ -528,7 +528,7 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
         222: {
-            land: ['Magnemite', 'Magneton', 'Mr. Mime', 'Electrabuzz', 'Luxio', 'Glameow', 'Purugly', 'Chatot'],
+            land: ['Magnemite', 'Magneton', 'Mr. Mime', 'Electabuzz', 'Luxio', 'Glameow', 'Purugly', 'Chatot'],
             water: ['Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
             headbutt: [],
         },
