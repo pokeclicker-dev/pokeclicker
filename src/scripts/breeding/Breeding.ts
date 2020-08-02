@@ -280,6 +280,10 @@ class Breeding implements Feature {
 
     getTypeCaughtStatus(type: EggType): CaughtStatus {
         const hatchList = this.hatchList[type];
+        if (!hatchList) {
+            return CaughtStatus.NotCaught;
+        }
+
         const hatchable = hatchList.slice(0, player.highestRegion() + 1).flat();
 
         return hatchable.reduce((status: CaughtStatus, pname: string) => {
