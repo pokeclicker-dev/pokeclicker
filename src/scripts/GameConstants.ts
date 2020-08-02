@@ -430,8 +430,36 @@ namespace GameConstants {
             133: [132],
             134: [133],
         },
-        // TODO: SINNOH
         3: {
+            202: [201],
+            203: [202],
+            204: [202],
+            205: [204],
+            206: [205],
+            207: [206],
+            208: [207],
+            209: [208],
+            210: [209],
+            211: [213],
+            212: [213],
+            213: [214],
+            214: [215],
+            215: [210],
+            216: [218],
+            217: [216],
+            218: [213],
+            219: [213],
+            220: [219],
+            221: [220],
+            222: [217],
+            223: [222],
+            224: [223],
+            225: [224],
+            226: [225],
+            227: [226],
+            228: [226],
+            229: [228],
+            230: [229],
 
         },
     };
@@ -475,9 +503,15 @@ namespace GameConstants {
             126: BadgeCase.Badge.Mind,
             127: BadgeCase.Badge.Rain,
         },
-        // TODO: SINNOH
         3: {
-
+            206: BadgeCase.Badge.Forest
+            209: BadgeCase.Badge.Relic
+            211: BadgeCase.Badge.Fen
+            212: BadgeCase.Badge.Fen
+            218: BadgeCase.Badge.Fen
+            219: BadgeCase.Badge.Fen
+            223: BadgeCase.Badge.Beacon
+            225: BadgeCase.Badge.Elite_SinnohChampion
         },
     };
 
@@ -556,9 +590,12 @@ namespace GameConstants {
             124: 'Mt. Pyre',
             128: 'Seafloor Cavern',
         },
-        // TODO: SINNOH
         3: {
-
+            205: 'Ravaged Path',
+            208: 'Mt. Coronet South',
+            216: 'Mt. Coronet North',
+            222: 'Distortion World',
+            224: 'Sinnoh Victory Road',
         },
     };
 

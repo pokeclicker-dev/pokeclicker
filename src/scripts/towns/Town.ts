@@ -290,4 +290,21 @@ const TwinleafTownShop = new Shop([
 
 //Sinnoh Towns
 TownList['Twinleaf Town'] = new Town('Twinleaf Town', [], TwinleafTownShop);
-TownList['Canalave City'] = new Town('Canalave City', [201]);
+TownList['Sandgem Town'] = new Town('Sandgem Town', [201]);
+TownList['Jubilife City'] = new Town('Jubilife City', [202]);
+TownList['Oreburgh City'] = new Town('Oreburgh City', [], null, null, 'Oreburgh Gate');
+TownList['Floaroma Town'] = new Town('Floaroma Town', [], null, null, 'Ravaged Path');
+TownList['Eterna City'] = new Town('Eterna City', [], null, null, 'Eterna Forest');
+TownList['Hearthome City'] = new Town('Hearthome City', [208]);
+TownList['Solacaeon Town'] = new Town('Solacaeon Town', [209]);
+TownList['Veilstone City'] = new Town('Veilstone City', [215]);
+TownList['Pastoria City'] = new Town('Pastoria City', [213]);
+TownList['Celestic Town'] = new Town('Celestic Town', [210]);
+TownList['Pal Park'] = new Town('Pal Park', [221]);
+TownList['Canalave City'] = new Town('Canalave City', [218]);
+TownList['Snowpoint City'] = new Town('Snowpoint City', [217]);
+TownList['Sunyshore City'] = new Town('Sunyshore City', [222]);
+TownList['Pokémon League'] = new Town('Pokémon League', [], null, null, 'Sinnoh Victory Road');
+TownList['Fight Area'] = new Town('Fight Area', [], null, null, 'Spear Pillar');
+TownList['Survival Area'] = new Town('Survival Area', [225]);
+TownList['Resort Area'] = new Town('Resort Area', [229]);
