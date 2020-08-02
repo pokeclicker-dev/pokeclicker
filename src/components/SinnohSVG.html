@@ -5,19 +5,20 @@
     <!-- ROUTES -->
     <!-- ------ -->
 
-    <!--Route 201-->
-    <%- include('templates/mapRoute',
-        { route: 201, region: 3
-        , height: 3, width: 5
-        , x: 12, y: 50
-        })
-    %>
-    <!--Route 201 extra-->
+    <!--Route 201 extra (behind because of text)-->
     <%- include('templates/mapRoute',
         { route: 201, region: 3
         , height: 2.5, width: 5
         , x: 7, y: 50
         , noText: true
+        })
+    %>
+    <!--Route 201-->
+    <%- include('templates/mapRoute',
+        { route: 201, region: 3
+        , height: 3, width: 5
+        , x: 12, y: 50
+        , textX: -40
         })
     %>
 
