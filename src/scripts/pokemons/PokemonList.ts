@@ -1,6 +1,6 @@
 ///<reference path="../party/evolutions/LevelEvolution.ts"/>
 ///<reference path="../party/evolutions/StoneEvolution.ts"/>
-///<reference path="../party/evolutions/DayNightStoneEvolution.ts"/>
+///<reference path="../party/evolutions/TimedStoneEvolution.ts"/>
 ///<reference path="../GameConstants.ts"/>
 ///<reference path="../party/LevelType.ts"/>
 ///<reference path="PokemonType.ts"/>
@@ -2362,7 +2362,8 @@ const pokemonList: {
                 new StoneEvolution('Eevee', 'Vaporeon', GameConstants.StoneType.Water_stone),
                 new StoneEvolution('Eevee', 'Jolteon', GameConstants.StoneType.Thunder_stone),
                 new StoneEvolution('Eevee', 'Flareon', GameConstants.StoneType.Fire_stone),
-                new DayNightStoneEvolution('Eevee', 'Espeon', 'Umbreon'),
+                new DayTimedStoneEvolution('Eevee', 'Espeon'),
+                new NightTimedStoneEvolution('Eevee', 'Umbreon'),
             ],
             'base': {
                 'hitpoints': 55,

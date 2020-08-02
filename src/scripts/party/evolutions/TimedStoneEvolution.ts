@@ -5,43 +5,31 @@
 class TimedStoneEvolution extends StoneEvolution {
 
     stone: GameConstants.StoneType;
-    timeData: TimedStoneData[];
-    defaultEvolution: string;
+    startHour: number; // including
+    endHour: number; // excluding
+    evolution: string;
 
-    constructor(basePokemon: string, timeData: TimedStoneData[], defaultEvolution: string, stone: GameConstants.StoneType) {
-        super(basePokemon, defaultEvolution, stone);
-        this.timeData = timeData;
+    constructor(basePokemon: string, evolution: string, startHour: number, endHour: number, stone: GameConstants.StoneType = GameConstants.StoneType.Time_stone) {
+        super(basePokemon, evolution, stone);
+        this.startHour = startHour;
+        this.endHour = endHour;
         this.stone = stone;
-        this.defaultEvolution = defaultEvolution;
+        this.evolution = evolution;
     }
 
     isSatisfied(): boolean {
-        return true;
-    }
-
-    getEvolvedPokemon(): string {
         const currentHour = new Date().getHours();
-
-        for (const timeData of this.timeData) {
-            if (currentHour >= timeData.startHour && currentHour <= timeData.endHour) {
-                return timeData.evolvedPokemon;
-            }
-        }
-        return this.defaultEvolution;
+        return currentHour >= this.startHour && currentHour < this.endHour;
     }
 }
 
-class TimedStoneData {
-    // Inclusive
-    startHour: number
-    // Inclusive
-    endHour: number
-    evolvedPokemon: string
-
-
-    constructor(startHour: number, endHour: number, evolvedPokemon: string) {
-        this.startHour = startHour;
-        this.endHour = endHour;
-        this.evolvedPokemon = evolvedPokemon;
+class DayTimedStoneEvolution extends TimedStoneEvolution {
+    constructor(basePokemon: string, evolution: string, stone: GameConstants.StoneType = GameConstants.StoneType.Time_stone) {
+        super(basePokemon, evolution, 6, 18, stone);
+    }
+}
+class NightTimedStoneEvolution extends TimedStoneEvolution {
+    constructor(basePokemon: string, evolution: string, stone: GameConstants.StoneType = GameConstants.StoneType.Time_stone) {
+        super(basePokemon, evolution, 18, 6, stone);
     }
 }
