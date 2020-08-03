@@ -98,7 +98,7 @@ class PokemonHelper {
         }
         const id = pokemon.id;
         const region = GameConstants.TotalPokemonsPerRegion.findIndex(maxRegionID => maxRegionID >= id);
-        return region >= 0 ? region : Infinity;
+        return region >= 0 ? region : GameConstants.Region.none;
     }
 
     public static getPokemonRegionRoutes(pokemonName: string) {
