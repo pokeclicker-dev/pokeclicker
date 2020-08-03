@@ -1923,6 +1923,7 @@ const pokemonList: PokemonListData[] =
             'type': [PokemonType.Normal],
             'levelType': LevelType.mediumfast,
             'exp': 77,
+            'evolutions': [new LevelEvolution('Lickitung', 'Lickilicky', 33)],
             'eggCycles': 20,
             'base': {
                 'hitpoints': 90,
@@ -2029,6 +2030,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 87,
             'eggCycles': 20,
+            'evolutions': [new LevelEvolution('Tangela', 'Tangrowth', 33)],
             'base': {
                 'hitpoints': 65,
                 'attack': 55,
@@ -3363,6 +3365,7 @@ const pokemonList: PokemonListData[] =
             'catchRate': 45,
             'type': [PokemonType.Normal],
             'levelType': LevelType.fast,
+            'evolutions': [new LevelEvolution('Aipom', 'Ambipom', 32)],
             'exp': 72,
             'eggCycles': 20,
             'base': {
@@ -3417,6 +3420,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 78,
             'eggCycles': 20,
+            'evolutions': [new LevelEvolution('Yanma', 'Yanmega', 33)],
             'base': {
                 'hitpoints': 65,
                 'attack': 65,
@@ -3900,6 +3904,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 158,
             'eggCycles': 20,
+            'evolutions': [new LevelEvolution('Piloswine', 'Mamoswine', 53)],
             'base': {
                 'hitpoints': 100,
                 'attack': 100,
@@ -8605,6 +8610,7 @@ const pokemonList: PokemonListData[] =
             'eggCycles': 10,
             'levelType': LevelType.slow,
             'exp': 270,
+            'evolutions': [new LevelEvolution('Manaphy', 'Phione', 100)],
             'catchRate': 3,
             'base': {
                 'hitpoints': 100,

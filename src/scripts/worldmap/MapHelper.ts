@@ -266,6 +266,11 @@ class MapHelper {
                     openModal();
                     return;
                 }
+            case 3:
+                if (TownList['Canalave City'].isUnlocked()) {
+                    openModal();
+                    return;
+                }
         }
         Notifier.notify({ message: 'You cannot access this dock yet', type: GameConstants.NotificationOption.warning });
     }

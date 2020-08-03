@@ -49,6 +49,7 @@ namespace GameConstants {
         0: ['Mew'],
         1: ['Raikou', 'Entei', 'Suicune'],
         2: ['Latios', 'Latias', 'Regice', 'Regirock', 'Registeel', 'Jirachi', 'Deoxys'],
+        3: ['Manaphy'],
     };
 
     // Shinies
@@ -701,6 +702,8 @@ namespace GameConstants {
         'Old Amber': 'Aerodactyl',
         'Root Fossil': 'Lileep',
         'Claw Fossil': 'Anorith',
+        'Armor Fossil': 'Shieldon',
+        'Skull Fossil': 'Cranidos',
     };
 
     //Used for image name
@@ -710,6 +713,8 @@ namespace GameConstants {
         'Aerodactyl': 'Old Amber',
         'Lileep': 'Root Fossil',
         'Anorith': 'Claw Fossil',
+        'Shieldon': 'Armor Fossil',
+        'Cranidos': 'Skull Fossil',
 
     };
 
