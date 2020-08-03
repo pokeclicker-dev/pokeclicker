@@ -713,8 +713,8 @@ namespace GameConstants {
         'Aerodactyl': 'Old Amber',
         'Lileep': 'Root Fossil',
         'Anorith': 'Claw Fossil',
-        'Cranidos': 'Skull Fossil',
         'Shieldon': 'Armor Fossil',
+        'Cranidos': 'Skull Fossil',
 
     };
 
