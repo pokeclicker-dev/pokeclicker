@@ -249,11 +249,11 @@ const MossdeepCityShop = new Shop([
 ]);
 // TODO: decide items and prices
 const BattleFrontierShop = new Shop([
-    new PokeballItem(GameConstants.Pokeball.Ultraball, 10, GameConstants.Currency.battlePoint),
-    new PokeballItem(GameConstants.Pokeball.Masterball, 1000, GameConstants.Currency.battlePoint),
-    new EnergyRestore(GameConstants.EnergyRestoreSize.SmallRestore, 20, GameConstants.Currency.battlePoint),
-    new EnergyRestore(GameConstants.EnergyRestoreSize.MediumRestore, 40, GameConstants.Currency.battlePoint),
-    new EnergyRestore(GameConstants.EnergyRestoreSize.LargeRestore, 80, GameConstants.Currency.battlePoint),
+    new PokeballItem(GameConstants.Pokeball.Ultraball, 1, GameConstants.Currency.battlePoint),
+    new PokeballItem(GameConstants.Pokeball.Masterball, 500, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.SmallRestore, 10, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.MediumRestore, 20, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.LargeRestore, 40, GameConstants.Currency.battlePoint),
 ]);
 
 //Hoenn Towns

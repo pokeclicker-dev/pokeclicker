@@ -37,6 +37,16 @@ class BattleFrontierMilestones {
         }
     }
 
+    public static nextMileStoneRewardName(): string {
+        // Return the description of the next reward
+        const reward = this.nextMileStone();
+        if (reward) {
+            return reward.itemName;
+        } else {
+            return 'Nothing';
+        }
+    }
+
     public static gainReward(defeatedStage: number): void {
         const reward = this.nextMileStone();
         if (reward && reward.stage == defeatedStage) {
@@ -46,7 +56,6 @@ class BattleFrontierMilestones {
     }
 }
 
-// TODO: update rewards
 BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(5, 'Pokeball', 5));
 BattleFrontierMilestones.addMilestone(new BattleFrontierMilestone(7, 'Flying Pikachu', () => {
     App.game.party.gainPokemonById(-1);
