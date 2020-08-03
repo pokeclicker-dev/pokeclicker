@@ -3,16 +3,24 @@
 class LevelEvolution extends Evolution {
 
     level: number;
+    evolvedPokemon: string
     triggered: boolean;
 
-
     constructor(basePokemon: string, evolvedPokemon: string, level: number) {
-        super(basePokemon, evolvedPokemon, EvolutionType.Level);
+        super(basePokemon);
+        this.evolvedPokemon = evolvedPokemon;
         this.level = level;
+        this.type.push(EvolutionType.Level);
+    }
+
+    getEvolvedPokemon(): string {
+        return this.evolvedPokemon;
     }
 
     isSatisfied(): boolean {
-        return App.game.party.getPokemon(PokemonHelper.getPokemonByName(this.basePokemon).id).level >= this.level;
+        return super.isSatisfied()
+            // Check high enough level
+            && App.game.party.getPokemon(PokemonHelper.getPokemonByName(this.basePokemon).id).level >= this.level;
     }
 
     evolve(): boolean {
@@ -22,7 +30,7 @@ class LevelEvolution extends Evolution {
         this.triggered = true;
 
         // We have already obtained the evolution
-        if (App.game.party.alreadyCaughtPokemonByName(this.evolvedPokemon)) {
+        if (App.game.party.alreadyCaughtPokemonByName(this.getEvolvedPokemon())) {
             return false;
         }
 

@@ -3,13 +3,16 @@
 class StoneEvolution extends Evolution {
 
     stone: GameConstants.StoneType;
+    evolvedPokemon: string
 
     constructor(basePokemon: string, evolvedPokemon: string, stone: GameConstants.StoneType) {
-        super(basePokemon, evolvedPokemon, EvolutionType.Level);
+        super(basePokemon);
         this.stone = stone;
+        this.evolvedPokemon = evolvedPokemon;
+        this.type.push(EvolutionType.Stone);
     }
 
-    isSatisfied(): boolean {
-        return true;
+    getEvolvedPokemon(): string {
+        return this.evolvedPokemon;
     }
 }
