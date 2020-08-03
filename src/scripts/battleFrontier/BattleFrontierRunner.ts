@@ -72,6 +72,9 @@ class BattleFrontierRunner {
         this.end();
     }
     public static battleQuit() {
+        if (!confirm('Are you sure you want to leave?\n\nYou will not receive any Battle Points for the stages already completed.')) {
+            return;
+        }
         // Don't give any points, user quit the challenge
         Notifier.notify({ title: 'Battle Frontier', message: `You made it to stage ${this.stage()}`, type: GameConstants.NotificationOption.info, timeout: 5 * GameConstants.MINUTE });
 

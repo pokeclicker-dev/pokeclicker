@@ -16,6 +16,9 @@ class BattleFrontierMilestones {
         return this.milestoneRewards.find(r => r.stage > App.game.statistics.battleFrontierHighestStageCompleted());
     }
 
+    public static availableMilestones() {
+        return BattleFrontierMilestones.milestoneRewards.filter(r => r.stage > App.game.statistics.battleFrontierHighestStageCompleted());
+    }
 
     public static nextMileStoneStage(): number {
         // Return the stage number the next reward is unlocked at
