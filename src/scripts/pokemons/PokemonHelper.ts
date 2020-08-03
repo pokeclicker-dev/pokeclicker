@@ -92,7 +92,7 @@ class PokemonHelper {
 
 
     public static calcNativeRegion(pokemonName: string) {
-        const pokemon = PokemonHelper.getPokemonByName(pokemonName);
+        const pokemon = pokemonMap[pokemonName];
         if (pokemon.nativeRegion) {
             return pokemon.nativeRegion;
         }
