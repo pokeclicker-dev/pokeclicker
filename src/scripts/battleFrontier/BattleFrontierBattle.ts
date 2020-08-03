@@ -10,9 +10,9 @@ class BattleFrontierBattle extends Battle {
 
     // Override pokemon attack method so we can ignore the region multiplier
     public static pokemonAttack() {
-        // Limit pokemon attack speed, Only allow 1 attack per 750ms
+        // Limit pokemon attack speed, Only allow 1 attack per 950ms
         const now = Date.now();
-        if (this.lastPokemonAttack > now - 750) {
+        if (this.lastPokemonAttack > now - 950) {
             return;
         }
         this.lastPokemonAttack = now;
@@ -22,22 +22,6 @@ class BattleFrontierBattle extends Battle {
         this.enemyPokemon().damage(App.game.party.calculatePokemonAttack(this.enemyPokemon().type1, this.enemyPokemon().type2, true));
         if (!this.enemyPokemon().isAlive()) {
             this.defeatPokemon();
-        }
-    }
-
-    public static getAttackNum() {
-        if (BattleFrontierRunner.started()) {
-            return App.game.party.calculatePokemonAttack(PokemonType.None, PokemonType.None, true).toLocaleString('en-US');
-        } else {
-            return App.game.party.pokemonAttackObservable()().toLocaleString('en-US');
-        }
-    }
-
-    public static getClickNum() {
-        if (BattleFrontierRunner.started()) {
-            return '0';
-        } else {
-            return App.game.party.calculateClickAttack().toLocaleString('en-US');
         }
     }
 

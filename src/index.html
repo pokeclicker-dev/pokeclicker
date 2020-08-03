@@ -342,16 +342,25 @@
                 <div class="card-footer p-0" data-bind="hidden: App.game.gameState === GameConstants.GameState.town">
                     <table width="100%">
                         <tr>
+                            <!-- ko ifnot: App.game.gameState === GameConstants.GameState.battleFrontier -->
                             <td width="50%">
                               <span style="display: inline;">Pokémon Attack:
-                                  <span data-bind="text: BattleFrontierBattle.getAttackNum()"></span>
+                                  <span data-bind="text: App.game.party.pokemonAttackObservable()().toLocaleString('en-US')"></span>
                               </span>
                             </td>
                             <td width="50%">
                               <span style="display: inline;">Click Attack:
-                                  <span data-bind="text: BattleFrontierBattle.getClickNum()"></span>
+                                  <span data-bind="text: App.game.party.calculateClickAttack().toLocaleString('en-US')"></span>
                               </span>
                             </td>
+                            <!-- /ko -->
+                            <!-- ko if: App.game.gameState === GameConstants.GameState.battleFrontier -->
+                            <td width="100%">
+                                <span style="display: inline;">Pokémon Attack:
+                                    <span data-bind="text: App.game.party.calculatePokemonAttack(PokemonType.None, PokemonType.None, true).toLocaleString('en-US');"></span>
+                                </span>
+                            </td>
+                            <!-- /ko -->
                         </tr>
                     </table>
                 </div>
