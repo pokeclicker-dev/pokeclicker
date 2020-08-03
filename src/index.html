@@ -71,6 +71,21 @@
             background-size: cover;
             z-index: 9999;
         }
+        #frontier {
+            position: relative;
+            left: 115px;
+            bottom: 45px;
+            width: 32px;
+            height: 32px;
+        }
+
+        #frontier2 {
+            position: relative;
+            left: -115px;
+            bottom: 45px;
+            width: 32px;
+            height: 32px;
+        }
 
         .loader-wrapper {
             height: 100%;
@@ -378,8 +393,9 @@
                     </knockout>
                     <knockout data-bind="if: BattleFrontierRunner.started">
                         <p>Next milestone reward at Stage <strong data-bind="text: BattleFrontierMilestones.nextMileStoneStage()"></strong>!</p>
-                        <p data-bind="text: BattleFrontierMilestones.nextMileStoneRewardDescription()"><img data-bind="attr: {src: 'assets/images/battleFrontier/' + BattleFrontierMilestones.nextMileStoneRewardName() + '.png'}" style="max-width: 64px;"></p>
-                        <img data-bind="attr: {src: 'assets/images/battleFrontier/' + BattleFrontierMilestones.nextMileStoneRewardName() + '.png'}" style="max-width: 32px;">
+                        <p data-bind="text: BattleFrontierMilestones.nextMileStoneRewardDescription()"></p>
+                        <img id="frontier" data-bind="attr: {src: 'assets/images/battleFrontier/' + BattleFrontierMilestones.nextMileStoneRewardName() + '.png'}">
+                        <img id="frontier2" data-bind="attr: {src: 'assets/images/battleFrontier/' + BattleFrontierMilestones.nextMileStoneRewardName() + '.png'}">
                         <a class="btn btn-block btn-danger text-light" onclick="BattleFrontierRunner.battleQuit()">Quit Battle</a>
                     </knockout>
                 </div>
