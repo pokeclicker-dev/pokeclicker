@@ -8,6 +8,23 @@ class BattleFrontierBattle extends Battle {
 
     static counter = 0;
 
+    // Override pokemon attack method so we can ignore the region multiplier
+    public static pokemonAttack() {
+        // Limit pokemon attack speed, Only allow 1 attack per 950ms
+        const now = Date.now();
+        if (this.lastPokemonAttack > now - 950) {
+            return;
+        }
+        this.lastPokemonAttack = now;
+        if (!this.enemyPokemon()?.isAlive()) {
+            return;
+        }
+        this.enemyPokemon().damage(App.game.party.calculatePokemonAttack(this.enemyPokemon().type1, this.enemyPokemon().type2, true));
+        if (!this.enemyPokemon().isAlive()) {
+            this.defeatPokemon();
+        }
+    }
+
     /**
      * Award the player with exp, and go to the next pokemon
      */
