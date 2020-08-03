@@ -10,9 +10,9 @@ class BattleFrontierBattle extends Battle {
 
     // Override pokemon attack method so we can ignore the region multiplier
     public static pokemonAttack() {
-        // Limit pokemon attack speed, Only allow 1 attack per 950ms
+        // Limit pokemon attack speed, Only allow 1 attack per 750ms
         const now = Date.now();
-        if (this.lastPokemonAttack > now - 950) {
+        if (this.lastPokemonAttack > now - 750) {
             return;
         }
         this.lastPokemonAttack = now;
