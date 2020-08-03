@@ -714,7 +714,7 @@ namespace GameConstants {
         'Lileep': 'Root Fossil',
         'Anorith': 'Claw Fossil',
         'Cranidos': 'Skull Fossil',
-        'Shieldon': 'Armor Fossil'
+        'Shieldon': 'Armor Fossil',
 
     };
 
