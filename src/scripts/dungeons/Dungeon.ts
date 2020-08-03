@@ -387,14 +387,19 @@ dungeonList['Eterna Forest'] = new Dungeon('Eterna Forest',
     ['Gastly', 'Hoothoot', 'Wurmple', 'Silcoon', 'Cascoon', 'Bidoof', 'Kricketot', 'Budew', 'Buneary'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Token_collector],
     1200,
-    [new DungeonBossPokemon('Leafeon', 5000, 30), new DungeonBossPokemon('Beautifly', 5000, 30), new DungeonBossPokemon('Dustox', 5000, 30)],
+    [
+        new DungeonBossPokemon('Beautifly', 5000, 30),
+        new DungeonBossPokemon('Dustox', 5000, 30),
+    ],
     4000, BadgeCase.Badge.Coal, 34, 15);
+
 dungeonList['Old Chateau'] = new Dungeon('Old Chateau',
     ['Gastly', 'Haunter', 'Gengar'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     3000,
     [new DungeonBossPokemon('Rotom', 10000, 70)],
     6500, BadgeCase.Badge.Forest, 45, 35);
+
 dungeonList['Wayward Cave'] = new Dungeon('Wayward Cave',
     ['Zubat', 'Geodude', 'Onix'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
@@ -464,7 +469,7 @@ dungeonList['Lake Acuity'] = new Dungeon('Lake Acuity',
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Lucky_egg],
     1800,
     [
-        new DungeonBossPokemon('Glaceon', 7000, 40),
+        new DungeonBossPokemon('Gyarados', 7000, 40),
         new DungeonBossPokemon('Uxie', 7000, 40),
     ],
     5000, BadgeCase.Badge.Icicle, 41, 25);

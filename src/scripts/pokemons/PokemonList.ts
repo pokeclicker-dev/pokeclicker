@@ -1,6 +1,7 @@
 ///<reference path="../party/evolutions/LevelEvolution.ts"/>
 ///<reference path="../party/evolutions/StoneEvolution.ts"/>
 ///<reference path="../party/evolutions/TimedEvolution.ts"/>
+///<reference path="../party/evolutions/LocationEvolution.ts"/>
 ///<reference path="../GameConstants.ts"/>
 ///<reference path="../party/LevelType.ts"/>
 ///<reference path="PokemonType.ts"/>
@@ -2368,6 +2369,8 @@ const pokemonList: PokemonListData[] =
                 new StoneEvolution('Eevee', 'Flareon', GameConstants.StoneType.Fire_stone),
                 new DayTimedStoneEvolution('Eevee', 'Espeon', GameConstants.StoneType.Time_stone),
                 new NightTimedStoneEvolution('Eevee', 'Umbreon', GameConstants.StoneType.Time_stone),
+                new DungeonRestrictedLevelEvolution('Lake Acuity','Eevee','Glaceon', 20),
+                new DungeonRestrictedLevelEvolution('Eterna Forest', 'Eevee', 'Leafeon', 20),
             ],
             'base': {
                 'hitpoints': 55,
