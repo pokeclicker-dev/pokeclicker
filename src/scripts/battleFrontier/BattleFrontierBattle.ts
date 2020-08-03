@@ -25,6 +25,22 @@ class BattleFrontierBattle extends Battle {
         }
     }
 
+    public static getAttackNum() {
+        if (BattleFrontierRunner.started()) {
+            return App.game.party.calculatePokemonAttack(PokemonType.None, PokemonType.None, true).toLocaleString('en-US');
+        } else {
+            return App.game.party.pokemonAttackObservable()().toLocaleString('en-US');
+        }
+    }
+
+    public static getClickNum() {
+        if (BattleFrontierRunner.started()) {
+            return '0';
+        } else {
+            return App.game.party.calculateClickAttack().toLocaleString('en-US');
+        }
+    }
+
     /**
      * Award the player with exp, and go to the next pokemon
      */

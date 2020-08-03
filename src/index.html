@@ -344,12 +344,12 @@
                         <tr>
                             <td width="50%">
                               <span style="display: inline;">Pokémon Attack:
-                                  <span data-bind="text: App.game.party.pokemonAttackObservable()().toLocaleString('en-US')"></span>
+                                  <span data-bind="text: BattleFrontierBattle.getAttackNum()"></span>
                               </span>
                             </td>
                             <td width="50%">
                               <span style="display: inline;">Click Attack:
-                                  <span data-bind="text: App.game.party.calculateClickAttack().toLocaleString('en-US')"></span>
+                                  <span data-bind="text: BattleFrontierBattle.getClickNum()"></span>
                               </span>
                             </td>
                         </tr>
