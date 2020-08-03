@@ -389,7 +389,7 @@
                 <!-- /ko -->
                 <!-- ko if: BattleFrontierRunner.started -->
                 <div class="card-body text-center p-0">
-                    <table class="table table-hover table-striped table-sm m-0">
+                    <table class="table table-hover table-striped table-bordered table-sm m-0">
                         <thead>
                             <tr>
                                 <th colspan="2">Upcoming Rewards</th>
@@ -401,8 +401,8 @@
                         </thead>
                         <tbody data-bind="foreach: BattleFrontierMilestones.availableMilestones().slice(0, 4)">
                             <tr>
-                                <td class="tight" data-bind="text: $data.stage"></td>
-                                <td class="text-left" data-bind="text: $data.description"></td>
+                                <th class="tight" data-bind="text: $data.stage"></td>
+                                <td class="text-left"><knockout data-bind="text: $data.description"></knockout> <img data-bind="if: $data instanceof BattleFrontierMilestoneItem, attr:{ src: 'assets/images/items/' + $data.itemName.replace(/\W/g, '_') + '.png' }" src="" width="20px" /></td>
                             </tr>
                         </tbody>
                     </table>
