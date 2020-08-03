@@ -8610,6 +8610,7 @@ const pokemonList: PokemonListData[] =
             'eggCycles': 10,
             'levelType': LevelType.slow,
             'exp': 270,
+            'evolutions': [new LevelEvolution('Manaphy', 'Phione', 100)],
             'catchRate': 3,
             'base': {
                 'hitpoints': 100,
