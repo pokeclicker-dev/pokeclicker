@@ -1471,6 +1471,10 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 163,
             'eggCycles': 20,
+            'evolutions': [
+                new DungeonRestrictedLevelEvolution('Mt. Coronet North', 'Magneton', 'Magnezone', 20),
+                new DungeonRestrictedLevelEvolution('Mt. Coronet South', 'Magneton', 'Magnezone', 20),
+            ],
             'base': {
                 'hitpoints': 50,
                 'attack': 60,
@@ -5286,6 +5290,10 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 75,
             'catchRate': 255,
+            'evolutions': [
+                new DungeonRestrictedLevelEvolution('Mt. Coronet North', 'Nosepass', 'Probopass', 20),
+                new DungeonRestrictedLevelEvolution('Mt. Coronet South', 'Nosepass', 'Probopass', 20),
+            ],
             'base': {
                 'hitpoints': 30,
                 'attack': 45,
