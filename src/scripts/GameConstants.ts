@@ -306,6 +306,7 @@ namespace GameConstants {
     }
 
     export enum Region {
+        none = -1,
         kanto = 0,
         johto = 1,
         hoenn = 2,
