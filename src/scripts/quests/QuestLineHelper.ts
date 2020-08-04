@@ -20,7 +20,7 @@ class QuestLineHelper {
         this.tutorial.addQuest(captureOne);
 
         //Kill 5 on route 2
-        const routeTwo = new DefeatPokemonsQuest(2, 0, 5);
+        const routeTwo = new DefeatPokemonsQuest(2, GameConstants.Region.kanto, 5);
         routeTwo.pointsReward = 30;
         routeTwo.description = 'Defeat 5 Pokémon on route 2. Click route 2 on the map to move there and begin fighting.';
         this.tutorial.addQuest(routeTwo);
@@ -38,7 +38,7 @@ class QuestLineHelper {
         this.tutorial.addQuest(buyPokeballs);
 
         //Kill 10 on route 3
-        const routeThree = new DefeatPokemonsQuest(3, 0, 10);
+        const routeThree = new DefeatPokemonsQuest(3, GameConstants.Region.kanto, 10);
         routeThree.pointsReward = 100;
         this.tutorial.addQuest(routeThree);
 
@@ -46,7 +46,7 @@ class QuestLineHelper {
         const buyDungeonTicket = new CustomQuest(1, 10, 'Buy the Dungeon ticket from Pewter City Shop.', () => + App.game.keyItems.hasKeyItem(KeyItems.KeyItem.Dungeon_ticket));
         this.tutorial.addQuest(buyDungeonTicket);
 
-        //Cleat Mt Moon dungeon
+        //Clear Mt Moon dungeon
         const clearMtMoon = new DefeatDungeonQuest(GameConstants.KantoDungeons[2], 1);
         clearMtMoon.pointsReward = 10;
         clearMtMoon.description = 'Gather 75 Dungeon tokens by capturing Pokémon, then clear the Mt. Moon dungeon.';
