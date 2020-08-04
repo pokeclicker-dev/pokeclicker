@@ -67,6 +67,7 @@ class QuestLineHelper {
                 player.tutorialComplete(true);
             }
         });
+        this.currentQuests.push(this.tutorial);
     }
 
     public static deoxysQuestLine: QuestLine;
