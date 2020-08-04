@@ -14,6 +14,5 @@ class CustomQuest extends Quest implements QuestInterface {
         } else {
             super.beginQuest();
         }
-        debugger;
     }
 }
