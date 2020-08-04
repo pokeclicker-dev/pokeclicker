@@ -1,17 +1,14 @@
-// TODO: Does this need to be savable, probably not..
 class BattleFrontierRunner {
     public static timeLeft: KnockoutObservable<number> = ko.observable(GameConstants.GYM_TIME);
     public static timeLeftPercentage: KnockoutObservable<number> = ko.observable(100);
     static stage: KnockoutObservable<number> = ko.observable(1); // Start at stage 1
 
-    // TODO: move this to BattleFrontierRunner or whatever..
     public static counter = 0;
 
     public static started = ko.observable(false);
 
     constructor() {}
 
-    // TODO: Count down the timer..
     public static tick() {
         if (!this.started()) {
             return;

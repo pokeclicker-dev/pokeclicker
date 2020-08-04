@@ -2,7 +2,6 @@ class BattleFrontier {
     constructor() {}
 
     public static canAccess() {
-        // TODO: check if player can access yet
         return TownList['Battle Frontier'].isUnlocked();
     }
 

@@ -207,7 +207,7 @@ namespace GameConstants {
         safari = 5,
         town = 6,
         shop = 7,
-        battleFrontier = 8, // TODO: might not be needed, we will see..
+        battleFrontier = 8,
     }
 
     export enum Pokeball {
@@ -224,7 +224,6 @@ namespace GameConstants {
         dungeonToken,
         diamond,
         farmPoint,
-        // TODO: add icons for BP
         battlePoint,
     }
 
