@@ -22,28 +22,14 @@ class Player {
         this._region = ko.observable(savedPlayer._region);
         if (MapHelper.validRoute(savedPlayer._route, savedPlayer._region)) {
             this._route = ko.observable(savedPlayer._route);
+            this._town = ko.observable(TownList['Pallet Town']);
+            this._currentTown = ko.observable('Pallet Town');
         } else {
-            switch (savedPlayer._region) {
-                case 0:
-                    this._route = ko.observable(1);
-                    break;
-                case 1:
-                    this._route = ko.observable(29);
-                    break;
-                case 2:
-                    this._route = ko.observable(101);
-                    break;
-                case 3:
-                    this._route = ko.observable(201);
-                    break;
-                default:
-                    this._route = ko.observable(1);
-                    this._region = ko.observable(GameConstants.Region.kanto);
-            }
+            this._route = ko.observable(0);
+            const town = savedPlayer._currentTown || GameConstants.StartingTowns[savedPlayer._region];
+            this._town = ko.observable(TownList[town]);
+            this._currentTown = ko.observable(town);
         }
-
-        this._town = ko.observable(TownList['Pallet Town']);
-        this._currentTown = ko.observable('');
         this._starter = savedPlayer._starter != undefined ? savedPlayer._starter : GameConstants.Starter.None;
 
         this._itemList = Save.initializeItemlist();
@@ -246,6 +232,7 @@ class Player {
     public toJSON() {
         const keep = [
             '_route',
+            '_currentTown',
             '_region',
             '_starter',
             '_itemList',
