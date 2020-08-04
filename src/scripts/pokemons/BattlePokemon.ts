@@ -26,7 +26,7 @@ class BattlePokemon implements EnemyPokemonInterface {
      * @param money exp base exp reward for defeating this Pokémon
      * @param shiny
      */
-    constructor(name: string, id: number, type1: PokemonType, type2: PokemonType, maxHealth: number, level: number, catchRate: number, exp: number, money: number, shiny: boolean, shardReward = 1) {
+    constructor(name: string, id: number, type1: PokemonType = PokemonType.None, type2: PokemonType = PokemonType.None, maxHealth: number, level: number, catchRate: number, exp: number, money: number, shiny: boolean, shardReward = 1) {
         this.name = name;
         this.id = id;
         this.type1 = type1;
