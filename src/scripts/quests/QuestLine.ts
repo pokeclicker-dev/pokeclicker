@@ -58,12 +58,13 @@ class QuestLine {
         this.quests.push(quest);
     }
 
-    beginQuest(index: number, initial?) {
+    beginQuest(index: number, initial?: number) {
         const quest = this.quests()[index];
-        if (typeof initial == 'undefined') {
-            initial = quest.questFocus();
+        if (initial != undefined) {
+            quest.initial(initial);
+        } else {
+            quest.beginQuest();
         }
-        quest.initial(initial);
         this.curQuestInitial(quest.initial());
     }
 
