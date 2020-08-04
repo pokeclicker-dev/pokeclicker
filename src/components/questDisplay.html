@@ -48,8 +48,8 @@
             <!-- List of quest line quests -->
             <tbody data-bind="foreach: QuestLineHelper.currentQuests">
                 <!-- ko if: $data.totalQuests > 0 && ($data.curQuest() < $data.totalQuests) -->
-                <tr class="table-dark">
-                    <th colspan="2" data-bind="text: $data.name"></th>
+                <tr>
+                    <td class="card-header" colspan="2" data-bind="text: $data.name"></td>
                 </tr>
                 <tr class="text-center">
                     <td colspan="2" data-bind="text: $data.curQuestObject().description"></td>
