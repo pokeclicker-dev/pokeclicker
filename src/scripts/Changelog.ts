@@ -34,6 +34,7 @@ const changelogItems = [
     new Changelog(changelogType.NEW, 'Update maps'),
     new Changelog(changelogType.NEW, 'Add notification settings'),
     new Changelog(changelogType.NEW, 'Can now filter the Pokédex by pure type Pokémon by selecting None for the second type'),
+    new Changelog(changelogType.NEW, 'Added statistic for Hatched Shiny Pokemon'),
     new Changelog(changelogType.FIXED, 'Safari Zone should no longer lock up'),
 
     // v0.4.16
