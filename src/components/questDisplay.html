@@ -9,6 +9,29 @@
     </button>
 
     <div id="questDisplayBody" class="card-body p-0 show">
+        <!-- List of quest line quests -->
+        <div data-bind="foreach: QuestLineHelper.currentQuests">
+            <div data-bind='if: $data.totalQuests > 0 && ($data.curQuest() < $data.totalQuests)'>
+                <div class="card border-bottom-0">
+                    <table>
+                        <tr class="text-center">
+                            <td data-bind="text: $data.curQuestObject().description"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">
+                                <div class="progress p-0">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        data-bind="attr:{ style: 'width:' + ($data.curQuestObject().progress() * 100) + '%'}"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <span data-bind="text: ko.pureComputed(function(){return $data.curQuestObject().progressText()})">0/1000</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
       <!-- List of quests -->
       <div data-bind="foreach: player.currentQuests">
           <div class="card border-bottom-0">

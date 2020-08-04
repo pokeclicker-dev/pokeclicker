@@ -1,4 +1,6 @@
 class QuestLineHelper {
+    public static currentQuests: KnockoutObservableArray<QuestLine> = ko.observableArray();;
+
     public static tutorial: QuestLine;
     public static tutorialTracker: KnockoutSubscription;
     public static tutorialCompleter: KnockoutSubscription;
@@ -65,5 +67,49 @@ class QuestLineHelper {
                 player.tutorialComplete(true);
             }
         });
+    }
+
+    public static deoxysQuestLine: QuestLine;
+    public static deoxysQuestLineTracker: KnockoutSubscription;
+    public static deoxysQuestLineCompleter: KnockoutSubscription;
+
+    public static createdeoxysQuestLine() {
+        this.deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys mystery location');
+
+        //Kill 10 Pokemon on route 129
+        const route129 = new DefeatPokemonsQuest(129, GameConstants.Region.hoenn, 10);
+        route129.pointsReward = 0;
+        route129.description = 'Defeat 10 Pokémon on route 129';
+        this.deoxysQuestLine.addQuest(route129);
+
+        const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id]);
+        this.deoxysQuestLine.addQuest(captureMagikarp);
+
+        const defeatPoison = new CustomQuest(100, 10, 'Defeat 100 Poison type Pokémon', () => {
+            return pokemonMap.filter(p => p.type.includes(PokemonType.Poison)).map(p => App.game.statistics.pokemonDefeated[p.id]()).reduce((a,b) => a + b, 0);
+        });
+        this.deoxysQuestLine.addQuest(defeatPoison);
+
+        // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0);
+        // this.deoxysQuestLine.addQuest(reachStage100);
+
+        this.deoxysQuestLineTracker = this.deoxysQuestLine.curQuestInitial.subscribe((newInitial) => {
+            // TODO: Figure out this
+            // player.tutorialProgress(QuestLineHelper.deoxysQuestLine.curQuest());
+            // player.tutorialState = newInitial;
+        });
+
+        this.deoxysQuestLineCompleter = this.deoxysQuestLine.curQuest.subscribe((quest) => {
+            if (quest == QuestLineHelper.deoxysQuestLine.totalQuests) {
+                QuestLineHelper.deoxysQuestLineTracker.dispose();
+                /*
+                TODO: Save progress
+                player.tutorialState = null;
+                player.tutorialProgress(quest);
+                player.tutorialComplete(true);
+                */
+            }
+        });
+        this.currentQuests.push(this.deoxysQuestLine);
     }
 }
