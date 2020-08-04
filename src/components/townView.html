@@ -65,10 +65,10 @@
                        data-bind="visible: player.town().dungeon() && (!(player.town() instanceof DungeonTown) && player.town() instanceof Town), if: player.town().dungeon()">
                    <span data-bind="text: player.town().dungeon().name()"></span>
                </button>
-               <button class="btn btn-secondary"
+               <button class="btn btn-primary"
                        onclick="BattleFrontier.enter()"
                        data-bind="visible: player.town().name() == 'Battle Frontier'">
-                   <span>Enter Battle Frontier</span>
+                   Enter Battle Frontier
                </button>
            </div>
        </div>
