@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class MineLayersQuest extends Quest implements QuestInterface {
     constructor(amount: number) {

@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class DefeatDungeonQuest extends Quest implements QuestInterface {
     constructor(dungeon: string, amount: number) {

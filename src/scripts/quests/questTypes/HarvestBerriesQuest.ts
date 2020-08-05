@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class HarvestBerriesQuest extends Quest implements QuestInterface {
     constructor(berryType: BerryType, amount: number) {

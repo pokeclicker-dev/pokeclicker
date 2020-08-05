@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class UsePokeballQuest extends Quest implements QuestInterface {
     constructor(pokeball: GameConstants.Pokeball, amount: number) {

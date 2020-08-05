@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class GainShardsQuest extends Quest implements QuestInterface {
     constructor(type: PokemonType, amount: number) {

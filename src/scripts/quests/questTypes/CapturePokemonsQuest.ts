@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class CapturePokemonsQuest extends Quest implements QuestInterface {
 

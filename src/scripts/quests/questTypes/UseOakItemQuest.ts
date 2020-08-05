@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class UseOakItemQuest extends Quest implements QuestInterface {
     constructor(item: OakItems.OakItem, amount: number) {

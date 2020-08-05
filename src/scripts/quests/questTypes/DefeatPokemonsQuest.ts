@@ -1,4 +1,4 @@
-/// <reference path="Quest.ts" />
+/// <reference path="../Quest.ts" />
 
 class DefeatPokemonsQuest extends Quest implements QuestInterface {
     private route: number;
