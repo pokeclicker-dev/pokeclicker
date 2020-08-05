@@ -74,7 +74,7 @@ class QuestLineHelper {
     public static deoxysQuestLineTracker: KnockoutSubscription;
     public static deoxysQuestLineCompleter: KnockoutSubscription;
 
-    public static createdeoxysQuestLine() {
+    public static createDeoxysQuestLine() {
         this.deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys mystery location');
 
         //Kill 10 Pokemon on route 129
