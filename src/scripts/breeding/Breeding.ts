@@ -130,12 +130,7 @@ class Breeding implements Feature {
     }
 
     public progressEggsBattle(route: number, region: GameConstants.Region) {
-        switch (region) {
-            // Hoenn starts at route 101 need to reduce the total money earned on those routes.
-            case GameConstants.Region.hoenn:
-                route -= 54;
-                break;
-        }
+        route = MapHelper.normalizeRoute(route, region);
         return this.progressEggs(+Math.sqrt(route).toFixed(2));
     }
 
@@ -273,6 +268,27 @@ class Breeding implements Feature {
 
     set eggList(value: Array<KnockoutObservable<Egg>>) {
         this._eggList = value;
+    }
+
+    getAllCaughtStatus(): CaughtStatus {
+        return GameHelper.enumNumbers(EggType).reduce((status: CaughtStatus, type: EggType) => {
+            return this.hatchList[type]
+                ? Math.min(status, this.getTypeCaughtStatus(type))
+                : status;
+        }, CaughtStatus.CaughtShiny);
+    }
+
+    getTypeCaughtStatus(type: EggType): CaughtStatus {
+        const hatchList = this.hatchList[type];
+        if (!hatchList) {
+            return CaughtStatus.NotCaught;
+        }
+
+        const hatchable = hatchList.slice(0, player.highestRegion() + 1).flat();
+
+        return hatchable.reduce((status: CaughtStatus, pname: string) => {
+            return Math.min(status, PartyController.getCaughtStatusByName(pname));
+        }, CaughtStatus.CaughtShiny);
     }
 
 }
