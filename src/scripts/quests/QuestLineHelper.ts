@@ -1,5 +1,5 @@
 class QuestLineHelper {
-    public static currentQuests: KnockoutObservableArray<QuestLine> = ko.observableArray();;
+    public static currentQuests: KnockoutObservableArray<QuestLine> = ko.observableArray();
 
     public static tutorial: QuestLine;
     public static tutorialTracker: KnockoutSubscription;
