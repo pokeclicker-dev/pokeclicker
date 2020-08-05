@@ -1,8 +1,8 @@
 class QuestHelper {
-    public static generateQuestList(level: number, refreshes: number, d: Date, amount = 10) {
+    public static generateQuestList(seed: number, amount = 10) {
         const quests = [];
 
-        SeededRand.seed(Number(level * (d.getFullYear() + refreshes * 10) * d.getDate() + 1000 * d.getMonth() + 100000 * d.getDate()));
+        SeededRand.seed(+seed);
 
         const QuestTypes = new Set(GameConstants.QuestTypes);
         for (let i = 0; i < amount; i++) {

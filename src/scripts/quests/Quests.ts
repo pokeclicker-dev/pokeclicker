@@ -94,7 +94,12 @@ class Quests implements Saveable {
 
     generateQuestList() {
         this.lastRefresh = new Date();
-        this.questList(QuestHelper.generateQuestList(this.level, this.refreshes, new Date(), GameConstants.QUESTS_PER_SET));
+        this.questList(QuestHelper.generateQuestList(this.generateSeed(), GameConstants.QUESTS_PER_SET));
+    }
+
+    private generateSeed() {
+        const d = new Date();
+        return Number(this.level * (d.getFullYear() + this.refreshes * 10) * d.getDate() + 1000 * d.getMonth() + 100000 * d.getDate());
     }
 
     public refreshQuests(free = false, shouldConfirm = false) {
