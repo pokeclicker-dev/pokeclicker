@@ -160,7 +160,7 @@ class Game {
         if (Save.counter > GameConstants.SAVE_TICK) {
             const now = new Date();
             if (new Date(player._lastSeen).toLocaleDateString() !== now.toLocaleDateString()) {
-                player.questRefreshes = 0;
+                this.quests.resetRefreshes();
                 this.quests.generateQuestList();
                 DailyDeal.generateDeals(Underground.getDailyDealsMax(), now);
                 Notifier.notify({ message: 'It\'s a new day! Your quests and underground deals have been updated.', type: GameConstants.NotificationOption.info, timeout: 1e4 });
