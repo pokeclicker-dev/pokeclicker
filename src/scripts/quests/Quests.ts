@@ -83,7 +83,7 @@ class Quests implements Saveable {
         }
         const currentLevel = this.level;
         this.xp += amount;
-        this.level = Quests.xpToLevel(this.xp);
+        this.level = this.xpToLevel(this.xp);
 
         // Refresh the list each time a player levels up
         if (this.level > currentLevel) {
@@ -148,7 +148,7 @@ class Quests implements Saveable {
     }
 
     // 1000 xp needed to reach level 2, amount needed for next level increases by 20% of previous level
-    public static levelToXP(level: number): number {
+    public levelToXP(level: number): number {
         if (level >= 2) {
             // Sum of geometric series
             const a = 1000, r = 1.2, n = level - 1;
@@ -159,7 +159,7 @@ class Quests implements Saveable {
         }
     }
 
-    public static xpToLevel(xp: number): number {
+    public xpToLevel(xp: number): number {
         const sum = xp, a = 1000, r = 1.2;
         const n = Math.log(1 + ((r - 1) * sum) / a) / Math.log(r);
         return Math.floor(n + 1);
@@ -167,8 +167,8 @@ class Quests implements Saveable {
 
     public percentToNextQuestLevel(): number {
         const current = this.level;
-        const requiredForCurrent = Quests.levelToXP(current);
-        const requiredForNext = Quests.levelToXP(current + 1);
+        const requiredForCurrent = this.levelToXP(current);
+        const requiredForNext = this.levelToXP(current + 1);
         return 100 * (this.xp - requiredForCurrent) / (requiredForNext - requiredForCurrent);
     }
 
@@ -206,7 +206,7 @@ class Quests implements Saveable {
         console.debug('Quests save data:', json);
 
         this.xp = json.xp || this.defaults.xp;
-        this.level = Quests.xpToLevel(this.xp);
+        this.level = this.xpToLevel(this.xp);
         const lastRefresh = json.lastRefresh ? new Date(json.lastRefresh) : new Date();
         if (lastRefresh.toDateString() != new Date().toDateString()) {
             this.refreshes = 0;
