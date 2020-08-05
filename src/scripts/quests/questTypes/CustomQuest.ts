@@ -4,15 +4,15 @@ class CustomQuest extends Quest implements QuestInterface {
     constructor(amount: number, reward: number, description: string, focus, initialValue?: number) {
         super(amount, reward);
         this.description = description;
-        this.questFocus = focus;
+        this.focus = focus;
         this.initialValue = initialValue;
     }
 
-    beginQuest() {
+    begin() {
         if (this.initialValue !== undefined) {
             this.initial(this.initialValue);
         } else {
-            super.beginQuest();
+            super.begin();
         }
     }
 }
