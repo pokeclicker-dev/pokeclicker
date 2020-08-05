@@ -83,7 +83,9 @@ class QuestLineHelper {
         route129.description = 'Defeat 10 Pokémon on route 129';
         this.deoxysQuestLine.addQuest(route129);
 
-        const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id]);
+        const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id], undefined, () => {
+            Notifier.notify({ title: 'Custom quest reward!', message: 'It looks like it worked..' });
+        });
         this.deoxysQuestLine.addQuest(captureMagikarp);
 
         const defeatPoison = new CustomQuest(100, 10, 'Defeat 100 Psychic type Pokémon', () => {
