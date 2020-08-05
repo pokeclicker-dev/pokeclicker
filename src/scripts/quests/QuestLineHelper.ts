@@ -86,11 +86,16 @@ class QuestLineHelper {
         const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id]);
         this.deoxysQuestLine.addQuest(captureMagikarp);
 
-        const defeatPoison = new CustomQuest(100, 10, 'Defeat 100 Poison type Pokémon', () => {
-            return pokemonMap.filter(p => p.type.includes(PokemonType.Poison)).map(p => App.game.statistics.pokemonDefeated[p.id]()).reduce((a,b) => a + b, 0);
+        const defeatPoison = new CustomQuest(100, 10, 'Defeat 100 Psychic type Pokémon', () => {
+            return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonDefeated[p.id]()).reduce((a,b) => a + b, 0);
         });
         this.deoxysQuestLine.addQuest(defeatPoison);
 
+        // 3 random quest
+        QuestHelper.generateQuestList(parseInt(this.deoxysQuestLine.name.toLowerCase().replace(/\s/g, ''), 36), 3).forEach(quest => {
+            this.deoxysQuestLine.addQuest(quest);
+        });
+        
         // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0);
         // this.deoxysQuestLine.addQuest(reachStage100);
 
