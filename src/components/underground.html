@@ -50,6 +50,13 @@ style="cursor:default" tabindex="-1">
                 </div>
                 <div id="treasures" class="tab-pane fade">
                     <div data-bind="if: player.hasMineItems()">
+                        <div class="d-flex justify-content-center sticky-top bg-white border-bottom m-0 p-0"
+                             data-bind="template: { name:'multiOptionTemplate',
+                                                    data: { observable: Underground.sellAmount,
+                                                            optionValues: [1,10,100,1000,Infinity]
+                                                          }
+                                                  }">
+                        </div>
                         <table class="table table-sm table-hover table-striped m-0">
                             <thead>
                                 <tr>
@@ -98,6 +105,13 @@ style="cursor:default" tabindex="-1">
                     <h4>In the Daily deals tab you can trade your items.</h4>
                 </div>
                 <div id="dailyDeals" class="tab-pane fade">
+                    <div class="d-flex justify-content-center sticky-top bg-white border-bottom m-0 p-0"
+                         data-bind="template: { name:'multiOptionTemplate',
+                                                data: { observable: Underground.tradeAmount,
+                                                        optionValues: [1,10,100,1000,Infinity]
+                                                      }
+                                              }">
+                    </div>
                     <div class="table-responsive" id="dailyDealsBody">
                         <table class="table table-sm table-hover table-striped m-0 text-left">
                             <thead>
@@ -124,7 +138,7 @@ style="cursor:default" tabindex="-1">
                                     </td>
                                     <td class='vertical-middle' data-bind='text: amount2 + " × " + item2.name'></td>
                                     <td class='vertical-middle'>
-                                        <button class='btn btn-success btn-block' data-bind='click: function(){DailyDeal.use($index())}, css: { disabled: !DailyDeal.canUse($index()) }'>
+                                        <button class='btn btn-success btn-block' data-bind='click: function(){DailyDeal.use($index(), Underground.tradeAmount())}, css: { disabled: !DailyDeal.canUse($index()) }'>
                                             Trade
                                         </button>
                                     </td>
@@ -171,7 +185,7 @@ style="cursor:default" tabindex="-1">
             <!-- /ko -->
             <td class='vertical-middle'>
                 <button class='btn btn-success btn-block'
-                        data-bind='click: function(){ Underground.sellMineItem(id) },
+                        data-bind='click: function(){ Underground.sellMineItem(id, Underground.sellAmount()) },
                                 css: { disabled: amount() <= 0 || (valueType === "Mine Egg" && !App.game.breeding.hasFreeEggSlot()) },
                                 text: valueType === "Mine Egg" ? "Breed" : "Sell"'>
                 </button>
