@@ -84,7 +84,7 @@ class QuestLineHelper {
         this.deoxysQuestLine.addQuest(route129);
 
         const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id], undefined, () => {
-            Notifier.notify({ title: 'Custom quest reward!', message: 'It looks like it worked..' });
+            Notifier.notify({ title: 'Custom quest reward!', message: 'It looks like it worked..<br/>But you didn\'t really get anything...' });
         });
         this.deoxysQuestLine.addQuest(captureMagikarp);
 
@@ -93,12 +93,15 @@ class QuestLineHelper {
         });
         this.deoxysQuestLine.addQuest(defeatPoison);
 
-        // 3 random quest
+        // 3 (seeded) random quest
         QuestHelper.generateQuestList(parseInt(this.deoxysQuestLine.name.toLowerCase().replace(/\s/g, ''), 36), 3).forEach(quest => {
             this.deoxysQuestLine.addQuest(quest);
         });
         
-        // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0);
+        // TODO: Unlock deoxys dungeon or something? instead of just giving the player a Deoxys
+        // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0, () => {
+        //     App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
+        // });
         // this.deoxysQuestLine.addQuest(reachStage100);
 
         this.deoxysQuestLineTracker = this.deoxysQuestLine.curQuestInitial.subscribe((newInitial) => {
