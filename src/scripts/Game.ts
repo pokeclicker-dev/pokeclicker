@@ -73,9 +73,10 @@ class Game {
         if (saveJSON !== null) {
             const saveObject = JSON.parse(saveJSON);
 
-            Object.keys(saveObject).filter(key => this[key]?.saveKey).forEach(key => {
+            Object.keys(this).filter(key => this[key]?.saveKey).forEach(key => {
                 try {
-                    this[key].fromJSON(saveObject[key]);
+                    const saveKey = this[key].saveKey;
+                    this[key].fromJSON(saveObject[saveKey] || {});
                 } catch (error) {
                     console.error('Unable to load sava data from JSON for:', key, '\nError:\n', error);
                 }
