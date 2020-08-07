@@ -163,8 +163,9 @@ class PokemonFactory {
             return null;
         }
 
-        const itemBonus = 1;
-        chance /= itemBonus;
+        if (EffectEngineRunner.isActive(GameConstants.BattleItemType.Item_magnet)()) {
+            chance /= 1.5;
+        }
         const rand: number = Math.floor(Math.random() * chance) + 1;
         if (rand <= 1) {
             return item;
