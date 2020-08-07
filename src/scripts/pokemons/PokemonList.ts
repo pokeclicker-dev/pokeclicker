@@ -27,6 +27,7 @@ type PokemonListData = {
   eggCycles: number;
   baby?: boolean;
   attack?: number;
+  heldItem?: string;
 }
 
 /**

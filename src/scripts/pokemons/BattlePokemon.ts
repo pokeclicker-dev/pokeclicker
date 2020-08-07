@@ -1,17 +1,8 @@
 class BattlePokemon implements EnemyPokemonInterface {
-    name: string;
-    id: number;
-    type1: PokemonType;
-    type2: PokemonType;
+
     health: KnockoutObservable<number>;
     maxHealth: KnockoutObservable<number>;
     healthPercentage: KnockoutObservable<number>;
-    level: number;
-    catchRate: number;
-    exp: number;
-    money: number;
-    shiny: boolean;
-    shardReward: number;
 
     /**
      * In case you want to manually create a Pokémon instead of generating it from the route number
@@ -25,21 +16,25 @@ class BattlePokemon implements EnemyPokemonInterface {
      * @param exp base exp reward for defeating this Pokémon
      * @param money exp base exp reward for defeating this Pokémon
      * @param shiny
+     * @param [heldItem] item to gain on defeat of this pokemon
      */
-    constructor(name: string, id: number, type1: PokemonType, type2: PokemonType, maxHealth: number, level: number, catchRate: number, exp: number, money: number, shiny: boolean, shardReward = 1) {
-        this.name = name;
-        this.id = id;
-        this.type1 = type1;
-        this.type2 = type2;
+    constructor(
+        public name: string,
+        public id: number,
+        public type1: PokemonType,
+        public type2: PokemonType,
+        maxHealth: number,
+        public level: number,
+        public catchRate: number,
+        public exp: number,
+        public money: number,
+        public shiny: boolean,
+        public shardReward = 1,
+        public heldItem?: string
+    ) {
         this.health = ko.observable(maxHealth);
         this.maxHealth = ko.observable(maxHealth);
         this.healthPercentage = ko.observable(100);
-        this.level = level;
-        this.catchRate = catchRate;
-        this.exp = exp;
-        this.money = money;
-        this.shiny = shiny;
-        this.shardReward = shardReward;
     }
 
     public isAlive(): boolean {
@@ -65,6 +60,13 @@ class BattlePokemon implements EnemyPokemonInterface {
 
         if (this.money) {
             App.game.wallet.gainMoney(this.money);
+        }
+
+        if (this.heldItem && ItemList[this.heldItem]) {
+            const item = ItemList[this.heldItem];
+            const name = GameConstants.humanifyString(item.name());
+            item.gain(1);
+            Notifier.notify({ message: `The enemy ${this.name} dropped ${GameHelper.anOrA(name)} ${name}!`, type: GameConstants.NotificationOption.success, setting: GameConstants.NotificationSetting.dropped_item });
         }
         App.game.party.gainExp(this.exp, this.level, trainer);
         App.game.shards.gainShards(this.shardReward, this.type1);
