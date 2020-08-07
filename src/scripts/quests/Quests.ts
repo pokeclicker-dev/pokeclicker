@@ -15,6 +15,10 @@ class Quests implements Saveable {
 
     constructor() {}
 
+    getQuestLine(name) {
+        return this.questLines().find(ql => ql.name.toLowerCase() == name.toLowerCase());
+    }
+
     get questSlots(): KnockoutComputed<number> {
         return ko.pureComputed(function () {
             // Minimum of 1, Maximum of 4
@@ -189,7 +193,15 @@ class Quests implements Saveable {
     }
 
     loadQuestLines(questLines) {
-
+        questLines.forEach(questLine => {
+            if (questLine.state != QuestLineState.started) {
+                return;
+            }
+            const ql = this.questLines().find(ql => ql.name == questLine.name);
+            if (ql && questLine.initial != undefined) {
+                ql.resumeAt(questLine.quest, questLine.initial);
+            }
+        });
     }
 
     toJSON() {
@@ -204,11 +216,12 @@ class Quests implements Saveable {
 
     fromJSON(json: any) {
         if (!json) {
+            // Generate the questList
             this.generateQuestList();
+            // Generate the questLines
+            QuestLineHelper.loadQuestLines();
             return;
         }
-        
-        console.debug('Quests save data:', json);
 
         this.xp = json.xp || this.defaults.xp;
         this.level = this.xpToLevel(this.xp);
@@ -221,12 +234,16 @@ class Quests implements Saveable {
             this.refreshes = json.refreshes || this.defaults.refreshes;
         }
         
+        // Generate the questList
         this.generateQuestList();
 
         // Load any completed/inprogress quest
         if (json.questList) {
             this.loadQuestList(json.questList);
         }
+        
+        // Generate the questLines
+        QuestLineHelper.loadQuestLines();
 
         // Load any quest line quest
         if (json.questLines) {

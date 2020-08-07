@@ -47,8 +47,8 @@
                 </tr>
             </tbody>
             <!-- List of quest line quests -->
-            <tbody data-bind="foreach: QuestLineHelper.currentQuests">
-                <!-- ko if: $data.totalQuests > 0 && ($data.curQuest() < $data.totalQuests) -->
+            <tbody data-bind="foreach: App.game.quests.questLines()">
+                <!-- ko if: $data.state() == QuestLineState.started -->
                 <tr>
                     <td class="card-header" colspan="2" data-bind="text: $data.name"></td>
                 </tr>

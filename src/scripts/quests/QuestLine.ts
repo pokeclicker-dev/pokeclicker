@@ -7,7 +7,7 @@ enum QuestLineState {
 class QuestLine {
     name: string;
     description: string;
-    state: QuestLineState = QuestLineState.inactive;
+    state: KnockoutObservable<QuestLineState> = ko.observable(QuestLineState.inactive);
     quests: KnockoutObservableArray<Quest>;
     curQuest: KnockoutComputed<number>;
     curQuestObject: KnockoutComputed<any>;
@@ -54,7 +54,7 @@ class QuestLine {
                     this.beginQuest(this.curQuest());
                 }, 2000);
             } else {
-                this.state = QuestLineState.ended;
+                this.state(QuestLineState.ended);
             }
         });
     }
@@ -75,14 +75,15 @@ class QuestLine {
             quest.begin();
         }
         this.curQuestInitial(quest.initial());
-        this.state = QuestLineState.started;
+        this.state(QuestLineState.started);
     }
 
     resumeAt(index: number, initial) {
-        if (typeof initial != 'undefined') {
+        if (initial != undefined) {
             for (let i = 0; i < index; i++) {
                 this.quests()[i].autoCompleter.dispose();
-                this.quests()[i].complete();
+                // Disabled as causing new quest to start at 0 again
+                // this.quests()[i].complete();
             }
             if (index < this.totalQuests) {
                 this.beginQuest(index, initial);
@@ -94,7 +95,7 @@ class QuestLine {
 
     toJSON() {
         return {
-            state: this.state,
+            state: this.state(),
             name: this.name,
             quest: this.curQuest(),
             initial: this.curQuestInitial(),

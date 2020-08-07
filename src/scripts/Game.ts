@@ -99,11 +99,6 @@ class Game {
         Underground.energyTick(Underground.getEnergyRegenTime());
         DailyDeal.generateDeals(Underground.getDailyDealsMax(), new Date());
 
-        if (!player.tutorialComplete()) {
-            QuestLineHelper.createTutorial();
-            QuestLineHelper.tutorial.resumeAt(player.tutorialProgress(), player.tutorialState);
-        }
-
         this.gameState = GameConstants.GameState.fighting;
     }
 
