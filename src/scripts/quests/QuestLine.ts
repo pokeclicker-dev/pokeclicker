@@ -81,9 +81,9 @@ class QuestLine {
     resumeAt(index: number, initial) {
         if (initial != undefined) {
             for (let i = 0; i < index; i++) {
+                // TODO: fix quests starting at 0 again
                 this.quests()[i].autoCompleter.dispose();
-                // Disabled as causing new quest to start at 0 again
-                // this.quests()[i].complete();
+                this.quests()[i].complete();
             }
             if (index < this.totalQuests) {
                 this.beginQuest(index, initial);
