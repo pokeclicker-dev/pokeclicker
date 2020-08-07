@@ -55,6 +55,21 @@ class BattlePokemon implements EnemyPokemonInterface {
         this.healthPercentage(Math.floor(this.health() / this.maxHealth() * 100));
     }
 
+    public defeat(trainer = false): void {
+        GameHelper.incrementObservable(App.game.statistics.pokemonDefeated[this.id]);
+        GameHelper.incrementObservable(App.game.statistics.totalPokemonDefeated);
+        if (this.shiny) {
+            GameHelper.incrementObservable(App.game.statistics.shinyPokemonDefeated[this.id]);
+            GameHelper.incrementObservable(App.game.statistics.totalShinyPokemonDefeated);
+        }
+
+        if (this.money) {
+            App.game.wallet.gainMoney(this.money);
+        }
+        App.game.party.gainExp(this.exp, this.level, trainer);
+        App.game.shards.gainShards(this.shardReward, this.type1);
+        App.game.shards.gainShards(this.shardReward, this.type2);
+    }
 }
 
 
