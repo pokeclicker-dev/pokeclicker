@@ -56,9 +56,9 @@ class QuestLineHelper {
         return App.game.quests.getQuestLine('Tutorial Quests')?.state() == QuestLineState.ended;
     }
 
-
+    // TODO: make this an actual quest line that triggers after defeating the Hoenn Champion
     public static createDeoxysQuestLine() {
-        const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys mystery location');
+        const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys');
 
         //Kill 10 Pokemon on route 129
         const route129 = new DefeatPokemonsQuest(129, GameConstants.Region.hoenn, 10);
@@ -66,22 +66,24 @@ class QuestLineHelper {
         route129.description = 'Defeat 10 Pokémon on route 129';
         deoxysQuestLine.addQuest(route129);
 
+        // Capture 10 Magikarp
         const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id], undefined, () => {
             Notifier.notify({ title: 'Custom quest reward!', message: 'It looks like it worked..<br/>But you didn\'t really get anything...' });
         });
         deoxysQuestLine.addQuest(captureMagikarp);
 
-        const defeatPoison = new CustomQuest(100, 10, 'Defeat 100 Psychic type Pokémon', () => {
+        // Defeat 100 Psychic type pokemon
+        const defeatPsychic = new CustomQuest(100, 10, 'Defeat 100 Psychic type Pokémon', () => {
             return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonDefeated[p.id]()).reduce((a,b) => a + b, 0);
         });
-        deoxysQuestLine.addQuest(defeatPoison);
+        deoxysQuestLine.addQuest(defeatPsychic);
 
         // 3 (seeded) random quest
-        QuestHelper.generateQuestList(parseInt(deoxysQuestLine.name.toLowerCase().replace(/\s/g, ''), 36), 3).forEach(quest => {
+        QuestHelper.generateQuestList(parseInt(deoxysQuestLine.name.toLowerCase().replace(/\W/g, ''), 36), 3).forEach(quest => {
             deoxysQuestLine.addQuest(quest);
         });
         
-        // TODO: Unlock deoxys dungeon or something? instead of just giving the player a Deoxys
+        // TODO: Unlock deoxys dungeon or something? instead of just giving the player a Deoxys - Should probably just be a bttle frontier reward though
         // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0, () => {
         //     App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
         // });
