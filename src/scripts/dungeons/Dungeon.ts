@@ -521,18 +521,14 @@ dungeonList['Fullmoon Island'] = new Dungeon('Fullmoon Island',
     ['Illumise', 'Minun', 'Espeon', 'Luvdisc'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     3000,
-    [
-        new DungeonBossPokemon('Cresselia', 9000000, 70)
-    ],
+    [new DungeonBossPokemon('Cresselia', 9000000, 70)],
     96500, BadgeCase.Badge.Elite_SinnohChampion, 201, 35);
 
 dungeonList['Newmoon Island'] = new Dungeon('Newmoon Island',
     ['Volbeat', 'Plusle', 'Umbreon', 'Luvdisc'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     3000,
-    [
-        new DungeonBossPokemon('Darkrai', 9000000, 70)
-    ],
+    [new DungeonBossPokemon('Darkrai', 9000000, 70)],
     96500, BadgeCase.Badge.Elite_SinnohChampion, 201, 35);
 
 dungeonList['Flower Paradise'] = new Dungeon('Flower Paradise',
