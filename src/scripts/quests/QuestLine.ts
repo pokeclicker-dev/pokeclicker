@@ -67,7 +67,7 @@ class QuestLine {
         this.quests.push(quest);
     }
 
-    beginQuest(index: number, initial?: number) {
+    beginQuest(index = 0, initial?: number) {
         const quest = this.quests()[index];
         if (initial != undefined) {
             quest.initial(initial);

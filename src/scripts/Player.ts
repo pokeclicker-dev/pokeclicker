@@ -69,10 +69,6 @@ class Player {
         this.effectTimer = Save.initializeEffectTimer(savedPlayer.effectTimer || {});
         this.highestRegion = ko.observable(savedPlayer.highestRegion || 0);
 
-        this.tutorialProgress = ko.observable(savedPlayer.tutorialProgress || 0);
-        this.tutorialState = savedPlayer.tutorialState;
-        this.tutorialComplete = ko.observable(!!savedPlayer.tutorialComplete);
-
     }
 
     private _itemList: { [name: string]: KnockoutObservable<number> };
@@ -87,10 +83,6 @@ class Player {
 
     public effectList: { [name: string]: KnockoutObservable<number> } = {};
     public effectTimer: { [name: string]: KnockoutObservable<string> } = {};
-
-    public tutorialProgress: KnockoutObservable<number>;
-    public tutorialState: any;
-    public tutorialComplete: KnockoutObservable<boolean>;
 
     private highestRegion: KnockoutObservable<GameConstants.Region>;
 
@@ -211,9 +203,6 @@ class Player {
             'effectList',
             'effectTimer',
             'highestRegion',
-            'tutorialProgress',
-            'tutorialState',
-            'tutorialComplete',
         ];
         const plainJS = ko.toJS(this);
         return Save.filter(plainJS, keep);

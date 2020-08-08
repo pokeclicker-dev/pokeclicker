@@ -194,12 +194,15 @@ class Quests implements Saveable {
 
     loadQuestLines(questLines) {
         questLines.forEach(questLine => {
-            if (questLine.state != QuestLineState.started) {
+            if (questLine.state == QuestLineState.inactive) {
                 return;
             }
             const ql = this.questLines().find(ql => ql.name == questLine.name);
-            if (ql && questLine.initial != undefined) {
-                ql.resumeAt(questLine.quest, questLine.initial);
+            if (ql) {
+                ql.state(questLine.state);
+                if (questLine.state == QuestLineState.started) {
+                    ql.resumeAt(questLine.quest, questLine.initial);
+                }
             }
         });
     }
