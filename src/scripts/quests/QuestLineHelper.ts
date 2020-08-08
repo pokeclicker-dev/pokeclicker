@@ -59,31 +59,18 @@ class QuestLineHelper {
     public static createDeoxysQuestLine() {
         const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Discover the mystery of Deoxys');
 
-        //Kill 10 Pokemon on route 129
-        const route129 = new DefeatPokemonsQuest(129, GameConstants.Region.hoenn, 10);
+        // Defeat 50 Pokemon on route 129
+        const route129 = new DefeatPokemonsQuest(129, GameConstants.Region.hoenn, 50);
         route129.pointsReward = 0;
-        route129.description = 'Defeat 10 Pokémon on route 129';
         deoxysQuestLine.addQuest(route129);
 
-        // Capture 10 Magikarp
-        const captureMagikarpReward = () => {
-            Notifier.notify({ title: 'Custom quest reward!', message: 'It looks like it worked..<br/>But you didn\'t really get anything...' });
-        };
-        const captureMagikarp = new CustomQuest(10, captureMagikarpReward, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id]);
-        deoxysQuestLine.addQuest(captureMagikarp);
-
-        // Defeat 100 Psychic type pokemon
-        const defeatPsychic = new CustomQuest(100, 10, 'Defeat 100 Psychic type Pokémon', () => {
+        // Defeat 500 Psychic type Pokemon
+        const defeatPsychic = new CustomQuest(500, 0, 'Defeat 500 Psychic type Pokémon', () => {
             return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonDefeated[p.id]()).reduce((a,b) => a + b, 0);
         });
         deoxysQuestLine.addQuest(defeatPsychic);
-
-        // 3 (seeded) random quest
-        QuestHelper.generateQuestList(parseInt(deoxysQuestLine.name.toLowerCase().replace(/\W/g, ''), 36), 3).forEach(quest => {
-            deoxysQuestLine.addQuest(quest);
-        });
         
-        // TODO: Unlock deoxys dungeon or something? instead of just giving the player a Deoxys - Should probably just be a bttle frontier reward though
+        // TODO: Unlock Deoxys dungeon or something? instead of just giving the player a Deoxys - Should probably just be a battle frontier reward though
         const deoxysReward = () => {
             App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
         };
@@ -91,8 +78,10 @@ class QuestLineHelper {
         //     App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
         // });
         // deoxysQuestLine.addQuest(reachStage100);
+
         // TODO: remove once battle frontier added
-        const catchPsychic = new CustomQuest(100, deoxysReward, 'Capture 100 Psychic type Pokémon', () => {
+        // Capture 200 Psychic type Pokemon
+        const catchPsychic = new CustomQuest(200, deoxysReward, 'Capture 200 Psychic type Pokémon', () => {
             return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonCaptured[p.id]()).reduce((a,b) => a + b, 0);
         });
         deoxysQuestLine.addQuest(catchPsychic);
