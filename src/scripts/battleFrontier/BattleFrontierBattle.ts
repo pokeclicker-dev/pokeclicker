@@ -31,7 +31,7 @@ class BattleFrontierBattle extends Battle {
     public static defeatPokemon() {
         App.game.party.gainExp(this.enemyPokemon().exp, BattleFrontierRunner.stage(), false);
         App.game.breeding.progressEggsBattle(BattleFrontierRunner.stage(), GameConstants.Region.kanto);
-        this.gainShardsAfterBattle();
+        this.enemyPokemon().defeat(true);
         // Next pokemon
         GameHelper.incrementObservable(this.pokemonIndex);
 
