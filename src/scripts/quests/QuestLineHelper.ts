@@ -50,9 +50,11 @@ class QuestLineHelper {
 
         App.game.quests.questLines().push(tutorial);
     }
-    public static tutorialComplete() {
+
+    public static isTutorialCompleted() {
         return App.game.quests.getQuestLine('Tutorial Quests')?.state() == QuestLineState.ended;
     }
+
 
     public static createDeoxysQuestLine() {
         const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys mystery location');
