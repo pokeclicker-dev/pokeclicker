@@ -8,8 +8,6 @@ class Underground {
     private static _energy: KnockoutObservable<number> = ko.observable(0);
     public static upgradeList: Array<Upgrade> = [];
 
-    public static tradeAmount: KnockoutObservable<number> = ko.observable(1);
-
     public static getMaxEnergy() {
         return Underground.BASE_ENERGY_MAX + this.getUpgrade(Underground.Upgrades.Energy_Max).calculateBonus();
     }

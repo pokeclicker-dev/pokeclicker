@@ -98,13 +98,6 @@ style="cursor:default" tabindex="-1">
                     <h4>In the Daily deals tab you can trade your items.</h4>
                 </div>
                 <div id="dailyDeals" class="tab-pane fade">
-                    <div class="d-flex justify-content-center sticky-top bg-white border-bottom m-0 p-0"
-                         data-bind="template: { name:'multiOptionTemplate',
-                                                data: { observable: Underground.tradeAmount,
-                                                        optionValues: [1,10,100,1000,Infinity]
-                                                      }
-                                              }">
-                    </div>
                     <div class="table-responsive" id="dailyDealsBody">
                         <table class="table table-sm table-hover table-striped m-0 text-left">
                             <thead>
@@ -131,9 +124,16 @@ style="cursor:default" tabindex="-1">
                                     </td>
                                     <td class='vertical-middle' data-bind='text: amount2 + " × " + item2.name'></td>
                                     <td class='vertical-middle'>
-                                        <button class='btn btn-success btn-block' data-bind='click: function(){DailyDeal.use($index(), Underground.tradeAmount())}, css: { disabled: !DailyDeal.canUse($index()) }'>
-                                            Trade
-                                        </button>
+                                        <div class="btn-group btn-block" data-bind="let: { tradeAmount: ko.observable(1) }">
+                                            <button class='btn btn-success btn-block' data-bind='click: function(){DailyDeal.use($index(), tradeAmount())}, css: { disabled: !DailyDeal.canUse($index()) }'>
+                                                Trade
+                                            </button>
+                                            <button type="button" data-bind="text: tradeAmount, css: { disabled: !DailyDeal.canUse($index()) }" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            </button>
+                                            <div class="dropdown-menu" data-bind="foreach: [1, 10, 100, 1000, Infinity]">
+                                                <button class="dropdown-item" type="button" data-bind="click: function(){tradeAmount($data)}, text: $data"></button>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -177,22 +177,18 @@ style="cursor:default" tabindex="-1">
             <td class='vertical-middle' data-bind='text: value + " " + UndergroundItem.getFullResourceName(valueType, value)'></td>
             <!-- /ko -->
             <td class='vertical-middle'>
-                <div class="btn-group btn-block">
-                    <button class='btn btn-success btn-block' onclick="Underground.sellMineItem(this.dataset.itemid, +(this.nextElementSibling ? this.nextElementSibling.innerText : 1) || 1)"
+                <div class="btn-group btn-block" data-bind="let: { sellAmount: ko.observable(1) }">
+                    <button class='btn btn-success btn-block'
                             data-bind="attr: { 'data-itemid': id },
                                     css: { disabled: amount() <= 0 || (valueType === 'Mine Egg' && !App.game.breeding.hasFreeEggSlot()) },
-                                    text: valueType === 'Mine Egg' ? 'Breed' : 'Sell'">
+                                    text: valueType === 'Mine Egg' ? 'Breed' : 'Sell',
+                                    click: function(){Underground.sellMineItem($element.dataset.itemid, sellAmount() || 1)}">
                     </button>
                     <!-- ko if: valueType !== 'Mine Egg' -->
-                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        1
+                    <button type="button" data-bind="text: sellAmount" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
-                    <div class="dropdown-menu">
-                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">1</button>
-                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">10</button>
-                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">100</button>
-                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">1000</button>
-                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">Infinity</button>
+                    <div class="dropdown-menu" data-bind="foreach: [1, 10, 100, 1000, Infinity]">
+                        <button class="dropdown-item" type="button" data-bind="click: function(){sellAmount($data)}, text: $data"></button>
                     </div>
                     <!-- /ko -->
                 </div>
