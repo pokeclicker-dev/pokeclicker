@@ -11,42 +11,30 @@ class Quests implements Saveable {
     public lastRefresh = new Date();
     public questList: KnockoutObservableArray<Quest> = ko.observableArray();
     public questLines: KnockoutObservableArray<QuestLine> = ko.observableArray();
+    public level: KnockoutComputed<number> = ko.pureComputed((): number => {
+        return this.xpToLevel(this.xp());
+    });
+    public questSlots: KnockoutComputed<number> = ko.pureComputed((): number => {
+        // Minimum of 1, Maximum of 4
+        return Math.min(4, Math.max(1, Math.floor(this.level() / 5)));
+    });
+    
+    // Get current quests by status
+    public completedQuests: KnockoutComputed<Array<Quest>> = ko.pureComputed(() => {
+        return this.questList().filter(quest => quest.isCompleted());
+    });
+    public currentQuests: KnockoutComputed<Array<Quest>> = ko.pureComputed(() => {
+        return this.questList().filter(quest => quest.inProgress() && !quest.claimed());
+    });
+    public incompleteQuests: KnockoutComputed<Array<Quest>> =  ko.pureComputed(() => {
+        return this.questList().filter(quest => !quest.isCompleted());
+    });
 
     constructor() {}
 
+    // Get a quest line by name
     getQuestLine(name) {
         return this.questLines().find(ql => ql.name.toLowerCase() == name.toLowerCase());
-    }
-
-    get level(): KnockoutComputed<number> {
-        return ko.pureComputed((): number => {
-            return this.xpToLevel(this.xp());
-        });
-    }
-
-    get questSlots(): KnockoutComputed<number> {
-        return ko.pureComputed((): number => {
-            // Minimum of 1, Maximum of 4
-            return Math.min(4, Math.max(1, this.level() / 5));
-        });
-    }
-
-    get completedQuests() {
-        return ko.pureComputed(() => {
-            return this.questList().filter(quest => quest.isCompleted());
-        });
-    }
-
-    get currentQuests() {
-        return ko.pureComputed(() => {
-            return this.questList().filter(quest => quest.inProgress() && !quest.claimed());
-        });
-    }
-
-    get incompleteQuests() {
-        return ko.pureComputed(() => {
-            return this.questList().filter(quest => !quest.isCompleted());
-        });
     }
 
     public beginQuest(index: number) {
@@ -136,8 +124,6 @@ class Quests implements Saveable {
         const notComplete = this.incompleteQuests().length;
         return new Amount(Math.floor(250000 * Math.LOG10E * Math.log(Math.pow(notComplete, 4) + 1)), GameConstants.Currency.money);
     }
-
-    public getCompletedQuest
 
     public canStartNewQuest(): boolean {
         // Check we haven't already used up all quest slots
