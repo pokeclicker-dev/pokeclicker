@@ -8,7 +8,6 @@ class Underground {
     private static _energy: KnockoutObservable<number> = ko.observable(0);
     public static upgradeList: Array<Upgrade> = [];
 
-    public static sellAmount: KnockoutObservable<number> = ko.observable(1);
     public static tradeAmount: KnockoutObservable<number> = ko.observable(1);
 
     public static getMaxEnergy() {

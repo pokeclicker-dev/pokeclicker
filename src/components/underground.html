@@ -50,13 +50,6 @@ style="cursor:default" tabindex="-1">
                 </div>
                 <div id="treasures" class="tab-pane fade">
                     <div data-bind="if: player.hasMineItems()">
-                        <div class="d-flex justify-content-center sticky-top bg-white border-bottom m-0 p-0"
-                             data-bind="template: { name:'multiOptionTemplate',
-                                                    data: { observable: Underground.sellAmount,
-                                                            optionValues: [1,10,100,1000,Infinity]
-                                                          }
-                                                  }">
-                        </div>
                         <table class="table table-sm table-hover table-striped m-0">
                             <thead>
                                 <tr>
@@ -184,11 +177,25 @@ style="cursor:default" tabindex="-1">
             <td class='vertical-middle' data-bind='text: value + " " + UndergroundItem.getFullResourceName(valueType, value)'></td>
             <!-- /ko -->
             <td class='vertical-middle'>
-                <button class='btn btn-success btn-block'
-                        data-bind='click: function(){ Underground.sellMineItem(id, Underground.sellAmount()) },
-                                css: { disabled: amount() <= 0 || (valueType === "Mine Egg" && !App.game.breeding.hasFreeEggSlot()) },
-                                text: valueType === "Mine Egg" ? "Breed" : "Sell"'>
-                </button>
+                <div class="btn-group btn-block">
+                    <button class='btn btn-success btn-block' onclick="Underground.sellMineItem(this.dataset.itemid, +(this.nextElementSibling ? this.nextElementSibling.innerText : 1) || 1)"
+                            data-bind="attr: { 'data-itemid': id },
+                                    css: { disabled: amount() <= 0 || (valueType === 'Mine Egg' && !App.game.breeding.hasFreeEggSlot()) },
+                                    text: valueType === 'Mine Egg' ? 'Breed' : 'Sell'">
+                    </button>
+                    <!-- ko if: valueType !== 'Mine Egg' -->
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        1
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">1</button>
+                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">10</button>
+                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">100</button>
+                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">1000</button>
+                        <button class="dropdown-item" type="button" onclick="this.parentElement.previousElementSibling.innerText = this.innerText + ' '">Infinity</button>
+                    </div>
+                    <!-- /ko -->
+                </div>
             </td>
         </tr>
     </script>
