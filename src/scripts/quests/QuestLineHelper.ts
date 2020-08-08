@@ -39,7 +39,7 @@ class QuestLineHelper {
         tutorial.addQuest(routeThree);
 
         //Buy Dungeon ticket
-        const buyDungeonTicket = new CustomQuest(1, 10, 'Buy the Dungeon ticket from Pewter City Shop.', () => + App.game.keyItems.hasKeyItem(KeyItems.KeyItem.Dungeon_ticket));
+        const buyDungeonTicket = new CustomQuest(1, 10, 'Buy the Dungeon ticket from Pewter City Shop.', () => + App.game.keyItems.hasKeyItem(KeyItems.KeyItem.Dungeon_ticket), 0);
         tutorial.addQuest(buyDungeonTicket);
 
         //Clear Mt Moon dungeon
