@@ -10,7 +10,7 @@
                 </h5>
                 </div>
                 <div class='col-6'>
-                    <div data-bind='text: "Lvl. " + App.game.quests.level'></div>
+                    <div>Lvl. <knockout data-bind='text: App.game.quests.level'></knockout></div>
                     <div class="progress" style='height: 5px'>
                         <div class="progress-bar bg-info" role="progressbar"
                              data-bind="attr:{ style: 'width:' + App.game.quests.percentToNextQuestLevel() + '%' }"
@@ -48,7 +48,7 @@
                                 Start
                             </button>
                             <button class='btn btn-success btn-sm btn-block' data-bind='visible: !$data.claimed() && $data.isCompleted(),
-                                                                click: $data.claim'>
+                                                                click: () => { App.game.quests.claimQuest($data.index) }'>
                                 Claim
                             </button>
                             <span data-bind='visible: $data.inProgress() && !$data.isCompleted(), text: Math.floor(progress()*100) + "%"'></span>

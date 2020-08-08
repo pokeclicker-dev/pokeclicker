@@ -1,5 +1,5 @@
 class QuestHelper {
-    public static generateQuestList(seed: number, amount = 10) {
+    public static generateQuestList(seed: number, amount = 10, uniqueQuestTypes = true) {
         const quests = [];
 
         SeededRand.seed(+seed);
@@ -7,7 +7,9 @@ class QuestHelper {
         const QuestTypes = new Set(GameConstants.QuestTypes);
         for (let i = 0; i < amount; i++) {
             const type = SeededRand.fromArray(Array.from(QuestTypes));
-            QuestTypes.delete(type);
+            if (uniqueQuestTypes) {
+                QuestTypes.delete(type);
+            }
             const quest = QuestHelper.random(type);
             quest.index = i;
             quests.push(quest);

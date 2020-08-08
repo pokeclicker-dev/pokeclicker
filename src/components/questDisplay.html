@@ -30,19 +30,16 @@
                         </div>
                     </td>
                     <td width="30%" class="p-0">
-                        <button class="btn btn-sm btn-block p-0"
-                                data-bind='
-                                    click: function(){
-                                        $data.isCompleted() ?
-                                        $data.claim() :
-                                        $data.quit(true);
-                                    },
-                                    text: $data.isCompleted() ? "Claim" : "Quit",
-                                    css: {
-                                    "btn-success": $data.isCompleted(),
-                                    "btn-danger": !$data.isCompleted(),
-                                    }'>
+                        <!-- ko ifnot: $data.isCompleted() -->
+                        <button class="btn btn-danger btn-sm btn-block p-0" data-bind="click: () => { App.game.quests.quitQuest($data.index, true) }">
+                            Quit
                         </button>
+                        <!-- /ko -->
+                        <!-- ko if: $data.isCompleted() -->
+                        <button class="btn btn-success btn-sm btn-block p-0" data-bind="click: () => { App.game.quests.claimQuest($data.index) }">
+                            claim
+                        </button>
+                        <!-- /ko -->
                     </td>
                 </tr>
             </tbody>

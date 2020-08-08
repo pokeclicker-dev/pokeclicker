@@ -6,9 +6,8 @@ class Quests implements Saveable {
         refreshes: 0,
     };
     
-    public xp = 0;
-    public level = 1;
-    public refreshes = 0;
+    public xp = ko.observable(0).extend({ numeric: 0 });
+    public refreshes = ko.observable(0);
     public lastRefresh = new Date();
     public questList: KnockoutObservableArray<Quest> = ko.observableArray();
     public questLines: KnockoutObservableArray<QuestLine> = ko.observableArray();
@@ -19,29 +18,35 @@ class Quests implements Saveable {
         return this.questLines().find(ql => ql.name.toLowerCase() == name.toLowerCase());
     }
 
+    get level(): KnockoutComputed<number> {
+        return ko.pureComputed((): number => {
+            return this.xpToLevel(this.xp());
+        });
+    }
+
     get questSlots(): KnockoutComputed<number> {
-        return ko.pureComputed(function () {
+        return ko.pureComputed((): number => {
             // Minimum of 1, Maximum of 4
-            return Math.min(4, Math.max(1, this.level / 5));
-        }, this);
+            return Math.min(4, Math.max(1, this.level() / 5));
+        });
     }
 
     get completedQuests() {
-        return ko.pureComputed(function () {
+        return ko.pureComputed(() => {
             return this.questList().filter(quest => quest.isCompleted());
-        }, this);
+        });
     }
 
     get currentQuests() {
-        return ko.pureComputed(function () {
+        return ko.pureComputed(() => {
             return this.questList().filter(quest => quest.inProgress() && !quest.claimed());
-        }, this);
+        });
     }
 
     get incompleteQuests() {
-        return ko.pureComputed(function () {
+        return ko.pureComputed(() => {
             return this.questList().filter(quest => !quest.isCompleted());
-        }, this);
+        });
     }
 
     public beginQuest(index: number) {
@@ -54,11 +59,11 @@ class Quests implements Saveable {
         }
     }
 
-    public quitQuest(index: number) {
+    public quitQuest(index: number, shouldConfirm = false) {
         // Check if we can quit this quest
         const quest  = this.questList()[index];
         if (quest && quest.inProgress()) {
-            quest.quit();
+            quest.quit(shouldConfirm);
         } else {
             Notifier.notify({ message: 'You cannot quit this quest', type: GameConstants.NotificationOption.danger });
         }
@@ -69,14 +74,12 @@ class Quests implements Saveable {
         const quest  = this.questList()[index];
         if (quest && quest.isCompleted() && !quest.claimed()) {
             quest.claim();
-
-            this.addXP(quest.xpReward);
-            
             // Once the player completes every available quest, refresh the list for free
             if (this.allQuestCompleted()) {
                 this.refreshQuests(true);
             }
         } else {
+            console.trace('cannot claim quest..');
             Notifier.notify({ message: 'You cannot claim this quest', type: GameConstants.NotificationOption.danger });
         }
     }
@@ -85,12 +88,11 @@ class Quests implements Saveable {
         if (isNaN(amount)) {
             return;
         }
-        const currentLevel = this.level;
-        this.xp += amount;
-        this.level = this.xpToLevel(this.xp);
+        const currentLevel = this.level();
+        GameHelper.incrementObservable(this.xp, amount);
 
         // Refresh the list each time a player levels up
-        if (this.level > currentLevel) {
+        if (this.level() > currentLevel) {
             Notifier.notify({ message: 'Your quest level has increased!', type: GameConstants.NotificationOption.success, timeout: 1e4, sound: GameConstants.NotificationSound.quest_level_increased });
             this.refreshQuests(true);
         }
@@ -103,7 +105,7 @@ class Quests implements Saveable {
 
     private generateSeed() {
         const d = new Date();
-        return Number(this.level * (d.getFullYear() + this.refreshes * 10) * d.getDate() + 1000 * d.getMonth() + 100000 * d.getDate());
+        return Number(this.level() * (d.getFullYear() + this.refreshes() * 10) * d.getDate() + 1000 * d.getMonth() + 100000 * d.getDate());
     }
 
     public refreshQuests(free = false, shouldConfirm = false) {
@@ -114,7 +116,7 @@ class Quests implements Saveable {
                 }
                 App.game.wallet.loseAmount(this.getRefreshCost());
             }
-            this.refreshes++;
+            GameHelper.incrementObservable(this.refreshes);
             this.generateQuestList();
         } else {
             Notifier.notify({ message: 'You cannot afford to do that!', type: GameConstants.NotificationOption.danger });
@@ -122,7 +124,7 @@ class Quests implements Saveable {
     }
 
     public resetRefreshes() {
-        this.refreshes = 0;
+        this.refreshes(0);
     }
 
     public canAffordRefresh(): boolean {
@@ -175,10 +177,10 @@ class Quests implements Saveable {
     }
 
     public percentToNextQuestLevel(): number {
-        const current = this.level;
+        const current = this.level();
         const requiredForCurrent = this.levelToXP(current);
         const requiredForNext = this.levelToXP(current + 1);
-        return 100 * (this.xp - requiredForCurrent) / (requiredForNext - requiredForCurrent);
+        return 100 * (this.xp() - requiredForCurrent) / (requiredForNext - requiredForCurrent);
     }
 
     loadQuestList(questList) {
@@ -209,8 +211,8 @@ class Quests implements Saveable {
 
     toJSON() {
         return {
-            xp: this.xp,
-            refreshes: this.refreshes,
+            xp: this.xp(),
+            refreshes: this.refreshes(),
             lastRefresh: this.lastRefresh,
             questList: this.questList(),
             questLines: this.questLines(),
@@ -226,15 +228,14 @@ class Quests implements Saveable {
             return;
         }
 
-        this.xp = json.xp || this.defaults.xp;
-        this.level = this.xpToLevel(this.xp);
+        this.xp(json.xp || this.defaults.xp);
         const lastRefresh = json.lastRefresh ? new Date(json.lastRefresh) : new Date();
         if (lastRefresh.toDateString() != new Date().toDateString()) {
-            this.refreshes = 0;
+            this.refreshes(0);
             // we don't want to load old quest data
             delete json.questList;
         } else {
-            this.refreshes = json.refreshes || this.defaults.refreshes;
+            this.refreshes(json.refreshes || this.defaults.refreshes);
         }
         
         // Generate the questList
