@@ -100,7 +100,7 @@ class Update implements Saveable {
 
         if (this.isOlderVersion(this.saveVersion, '0.4.18')) {
             try {
-                // Move from player data -> save data
+                // Move quests from player data -> save data
                 saveData.quests = {
                     xp: Math.floor(playerData._questXP || 0),
                     refreshes: playerData.questRefreshes || 0,
@@ -126,6 +126,13 @@ class Update implements Saveable {
                         saveData.quests.questList[index].initial = 0;
                     }
                 });
+
+                // If player has defeated the Hoenn Champion, start the deoxys quest line
+                saveData.badgeCase = saveData.badgeCase || [];
+                // Not using game constants incase the value isn't 39 in the future
+                if (saveData.badgeCase[39]) {
+                    saveData.quests.questLines.push({state: 1, name: 'Mystery of Deoxys', quest: 0});
+                }
 
                 // Update save data
                 this.setSaveData(saveData);
