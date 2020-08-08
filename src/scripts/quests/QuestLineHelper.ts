@@ -51,6 +51,7 @@ class QuestLineHelper {
         App.game.quests.questLines().push(tutorial);
     }
 
+    // Need to check if tutorial is completed before showing the other quests stuff
     public static isTutorialCompleted() {
         return App.game.quests.getQuestLine('Tutorial Quests')?.state() == QuestLineState.ended;
     }
