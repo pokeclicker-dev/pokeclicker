@@ -18,6 +18,7 @@ class BattlePokemon implements EnemyPokemonInterface {
      * @param shiny
      * @param [heldItem] item to gain on defeat of this pokemon
      */
+
     constructor(
         public name: string,
         public id: number,

@@ -247,6 +247,14 @@ const LilyCoveCityShop = new Shop([
 const MossdeepCityShop = new Shop([
     ItemList['Beldum'],
 ]);
+// TODO: finalize items and prices
+const BattleFrontierShop = new Shop([
+    new PokeballItem(GameConstants.Pokeball.Ultraball, 1, GameConstants.Currency.battlePoint),
+    new PokeballItem(GameConstants.Pokeball.Masterball, 500, GameConstants.Currency.battlePoint , { multiplier: 1.35, multiplierDecrease: false, saveName: `${GameConstants.Pokeball[GameConstants.Pokeball.Masterball]}|${GameConstants.Currency[GameConstants.Currency.battlePoint]}` }),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.SmallRestore, 10, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.MediumRestore, 20, GameConstants.Currency.battlePoint),
+    new EnergyRestore(GameConstants.EnergyRestoreSize.LargeRestore, 40, GameConstants.Currency.battlePoint),
+]);
 
 //Hoenn Towns
 TownList['Littleroot Town'] = new Town('Littleroot Town', [], LittleRootTownShop);
@@ -266,6 +274,7 @@ TownList['Sootopolis City'] = new Town('Sootopolis City', [126], null, null, 'Ca
 TownList['Ever Grande City'] = new Town('Ever Grande City', [128]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [128], null, null, 'Victory Road Hoenn');
 TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [131]);
+TownList['Battle Frontier'] = new Town('Battle Frontier', [], BattleFrontierShop, null, 'Victory Road Hoenn');
 
 //Hoenn Dungeons
 TownList['Petalburg Woods'] = new DungeonTown('Petalburg Woods', [104]);
