@@ -57,7 +57,7 @@ class QuestLineHelper {
     }
 
     public static createDeoxysQuestLine() {
-        const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys');
+        const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Discover the mystery of Deoxys');
 
         //Kill 10 Pokemon on route 129
         const route129 = new DefeatPokemonsQuest(129, GameConstants.Region.hoenn, 10);
