@@ -56,7 +56,6 @@ class QuestLineHelper {
         return App.game.quests.getQuestLine('Tutorial Quests')?.state() == QuestLineState.ended;
     }
 
-    // TODO: make this an actual quest line that triggers after defeating the Hoenn Champion
     public static createDeoxysQuestLine() {
         const deoxysQuestLine = new QuestLine('Mystery of Deoxys', 'Find Deoxys');
 
@@ -67,9 +66,10 @@ class QuestLineHelper {
         deoxysQuestLine.addQuest(route129);
 
         // Capture 10 Magikarp
-        const captureMagikarp = new CustomQuest(10, 10, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id], undefined, () => {
+        const captureMagikarpReward = () => {
             Notifier.notify({ title: 'Custom quest reward!', message: 'It looks like it worked..<br/>But you didn\'t really get anything...' });
-        });
+        };
+        const captureMagikarp = new CustomQuest(10, captureMagikarpReward, 'Capture 10 Magikarp', App.game.statistics.pokemonCaptured[pokemonMap.Magikarp.id]);
         deoxysQuestLine.addQuest(captureMagikarp);
 
         // Defeat 100 Psychic type pokemon
@@ -84,10 +84,18 @@ class QuestLineHelper {
         });
         
         // TODO: Unlock deoxys dungeon or something? instead of just giving the player a Deoxys - Should probably just be a bttle frontier reward though
+        const deoxysReward = () => {
+            App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
+        };
         // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0, () => {
         //     App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
         // });
         // deoxysQuestLine.addQuest(reachStage100);
+        // TODO: remove once battle frontier added
+        const catchPsychic = new CustomQuest(100, deoxysReward, 'Capture 100 Psychic type Pokémon', () => {
+            return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonCaptured[p.id]()).reduce((a,b) => a + b, 0);
+        });
+        deoxysQuestLine.addQuest(catchPsychic);
 
         App.game.quests.questLines().push(deoxysQuestLine);
     }

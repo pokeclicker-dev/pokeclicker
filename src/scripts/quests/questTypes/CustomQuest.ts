@@ -2,12 +2,13 @@ class CustomQuest extends Quest implements QuestInterface {
     initialValue?: number;
     customReward?;
 
-    constructor(amount: number, reward: number, description: string, focus, initialValue?: number, customReward?) {
-        super(amount, reward);
+    constructor(amount: number, reward: (() => void) | number, description: string, focus, initialValue?: number) {
+        const qpReward = typeof reward == 'number' ? reward : 0;
+        super(amount, qpReward);
         this.description = description;
         this.focus = focus;
         this.initialValue = initialValue;
-        this.customReward = customReward;
+        this.customReward = typeof reward == 'function' ? reward : undefined;
     }
 
     begin() {
