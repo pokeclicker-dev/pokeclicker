@@ -597,5 +597,8 @@ gymList['Champion Wallace'] = new Gym(
     BadgeCase.Badge.Elite_HoennChampion,
     15000,
     BadgeCase.Badge.Elite_Drake,
-    'I, the Champion, fall in defeat… That was wonderful work. You were elegant, infuriatingly so. And yet it was utterly glorious! Kudos to you! You are a truly noble Pokémon Trainer!'
+    'I, the Champion, fall in defeat… That was wonderful work. You were elegant, infuriatingly so. And yet it was utterly glorious! Kudos to you! You are a truly noble Pokémon Trainer!',
+    () => {
+        App.game.quests.getQuestLine('Mystery of Deoxys').beginQuest();
+    }
 );
