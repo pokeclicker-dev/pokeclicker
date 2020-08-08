@@ -50,16 +50,7 @@ class BattleFrontierMilestones {
 }
 
 // TODO: update rewards
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(5, 'Pokeball', 5));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestone(7, 'Flying Pikachu', () => {
-    App.game.party.gainPokemonById(-1);
-}));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(10, 'Pokeball', 50));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(20, 'Greatball', 50));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(30, 'Ultraball', 50));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(50, 'Ultraball', 100));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(100, 'Ultraball', 200));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(150, 'Ultraball', 400));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(200, 'Ultraball', 800));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(350, 'Ultraball', 1600));
-BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(400, 'Ultraball', 3200));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(5, 'Pokeball', 25));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(10, 'Pokeball', 100));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(20, 'Greatball', 100));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(30, 'Ultraball', 100));
