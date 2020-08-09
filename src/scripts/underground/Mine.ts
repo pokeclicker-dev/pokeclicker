@@ -196,6 +196,18 @@ class Mine {
         }
     }
 
+    private static bomb(tiles = 10) {
+        if (Underground.energy >= Underground.CHISEL_ENERGY * tiles) {
+            for (let i = 1; i < tiles; i++) {
+                const x = GameConstants.randomIntBetween(1, this.sizeY - 2);
+                const y = GameConstants.randomIntBetween(1, this.sizeX - 2);
+                this.breakTile(x, y, 2);
+            }
+
+            Underground.energy -= Underground.CHISEL_ENERGY * tiles;
+        }
+    }
+
     private static breakTile(_x: number, _y: number, layers = 1) {
         const x = Mine.normalizeY(_x);
         const y = Mine.normalizeX(_y);
