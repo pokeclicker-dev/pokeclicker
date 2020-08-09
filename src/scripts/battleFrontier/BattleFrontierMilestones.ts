@@ -54,3 +54,12 @@ BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(5, 'Pokeba
 BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(10, 'Pokeball', 100));
 BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(20, 'Greatball', 100));
 BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(30, 'Ultraball', 100));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(50, 'Ultraball', 200));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(100, 'Ultraball', 400));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(150, 'Ultraball', 800));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(200, 'Ultraball', 400));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(250, 'Ultraball', 800));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(300, 'Ultraball', 1600));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(350, 'Ultraball', 3200));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(400, 'Ultraball', 6400));
+BattleFrontierMilestones.addMilestone(new BattleFrontierMilestoneItem(450, 'Ultraball', 12800));
