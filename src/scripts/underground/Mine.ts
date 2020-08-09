@@ -5,7 +5,7 @@ class Mine {
     public static grid: Array<Array<KnockoutObservable<number>>>;
     public static rewardGrid: Array<Array<any>>;
     public static itemsFound: KnockoutObservable<number> = ko.observable(0);
-    public static itemsBuried: number;
+    public static itemsBuried: KnockoutObservable<number> = ko.observable(0);
     public static rewardNumbers: Array<number>;
     public static prospectResult = ko.observable(null);
     public static skipsRemaining = ko.observable(Mine.maxSkips)
@@ -18,7 +18,7 @@ class Mine {
         const tmpGrid = [];
         const tmpRewardGrid = [];
         Mine.rewardNumbers = [];
-        Mine.itemsBuried = 0;
+        Mine.itemsBuried(0);
         Mine.prospectResult(null);
         for (let i = 0; i < this.sizeY; i++) {
             const row = [];
@@ -96,7 +96,7 @@ class Mine {
                 }
             }
         }
-        Mine.itemsBuried++;
+        GameHelper.incrementObservable(Mine.itemsBuried);
         Mine.rewardNumbers.push(reward.id);
     }
 
@@ -278,7 +278,7 @@ class Mine {
     }
 
     private static checkCompleted() {
-        if (Mine.itemsFound() >= Mine.itemsBuried) {
+        if (Mine.itemsFound() >= Mine.itemsBuried()) {
             setTimeout(Mine.completed, 1500);
             Mine.loadingNewLayer = true;
             GameHelper.incrementObservable(App.game.statistics.undergroundLayersMined);
@@ -304,10 +304,10 @@ class Mine {
         });
         this.rewardGrid = mine.rewardGrid;
         this.itemsFound(mine.itemsFound);
-        this.itemsBuried = mine.itemsBuried;
+        this.itemsBuried(mine.itemsBuried);
         this.rewardNumbers = mine.rewardNumbers;
         this.loadingNewLayer = false;
-        this.prospectResult(mine.prospectResult ?? this.prospectResult);
+        this.prospectResult(mine.prospectResult ?? this.prospectResult());
         this.skipsRemaining(mine.skipsRemaining ?? this.maxSkips);
 
         Underground.showMine();
@@ -317,8 +317,8 @@ class Mine {
         const mine = {
             grid: this.grid,
             rewardGrid: this.rewardGrid,
-            itemsFound: this.itemsFound,
-            itemsBuried: this.itemsBuried,
+            itemsFound: this.itemsFound(),
+            itemsBuried: this.itemsBuried(),
             rewardNumbers: this.rewardNumbers,
             prospectResult: this.prospectResult(),
             skipsRemaining: this.skipsRemaining(),
