@@ -6,6 +6,7 @@ class Mine {
     public static itemsFound: KnockoutObservable<number> = ko.observable(0);
     public static itemsBuried: number;
     public static rewardNumbers: Array<number>;
+    public static prospectResult = ko.observable(null);
 
     // 0 represents the Mine.Tool.Chisel but it's not loaded here yet.
     public static toolSelected: KnockoutObservable<Mine.Tool> = ko.observable(0);
@@ -16,6 +17,7 @@ class Mine {
         const tmpRewardGrid = [];
         Mine.rewardNumbers = [];
         Mine.itemsBuried = 0;
+        Mine.prospectResult(null);
         for (let i = 0; i < this.sizeY; i++) {
             const row = [];
             const rewardRow = [];
@@ -94,6 +96,67 @@ class Mine {
         }
         Mine.itemsBuried++;
         Mine.rewardNumbers.push(reward.id);
+    }
+
+    public static prospect() {
+        if (Mine.prospectResult()) {
+            $('#mine-prospect-result').tooltip('show');
+            setTimeout(() => $('#mine-prospect-result').tooltip('hide'), 4000);
+            return;
+        }
+
+        if (Underground.energy < Underground.PROSPECT_ENERGY) {
+            return;
+        }
+
+        Underground.energy -= Underground.PROSPECT_ENERGY;
+
+        const rewards = Mine.rewardSummary();
+        Mine.updateProspectResult(rewards);
+    }
+
+    private static rewardSummary() {
+        return Mine.rewardNumbers.reduce((res, id) => {
+            const reward = UndergroundItem.list.find(x => x.id == id);
+
+            if (ItemList[reward.valueType]) {
+                res.evoItems++;
+            } else {
+                switch (reward.valueType) {
+                    case 'Diamond': {
+                        res.totalValue += reward.value;
+                        break;
+                    }
+                    case 'Mine Egg': {
+                        res.fossils++;
+                        break;
+                    }
+                    default: {
+                        res.plates++;
+                    }
+                }
+            }
+
+            return res;
+        }, {fossils: 0, plates: 0, evoItems: 0, totalValue: 0});
+    }
+
+    private static updateProspectResult(summary) {
+        const text = [];
+        if (summary.fossils) {
+            text.push(`Fossils: ${summary.fossils}`);
+        }
+        if (summary.evoItems) {
+            text.push(`Evolution Items: ${summary.evoItems}`);
+        }
+        if (summary.plates) {
+            text.push(`Shard Plates: ${summary.plates}`);
+        }
+        text.push(`Total Value: ${summary.totalValue}`);
+
+        Mine.prospectResult(text.join('<br>'));
+        $('#mine-prospect-result').tooltip('show');
+        setTimeout(() => $('#mine-prospect-result').tooltip('hide'), 2000);
     }
 
     public static click(i: number, j: number) {
