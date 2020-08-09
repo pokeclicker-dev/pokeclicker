@@ -307,6 +307,7 @@ class Mine {
         this.itemsBuried = mine.itemsBuried;
         this.rewardNumbers = mine.rewardNumbers;
         this.loadingNewLayer = false;
+        this.prospectResult(mine.prospectResult ?? this.prospectResult);
         this.skipsRemaining(mine.skipsRemaining ?? this.maxSkips);
 
         Underground.showMine();
@@ -319,6 +320,7 @@ class Mine {
             itemsFound: this.itemsFound,
             itemsBuried: this.itemsBuried,
             rewardNumbers: this.rewardNumbers,
+            prospectResult: this.prospectResult(),
             skipsRemaining: this.skipsRemaining(),
         };
 
