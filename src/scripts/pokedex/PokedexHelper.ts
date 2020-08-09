@@ -60,7 +60,13 @@ class PokedexHelper {
 
         return pokemonList.filter(function (pokemon) {
             // If the Pokemon shouldn't be unlocked yet
-            if (PokemonHelper.calcNativeRegion(pokemon.name) > GameConstants.MAX_AVAILABLE_REGION) {
+            const nativeRegion = PokemonHelper.calcNativeRegion(pokemon.name);
+            if (nativeRegion > GameConstants.MAX_AVAILABLE_REGION || nativeRegion == GameConstants.Region.none) {
+                return false;
+            }
+
+            // Event Pokemon
+            if (pokemon.id <= 0) {
                 return false;
             }
 
@@ -110,6 +116,11 @@ class PokedexHelper {
                 return false;
             }
 
+            // Only pokemon with a hold item
+            if (filter['held-item'] && !ItemList[pokemon.heldItem]) {
+                return false;
+            }
+
             return true;
         });
     }
@@ -125,6 +136,7 @@ class PokedexHelper {
         res['uncaught'] = (<HTMLInputElement> document.getElementById('pokedex-filter-uncaught')).checked;
         res['shiny'] = (<HTMLInputElement> document.getElementById('pokedex-filter-shiny')).checked;
         res['not-shiny'] = (<HTMLInputElement> document.getElementById('pokedex-filter-not-shiny')).checked;
+        res['held-item'] = (<HTMLInputElement> document.getElementById('pokedex-filter-held-item')).checked;
         return res;
     }
 

@@ -1,5 +1,5 @@
 <div class="modal noselect fade" id="pokemonStatisticsModal" tabindex="-1" role="dialog" aria-labelledby="pokemonStatisticsModal">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
         <div class="modal-content" data-bind="with: App.game.statistics.selectedPokemonID()">
             <div class="modal-header bg-dark text-light" style='justify-content: space-around;'>
                 <h5 class="modal-title text-muted" data-bind="text: `#${pokemonMap[$data].id.toString().padStart(3,0)}&nbsp;&nbsp;`"></h5>
@@ -33,6 +33,10 @@
                     <tr>
                       <td class="text-left">Hatch Steps</td>
                       <td class="text-left tight"><code data-bind="text: App.game.breeding.getSteps(pokemonMap[$data].eggCycles).toLocaleString('en-US')">-</code></td>
+                    </tr>
+                    <tr data-bind="if: ItemList[pokemonMap[$data].heldItem]">
+                      <td class="text-left">Rare Hold Item</td>
+                      <td class="text-left tight"><code data-bind="text: GameConstants.humanifyString(ItemList[pokemonMap[$data].heldItem].name())"></code></td>
                     </tr>
                   </tbody>
                   <thead>

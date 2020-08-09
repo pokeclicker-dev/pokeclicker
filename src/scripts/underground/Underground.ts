@@ -52,28 +52,14 @@ class Underground {
     private static mineSquare(amount: number, i: number, j: number): string {
         if (Mine.rewardGrid[i][j] != 0 && Mine.grid[i][j]() === 0) {
             Mine.rewardGrid[i][j].revealed = 1;
-            return `<div data-bind='css: Underground.calculateCssClass(${i},${j})()' data-i='${i}' data-j='${j}'><div class="mineReward size-${Mine.rewardGrid[i][j].sizeX}-${Mine.rewardGrid[i][j].sizeY} pos-${Mine.rewardGrid[i][j].x}-${Mine.rewardGrid[i][j].y}" style="background-image: url('assets/images/underground/${Mine.rewardGrid[i][j].value}.png');"></div></div>`;
+            return `<div data-bind='css: Underground.calculateCssClass(${i},${j})' data-i='${i}' data-j='${j}'><div class="mineReward size-${Mine.rewardGrid[i][j].sizeX}-${Mine.rewardGrid[i][j].sizeY} pos-${Mine.rewardGrid[i][j].x}-${Mine.rewardGrid[i][j].y}" style="background-image: url('assets/images/underground/${Mine.rewardGrid[i][j].value}.png');"></div></div>`;
         } else {
-            return `<div data-bind='css: Underground.calculateCssClass(${i},${j})()' data-i='${i}' data-j='${j}'></div>`;
+            return `<div data-bind='css: Underground.calculateCssClass(${i},${j})' data-i='${i}' data-j='${j}'></div>`;
         }
     }
 
-    public static calculateCssClass(i: number, j: number): KnockoutComputed<string> {
-        // disposed via the disposeWhen function passed as an option
-        return ko.computed(function () {
-            return `col-sm-1 rock${Math.max(Mine.grid[i][j](), 0)} mineSquare ${Mine.Tool[Mine.toolSelected()]}Selected`;
-        }, this, {
-            disposeWhen: function () {
-                if (Mine.grid[i][j]() == 0) {
-                    if (Mine.rewardGrid[i][j] != 0 && Mine.rewardGrid[i][j].revealed != 1) {
-                        Mine.rewardGrid[i][j].revealed = 1;
-                        $(`div[data-i=${i}][data-j=${j}]`).html(`<div class="mineReward size-${Mine.rewardGrid[i][j].sizeX}-${Mine.rewardGrid[i][j].sizeY} pos-${Mine.rewardGrid[i][j].x}-${Mine.rewardGrid[i][j].y}" style="background-image: url('assets/images/underground/${Mine.rewardGrid[i][j].value}.png');"></div>`);
-                        Mine.checkItemsRevealed();
-                    }
-                }
-                return false;
-            },
-        });
+    public static calculateCssClass(i: number, j: number): string {
+        return `col-sm-1 rock${Math.max(Mine.grid[i][j](), 0)} mineSquare ${Mine.Tool[Mine.toolSelected()]}Selected`;
     }
 
     private static rewardCssClass: KnockoutComputed<string> = ko.pureComputed(function () {
@@ -132,15 +118,19 @@ class Underground {
         Notifier.notify({ message: `You restored ${gain} mining energy!`, type: GameConstants.NotificationOption.success });
     }
 
-    public static sellMineItem(id: number) {
+    public static sellMineItem(id: number, amount = 1) {
         for (let i = 0; i < player.mineInventory.length; i++) {
             const item = player.mineInventory[i];
             if (item.id == id) {
-                if (item.amount() > 0) {
-                    const success = Underground.gainProfit(item);
+                if (item.valueType == 'Mine Egg') {
+                    amount = 1;
+                }
+                const curAmt = item.amount();
+                if (curAmt > 0) {
+                    const sellAmt = Math.min(curAmt, amount);
+                    const success = Underground.gainProfit(item, sellAmt);
                     if (success) {
-                        const amt = item.amount();
-                        player.mineInventory[i].amount(amt - 1);
+                        player.mineInventory[i].amount(curAmt - sellAmt);
                     }
                     return;
                 }
@@ -148,11 +138,11 @@ class Underground {
         }
     }
 
-    private static gainProfit(item: UndergroundItem): boolean {
+    private static gainProfit(item: UndergroundItem, amount: number): boolean {
         let success = true;
         switch (item.valueType) {
             case 'Diamond':
-                App.game.wallet.gainDiamonds(item.value);
+                App.game.wallet.gainDiamonds(item.value * amount);
                 break;
             case 'Mine Egg':
                 if (!App.game.breeding.hasFreeEggSlot()) {
@@ -163,7 +153,7 @@ class Underground {
             default:
                 const type = item.valueType.charAt(0).toUpperCase() + item.valueType.slice(1); //Capitalizes string
                 const typeNum = PokemonType[type];
-                App.game.shards.gainShards(GameConstants.PLATE_VALUE, typeNum);
+                App.game.shards.gainShards(GameConstants.PLATE_VALUE * amount, typeNum);
         }
         return success;
     }

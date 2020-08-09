@@ -48,7 +48,7 @@ namespace GameConstants {
     export const RoamingPokemon = {
         0: ['Mew'],
         1: ['Raikou', 'Entei', 'Suicune'],
-        2: ['Latios', 'Latias', 'Regice', 'Regirock', 'Registeel', 'Jirachi', 'Deoxys'],
+        2: ['Latios', 'Latias', 'Regice', 'Regirock', 'Registeel', 'Jirachi'],
         3: ['Manaphy'],
     };
 
@@ -102,7 +102,7 @@ namespace GameConstants {
         quest_level_increased: new Sound('quest_level_increased', 'Quest level increased'),
         underground_energy_full: new Sound('underground_energy_full', 'Mining energy reached maximum capacity'),
         // TODO: needs a notification
-        ready_to_harvest: new Sound('assets/sounds/ready_to_harvest.mp3', 'Farm ready to harvest'),
+        ready_to_harvest: new Sound('ready_to_harvest', 'Farm ready to harvest'),
     };
     export const NotificationSetting = {
         ready_to_hatch: new BooleanSetting('notification.ready_to_hatch', 'Egg ready to hatch', true),
@@ -113,6 +113,7 @@ namespace GameConstants {
         quest_ready_to_complete: new BooleanSetting('notification.quest_ready_to_complete', 'Quest is ready to be completed', true),
         underground_energy_full: new BooleanSetting('notification.underground_energy_full', 'Mining energy reached maximum capacity', true),
         event_start_end: new BooleanSetting('notification.event_start_end', 'Event start/end information', true),
+        dropped_item: new BooleanSetting('notification.dropped_item', 'Enemy pokemon dropped an item', true),
     };
 
     export enum DungeonTile {
@@ -121,6 +122,10 @@ namespace GameConstants {
         chest,
         boss,
     }
+
+    // Held item chance
+    export const ROUTE_HELD_ITEM_CHANCE = 512;
+    export const DUNGEON_HELD_ITEM_CHANCE = 128;
 
     //Shards from battle
     export const DUNGEON_SHARDS = 3;
@@ -304,6 +309,7 @@ namespace GameConstants {
     }
 
     export enum Region {
+        none = -1,
         kanto = 0,
         johto = 1,
         hoenn = 2,

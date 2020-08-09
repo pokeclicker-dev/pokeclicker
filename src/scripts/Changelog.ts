@@ -29,12 +29,30 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.4.18
+    new Changelog(changelogType.UPDATE, 'v0.4.18'),
+    new Changelog(changelogType.NEW, 'Added ability to sell/trade multiple items at once in the Underground'),
+    new Changelog(changelogType.NEW, 'Added volume control for notification sounds'),
+    new Changelog(changelogType.NEW, 'Some Pokémon now have a chance to drop rare items upon defeat'),
+    new Changelog(changelogType.NEW, 'Added Pokédex filter for Pokémon that drop rare items'),
+    new Changelog(changelogType.CHANGE, 'Separate Day Care modal into individual tabs for Pokémon, Eggs and Fossils'),
+    new Changelog(changelogType.CHANGE, 'Update modal displays'),
+    new Changelog(changelogType.CHANGE, 'Deoxys no longer roaming'),
+    new Changelog(changelogType.FIXED, 'Event Pokémon no longer displayed in Pokédex'),
+    new Changelog(changelogType.FIXED, 'Reduce memory usage in Underground'),
+
     // v0.4.17
     new Changelog(changelogType.UPDATE, 'v0.4.17'),
     new Changelog(changelogType.NEW, 'Update maps'),
     new Changelog(changelogType.NEW, 'Add notification settings'),
+    new Changelog(changelogType.NEW, 'Add more notification sounds and settings'),
     new Changelog(changelogType.NEW, 'Can now filter the Pokédex by pure type Pokémon by selecting None for the second type'),
+    new Changelog(changelogType.NEW, 'Added statistic for Hatched Shiny Pokémon'),
+    new Changelog(changelogType.NEW, 'Caught indicator on eggs showing if you have obtained all the Pokémon available in that egg type'),
+    new Changelog(changelogType.CHANGE, 'Move some dungeons to be standalone'),
     new Changelog(changelogType.FIXED, 'Safari Zone should no longer lock up'),
+    new Changelog(changelogType.FIXED, 'Event Pokémon can now evolve'),
+    new Changelog(changelogType.FIXED, 'Helix fossil now displays correctly when mining in the Underground'),
 
     // v0.4.16
     new Changelog(changelogType.UPDATE, 'v0.4.16'),

@@ -11,6 +11,7 @@ const pokemonDevolutionMap: { [name: string]: string } = {};
 type PokemonListData = {
   id: number;
   name: string;
+  nativeRegion?: GameConstants.Region;
   catchRate: number;
   evolutions?: Evolution[];
   type: PokemonType[];
@@ -27,6 +28,7 @@ type PokemonListData = {
   eggCycles: number;
   baby?: boolean;
   attack?: number;
+  heldItem?: string;
 }
 
 /**
@@ -1444,6 +1446,7 @@ const pokemonList: PokemonListData[] =
                 'specialDefense': 80,
                 'speed': 30,
             },
+            'heldItem': 'Kings_rock',
         },
         {
             'id': 81,
@@ -2626,6 +2629,7 @@ const pokemonList: PokemonListData[] =
                 'specialDefense': 50,
                 'speed': 50,
             },
+            'heldItem': 'Dragon_scale',
         },
         {
             'id': 148,
@@ -4023,6 +4027,7 @@ const pokemonList: PokemonListData[] =
                 'specialDefense': 70,
                 'speed': 70,
             },
+            'heldItem': 'Metal_coat',
         },
         {
             'id': 228,
@@ -14198,6 +14203,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': 0,
             'name': 'MissingNo.',
+            'nativeRegion': GameConstants.Region.none,
             'catchRate': 45,
             'type': [PokemonType.Flying, PokemonType.Normal],
             'levelType': LevelType.mediumslow,
@@ -14216,6 +14222,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -1,
             'name': 'Flying Pikachu',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 50,
             'type': [PokemonType.Electric, PokemonType.Flying],
             'levelType': LevelType.mediumfast,
@@ -14233,6 +14240,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -2,
             'name': 'Surfing Pikachu',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 50,
             'type': [PokemonType.Electric, PokemonType.Water],
             'levelType': LevelType.mediumfast,
@@ -14250,6 +14258,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -3,
             'name': 'Armored Mewtwo',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 2,
             'type': [PokemonType.Psychic],
             'levelType': LevelType.slow,
@@ -14267,6 +14276,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -4,
             'name': 'Santa Dragonite',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 20,
             'type': [PokemonType.Dragon, PokemonType.Flying],
             'levelType': LevelType.slow,
@@ -14284,6 +14294,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -5,
             'name': 'Spooky Togepi',
+            'nativeRegion': GameConstants.Region.johto,
             'catchRate': 30,
             'type': [PokemonType.Fairy],
             'levelType': LevelType.fast,
@@ -14301,6 +14312,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -6,
             'name': 'Spooky Bulbasaur',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 25,
             'type': [PokemonType.Grass, PokemonType.Poison],
             'levelType': LevelType.mediumslow,
@@ -14318,6 +14330,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -7,
             'name': 'Pikachu (Gengar)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 50,
             'type': [PokemonType.Electric],
             'levelType': LevelType.mediumfast,
@@ -14335,6 +14348,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -8,
             'name': 'Lets go Pikachu',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 50,
             'type': [PokemonType.Electric],
             'levelType': LevelType.mediumfast,
@@ -14352,6 +14366,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -9,
             'name': 'Lets go Eevee',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 255,
             'type': [PokemonType.Normal],
             'levelType': LevelType.mediumfast,
@@ -14369,6 +14384,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -10,
             'name': 'Bulbasaur (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Grass, PokemonType.Poison],
             'levelType': LevelType.mediumslow,
@@ -14387,6 +14403,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -11,
             'name': 'Ivysaur (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Grass, PokemonType.Poison],
             'levelType': LevelType.mediumslow,
@@ -14405,6 +14422,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -12,
             'name': 'Venusaur (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Grass, PokemonType.Poison],
             'levelType': LevelType.mediumslow,
@@ -14422,6 +14440,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -13,
             'name': 'Charmander (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Fire],
             'levelType': LevelType.mediumslow,
@@ -14440,6 +14459,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -14,
             'name': 'Charmeleon (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Fire],
             'levelType': LevelType.mediumslow,
@@ -14458,6 +14478,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -15,
             'name': 'Charizard (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Fire, PokemonType.Flying],
             'levelType': LevelType.mediumslow,
@@ -14475,6 +14496,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -16,
             'name': 'Squirtle (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Water],
             'levelType': LevelType.mediumslow,
@@ -14493,6 +14515,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -17,
             'name': 'Wartortle (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Water],
             'levelType': LevelType.mediumslow,
@@ -14511,6 +14534,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -18,
             'name': 'Blastoise (clone)',
+            'nativeRegion': GameConstants.Region.kanto,
             'catchRate': 45,
             'type': [PokemonType.Water],
             'levelType': LevelType.mediumslow,
@@ -14529,6 +14553,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -100,
             'name': 'Mega Venusaur',
+            'nativeRegion': GameConstants.Region.kanto,
             'type': [PokemonType.Grass, PokemonType.Poison],
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
@@ -14546,6 +14571,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -101,
             'name': 'Mega Charizard X',
+            'nativeRegion': GameConstants.Region.kanto,
             'type': [PokemonType.Fire, PokemonType.Dragon],
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
@@ -14716,6 +14742,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -111,
             'name': 'Mega Gyarados',
+            'nativeRegion': GameConstants.Region.kanto,
             'type': [PokemonType.Water, PokemonType.Dark],
             'eggCycles': 120,
             'levelType': LevelType.slow,
@@ -14784,6 +14811,7 @@ const pokemonList: PokemonListData[] =
         {
             'id': -115,
             'name': 'Mega Rayquaza',
+            'nativeRegion': GameConstants.Region.hoenn,
             'type': [PokemonType.Dragon, PokemonType.Flying],
             'eggCycles': 120,
             'levelType': LevelType.slow,
