@@ -1,12 +1,14 @@
 class Mine {
     public static sizeX = 25;
     public static sizeY = 12;
+    public static maxSkips = 5;
     public static grid: Array<Array<KnockoutObservable<number>>>;
     public static rewardGrid: Array<Array<any>>;
     public static itemsFound: KnockoutObservable<number> = ko.observable(0);
     public static itemsBuried: number;
     public static rewardNumbers: Array<number>;
     public static prospectResult = ko.observable(null);
+    public static skipsRemaining = ko.observable(Mine.maxSkips)
 
     // 0 represents the Mine.Tool.Chisel but it's not loaded here yet.
     public static toolSelected: KnockoutObservable<Mine.Tool> = ko.observable(0);
@@ -208,6 +210,19 @@ class Mine {
         }
     }
 
+    private static skipLayer(shouldConfirm = true): boolean {
+        if (!this.skipsRemaining()) {
+            return false;
+        }
+
+        if (!shouldConfirm || confirm('Skip this mine layer?')) {
+            setTimeout(Mine.completed, 1500);
+            Mine.loadingNewLayer = true;
+            GameHelper.incrementObservable(this.skipsRemaining, -1);
+            return true;
+        }
+    }
+
     private static breakTile(_x: number, _y: number, layers = 1) {
         const x = Mine.normalizeY(_x);
         const y = Mine.normalizeX(_y);
@@ -267,6 +282,10 @@ class Mine {
             setTimeout(Mine.completed, 1500);
             Mine.loadingNewLayer = true;
             GameHelper.incrementObservable(App.game.statistics.undergroundLayersMined);
+
+            if (this.skipsRemaining() < this.maxSkips) {
+                GameHelper.incrementObservable(this.skipsRemaining);
+            }
         }
     }
 
@@ -288,6 +307,7 @@ class Mine {
         this.itemsBuried = mine.itemsBuried;
         this.rewardNumbers = mine.rewardNumbers;
         this.loadingNewLayer = false;
+        this.skipsRemaining(mine.skipsRemaining ?? this.maxSkips);
 
         Underground.showMine();
     }
@@ -299,6 +319,7 @@ class Mine {
             itemsFound: this.itemsFound,
             itemsBuried: this.itemsBuried,
             rewardNumbers: this.rewardNumbers,
+            skipsRemaining: this.skipsRemaining(),
         };
 
         return ko.toJSON(mine);
