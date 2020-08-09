@@ -154,7 +154,7 @@ class Mine {
         if (summary.plates) {
             text.push(`Shard Plates: ${summary.plates}`);
         }
-        text.push(`Total Value: ${summary.totalValue}`);
+        text.push(`💎 Value: ${summary.totalValue}`);
 
         Mine.prospectResult(text.join('<br>'));
         $('#mine-prospect-result').tooltip('show');
