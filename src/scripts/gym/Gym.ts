@@ -655,7 +655,7 @@ gymList['Veilstone City'] = new Gym(
     '...OK. You win. That was a tough loss. I learned a lot from it. Please, accept this Gym Badge.'
 );
 gymList['Pastoria City'] = new Gym(
-    'Crasher_Wake',
+    'Crasher Wake',
     'Pastoria City',
     [
         new GymPokemon('Gyarados', 1187000, 33),
