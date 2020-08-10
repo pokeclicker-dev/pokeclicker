@@ -30,7 +30,11 @@ abstract class Quest {
             App.game.quests.addXP(this.xpReward);
             App.game.wallet.gainQuestPoints(this.pointsReward);
             this.claimed(true);
-            Notifier.notify({ message: `You have completed your quest and claimed ${this.pointsReward} quest points!`, type: GameConstants.NotificationOption.success });
+            if (this.pointsReward) {
+                Notifier.notify({ message: `You have completed your quest and claimed ${this.pointsReward} quest points!`, type: GameConstants.NotificationOption.success });
+            } else {
+                Notifier.notify({ message: 'You have completed a quest!', type: GameConstants.NotificationOption.success });
+            }
             return true;
         }
         return false;
