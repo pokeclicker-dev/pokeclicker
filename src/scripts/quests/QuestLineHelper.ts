@@ -43,9 +43,11 @@ class QuestLineHelper {
         tutorial.addQuest(buyDungeonTicket);
 
         //Clear Mt Moon dungeon
-        const clearMtMoon = new DefeatDungeonQuest(GameConstants.KantoDungeons[2], 1);
+        const questEndReward = () => {
+            Notifier.notify({ title: tutorial.name, message: 'Tutorial completed!<br/><i>goodluck on your adventure</i>', type: GameConstants.NotificationOption.success, timeout: 3e4 });
+        };
+        const clearMtMoon = new CustomQuest(1, questEndReward, 'Gather 75 Dungeon tokens by (re)capturing Pokémon, then clear the Mt. Moon dungeon.', App.game.statistics.dungeonsCleared[Statistics.getDungeonIndex(GameConstants.KantoDungeons[2])], 0);
         clearMtMoon.pointsReward = 10;
-        clearMtMoon.description = 'Gather 75 Dungeon tokens by capturing Pokémon, then clear the Mt. Moon dungeon.';
         tutorial.addQuest(clearMtMoon);
 
         App.game.quests.questLines().push(tutorial);
@@ -65,26 +67,35 @@ class QuestLineHelper {
         deoxysQuestLine.addQuest(route129);
 
         // Defeat 500 Psychic type Pokemon
-        const defeatPsychic = new CustomQuest(500, 0, 'Defeat 500 Psychic type Pokémon', () => {
+        const psychicShardReward = () => {
+            App.game.shards.gainShards(500, PokemonType.Psychic);
+            Notifier.notify({ title: deoxysQuestLine.name, message: 'You have gained 500 Psychic shards', type: GameConstants.NotificationOption.success });
+        };
+        const defeatPsychic = new CustomQuest(500, psychicShardReward, 'Defeat 500 Psychic type Pokémon', () => {
             return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonDefeated[p.id]()).reduce((a,b) => a + b, 0);
         });
         deoxysQuestLine.addQuest(defeatPsychic);
-        
-        // TODO: Unlock Deoxys dungeon or something? instead of just giving the player a Deoxys - Should probably just be a battle frontier reward though
-        const deoxysReward = () => {
-            App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
-        };
-        // const reachStage100 = new CustomQuest(100, 10, 'Reach stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0, () => {
-        //     App.game.party.gainPokemonById(pokemonMap.Deoxys.id);
-        // });
-        // deoxysQuestLine.addQuest(reachStage100);
 
-        // TODO: remove once battle frontier added
         // Capture 200 Psychic type Pokemon
-        const catchPsychic = new CustomQuest(200, deoxysReward, 'Capture 200 Psychic type Pokémon', () => {
+        const mindPlateReward = () => {
+            const mindPlate = UndergroundItem.list.find(item => item.name == 'Mind Plate');
+            if (!mindPlate) {
+                return console.error('Unable to find item Mind Plate');
+            }
+            Underground.gainMineItem(mindPlate.id, 20);
+            Notifier.notify({ title: deoxysQuestLine.name, message: `You have gained 20 ${mindPlate.name}s`, type: GameConstants.NotificationOption.success });
+        };
+        const catchPsychic = new CustomQuest(200, mindPlateReward, 'Capture 200 Psychic type Pokémon', () => {
             return pokemonMap.filter(p => p.type.includes(PokemonType.Psychic)).map(p => App.game.statistics.pokemonCaptured[p.id]()).reduce((a,b) => a + b, 0);
         });
         deoxysQuestLine.addQuest(catchPsychic);
+
+        // Reach stage 100 in battle frontier
+        const reachStage100Reward = () => {
+            Notifier.notify({ title: deoxysQuestLine.name, message: 'Quest line completed!<br/><i>You have uncovered the Mystery of Deoxys</i>', type: GameConstants.NotificationOption.success, timeout: 3e4 });
+        };
+        const reachStage100 = new CustomQuest(100, reachStage100Reward, 'Defeat stage 100 in the Battle Frontier', App.game.statistics.battleFrontierHighestStageCompleted, 0);
+        deoxysQuestLine.addQuest(reachStage100);
 
         App.game.quests.questLines().push(deoxysQuestLine);
     }

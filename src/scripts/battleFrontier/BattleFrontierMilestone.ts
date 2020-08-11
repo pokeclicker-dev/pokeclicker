@@ -1,13 +1,10 @@
 class BattleFrontierMilestone {
-    public description: string;
-    public stage: number;
-    private rewardFunction: () => void;
-    
-    constructor (stage: number, description: string, rewardFunction: () => void ) {
-        this.description = description;
-        this.stage = stage;
-        this.rewardFunction = rewardFunction;
-    }
+    constructor (
+        public stage: number,
+        public description: string,
+        public rewardFunction: () => void,
+        public image: string = null
+    ) {}
 
     gain () {
         this.rewardFunction();
