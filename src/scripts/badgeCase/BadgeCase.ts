@@ -46,6 +46,7 @@ class BadgeCase implements Feature {
 
     toJSON(): Record<string, any> {
         let shouldReturn = false;
+        // We only want to save upto the highest badge we have obtained, everything else is assumed to be false
         return [...this.badgeList].reverse().filter(i => shouldReturn || i && (shouldReturn = i)).reverse();
     }
 
