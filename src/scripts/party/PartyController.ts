@@ -58,16 +58,10 @@ class PartyController {
             }
 
             //Compare by provided property
-            if (aValue == bValue) {
-                //If they are equal according to provided property, sort by id
-                return a.id - b.id;
-            } else if (aValue < bValue) {
-                res = -1;
-            } else if (aValue > bValue) {
-                res = 1;
-            } else {
-                res = 0;
-            }
+            if (aValue == bValue) return a.id - b.id;
+            else if (aValue < bValue) res = -1;
+            else if (aValue > bValue) res = 1;
+            else res = 0;
 
             return res * dir;
         };
