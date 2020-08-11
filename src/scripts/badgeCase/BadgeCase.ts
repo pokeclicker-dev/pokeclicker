@@ -45,9 +45,8 @@ class BadgeCase implements Feature {
     }
 
     toJSON(): Record<string, any> {
-        return this.badgeList.map(badge => {
-            return badge || false;
-        });
+        let shouldReturn = false;
+        return [...this.badgeList].reverse().filter(i => shouldReturn || i && (shouldReturn = i)).reverse();
     }
 
     update(delta: number): void {
