@@ -19,11 +19,12 @@ class AchievementHandler {
     }
 
     public static getNumberOfTabs() {
-        return Math.floor(AchievementHandler.achievementList.length / 10);
+        return Math.floor(AchievementHandler.achievementList.filter(a => a.region <= player.highestRegion()).length / 10);
     }
 
     public static getAchievementListWithIndex(index: number) {
-        return AchievementHandler.achievementList.slice(index, index + 10);
+        index *= 10;
+        return AchievementHandler.achievementList.filter(a => a.region <= player.highestRegion()).slice(index, index + 10);
     }
 
     public static checkAchievements() {
