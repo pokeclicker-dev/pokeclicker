@@ -1,31 +1,29 @@
 class BadgeCase implements Feature {
     name = 'Badge Case';
     saveKey = 'badgeCase';
-
-    badgeList: KnockoutObservableArray<boolean> = ko.observableArray([]);
-    highestAvailableBadge: KnockoutComputed<number>;
     defaults: Record<string, any> = {};
 
-    constructor() {
-        this.highestAvailableBadge = ko.pureComputed(() => {
-            const region = player.highestRegion();
-            return gymList[GameConstants.RegionGyms[region][GameConstants.RegionGyms[region].length - 1]].badgeReward;
-        });
-    }
+    badgeList: ArrayOfObservables<boolean> = new ArrayOfObservables(new Array(GameConstants.RegionGyms.flat().length).fill(false));
+    highestAvailableBadge: KnockoutComputed<number> = ko.pureComputed(() => {
+        const region = player.highestRegion();
+        return gymList[GameConstants.RegionGyms[region][GameConstants.RegionGyms[region].length - 1]].badgeReward;
+    });
+
+    constructor() {}
 
     badgeCount() {
-        return this.badgeList().reduce((a, b) => (+a) + (+b), 0);
+        return this.badgeList.reduce((a, b) => (+a) + (+b), 0);
     }
 
     gainBadge(badge: BadgeCase.Badge) {
-        this.badgeList()[badge] = true;
+        this.badgeList[badge] = true;
     }
 
     hasBadge(badge: BadgeCase.Badge) {
         if (badge == null || badge == BadgeCase.Badge.None) {
             return true;
         }
-        return this.badgeList()[badge];
+        return this.badgeList[badge];
     }
 
     initialize(): void {
@@ -42,12 +40,12 @@ class BadgeCase implements Feature {
         }
 
         json.forEach((hasBadge, index) => {
-            this.badgeList()[index] = hasBadge;
+            this.badgeList[index] = hasBadge;
         });
     }
 
     toJSON(): Record<string, any> {
-        return this.badgeList().map(badge => {
+        return this.badgeList.map(badge => {
             return badge || false;
         });
     }
