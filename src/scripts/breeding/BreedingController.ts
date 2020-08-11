@@ -1,3 +1,5 @@
+///<reference path="../party/CaughtStatus.ts"/>
+
 class BreedingController {
     public static spotTypes = [
         `<g class="egg-spot">
@@ -114,16 +116,17 @@ class BreedingController {
     }
 
     public static filter = {
-        hideShiny: ko.observable(false),
+        shinyStatus: ko.observable(CaughtStatus.NotCaught).extend({ numeric: 0 }),
     }
 
     public static breedableList = ko.pureComputed(() => {
         return App.game.party.caughtPokemon.filter((partyPokemon: PartyPokemon) => {
+            // Only breedable Pokemon
             if (partyPokemon.breeding || partyPokemon.level < 100) {
                 return false;
             }
-            if (BreedingController.filter.hideShiny()) {
-                if (PartyController.getCaughtStatus(partyPokemon.id) === CaughtStatus.CaughtShiny) {
+            if (BreedingController.filter.shinyStatus()) {
+                if (PartyController.getCaughtStatus(partyPokemon.id) !== BreedingController.filter.shinyStatus()) {
                     return false;
                 }
             }
