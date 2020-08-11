@@ -205,40 +205,19 @@ class MapHelper {
             GameController.applyRouteBindings();
         } else {
             const town = TownList[townName];
-            let reqsList = '';
+            const reqsList = [];
 
-            if (town instanceof DungeonTown) {
-                if (town.badgeReq && !App.game.badgeCase.hasBadge(town.badgeReq)) {
-                    reqsList += `<br/>Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[town.badgeReq])} badge.`;
+            town.requirements.forEach(requirement => {
+                if (requirement instanceof GymBadgeRequirement) {
+                    reqsList.push(`Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[requirement.badge])} badge.`);
+                } else if (requirement instanceof ClearDungeonRequirement) {
+                    reqsList.push(`${GameConstants.RegionDungeons[requirement.dungeonIndex]} needs to be completed.`);
+                } else if (requirement instanceof RouteKillRequirement) {
+                    reqsList.push(`Route ${requirement.route} still needs to be completed.`);
                 }
-            }
+            });
 
-            if (!town.hasDungeonReq()) {
-                reqsList += `<br/>${town.dungeonReq} needs to be completed.`;
-            }
-
-            if (!town.hasRouteReq()) {
-                const reqList = town.reqRoutes;
-                const routesNotCompleted = [];
-
-                for (let i = 0; i < reqList.length; i++) {
-                    const route: number = reqList[i];
-                    if (App.game.statistics.routeKills[route]() < GameConstants.ROUTE_KILLS_NEEDED) {
-                        routesNotCompleted.push(route);
-                    }
-                }
-
-                if (routesNotCompleted.length > 0) {
-                    const routesList = routesNotCompleted.join(', ');
-                    if (routesNotCompleted.length > 1) {
-                        reqsList += `<br/>Routes ${routesList} still need to be completed.`;
-                    } else {
-                        reqsList += `<br/>Route ${routesList} still needs to be completed.`;
-                    }
-                }
-            }
-
-            Notifier.notify({ message: `You don't have access to that location yet.${reqsList}`, type: GameConstants.NotificationOption.warning });
+            Notifier.notify({ message: `You don't have access to that location yet.<br/>${reqsList.join('<br/>')}`, type: GameConstants.NotificationOption.warning });
         }
     }
 
