@@ -208,7 +208,9 @@ class MapHelper {
             const reqsList = [];
 
             town.requirements.forEach(requirement => {
-                if (requirement instanceof GymBadgeRequirement) {
+                if (requirement.isCompleted()) {
+                    return;
+                } else if (requirement instanceof GymBadgeRequirement) {
                     reqsList.push(`Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[requirement.badge])} badge.`);
                 } else if (requirement instanceof ClearDungeonRequirement) {
                     reqsList.push(`${GameConstants.RegionDungeons.flat()[requirement.dungeonIndex]} needs to be completed.`);
