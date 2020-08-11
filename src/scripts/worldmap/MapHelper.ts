@@ -211,7 +211,7 @@ class MapHelper {
                 if (requirement instanceof GymBadgeRequirement) {
                     reqsList.push(`Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[requirement.badge])} badge.`);
                 } else if (requirement instanceof ClearDungeonRequirement) {
-                    reqsList.push(`${GameConstants.RegionDungeons[requirement.dungeonIndex]} needs to be completed.`);
+                    reqsList.push(`${GameConstants.RegionDungeons.flat()[requirement.dungeonIndex]} needs to be completed.`);
                 } else if (requirement instanceof RouteKillRequirement) {
                     reqsList.push(`Route ${requirement.route} still needs to be completed.`);
                 }
