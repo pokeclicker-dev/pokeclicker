@@ -112,4 +112,22 @@ class BreedingController {
         SeededRand.seed(SeededRand.intBetween(0, 1000));
         return SeededRand.fromArray(this.spotTypes);
     }
+
+    public static filter = {
+        hideShiny: ko.observable(false),
+    }
+
+    public static breedableList = ko.pureComputed(() => {
+        return App.game.party.caughtPokemon.filter((partyPokemon: PartyPokemon) => {
+            if (partyPokemon.breeding || partyPokemon.level < 100) {
+                return false;
+            }
+            if (BreedingController.filter.hideShiny()) {
+                if (PartyController.getCaughtStatus(partyPokemon.id) === CaughtStatus.CaughtShiny) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    });
 }

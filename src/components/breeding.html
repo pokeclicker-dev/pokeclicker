@@ -23,7 +23,17 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                             Unfortunately, you don't have any pokémon of level 100 to breed.
                         </p>
                         <!-- ko if: App.game.party.hasMaxLevelPokemon() -->
-                        <div class="row" data-bind="foreach: PartyController.getMaxLevelPokemonList()">
+                        
+                        <div class="form-group row justify-content-center">
+                            <!--Uncaught-->
+                            <div class="col-sm-2">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" id="pokedex-filter-uncaught" data-bind="attr: { checked: BreedingController.filter.hideShiny }" onclick="BreedingController.filter.hideShiny(this.checked)">
+                                    Hide Shiny
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row" data-bind="foreach: BreedingController.breedableList">
                             <button class="col-sm-4 col-md-3 col-lg-2 pokedexEntry text-nowrap btn"
                             data-bind="style:{background: PokedexHelper.getBackgroundColors($data.name)},
                             click: function() { App.game.breeding.gainPokemonEgg($data);if (!App.game.breeding.hasFreeEggSlot()) {$('#breedingModal').modal('hide');}}">
