@@ -2,39 +2,30 @@ class BadgeCase implements Feature {
     name = 'Badge Case';
     saveKey = 'badgeCase';
 
-    badgeList: ArrayOfObservables<boolean>;
-    badgeAmount: number;
+    badgeList: KnockoutObservableArray<boolean> = ko.observableArray([]);
+    highestAvailableBadge: KnockoutComputed<number>;
     defaults: Record<string, any> = {};
 
-    constructor(highestBadge) {
-        this.badgeAmount = highestBadge + 1;
-        this.badgeList = this.createDefaultBadgeList();
-    }
-
-    private createDefaultBadgeList(): ArrayOfObservables<boolean> {
-        const list = new Array(this.badgeAmount).fill(false);
-        return new ArrayOfObservables(list);
+    constructor() {
+        this.highestAvailableBadge = ko.pureComputed(() => {
+            const region = player.highestRegion();
+            return gymList[GameConstants.RegionGyms[region][GameConstants.RegionGyms[region].length - 1]].badgeReward;
+        });
     }
 
     badgeCount() {
-        let count = 0;
-        for (let i = 0; i < this.badgeList.length; i++) {
-            if (this.badgeList[i]) {
-                count++;
-            }
-        }
-        return count;
+        return this.badgeList().reduce((a, b) => (+a) + (+b), 0);
     }
 
     gainBadge(badge: BadgeCase.Badge) {
-        this.badgeList[badge] = true;
+        this.badgeList()[badge] = true;
     }
 
     hasBadge(badge: BadgeCase.Badge) {
         if (badge == null || badge == BadgeCase.Badge.None) {
             return true;
         }
-        return this.badgeList[badge];
+        return this.badgeList()[badge];
     }
 
     initialize(): void {
@@ -50,14 +41,14 @@ class BadgeCase implements Feature {
             return;
         }
 
-        for (let i = 0; i < this.badgeList.length; i++) {
-            this.badgeList[i] = json[i];
-        }
+        json.forEach((hasBadge, index) => {
+            this.badgeList()[index] = hasBadge;
+        });
     }
 
     toJSON(): Record<string, any> {
-        return this.badgeList.map(badge => {
-            return badge;
+        return this.badgeList().map(badge => {
+            return badge || false;
         });
     }
 
