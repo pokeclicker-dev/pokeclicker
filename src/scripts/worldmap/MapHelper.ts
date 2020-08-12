@@ -54,15 +54,7 @@ class MapHelper {
     }
 
     public static normalizeRoute(route: number, region: GameConstants.Region): number {
-        // get route placement within this region
-        const localRouteSequence = (route - GameConstants.RegionRoute[region][0]) + 1;
-        // calculate total routes per previous regions
-        const previousRegionsRoutes = Object.values(GameConstants.RegionRoute).slice(0, region);
-        const previousRegionsRoutesLast = previousRegionsRoutes.reduce((a, b) => {
-            return a + (b[1] - (b[0] - 1));
-        }, 0);
-        // get the route in sequence from all regions
-        return previousRegionsRoutesLast + localRouteSequence;
+        return Routes.normalizedNumber(region, route);
     }
 
     public static accessToRoute = function (route: number, region: GameConstants.Region) {

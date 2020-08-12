@@ -10,6 +10,13 @@ class Routes {
     public static getRoute(region, route): Route {
         return this.regionRoutes.find(routeData => routeData.region == region && routeData.number == route);
     }
+
+    public static normalizedNumber(region, route): number {
+        return this.regionRoutes
+            .sort((routeA, routeB) => routeA.orderNumber - routeB.orderNumber)
+            .sort((routeA, routeB) => routeA.region - routeB.region)
+            .findIndex(routeData => routeData.region == region && routeData.number == route) + 1;
+    }
 }
 
 /*
@@ -117,7 +124,7 @@ Routes.add(new Route(
     new RoutePokemon({
         land: ['Pidgey', 'Pidgeotto', 'Rattata', 'Vulpix', 'Jigglypuff', 'Oddish', 'Meowth', 'Mankey', 'Growlithe', 'Abra', 'Bellsprout'],
     }),
-    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Rock Tunnel'))],
+    [new RouteKillRequirement(10, 10)],
     10.1
 ));
 Routes.add(new Route(
