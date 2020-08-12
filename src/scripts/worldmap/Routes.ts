@@ -7,11 +7,15 @@ class Routes {
         this.regionRoutes.push(route);
     }
 
-    public static getRoute(region, route): Route {
+    public static getRoute(region: GameConstants.Region, route: number): Route {
         return this.regionRoutes.find(routeData => routeData.region == region && routeData.number == route);
     }
 
-    public static normalizedNumber(region, route): number {
+    public static getRoutesByRegion(region: GameConstants.Region) {
+        return this.regionRoutes.filter(routeData => routeData.region == region);
+    }
+
+    public static normalizedNumber(region: GameConstants.Region, route: number): number {
         return this.regionRoutes
             .sort((routeA, routeB) => routeA.orderNumber - routeB.orderNumber)
             .sort((routeA, routeB) => routeA.region - routeB.region)
