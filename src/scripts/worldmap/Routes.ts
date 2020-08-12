@@ -274,7 +274,7 @@ Routes.add(new Route(
         land: ['Pidgey', 'Rattata', 'Sentret', 'Hoothoot'],
         headbutt: ['Exeggcute', 'Ledyba', 'Spinarak', 'Hoothoot', 'Pineco'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Elite_HoennChampion)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_KantoChampion)]
 ));
 Routes.add(new Route(
     GameConstants.Region.johto, 30,
