@@ -365,20 +365,6 @@ namespace GameConstants {
      * Access with routeRequirements.region.routeNumber
      */
     export const routeRequirements = {
-        1: {
-            30: [29],
-            31: [30],
-            33: [32],
-            36: [35],
-            37: [36],
-            39: [38],
-            40: [39],
-            41: [40],
-            46: [45],
-            26: [46],
-            27: [26],
-            48: [47],
-        },
         2: {
             102: [101],
             103: [101],
@@ -417,18 +403,6 @@ namespace GameConstants {
     };
 
     export const routeBadgeRequirements = {
-        1: {
-            28: BadgeCase.Badge.Elite_JohtoChampion,
-            32: BadgeCase.Badge.Zephyr,
-            34: BadgeCase.Badge.Hive,
-            35: BadgeCase.Badge.Plain,
-            38: BadgeCase.Badge.Fog,
-            47: BadgeCase.Badge.Storm,
-            42: BadgeCase.Badge.Mineral,
-            43: BadgeCase.Badge.Glacier,
-            44: BadgeCase.Badge.Glacier,
-            45: BadgeCase.Badge.Rising,
-        },
         2: {
             116: BadgeCase.Badge.Stone,
             117: BadgeCase.Badge.Knuckle,
@@ -443,10 +417,6 @@ namespace GameConstants {
     };
 
     export const routeDungeonRequirements = {
-        1: {
-            33: 'Union Cave',
-            34: 'Ilex Forest',
-        },
         2: {
             116: 'Petalburg Woods',
             110: 'Granite Cave',
