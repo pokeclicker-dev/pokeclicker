@@ -101,18 +101,19 @@ class PokemonHelper {
     }
 
     public static getPokemonRegionRoutes(pokemonName: string) {
-        const regionRoutes = {};
-        Object.entries(pokemonsPerRoute).forEach(([region, routes]) => {
-            Object.entries(routes).forEach(([route, encounterType]) => {
-                if (Object.values(encounterType).flat().includes(pokemonName)) {
-                    if (!regionRoutes[region]) {
-                        regionRoutes[region] = [];
-                    }
-                    regionRoutes[region].push(route);
-                }
-            });
-        });
-        return regionRoutes;
+        // TODO: fix (routes)
+        // const regionRoutes = {};
+        // Object.entries(pokemonsPerRoute).forEach(([region, routes]) => {
+        //     Object.entries(routes).forEach(([route, encounterType]) => {
+        //         if (Object.values(encounterType).flat().includes(pokemonName)) {
+        //             if (!regionRoutes[region]) {
+        //                 regionRoutes[region] = [];
+        //             }
+        //             regionRoutes[region].push(route);
+        //         }
+        //     });
+        // });
+        // return regionRoutes;
     }
 
     public static getPokemonDungeons(pokemonName: string): Array<string> {
@@ -220,10 +221,11 @@ class PokemonHelper {
     public static getPokemonLocations = (pokemonName: string) => {
         const encounterTypes = {};
         // Routes
-        const regionRoutes = PokemonHelper.getPokemonRegionRoutes(pokemonName);
-        if (Object.keys(regionRoutes).length) {
-            encounterTypes[PokemonLocationType.Route] = regionRoutes;
-        }
+        // TODO: fix (routes)
+        // const regionRoutes = PokemonHelper.getPokemonRegionRoutes(pokemonName);
+        // if (Object.keys(regionRoutes).length) {
+        //     encounterTypes[PokemonLocationType.Route] = regionRoutes;
+        // }
         // Dungeons
         const dungeons = PokemonHelper.getPokemonDungeons(pokemonName);
         if (dungeons.length) {

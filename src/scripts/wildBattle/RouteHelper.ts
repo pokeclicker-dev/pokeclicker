@@ -16,7 +16,8 @@ class RouteHelper {
         if (!MapHelper.validRoute(route, region)) {
             route = GameConstants.RegionRoute[region][0];
         }
-        const possiblePokemons = pokemonsPerRoute[region][route];
+        const routeData = Routes.getRoute(region, route);
+        const possiblePokemons = routeData.pokemon;
         if (possiblePokemons == null) {
             return ['Rattata'];
         }

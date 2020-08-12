@@ -1,14 +1,15 @@
 /* eslint-disable array-bracket-newline */
 ///<reference path="../achievements/GymBadgeRequirement.ts"/>
+///<reference path="../achievements/EitherRequirement.ts"/>
 class Town {
     public name: KnockoutObservable<string>;
     public gym?: KnockoutObservable<Gym>;
-    public requirements: Requirement[];
+    public requirements: (Requirement | EitherRequirement)[];
     public shop?: KnockoutObservable<Shop>;
     public dungeon?: KnockoutObservable<Dungeon>;
     public startingTown: boolean;
 
-    constructor(name: string, requirements: Requirement[] = [], shop?: Shop, dungeon?: Dungeon) {
+    constructor(name: string, requirements: (Requirement | EitherRequirement)[] = [], shop?: Shop, dungeon?: Dungeon) {
         this.name = ko.observable(name);
         this.gym = ko.observable(gymList[name]);
         this.requirements = requirements || [];
@@ -23,7 +24,7 @@ class Town {
 }
 
 class DungeonTown extends Town {
-    constructor(name: string, requirements: Requirement[] = []) {
+    constructor(name: string, requirements: (Requirement | EitherRequirement)[] = []) {
         super(name, requirements, null, dungeonList[name]);
     }
 }
@@ -50,7 +51,7 @@ const PewterCityShop = new Shop([
     ItemList['Pokeball'],
     ItemList['Token_collector'],
     ItemList['Lucky_egg'],
-    ItemList['Dungeon_ticket'],
+    ItemList['Mystery_egg'],
 ]);
 const CeruleanCityShop = new Shop([
     ItemList['Water_stone'],
@@ -88,9 +89,10 @@ const CinnabarIslandShop = new Shop([
     ItemList['Explorer_kit'],
 ]);
 const ViridianCityShop = new Shop([
+    ItemList['Pokeball'],
     ItemList['xAttack'],
     ItemList['xClick'],
-    ItemList['Mystery_egg'],
+    ItemList['Dungeon_ticket'],
 ]);
 const LavenderTownShop = new Shop([
     ItemList['Greatball'],
@@ -100,28 +102,28 @@ const LavenderTownShop = new Shop([
 ]);
 
 //Kanto Towns
-TownList['Pewter City'] = new Town('Pewter City', [new RouteKillRequirement(10, 2)], PewterCityShop);
+TownList['Pewter City'] = new Town('Pewter City', [new RouteKillRequirement(10, 2), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Viridian Forest'))], PewterCityShop);
 TownList['Cerulean City'] = new Town('Cerulean City', [new RouteKillRequirement(10, 4)], CeruleanCityShop, dungeonList['Cerulean Cave']);
 TownList['Vermillion City'] = new Town('Vermillion City', [new RouteKillRequirement(10, 6)], VermillionCityShop);
 TownList['Celadon City'] = new Town('Celadon City', [new RouteKillRequirement(10, 8)], CeladonCityShop);
-TownList['Saffron City'] = new Town('Saffron City', [new RouteKillRequirement(10, 5)], SaffronCityShop);
-TownList['Fuchsia City'] = new Town('Fuchsia City', [new RouteKillRequirement(10, 18)], FuchsiaCityShop);
-TownList['Cinnabar Island'] = new Town('Cinnabar Island', [new RouteKillRequirement(10, 20)], CinnabarIslandShop, dungeonList['Pokemon Mansion']);
+TownList['Saffron City'] = new Town('Saffron City', [new GymBadgeRequirement(BadgeCase.Badge.Rainbow)], SaffronCityShop);
+TownList['Fuchsia City'] = new Town('Fuchsia City', [new EitherRequirement([new RouteKillRequirement(10, 18), new RouteKillRequirement(10, 15)])], FuchsiaCityShop);
+TownList['Cinnabar Island'] = new Town('Cinnabar Island', [new EitherRequirement([new RouteKillRequirement(10, 20), new RouteKillRequirement(10, 21)])], CinnabarIslandShop, dungeonList['Pokemon Mansion']);
 TownList['Viridian City'] = new Town('Viridian City', [new RouteKillRequirement(10, 1)], ViridianCityShop);
 TownList['Pallet Town'] = new Town('Pallet Town', []);
 TownList['Lavender Town'] = new Town('Lavender Town', [new RouteKillRequirement(10, 10)], LavenderTownShop, dungeonList['Pokemon Tower']);
 
 //Kanto Dungeons
-TownList['Viridian Forest'] = new DungeonTown('Viridian Forest', [new RouteKillRequirement(10, 1)]);
-TownList['Digletts Cave'] = new DungeonTown('Digletts Cave', [new RouteKillRequirement(10, 1), new GymBadgeRequirement(BadgeCase.Badge.Boulder)]);
+TownList['Viridian Forest'] = new DungeonTown('Viridian Forest', [new RouteKillRequirement(10, 2)]);
 TownList['Mt. Moon'] = new DungeonTown('Mt. Moon', [new RouteKillRequirement(10,3), new GymBadgeRequirement(BadgeCase.Badge.Boulder)]);
+TownList['Digletts Cave'] = new DungeonTown('Digletts Cave', [new RouteKillRequirement(10, 6)]);
 TownList['Rock Tunnel'] = new DungeonTown('Rock Tunnel', [new RouteKillRequirement(10, 9), new GymBadgeRequirement(BadgeCase.Badge.Cascade)]);
-TownList['Power Plant'] = new DungeonTown('Power Plant', [new RouteKillRequirement(10, 9), new GymBadgeRequirement(BadgeCase.Badge.Cascade)]);
-TownList['Pokemon Tower'] = new DungeonTown('Pokemon Tower', [new RouteKillRequirement(10, 10), new GymBadgeRequirement(BadgeCase.Badge.Cascade)]);
-TownList['Seafoam Islands'] = new DungeonTown('Seafoam Islands', [new RouteKillRequirement(10, 19), new GymBadgeRequirement(BadgeCase.Badge.Soul)]);
-TownList['Victory Road'] = new DungeonTown('Victory Road', [new RouteKillRequirement(10, 22), new GymBadgeRequirement(BadgeCase.Badge.Earth)]);
+TownList['Power Plant'] = new DungeonTown('Power Plant', [new RouteKillRequirement(10, 9), new GymBadgeRequirement(BadgeCase.Badge.Soul)]);
+TownList['Pokemon Tower'] = new DungeonTown('Pokemon Tower', [new RouteKillRequirement(10, 10), new GymBadgeRequirement(BadgeCase.Badge.Rainbow)]);
+TownList['Seafoam Islands'] = new DungeonTown('Seafoam Islands', [new RouteKillRequirement(10, 19)]);
+TownList['Pokemon Mansion'] = new DungeonTown('Pokemon Mansion', [new EitherRequirement([new RouteKillRequirement(10, 20), new RouteKillRequirement(10, 21)])]);
+TownList['Victory Road'] = new DungeonTown('Victory Road', [new RouteKillRequirement(10, 23)]);
 TownList['Cerulean Cave'] = new DungeonTown('Cerulean Cave', [new RouteKillRequirement(10, 4), new GymBadgeRequirement(BadgeCase.Badge.Elite_KantoChampion)]);
-TownList['Pokemon Mansion'] = new DungeonTown('Pokemon Mansion', [new RouteKillRequirement(10, 20), new GymBadgeRequirement(BadgeCase.Badge.Soul)]);
 
 //Johto Shops
 const NewBarkTownShop = new Shop([

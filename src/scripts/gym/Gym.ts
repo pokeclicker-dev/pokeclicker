@@ -1,5 +1,6 @@
 ///<reference path="GymPokemon.ts"/>
 ///<reference path="../pokemons/PokemonFactory.ts"/>
+///<reference path="../achievements/EitherRequirement.ts"/>
 
 /**
  * Data list that contains all gymLeaders, accessible by townName.
@@ -17,7 +18,7 @@ class Gym {
         public badgeReward: BadgeCase.Badge,
         public moneyReward: number,
         public defeatMessage: string,
-        public requirements: Requirement[] = [],
+        public requirements: (EitherRequirement | Requirement)[] = [],
         public rewardFunction = () => {}
     ) {}
 
@@ -64,7 +65,8 @@ gymList['Pewter City'] = new Gym(
     ],
     BadgeCase.Badge.Boulder,
     250,
-    'I took you for granted, and so I lost. As proof of your victory, I confer on you this...the official Pokémon League Boulder Badge.'
+    'I took you for granted, and so I lost. As proof of your victory, I confer on you this...the official Pokémon League Boulder Badge.',
+    [new RouteKillRequirement(10, 2)]
 );
 
 gymList['Cerulean City'] = new Gym(
@@ -77,7 +79,7 @@ gymList['Cerulean City'] = new Gym(
     BadgeCase.Badge.Cascade,
     500,
     "Wow! You're too much, all right! You can have the Cascade Badge to show that you beat me.",
-    [new GymBadgeRequirement(BadgeCase.Badge.Boulder)]
+    [new RouteKillRequirement(10, 4)]
 );
 gymList['Vermillion City'] = new Gym(
     'Lt. Surge',
@@ -103,7 +105,7 @@ gymList['Celadon City'] = new Gym(
     BadgeCase.Badge.Rainbow,
     1500,
     'Oh! I concede defeat. You are remarkably strong. I must confer on you the Rainbow Badge.',
-    [new GymBadgeRequirement(BadgeCase.Badge.Thunder)]
+    [new RouteKillRequirement(10, 8)]
 );
 gymList['Saffron City'] = new Gym(
     'Sabrina',
@@ -131,7 +133,12 @@ gymList['Fuchsia City'] = new Gym(
     BadgeCase.Badge.Soul,
     3500,
     'Humph! You have proven your worth! Here! Take the Soul Badge!',
-    [new GymBadgeRequirement(BadgeCase.Badge.Marsh)]
+    [
+        new EitherRequirement([
+            new RouteKillRequirement(10, 18),
+            new RouteKillRequirement(10, 15),
+        ]),
+    ]
 );
 gymList['Cinnabar Island'] = new Gym(
     'Blaine',
@@ -145,7 +152,7 @@ gymList['Cinnabar Island'] = new Gym(
     BadgeCase.Badge.Volcano,
     5000,
     'I have burned down to nothing! Not even ashes remain! You have earned the Volcano Badge.',
-    [new GymBadgeRequirement(BadgeCase.Badge.Soul)]
+    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Pokemon Mansion'))]
 );
 gymList['Viridian City'] = new Gym(
     'Giovanni',
@@ -160,7 +167,11 @@ gymList['Viridian City'] = new Gym(
     BadgeCase.Badge.Earth,
     6000,
     'Ha! That was a truly intense fight. You have won! As proof, here is the Earth Badge!',
-    [new GymBadgeRequirement(BadgeCase.Badge.Volcano)]
+    [
+        new GymBadgeRequirement(BadgeCase.Badge.Volcano),
+        new GymBadgeRequirement(BadgeCase.Badge.Marsh),
+        new GymBadgeRequirement(BadgeCase.Badge.Thunder),
+    ]
 );
 
 // Kanto Elite 4

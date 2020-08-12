@@ -365,33 +365,6 @@ namespace GameConstants {
      * Access with routeRequirements.region.routeNumber
      */
     export const routeRequirements = {
-        0: {
-            1: [],
-            2: [1],
-            3: [2],
-            4: [3],
-            5: [4],
-            6: [5],
-            7: [5, 10],
-            8: [5, 6, 7],
-            9: [4],
-            10: [9],
-            11: [6],
-            12: [7, 10, 11],
-            13: [11, 12],
-            14: [13],
-            15: [14],
-            16: [8],
-            17: [16],
-            18: [17],
-            19: [15, 18],
-            20: [19],
-            21: [20],
-            22: [1],
-            23: [22],
-            24: [4],
-            25: [24],
-        },
         1: {
             30: [29],
             31: [30],
@@ -444,21 +417,6 @@ namespace GameConstants {
     };
 
     export const routeBadgeRequirements = {
-        0: {
-            3: BadgeCase.Badge.Boulder,
-            5: BadgeCase.Badge.Cascade,
-            7: BadgeCase.Badge.Thunder,
-            8: BadgeCase.Badge.Thunder,
-            9: BadgeCase.Badge.Cascade,
-            11: BadgeCase.Badge.Thunder,
-            12: BadgeCase.Badge.Marsh,
-            13: BadgeCase.Badge.Marsh,
-            16: BadgeCase.Badge.Marsh,
-            19: BadgeCase.Badge.Soul,
-            21: BadgeCase.Badge.Volcano,
-            22: BadgeCase.Badge.Earth,
-            24: BadgeCase.Badge.Cascade,
-        },
         1: {
             28: BadgeCase.Badge.Elite_JohtoChampion,
             32: BadgeCase.Badge.Zephyr,
@@ -481,6 +439,22 @@ namespace GameConstants {
             120: BadgeCase.Badge.Feather,
             126: BadgeCase.Badge.Mind,
             127: BadgeCase.Badge.Rain,
+        },
+    };
+
+    export const routeDungeonRequirements = {
+        1: {
+            33: 'Union Cave',
+            34: 'Ilex Forest',
+        },
+        2: {
+            116: 'Petalburg Woods',
+            110: 'Granite Cave',
+            113: 'Fiery Path',
+            115: 'Meteor Falls',
+            112: 'Jagged Pass',
+            124: 'Mt. Pyre',
+            128: 'Seafloor Cavern',
         },
     };
 
@@ -530,26 +504,6 @@ namespace GameConstants {
         0: new Set(['Saffron City', 'Pokemon Tower']),
         1: new Set(['Ecruteak City']),
         2: new Set(['Mossdeep City', 'Mt. Pyre']),
-    };
-
-    export const routeDungeonRequirements = {
-        0: {
-            4: 'Mt. Moon',
-            20: 'Seafoam Islands',
-        },
-        1: {
-            33: 'Union Cave',
-            34: 'Ilex Forest',
-        },
-        2: {
-            116: 'Petalburg Woods',
-            110: 'Granite Cave',
-            113: 'Fiery Path',
-            115: 'Meteor Falls',
-            112: 'Jagged Pass',
-            124: 'Mt. Pyre',
-            128: 'Seafloor Cavern',
-        },
     };
 
     export enum Starter {

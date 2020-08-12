@@ -26,49 +26,31 @@ class MapHelper {
             App.game.gameState = GameConstants.GameState.fighting;
             GameController.applyRouteBindings();
         } else {
-            let reqsList = '';
-
             if (!MapHelper.routeExist(route, region)) {
-                reqsList += `<br>Route ${route} does not exist in the ${GameConstants.Region[region]} region.`;
+                return Notifier.notify({ message: `Route ${route} does not exist in the ${GameConstants.Region[region]} region.`, type: GameConstants.NotificationOption.warning });
             }
 
-            if (!MapHelper.hasBadgeReq(route, region)) {
-                const badgeNumber = GameConstants.routeBadgeRequirements[region][route];
-                reqsList += `<br>Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[badgeNumber])} badge.`;
-            }
+            const routeData = Routes.getRoute(region, route);
+            const reqsList = [];
 
-            if (!MapHelper.hasDungeonReq(route, region)) {
-                const dungeon = GameConstants.routeDungeonRequirements[region][route];
-                reqsList += `<br>${dungeon} dungeon needs to be completed.`;
-            }
-
-            if (!MapHelper.hasRouteKillReq(route, region)) {
-                const reqList = GameConstants.routeRequirements[region][route];
-                const routesNotCompleted = [];
-
-                for (let i = 0; i < reqList.length; i++) {
-                    const route: number = reqList[i];
-                    if (App.game.statistics.routeKills[route]() < GameConstants.ROUTE_KILLS_NEEDED) {
-                        routesNotCompleted.push(route);
-                    }
+            routeData.requirements?.forEach(requirement => {
+                if (requirement.isCompleted()) {
+                    return;
+                } else if (requirement instanceof GymBadgeRequirement) {
+                    reqsList.push(`Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[requirement.badge])} badge.`);
+                } else if (requirement instanceof ClearDungeonRequirement) {
+                    reqsList.push(`${GameConstants.RegionDungeons.flat()[requirement.dungeonIndex]} needs to be completed.`);
+                } else if (requirement instanceof RouteKillRequirement) {
+                    reqsList.push(`Route ${requirement.route} still needs to be completed.`);
                 }
+            });
 
-                if (routesNotCompleted.length > 0) {
-                    const routesList = routesNotCompleted.join(', ');
-                    if (routesNotCompleted.length > 1) {
-                        reqsList += `<br>Routes ${routesList} still need to be completed.`;
-                    } else {
-                        reqsList += `<br>Route ${routesList} still needs to be completed.`;
-                    }
-                }
-            }
-
-            Notifier.notify({ message: `You don't have access to that route yet.${reqsList}`, type: GameConstants.NotificationOption.warning });
+            Notifier.notify({ message: `You don't have access to that route yet.<br/>${reqsList.join('<br/>')}`, type: GameConstants.NotificationOption.warning });
         }
     };
 
     public static routeExist(route: number, region: GameConstants.Region): boolean {
-        return route >= GameConstants.RegionRoute[region][0] && route <= GameConstants.RegionRoute[region][1];
+        return !!Routes.getRoute(region, route);
     }
 
     public static normalizeRoute(route: number, region: GameConstants.Region): number {
@@ -83,31 +65,8 @@ class MapHelper {
         return previousRegionsRoutesLast + localRouteSequence;
     }
 
-    private static hasBadgeReq(route: number, region: GameConstants.Region) {
-        return App.game.badgeCase.hasBadge(GameConstants.routeBadgeRequirements[region][route]);
-    }
-
-    private static hasDungeonReq(route: number, region: GameConstants.Region) {
-        const dungeonReq = GameConstants.routeDungeonRequirements[region][route];
-        return dungeonReq == undefined || 0 < App.game.statistics.dungeonsCleared[Statistics.getDungeonIndex(dungeonReq)]();
-    }
-
-    private static hasRouteKillReq(route: number, region: GameConstants.Region) {
-        const reqList = GameConstants.routeRequirements[region][route];
-        if (reqList == undefined) {
-            return true;
-        }
-        for (let i = 0; i < reqList.length; i++) {
-            const route: number = reqList[i];
-            if (App.game.statistics.routeKills[route]() < GameConstants.ROUTE_KILLS_NEEDED) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public static accessToRoute = function (route: number, region: GameConstants.Region) {
-        return this.routeExist(route, region) && this.hasBadgeReq(route, region) && this.hasDungeonReq(route, region) && this.hasRouteKillReq(route, region);
+        return this.routeExist(route, region) && Routes.getRoute(region, route).isUnlocked();
     };
 
     public static calculateBattleCssClass(): string {
