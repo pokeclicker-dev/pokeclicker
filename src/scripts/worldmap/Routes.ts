@@ -106,7 +106,10 @@ Routes.add(new Route(
     new RoutePokemon({
         land: ['Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Sandshrew', 'Nidoran(F)', 'Nidoran(M)', 'Nidorina', 'Nidorino'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Cascade)]
+    [
+        new RouteKillRequirement(10, 6),
+        new GymBadgeRequirement(BadgeCase.Badge.Cascade),
+    ]
 ));
 Routes.add(new Route(
     GameConstants.Region.kanto, 10,

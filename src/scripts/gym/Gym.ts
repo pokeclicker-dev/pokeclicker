@@ -92,7 +92,10 @@ gymList['Vermillion City'] = new Gym(
     BadgeCase.Badge.Thunder,
     1000,
     "Now that's a shocker! You're the real deal, kid! Fine, then, take the Thunder Badge!",
-    [new GymBadgeRequirement(BadgeCase.Badge.Cascade)]
+    [
+        new RouteKillRequirement(10, 6),
+        new GymBadgeRequirement(BadgeCase.Badge.Cascade),
+    ]
 );
 gymList['Celadon City'] = new Gym(
     'Erika',
