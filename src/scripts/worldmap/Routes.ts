@@ -261,7 +261,6 @@ Routes.add(new Route(
     [new RouteKillRequirement(10, 22)]
 ));
 
-
 /*
 JOHTO
 */
@@ -469,4 +468,306 @@ Routes.add(new Route(
     }),
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_JohtoChampion)],
     51
+));
+
+/*
+HOENN
+*/
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 101,
+    new RoutePokemon({
+        land: ['Wurmple', 'Poochyena', 'Zigzagoon'],
+    }),
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_JohtoChampion)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 102,
+    new RoutePokemon({
+        land: ['Surskit', 'Poochyena', 'Wurmple', 'Lotad', 'Zigzagoon', 'Ralts', 'Seedot'],
+        water: ['Marill', 'Goldeen', 'Magikarp', 'Corphish'],
+    }),
+    [new RouteKillRequirement(10, 101)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 103,
+    new RoutePokemon({
+        land: ['Poochyena', 'Wingull', 'Zigzagoon'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [new RouteKillRequirement(10, 101)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 104,
+    new RoutePokemon({
+        land: ['Poochyena', 'Wurmple', 'Marill', 'Taillow', 'Wingull'],
+        water: ['Wingull', 'Pelipper', 'Magikarp'],
+    }),
+    [new RouteKillRequirement(10, 102)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 105,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [
+        new RouteKillRequirement(10, 104),
+        new GymBadgeRequirement(BadgeCase.Badge.Balance),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 106,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [new RouteKillRequirement(10, 105)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 107,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [new RouteKillRequirement(10, 106)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 108,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [new RouteKillRequirement(10, 107)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 109,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [new RouteKillRequirement(10, 108)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 110,
+    new RoutePokemon({
+        land: ['Poochyena', 'Electrike', 'Gulpin', 'Minun', 'Oddish', 'Wingull', 'Plusle'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [
+        new RouteKillRequirement(10, 116),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Granite Cave')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 111,
+    new RoutePokemon({
+        land: ['Sandshrew', 'Trapinch', 'Baltoy', 'Cacnea'],
+        water: ['Marill', 'Goldeen', 'Magikarp', 'Barboach'],
+        headbutt: ['Geodude'],
+    }),
+    [
+        new RouteKillRequirement(10, 117),
+        new GymBadgeRequirement(BadgeCase.Badge.Dynamo),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 112,
+    new RoutePokemon({
+        land: ['Numel', 'Marill'],
+    }),
+    [
+        new RouteKillRequirement(10, 111),
+        new GymBadgeRequirement(BadgeCase.Badge.Heat),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Jagged Pass')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 113,
+    new RoutePokemon({
+        land: ['Spinda', 'Slugma', 'Skarmory'],
+    }),
+    [
+        new RouteKillRequirement(10, 111),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Fiery Path')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 114,
+    new RoutePokemon({
+        land: ['Zangoose', 'Surskit', 'Swablu', 'Lotad', 'Lombre', 'Seviper', 'Nuzleaf'],
+        water: ['Marill', 'Goldeen', 'Magikarp', 'Barboach'],
+        headbutt: ['Geodude'],
+    }),
+    [new RouteKillRequirement(10, 113)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 115,
+    new RoutePokemon({
+        land: ['Swablu', 'Taillow', 'Swellow', 'Jigglypuff', 'Wingull'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [
+        new RouteKillRequirement(10, 114),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Meteor Falls')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 116,
+    new RoutePokemon({
+        land: ['Poochyena', 'Whismur', 'Nincada', 'Abra', 'Taillow', 'Skitty'],
+    }),
+    [
+        new RouteKillRequirement(10, 104),
+        new GymBadgeRequirement(BadgeCase.Badge.Stone),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Petalburg Woods')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 117,
+    new RoutePokemon({
+        land: ['Surskit', 'Poochyena', 'Oddish', 'Marill', 'Illumise', 'Volbeat', 'Seedot'],
+        water: ['Marill', 'Goldeen', 'Magikarp', 'Corphish'],
+    }),
+    [
+        new RouteKillRequirement(10, 110),
+        new GymBadgeRequirement(BadgeCase.Badge.Knuckle),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 118,
+    new RoutePokemon({
+        land: ['Zigzagoon', 'Electrike', 'Linoone', 'Manectric', 'Wingull', 'Kecleon'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Carvanha', 'Sharpedo'],
+    }),
+    [
+        new RouteKillRequirement(10, 117),
+        new GymBadgeRequirement(BadgeCase.Badge.Balance),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 119,
+    new RoutePokemon({
+        land: ['Zigzagoon', 'Linoone', 'Oddish', 'Tropius', 'Kecleon', 'Castform'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Carvanha'],
+    }),
+    [new RouteKillRequirement(10, 118)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 120,
+    new RoutePokemon({
+        land: ['Surskit', 'Poochyena', 'Mightyena', 'Oddish', 'Marill', 'Absol', 'Kecleon', 'Seedot'],
+        water: ['Marill', 'Goldeen', 'Magikarp', 'Barboach'],
+    }),
+    [
+        new RouteKillRequirement(10, 119),
+        new GymBadgeRequirement(BadgeCase.Badge.Feather),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 121,
+    new RoutePokemon({
+        land: ['Poochyena', 'Shuppet', 'Mightyena', 'Oddish', 'Gloom', 'Wingull', 'Kecleon'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [new RouteKillRequirement(10, 120)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 122,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [new RouteKillRequirement(10, 121)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 123,
+    new RoutePokemon({
+        land: ['Poochyena', 'Shuppet', 'Mightyena', 'Oddish', 'Gloom', 'Wingull', 'Kecleon'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
+    }),
+    [new RouteKillRequirement(10, 122)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 124,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo', 'Clamperl', 'Relicanth'],
+    }),
+    [
+        new RouteKillRequirement(10, 121),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Pyre')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 125,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [new RouteKillRequirement(10, 124)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 126,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo', 'Clamperl', 'Relicanth'],
+    }),
+    [
+        new RouteKillRequirement(10, 125),
+        new GymBadgeRequirement(BadgeCase.Badge.Mind),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 127,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [
+        new RouteKillRequirement(10, 126),
+        new GymBadgeRequirement(BadgeCase.Badge.Rain),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 128,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Luvdisc', 'Wailmer', 'Corsola'],
+    }),
+    [
+        new RouteKillRequirement(10, 127),
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Seafloor Cavern')),
+    ]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 129,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Wailord', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [new RouteKillRequirement(10, 128)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 130,
+    new RoutePokemon({
+        land: ['Wynaut'],
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [new RouteKillRequirement(10, 129)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 131,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
+    }),
+    [new RouteKillRequirement(10, 130)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 132,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo', 'Horsea'],
+    }),
+    [new RouteKillRequirement(10, 131)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 133,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo', 'Horsea'],
+    }),
+    [new RouteKillRequirement(10, 132)]
+));
+Routes.add(new Route(
+    GameConstants.Region.hoenn, 134,
+    new RoutePokemon({
+        water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo', 'Horsea'],
+    }),
+    [new RouteKillRequirement(10, 133)]
 ));
