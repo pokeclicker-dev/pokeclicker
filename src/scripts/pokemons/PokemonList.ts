@@ -7285,7 +7285,10 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 45,
             'catchRate': 120,
-            'evolutions': [new LevelEvolution('Burmy', 'Wormadam', 20)],
+            'evolutions': [
+                new LevelEvolution('Burmy', 'Wormadam', 20),
+                new LevelEvolution('Burmy', 'Mothim', 20),
+            ],
             'base': {
                 'hitpoints': 40,
                 'attack': 29,

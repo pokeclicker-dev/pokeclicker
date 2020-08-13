@@ -296,10 +296,14 @@ const SolaceonTownShop = new Shop([
     ItemList['Dawn_stone'],
     ItemList['Dusk_stone'],
     ItemList['Shiny_stone'],
+    ItemList['Spiritomb'],
 ]);
 const PalParkShop = new Shop([
     ItemList['Razor_claw'],
     ItemList['Razor_fang'],
+    ItemList['Combee'],
+    ItemList['Burmy'],
+    ItemList['Cherubi'],
 ]);
 const SurvivalAreaShop = new Shop([
     ItemList['Electirizer'],
@@ -309,6 +313,9 @@ const ResortAreaShop = new Shop([
     ItemList['Reaper_cloth'],
     ItemList['Dubious_disc'],
     ItemList['Protector'],
+]);
+const PastoriaShop = new Shop([
+    ItemList['Skorupi'],
 ]);
 
 //Sinnoh Towns
@@ -321,7 +328,7 @@ TownList['Eterna City'] = new Town('Eterna City', [], null, null, 'Eterna Forest
 TownList['Hearthome City'] = new Town('Hearthome City', [208]);
 TownList['Solaceon Town'] = new Town('Solaceon Town', [209], SolaceonTownShop);
 TownList['Veilstone City'] = new Town('Veilstone City', [215]);
-TownList['Pastoria City'] = new Town('Pastoria City', [213]);
+TownList['Pastoria City'] = new Town('Pastoria City', [213], PastoriaShop);
 TownList['Celestic Town'] = new Town('Celestic Town', [210]);
 TownList['Pal Park'] = new Town('Pal Park', [221], PalParkShop);
 TownList['Canalave City'] = new Town('Canalave City', [218]);

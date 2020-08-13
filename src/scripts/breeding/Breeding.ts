@@ -34,13 +34,13 @@ class Breeding implements Feature {
             ['Squirtle', 'Lapras', 'Staryu', 'Psyduck'],
             ['Totodile', 'Wooper', 'Marill', 'Qwilfish'],
             ['Mudkip', 'Feebas', 'Clamperl'],
-            ['Piplup'],
+            ['Piplup', 'Finneon'],
         ];
         this.hatchList[EggType.Grass] = [
             ['Bulbasaur', 'Oddish', 'Tangela', 'Bellsprout'],
             ['Chikorita', 'Hoppip', 'Sunkern'],
             ['Treecko', 'Tropius', 'Roselia'],
-            ['Turtwig'],
+            ['Turtwig', 'Carnivine'],
         ];
         this.hatchList[EggType.Fighting] = [
             ['Hitmonlee', 'Hitmonchan', 'Machop', 'Mankey'],
