@@ -8,6 +8,7 @@
     "test": "npm run ts-test && npm run eslint",
     "ts-test": "gulp scripts",
     "electron": "electron ./",
+    "quick-build": "electron-builder --windows portable",
     "build": "npm run website && electron-builder --windows portable",
     "eslint": "eslint --config ./.eslintrc.js --ext ts ./src/scripts",
     "eslint-fix": "eslint --config ./.eslintrc.js --ext ts --fix ./src/scripts",
@@ -27,6 +28,15 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pokeclicker-dev/pokeclicker/issues"
+  },
+  "build": {
+      "files": [
+          "docs/**/*"
+      ],
+      "win": {
+          "target": "portable",
+          "icon": "other/icon.ico"
+      }
   },
   "homepage": "https://github.com/pokeclicker-dev/pokeclicker#readme",
   "devDependencies": {
