@@ -39,6 +39,7 @@ const srcs = {
         'node_modules/sortablejs/Sortable.min.js',
         'src/libs/*.js',
     ],
+    electron: 'src/main.js',
 };
 
 
@@ -51,9 +52,13 @@ const dests = {
     githubPages: 'docs/',
 };
 
-gulp.task('copy', () => gulp.src(srcs.libs)
-    .pipe(gulp.dest(dests.libs))
-    .pipe(browserSync.reload({stream: true})));
+gulp.task('copy', () => {
+    gulp.src(srcs.electron)
+        .pipe(gulp.dest(dests.base));
+    return gulp.src(srcs.libs)
+        .pipe(gulp.dest(dests.libs))
+        .pipe(browserSync.reload({stream: true}));
+});
 
 gulp.task('assets', () => gulp.src(srcs.assets)
     .pipe(changed(dests.assets))
