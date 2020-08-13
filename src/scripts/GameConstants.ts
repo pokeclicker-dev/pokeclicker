@@ -640,7 +640,7 @@ namespace GameConstants {
         'Dusk_stone',
         'Shiny_stone',
         'Dubious_disc',
-        'Electrizer',
+        'Electirizer',
         'Magmarizer',
         'Protector',
         'Reaper_cloth',
