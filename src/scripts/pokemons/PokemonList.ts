@@ -2232,7 +2232,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 172,
             'eggCycles': 25,
-            'evolutions': [new StoneEvolution('Electabuzz', 'Electivire', GameConstants.StoneType.Electrizer)],
+            'evolutions': [new StoneEvolution('Electabuzz', 'Electivire', GameConstants.StoneType.Electirizer)],
             'base': {
                 'hitpoints': 65,
                 'attack': 83,

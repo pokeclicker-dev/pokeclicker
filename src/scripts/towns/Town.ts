@@ -303,7 +303,7 @@ const PalParkShop = new Shop([
     ItemList['Razor_fang'],
 ]);
 const SurvivalAreaShop = new Shop([
-    ItemList['Electrizer'],
+    ItemList['Electirizer'],
     ItemList['Magmarizer'],
 ]);
 const ResortAreaShop = new Shop([
