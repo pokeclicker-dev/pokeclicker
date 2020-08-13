@@ -404,10 +404,7 @@ dungeonList['Wayward Cave'] = new Dungeon('Wayward Cave',
     ['Zubat', 'Geodude', 'Onix'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     603000,
-    [
-        new DungeonBossPokemon('Bronzor', 2400000, 70),
-        new DungeonBossPokemon('Gible', 2600000, 70),
-    ],
+    [new DungeonBossPokemon('Bronzor', 2400000, 70)],
     56500, BadgeCase.Badge.Forest, 201, 35);
 
 dungeonList['Mt. Coronet South'] = new Dungeon('Mt. Coronet South',
@@ -425,10 +422,7 @@ dungeonList['Iron Island'] = new Dungeon('Iron Island',
     ['Tentacool', 'Wingull', 'Tentacruel', 'Pelipper', 'Finneon', 'Zubat', 'Geodude', 'Onix', 'Golbat', 'Graveler'],
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     683000,
-    [
-        new DungeonBossPokemon('Riolu', 3210000, 70),
-        new DungeonBossPokemon('Steelix', 3210000, 70),
-    ],
+    [new DungeonBossPokemon('Steelix', 3210000, 70)],
     66500, BadgeCase.Badge.Fen, 201, 35);
 
 dungeonList['Mt. Coronet North'] = new Dungeon('Mt. Coronet North',

@@ -46,19 +46,19 @@ class Breeding implements Feature {
             ['Hitmonlee', 'Hitmonchan', 'Machop', 'Mankey'],
             ['Tyrogue'],
             ['Makuhita', 'Meditite'],
-            [],
+            ['Riolu'],
         ];
         this.hatchList[EggType.Electric] = [
             ['Magnemite', 'Pikachu', 'Voltorb', 'Electabuzz'],
             ['Chinchou', 'Mareep', 'Elekid'],
             ['Plusle', 'Minun', 'Electrike'],
-            [],
+            ['Pachirisu'],
         ];
         this.hatchList[EggType.Dragon] = [
             ['Dratini', 'Dragonair', 'Dragonite'],
             [],
             ['Bagon', 'Shelgon', 'Salamence'],
-            [],
+            ['Gible', 'Gabite', 'Garchomp'],
         ];
 
     }
