@@ -36,3 +36,6 @@ ItemList['Togepi']    = new PokemonItem(GameConstants.PokemonItemType.Togepi, 25
 ItemList['Beldum']    = new PokemonItem(GameConstants.PokemonItemType.Beldum, 5000);
 ItemList['Skorupi']    = new PokemonItem(GameConstants.PokemonItemType.Skorupi, 5000);
 ItemList['Combee']    = new PokemonItem(GameConstants.PokemonItemType.Combee, 5000);
+ItemList['Burmy']    = new PokemonItem(GameConstants.PokemonItemType.Burmy, 5000);
+ItemList['Cherubi']    = new PokemonItem(GameConstants.PokemonItemType.Cherubi, 5000);
+ItemList['Spiritomb']    = new PokemonItem(GameConstants.PokemonItemType.Spiritomb, 5000);

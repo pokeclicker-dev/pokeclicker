@@ -668,6 +668,9 @@ namespace GameConstants {
         'Beldum',
         'Skorupi',
         'Combee',
+        'Burmy',
+        'Spiritomb',
+        'Cherubi',
     }
 
     export enum PokeBlockColor {

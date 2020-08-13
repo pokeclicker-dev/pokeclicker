@@ -297,11 +297,14 @@ const SolaceonTownShop = new Shop([
     ItemList['Dawn_stone'],
     ItemList['Dusk_stone'],
     ItemList['Shiny_stone'],
+    ItemList['Spiritomb'],
 ]);
 const PalParkShop = new Shop([
     ItemList['Razor_claw'],
     ItemList['Razor_fang'],
     ItemList['Combee'],
+    ItemList['Burmy'],
+    ItemList['Cherubi'],
 ]);
 const SurvivalAreaShop = new Shop([
     ItemList['Electirizer'],

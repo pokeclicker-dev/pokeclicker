@@ -443,7 +443,7 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
         205: {
-            land: ['Bidoof', 'Pachirisu', 'Hoothoot', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Kricketot', 'Budew'],
+            land: ['Bidoof', 'Pachirisu', 'Hoothoot', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Kricketot', 'Budew', 'Drifloon'],
             water: ['Wingull', 'Pelipper', 'Buizel', 'Tentacool', 'Tentacruel', 'Shellos', 'Gastrodon', 'Magikarp', 'Finneon', 'Shellder', 'Gyarados', 'Lumineon', 'Psyduck', 'Golduck', 'Barboach', 'Whiscash'],
             headbutt: [],
         },
@@ -463,12 +463,12 @@ const pokemonsPerRoute = {
             headbutt: [],
         },
         209: {
-            land: ['Zubat', 'Gastly', 'Chansey', 'Ralts', 'Roselia', 'Duskull', 'Starly', 'Staravia', 'Bibarel', 'Bonsly', 'Mime Jr.', 'Spiritomb'],
+            land: ['Zubat', 'Gastly', 'Chansey', 'Ralts', 'Roselia', 'Duskull', 'Starly', 'Staravia', 'Bibarel', 'Bonsly', 'Mime Jr.'],
             water: ['Psyduck', 'Golduck', 'Magikarp', 'Goldeen', 'Seaking', 'Gyarados'],
             headbutt: [],
         },
         210: {
-            land: ['Geodude', 'Ponyta', 'Chansey', 'Scyther', 'Hoothoot', 'Noctowl', 'Roselia', 'Staravia', 'Kricketune', 'Bonsly', 'Mime jr.', 'Machop', 'Machoke', 'Meditite', 'Swablu', 'Bibarel'],
+            land: ['Geodude', 'Ponyta', 'Chansey', 'Scyther', 'Hoothoot', 'Noctowl', 'Roselia', 'Staravia', 'Kricketune', 'Bonsly', 'Mime jr.', 'Machop', 'Machoke', 'Meditite', 'Swablu', 'Bibarel', 'Hippopotas'],
             water: ['Psyduck', 'Golduck', 'Magikarp', 'Barboach', 'Whiscash', 'Gyarados'],
             headbutt: [],
         },
