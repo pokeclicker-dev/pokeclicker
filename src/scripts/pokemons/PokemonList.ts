@@ -3060,7 +3060,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 41,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Pichu', 'Pikachu', 100)],
+            'evolutions': [new StoneEvolution('Pichu', 'Pikachu', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 20,
@@ -3079,7 +3079,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 44,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Cleffa', 'Clefairy', 100)],
+            'evolutions': [new StoneEvolution('Cleffa', 'Clefairy', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 50,
@@ -3098,7 +3098,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 42,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Igglybuff', 'Jigglypuff', 100)],
+            'evolutions': [new StoneEvolution('Igglybuff', 'Jigglypuff', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 90,
@@ -5285,7 +5285,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 38,
             'catchRate': 150,
-            'evolutions': [new LevelEvolution('Azurill', 'Marill', 100)],
+            'evolutions': [new StoneEvolution('Azurill', 'Marill', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 50,
@@ -7179,7 +7179,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 56,
             'catchRate': 255,
-            'evolutions': [new DayTimedLevelEvolution('Budew', 'Roselia', 100)],
+            'evolutions': [new DayTimedStoneEvolution('Budew', 'Roselia', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 40,
@@ -7650,7 +7650,7 @@ const pokemonList: PokemonListData[] =
             'levelType': 4,
             'exp': 57,
             'catchRate': 120,
-            'evolutions': [new LevelEvolution('Chingling', 'Chimecho', 100)],
+            'evolutions': [new NightTimedStoneEvolution('Chingling', 'Chimecho', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 45,
@@ -7883,7 +7883,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 78,
             'catchRate': 50,
-            'evolutions': [new LevelEvolution('Munchlax', 'Snorlax', 100)],
+            'evolutions': [new StoneEvolution('Munchlax', 'Snorlax', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 135,
@@ -7902,7 +7902,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 57,
             'catchRate': 75,
-            'evolutions': [new StoneEvolution('Riolu', 'Lucario', GameConstants.StoneType.Soothe_bell)],
+            'evolutions': [new DayTimedStoneEvolution('Riolu', 'Lucario', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 40,
                 'attack': 70,
@@ -9290,7 +9290,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 65,
             'catchRate': 190,
-            'evolutions': [new LevelEvolution('Woobat', 'Swoobat', 100)],
+            'evolutions': [new StoneEvolution('Woobat', 'Swoobat', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 65,
                 'attack': 45,
@@ -9535,7 +9535,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 133,
             'catchRate': 120,
-            'evolutions': [new LevelEvolution('Swadloon', 'Leavanny', 100)],
+            'evolutions': [new StoneEvolution('Swadloon', 'Leavanny', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 55,
                 'attack': 63,
@@ -13568,7 +13568,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 107,
             'catchRate': 3,
-            'evolutions': [new LevelEvolution('Type: Null', 'Silvally', 100)],
+            'evolutions': [new StoneEvolution('Type: Null', 'Silvally', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 95,
                 'attack': 95,
