@@ -29,6 +29,16 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.5.0 - Sinnoh
+    new Changelog(changelogType.UPDATE, 'v0.5.0 - Sinnoh'),
+    new Changelog(changelogType.NEW, 'The Sinnoh region is now available'),
+    new Changelog(changelogType.NEW, 'New evolution stones'),
+    new Changelog(changelogType.NEW, 'Dungeon based evolutions'),
+    new Changelog(changelogType.NEW, 'Time based evolutions'),
+    new Changelog(changelogType.NEW, '2 new fossils to the Underground'),
+    new Changelog(changelogType.CHANGE, 'All Happiness/Friendship evolutions now make use of the Soothe Bell'),
+    new Changelog(changelogType.REMOVED, 'Removed Time Stone'),
+
     // v0.4.19
     new Changelog(changelogType.UPDATE, 'v0.4.19'),
     new Changelog(changelogType.NEW, 'Filters added to the Day Care'),
