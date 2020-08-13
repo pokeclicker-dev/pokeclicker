@@ -309,7 +309,7 @@ const SurvivalAreaShop = new Shop([
 const ResortAreaShop = new Shop([
 	ItemList['Reaper_cloth'],
 	ItemList['Dubious_disc'],
-	Itemlist['Protector'],
+	ItemList['Protector'],
 ]);
 
 //Sinnoh Towns

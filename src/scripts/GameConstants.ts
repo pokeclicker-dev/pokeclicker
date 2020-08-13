@@ -646,6 +646,7 @@ namespace GameConstants {
         'Reaper_cloth',
         'Razor_claw',
         'Razor_fang',
+        'Prism_scale',
     }
 
     export enum BattleItemType {
