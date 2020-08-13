@@ -97,4 +97,3 @@ UndergroundItem.addItem('Dragon Scale', 47, [[47,47,47], [47,47,47], [47,47,47]]
 UndergroundItem.addItem('Metal Coat', 48, [[48,48,48], [48,48,48], [48,48,48]], 1, 'Metal_coat');
 UndergroundItem.addItem('Kings Rock', 49, [[49,49,49], [49,49,49], [49,49,49]], 1, 'Kings_rock');
 UndergroundItem.addItem('Upgrade', 50, [[50,50,50], [50,50,50], [50,50,50]], 1, 'Upgrade');
-UndergroundItem.addItem('Time Stone', 51, [[51,51,51], [51,51,51], [51,51,51]], 1, 'Time_stone');
