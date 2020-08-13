@@ -633,6 +633,20 @@ namespace GameConstants {
         'Kings_rock',
         'Upgrade',
         'Time_stone',
+        'Soothe_bell',
+        'Deepsea_tooth',
+        'Deepsea_scale',
+        'Dawn_stone',
+        'Dusk_stone',
+        'Shiny_stone',
+        'Dubious_disc',
+        'Electirizer',
+        'Magmarizer',
+        'Protector',
+        'Reaper_cloth',
+        'Razor_claw',
+        'Razor_fang',
+        'Prism_scale',
     }
 
     export enum BattleItemType {

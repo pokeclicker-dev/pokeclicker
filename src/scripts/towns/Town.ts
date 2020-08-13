@@ -187,6 +187,7 @@ const AzaleaTownShop = new Shop([
 const GoldenrodCityShop = new Shop([
     ItemList['Sun_stone'],
     ItemList['Upgrade'],
+    ItemList['Soothe_bell'],
 ]);
 const OlivineCityShop = new Shop([
     ItemList['Metal_coat'],
@@ -246,6 +247,11 @@ const LilyCoveCityShop = new Shop([
 ]);
 const MossdeepCityShop = new Shop([
     ItemList['Beldum'],
+    ItemList['Prism_scale'],
+]);
+const PacifidlogTownShop = new Shop([
+    ItemList['Deepsea_tooth'],
+    ItemList['Deepsea_scale'],
 ]);
 
 //Hoenn Towns
@@ -265,7 +271,7 @@ TownList['Mossdeep City'] = new Town('Mossdeep City', [125], MossdeepCityShop, n
 TownList['Sootopolis City'] = new Town('Sootopolis City', [126], null, null, 'Cave of Origin');
 TownList['Ever Grande City'] = new Town('Ever Grande City', [128]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [128], null, null, 'Victory Road Hoenn');
-TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [131]);
+TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [131], PacifidlogTownShop);
 
 //Hoenn Dungeons
 TownList['Petalburg Woods'] = new DungeonTown('Petalburg Woods', [104]);
@@ -287,6 +293,24 @@ TownList['Victory Road Hoenn'] = new DungeonTown('Victory Road Hoenn', [128], Ba
 const TwinleafTownShop = new Shop([
     ItemList['Pokeball'],
 ]);
+const SolaceonTownShop = new Shop([
+    ItemList['Dawn_stone'],
+    ItemList['Dusk_stone'],
+    ItemList['Shiny_stone'],
+]);
+const PalParkShop = new Shop([
+    ItemList['Razor_claw'],
+    ItemList['Razor_fang'],
+]);
+const SurvivalAreaShop = new Shop([
+    ItemList['Electirizer'],
+    ItemList['Magmarizer'],
+]);
+const ResortAreaShop = new Shop([
+    ItemList['Reaper_cloth'],
+    ItemList['Dubious_disc'],
+    ItemList['Protector'],
+]);
 
 //Sinnoh Towns
 TownList['Twinleaf Town'] = new Town('Twinleaf Town', [], TwinleafTownShop);
@@ -296,18 +320,18 @@ TownList['Oreburgh City'] = new Town('Oreburgh City', [], null, null, 'Oreburgh 
 TownList['Floaroma Town'] = new Town('Floaroma Town', [], null, null, 'Ravaged Path');
 TownList['Eterna City'] = new Town('Eterna City', [], null, null, 'Eterna Forest');
 TownList['Hearthome City'] = new Town('Hearthome City', [208]);
-TownList['Solaceon Town'] = new Town('Solaceon Town', [209]);
+TownList['Solaceon Town'] = new Town('Solaceon Town', [209], SolaceonTownShop);
 TownList['Veilstone City'] = new Town('Veilstone City', [215]);
 TownList['Pastoria City'] = new Town('Pastoria City', [213]);
 TownList['Celestic Town'] = new Town('Celestic Town', [210]);
-TownList['Pal Park'] = new Town('Pal Park', [221]);
+TownList['Pal Park'] = new Town('Pal Park', [221], PalParkShop);
 TownList['Canalave City'] = new Town('Canalave City', [218]);
 TownList['Snowpoint City'] = new Town('Snowpoint City', [217]);
 TownList['Sunyshore City'] = new Town('Sunyshore City', [222]);
 TownList['Pokemon League Sinnoh'] = new Town('Pokemon League Sinnoh', [], null, null, 'Victory Road Sinnoh');
 TownList['Fight Area'] = new Town('Fight Area', [], null, null, 'Spear Pillar');
-TownList['Survival Area'] = new Town('Survival Area', [225]);
-TownList['Resort Area'] = new Town('Resort Area', [229]);
+TownList['Survival Area'] = new Town('Survival Area', [225], SurvivalAreaShop);
+TownList['Resort Area'] = new Town('Resort Area', [229], ResortAreaShop);
 
 //Sinnoh Dungeons
 TownList['Oreburgh Gate'] = new DungeonTown('Oreburgh Gate', [203]);

@@ -766,7 +766,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 159,
             'eggCycles': 15,
-            'evolutions': [new LevelEvolution('Golbat', 'Crobat', 100)],
+            'evolutions': [new StoneEvolution('Golbat', 'Crobat', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 75,
                 'attack': 80,
@@ -2003,6 +2003,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 170,
             'eggCycles': 20,
+            'evolutions': [new StoneEvolution('Rhydon', 'Rhyperior', GameConstants.StoneType.Protector)],
             'base': {
                 'hitpoints': 105,
                 'attack': 130,
@@ -2020,7 +2021,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 395,
             'eggCycles': 40,
-            'evolutions': [new LevelEvolution('Chansey', 'Blissey', 100)],
+            'evolutions': [new StoneEvolution('Chansey', 'Blissey', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 250,
                 'attack': 5,
@@ -2231,7 +2232,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 172,
             'eggCycles': 25,
-            'evolutions': [new StoneEvolution('Electabuzz', 'Electivire', GameConstants.StoneType.Trade_stone)],
+            'evolutions': [new StoneEvolution('Electabuzz', 'Electivire', GameConstants.StoneType.Electirizer)],
             'base': {
                 'hitpoints': 65,
                 'attack': 83,
@@ -2249,7 +2250,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 173,
             'eggCycles': 25,
-            'evolutions': [new StoneEvolution('Magmar', 'Magmortar', GameConstants.StoneType.Trade_stone)],
+            'evolutions': [new StoneEvolution('Magmar', 'Magmortar', GameConstants.StoneType.Magmarizer)],
             'base': {
                 'hitpoints': 65,
                 'attack': 95,
@@ -3059,7 +3060,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 41,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Pichu', 'Pikachu', 100)],
+            'evolutions': [new StoneEvolution('Pichu', 'Pikachu', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 20,
@@ -3078,7 +3079,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 44,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Cleffa', 'Clefairy', 100)],
+            'evolutions': [new StoneEvolution('Cleffa', 'Clefairy', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 50,
@@ -3097,7 +3098,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 42,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Igglybuff', 'Jigglypuff', 100)],
+            'evolutions': [new StoneEvolution('Igglybuff', 'Jigglypuff', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 90,
@@ -3116,7 +3117,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 49,
             'eggCycles': 10,
-            'evolutions': [new LevelEvolution('Togepi', 'Togetic', 100)],
+            'evolutions': [new StoneEvolution('Togepi', 'Togetic', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 35,
                 'attack': 20,
@@ -3134,6 +3135,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 142,
             'eggCycles': 10,
+            'evolutions': [new StoneEvolution('Togetic', 'Togekiss', GameConstants.StoneType.Shiny_stone)],
             'base': {
                 'hitpoints': 55,
                 'attack': 40,
@@ -3518,6 +3520,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 81,
             'eggCycles': 20,
+            'evolutions': [new StoneEvolution('Murkrow', 'Honchkrow', GameConstants.StoneType.Dusk_stone)],
             'base': {
                 'hitpoints': 60,
                 'attack': 85,
@@ -3552,6 +3555,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 87,
             'eggCycles': 25,
+            'evolutions': [new StoneEvolution('Misdreavus', 'Mismagius', GameConstants.StoneType.Dusk_stone)],
             'base': {
                 'hitpoints': 60,
                 'attack': 60,
@@ -3672,6 +3676,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 86,
             'eggCycles': 20,
+            'evolutions': [new StoneEvolution('Gligar', 'Gliscor', GameConstants.StoneType.Razor_fang)],
             'base': {
                 'hitpoints': 65,
                 'attack': 75,
@@ -3809,7 +3814,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 86,
             'eggCycles': 20,
-            'evolutions': [new NightTimedLevelEvolution('Sneasel', 'Weavile', 100)],
+            'evolutions': [new StoneEvolution('Sneasel', 'Weavile', GameConstants.StoneType.Razor_claw)],
             'base': {
                 'hitpoints': 55,
                 'attack': 95,
@@ -4124,6 +4129,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 180,
             'eggCycles': 20,
+            'evolutions': [new StoneEvolution('Porygon2', 'Porygon-Z', GameConstants.StoneType.Dubious_disc)],
             'base': {
                 'hitpoints': 85,
                 'attack': 80,
@@ -4975,7 +4981,10 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 97,
             'catchRate': 120,
-            'evolutions': [new LevelEvolution('Kirlia', 'Gardevoir', 30)],
+            'evolutions': [
+                new LevelEvolution('Kirlia', 'Gardevoir', 30),
+                new StoneEvolution('Kirlia', 'Gallade', GameConstants.StoneType.Dawn_stone),
+            ],
             'base': {
                 'hitpoints': 38,
                 'attack': 35,
@@ -5276,7 +5285,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 38,
             'catchRate': 150,
-            'evolutions': [new LevelEvolution('Azurill', 'Marill', 100)],
+            'evolutions': [new StoneEvolution('Azurill', 'Marill', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 50,
@@ -5576,6 +5585,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 140,
             'catchRate': 150,
+            'evolutions': [new StoneEvolution('Roselia', 'Roserade', GameConstants.StoneType.Shiny_stone)],
             'base': {
                 'hitpoints': 50,
                 'attack': 60,
@@ -6168,7 +6178,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.erratic,
             'exp': 40,
             'catchRate': 255,
-            'evolutions': [new StoneEvolution('Feebas', 'Milotic', GameConstants.StoneType.Trade_stone)],
+            'evolutions': [new StoneEvolution('Feebas', 'Milotic', GameConstants.StoneType.Prism_scale)],
             'base': {
                 'hitpoints': 20,
                 'attack': 15,
@@ -6290,6 +6300,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.fast,
             'exp': 159,
             'catchRate': 90,
+            'evolutions': [new StoneEvolution('Dusclops', 'Dusknoir', GameConstants.StoneType.Reaper_cloth)],
             'base': {
                 'hitpoints': 40,
                 'attack': 70,
@@ -6377,7 +6388,10 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 60,
             'catchRate': 190,
-            'evolutions': [new LevelEvolution('Snorunt', 'Glalie', 42)],
+            'evolutions': [
+                new LevelEvolution('Snorunt', 'Glalie', 42),
+                new StoneEvolution('Snorunt', 'Froslass', GameConstants.StoneType.Dawn_stone),
+            ],
             'base': {
                 'hitpoints': 50,
                 'attack': 50,
@@ -6466,8 +6480,8 @@ const pokemonList: PokemonListData[] =
             'exp': 69,
             'catchRate': 255,
             'evolutions': [
-                new StoneEvolution('Clamperl', 'Huntail', GameConstants.StoneType.Trade_stone),
-                new StoneEvolution('Clamperl', 'Gorebyss', GameConstants.StoneType.Trade_stone),
+                new StoneEvolution('Clamperl', 'Huntail', GameConstants.StoneType.Deepsea_tooth),
+                new StoneEvolution('Clamperl', 'Gorebyss', GameConstants.StoneType.Deepsea_scale),
             ],
             'base': {
                 'hitpoints': 35,
@@ -7165,7 +7179,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 56,
             'catchRate': 255,
-            'evolutions': [new DayTimedLevelEvolution('Budew', 'Roselia', 100)],
+            'evolutions': [new DayTimedStoneEvolution('Budew', 'Roselia', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 40,
@@ -7532,7 +7546,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 70,
             'catchRate': 190,
-            'evolutions': [new LevelEvolution('Buneary', 'Lopunny', 100)],
+            'evolutions': [new StoneEvolution('Buneary', 'Lopunny', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 55,
                 'attack': 66,
@@ -7636,7 +7650,7 @@ const pokemonList: PokemonListData[] =
             'levelType': 4,
             'exp': 57,
             'catchRate': 120,
-            'evolutions': [new LevelEvolution('Chingling', 'Chimecho', 100)],
+            'evolutions': [new NightTimedStoneEvolution('Chingling', 'Chimecho', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 45,
@@ -7869,7 +7883,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 78,
             'catchRate': 50,
-            'evolutions': [new LevelEvolution('Munchlax', 'Snorlax', 100)],
+            'evolutions': [new StoneEvolution('Munchlax', 'Snorlax', GameConstants.StoneType.Soothe_bell)],
             'baby': true,
             'base': {
                 'hitpoints': 135,
@@ -7888,7 +7902,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 57,
             'catchRate': 75,
-            'evolutions': [new LevelEvolution('Riolu', 'Lucario', 100)],
+            'evolutions': [new DayTimedStoneEvolution('Riolu', 'Lucario', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 40,
                 'attack': 70,
@@ -9276,7 +9290,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 65,
             'catchRate': 190,
-            'evolutions': [new LevelEvolution('Woobat', 'Swoobat', 100)],
+            'evolutions': [new StoneEvolution('Woobat', 'Swoobat', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 65,
                 'attack': 45,
@@ -9521,7 +9535,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumslow,
             'exp': 133,
             'catchRate': 120,
-            'evolutions': [new LevelEvolution('Swadloon', 'Leavanny', 100)],
+            'evolutions': [new StoneEvolution('Swadloon', 'Leavanny', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 55,
                 'attack': 63,
@@ -13554,7 +13568,7 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.slow,
             'exp': 107,
             'catchRate': 3,
-            'evolutions': [new LevelEvolution('Type: Null', 'Silvally', 100)],
+            'evolutions': [new StoneEvolution('Type: Null', 'Silvally', GameConstants.StoneType.Soothe_bell)],
             'base': {
                 'hitpoints': 95,
                 'attack': 95,
