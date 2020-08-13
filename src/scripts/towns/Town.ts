@@ -187,7 +187,7 @@ const AzaleaTownShop = new Shop([
 const GoldenrodCityShop = new Shop([
     ItemList['Sun_stone'],
     ItemList['Upgrade'],
-	ItemList['Soothe_bell'],
+    ItemList['Soothe_bell'],
 ]);
 const OlivineCityShop = new Shop([
     ItemList['Metal_coat'],
@@ -250,8 +250,8 @@ const MossdeepCityShop = new Shop([
     ItemList['Prism_scale'],
 ]);
 const PacifidlogTownShop = new Shop([
-	ItemList['Deepsea_tooth'],
-	ItemList['Deepsea_scale'],
+    ItemList['Deepsea_tooth'],
+    ItemList['Deepsea_scale'],
 ]);
 
 //Hoenn Towns
@@ -294,22 +294,22 @@ const TwinleafTownShop = new Shop([
     ItemList['Pokeball'],
 ]);
 const SolaceonTownShop = new Shop([
-	ItemList['Dawn_stone'],
-	ItemList['Dusk_stone'],
-	ItemList['Shiny_stone'],
+    ItemList['Dawn_stone'],
+    ItemList['Dusk_stone'],
+    ItemList['Shiny_stone'],
 ]);
 const PalParkShop = new Shop([
-	ItemList['Razor_claw'],
-	ItemList['Razor_fang'],
+    ItemList['Razor_claw'],
+    ItemList['Razor_fang'],
 ]);
 const SurvivalAreaShop = new Shop([
-	ItemList['Electrizer'],
-	ItemList['Magmarizer'],
+    ItemList['Electrizer'],
+    ItemList['Magmarizer'],
 ]);
 const ResortAreaShop = new Shop([
-	ItemList['Reaper_cloth'],
-	ItemList['Dubious_disc'],
-	ItemList['Protector'],
+    ItemList['Reaper_cloth'],
+    ItemList['Dubious_disc'],
+    ItemList['Protector'],
 ]);
 
 //Sinnoh Towns
