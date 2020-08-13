@@ -632,7 +632,6 @@ namespace GameConstants {
         'Metal_coat',
         'Kings_rock',
         'Upgrade',
-        'Time_stone',
         'Soothe_bell',
         'Deepsea_tooth',
         'Deepsea_scale',

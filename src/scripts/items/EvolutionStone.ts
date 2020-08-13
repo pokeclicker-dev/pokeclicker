@@ -31,7 +31,6 @@ ItemList['Dragon_scale']  = new EvolutionStone(GameConstants.StoneType.Dragon_sc
 ItemList['Metal_coat']    = new EvolutionStone(GameConstants.StoneType.Metal_coat, 2500);
 ItemList['Kings_rock']    = new EvolutionStone(GameConstants.StoneType.Kings_rock, 2500);
 ItemList['Upgrade']       = new EvolutionStone(GameConstants.StoneType.Upgrade, 2500);
-ItemList['Time_stone']    = new EvolutionStone(GameConstants.StoneType.Time_stone, 2500);
 ItemList['Soothe_bell']   = new EvolutionStone(GameConstants.StoneType.Soothe_bell, 2500);
 ItemList['Deepsea_tooth'] = new EvolutionStone(GameConstants.StoneType.Deepsea_tooth, 2500);
 ItemList['Deepsea_scale'] = new EvolutionStone(GameConstants.StoneType.Deepsea_scale, 2500);

@@ -10,10 +10,13 @@ class App {
 
         Preload.load(App.debug).then(() => {
             console.log(`[${GameConstants.formatDate(new Date())}] %cLoading Game Data..`, 'color:#8e44ad;font-weight:900;');
+            // Needs to be loaded first so save data can be updated (specifically "player" data)
+            const update = new Update();
+
             UndergroundItem.initialize();
             player = Save.load();
             App.game = new Game(
-                new Update(),
+                update,
                 new Breeding(),
                 new Pokeballs(),
                 new Wallet(),
