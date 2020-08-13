@@ -301,6 +301,7 @@ const SolaceonTownShop = new Shop([
 const PalParkShop = new Shop([
     ItemList['Razor_claw'],
     ItemList['Razor_fang'],
+    ItemList['Combee'],
 ]);
 const SurvivalAreaShop = new Shop([
     ItemList['Electirizer'],

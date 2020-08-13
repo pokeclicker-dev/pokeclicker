@@ -35,3 +35,4 @@ ItemList['Lickitung'] = new PokemonItem(GameConstants.PokemonItemType.Lickitung,
 ItemList['Togepi']    = new PokemonItem(GameConstants.PokemonItemType.Togepi, 2500);
 ItemList['Beldum']    = new PokemonItem(GameConstants.PokemonItemType.Beldum, 5000);
 ItemList['Skorupi']    = new PokemonItem(GameConstants.PokemonItemType.Skorupi, 5000);
+ItemList['Combee']    = new PokemonItem(GameConstants.PokemonItemType.Combee, 5000);
