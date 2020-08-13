@@ -194,7 +194,6 @@ const OlivineCityShop = new Shop([
 ]);
 const CianwoodCityShop = new Shop([
     ItemList['Ultraball'],
-    ItemList['Time_stone'],
 ]);
 const BlackthornCityShop = new Shop([
     ItemList['LargeRestore'],
