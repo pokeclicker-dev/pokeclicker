@@ -152,7 +152,7 @@ class MapHelper {
             const town = TownList[townName];
             const reqsList = [];
 
-            town.requirements.forEach(requirement => {
+            town.requirements?.forEach(requirement => {
                 if (!requirement.isCompleted()) {
                     reqsList.push(requirement.hint());
                 }
