@@ -116,9 +116,10 @@ class MapHelper {
                 return 'dungeon unlockedDungeon';
             }
             if (gymList.hasOwnProperty(town)) {
+                const gym = gymList[town];
                 // If defeated the previous gym, but not this one
                 const gymIndex = Statistics.getGymIndex(town);
-                if ((gymIndex == 0 || App.game.statistics.gymsDefeated[gymIndex - 1]()) && !App.game.statistics.gymsDefeated[gymIndex]()) {
+                if (Gym.isUnlocked(gym) && !App.game.badgeCase.hasBadge(gym.badgeReward)) {
                     return 'city unlockedUnfinishedTown';
                 }
             }
