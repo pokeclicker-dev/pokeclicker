@@ -1,6 +1,6 @@
 ///<reference path="GymPokemon.ts"/>
 ///<reference path="../pokemons/PokemonFactory.ts"/>
-///<reference path="../achievements/EitherRequirement.ts"/>
+///<reference path="../achievements/OneFromManyRequirement.ts"/>
 
 /**
  * Data list that contains all gymLeaders, accessible by townName.
@@ -18,7 +18,7 @@ class Gym {
         public badgeReward: BadgeCase.Badge,
         public moneyReward: number,
         public defeatMessage: string,
-        public requirements: (EitherRequirement | Requirement)[] = [],
+        public requirements: (OneFromManyRequirement | Requirement)[] = [],
         public rewardFunction = () => {}
     ) {}
 
@@ -137,7 +137,7 @@ gymList['Fuchsia City'] = new Gym(
     3500,
     'Humph! You have proven your worth! Here! Take the Soul Badge!',
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 18),
             new RouteKillRequirement(10, 15),
         ]),

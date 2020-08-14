@@ -1,6 +1,6 @@
 ///<reference path="Requirement.ts"/>
 
-class EitherRequirement {
+class OneFromManyRequirement {
     constructor(public requirements: Requirement[]) {}
 
     public isCompleted() {

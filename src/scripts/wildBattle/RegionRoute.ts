@@ -3,7 +3,7 @@ class RegionRoute {
         public region: GameConstants.Region,
         public number: number,
         public pokemon: RoutePokemon,
-        public requirements: (EitherRequirement | Requirement)[] = [],
+        public requirements: (OneFromManyRequirement | Requirement)[] = [],
         public orderNumber?: number
     ) {
         this.orderNumber = orderNumber || number;

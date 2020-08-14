@@ -162,7 +162,7 @@ Routes.add(new RegionRoute(
         water: ['Slowbro', 'Magikarp', 'Poliwag', 'Goldeen', 'Tentacool', 'Krabby', 'Horsea', 'Seadra'],
     }),
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 12),
             new RouteKillRequirement(10, 14),
         ]),
@@ -175,7 +175,7 @@ Routes.add(new RegionRoute(
         water: ['Poliwag', 'Goldeen'],
     }),
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 13),
             new RouteKillRequirement(10, 15),
         ]),
@@ -187,7 +187,7 @@ Routes.add(new RegionRoute(
         land: ['Pidgey', 'Pidgeotto', 'Oddish', 'Gloom', 'Venonat', 'Venomoth', 'Bellsprout', 'Weepinbell', 'Ditto'],
     }),
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 18),
             new RouteKillRequirement(10, 14),
         ]),
@@ -207,7 +207,7 @@ Routes.add(new RegionRoute(
         water: ['Poliwag', 'Goldeen', 'Tentacool', 'Shellder', 'Krabby'],
     }),
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 16),
             new RouteKillRequirement(10, 18),
         ]),
@@ -220,7 +220,7 @@ Routes.add(new RegionRoute(
         water: ['Poliwag', 'Goldeen', 'Tentacool', 'Shellder', 'Krabby'],
     }),
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 17),
             new RouteKillRequirement(10, 15),
         ]),
@@ -239,7 +239,7 @@ Routes.add(new RegionRoute(
         water: ['Tentacool', 'Magikarp', 'Poliwag', 'Goldeen', 'Tentacruel', 'Shellder', 'Horsea', 'Staryu'],
     }),
     [
-        new EitherRequirement([
+        new OneFromManyRequirement([
             new RouteKillRequirement(10, 21),
             new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Seafoam Islands')),
         ]),
