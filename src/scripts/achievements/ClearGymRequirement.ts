@@ -11,4 +11,12 @@ class ClearGymRequirement extends Requirement {
     public getProgress() {
         return Math.min(App.game.statistics.gymsDefeated[this.gymIndex](), this.requiredValue);
     }
+
+    public hint(): string {
+        if (this.requiredValue != 1) {
+            return `Requires the ${GameConstants.RegionDungeons.flat()[this.gymIndex]} Gym to be defeated ${this.requiredValue} times.`;
+        } else {
+            return `Requires the ${GameConstants.RegionDungeons.flat()[this.gymIndex]} Gym to be completed.`;
+        }
+    }
 }

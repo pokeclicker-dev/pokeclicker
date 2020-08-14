@@ -34,14 +34,8 @@ class MapHelper {
             const reqsList = [];
 
             routeData.requirements?.forEach(requirement => {
-                if (requirement.isCompleted()) {
-                    return;
-                } else if (requirement instanceof GymBadgeRequirement) {
-                    reqsList.push(`Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[requirement.badge])} badge.`);
-                } else if (requirement instanceof ClearDungeonRequirement) {
-                    reqsList.push(`${GameConstants.RegionDungeons.flat()[requirement.dungeonIndex]} needs to be completed.`);
-                } else if (requirement instanceof RouteKillRequirement) {
-                    reqsList.push(`Route ${requirement.route} still needs to be completed.`);
+                if (!requirement.isCompleted()) {
+                    reqsList.push(requirement.hint());
                 }
             });
 
@@ -159,14 +153,8 @@ class MapHelper {
             const reqsList = [];
 
             town.requirements.forEach(requirement => {
-                if (requirement.isCompleted()) {
-                    return;
-                } else if (requirement instanceof GymBadgeRequirement) {
-                    reqsList.push(`Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[requirement.badge])} badge.`);
-                } else if (requirement instanceof ClearDungeonRequirement) {
-                    reqsList.push(`${GameConstants.RegionDungeons.flat()[requirement.dungeonIndex]} needs to be completed.`);
-                } else if (requirement instanceof RouteKillRequirement) {
-                    reqsList.push(`Route ${requirement.route} still needs to be completed.`);
+                if (!requirement.isCompleted()) {
+                    reqsList.push(requirement.hint());
                 }
             });
 

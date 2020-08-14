@@ -8,4 +8,14 @@ class EitherRequirement {
             return requirement.isCompleted();
         });
     }
+
+    public hint(): string {
+        const output = [];
+        this.requirements.forEach(requirement => {
+            if (!requirement.isCompleted()) {
+                output.push(requirement.hint());
+            }
+        });
+        return output.join(' or ');
+    }
 }

@@ -11,4 +11,12 @@ class RouteKillRequirement extends Requirement {
     public getProgress() {
         return Math.min(App.game.statistics.routeKills[this.route](), this.requiredValue);
     }
+
+    public hint(): string {
+        if (this.requiredValue != GameConstants.ROUTE_KILLS_NEEDED) {
+            return `${this.requiredValue} Pokémon need to be defeated on Route ${this.route}.`;
+        } else {
+            return `Route ${this.route} still needs to be completed.`;
+        }
+    }
 }

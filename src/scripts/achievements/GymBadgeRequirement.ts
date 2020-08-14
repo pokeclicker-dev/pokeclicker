@@ -10,4 +10,8 @@ class GymBadgeRequirement extends Requirement {
     public getProgress() {
         return +App.game.badgeCase.hasBadge(this.badge);
     }
+
+    public hint(): string {
+        return `Requires the ${GameConstants.camelCaseToString(BadgeCase.Badge[this.badge])} badge.`;
+    }
 }

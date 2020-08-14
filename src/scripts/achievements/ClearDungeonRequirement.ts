@@ -11,4 +11,12 @@ class ClearDungeonRequirement extends Requirement {
     public getProgress() {
         return Math.min(App.game.statistics.dungeonsCleared[this.dungeonIndex](), this.requiredValue);
     }
+
+    public hint(): string {
+        if (this.requiredValue != 1) {
+            return `${GameConstants.RegionDungeons.flat()[this.dungeonIndex]} needs to be completed ${this.requiredValue} times.`;
+        } else {
+            return `${GameConstants.RegionDungeons.flat()[this.dungeonIndex]} needs to be completed.`;
+        }
+    }
 }
