@@ -16426,6 +16426,8 @@ const pokemonList: PokemonListData[] =
     ];
 
 
+const pokemonNameIndex = {};
+
 // TODO move to its own initialize method that gets called on game start.
 pokemonList.forEach(p => {
     const baseOffense = 2 * Math.round(Math.sqrt(p.base.attack * p.base.specialAttack) + Math.sqrt(p.base.speed));
@@ -16436,6 +16438,8 @@ pokemonList.forEach(p => {
     if (p.baby) {
         p.evolutions?.forEach(evo => pokemonDevolutionMap[evo.getEvolvedPokemon()] = evo.basePokemon);
     }
+    p.nativeRegion = p.nativeRegion || GameConstants.TotalPokemonsPerRegion.findIndex(maxRegionID => maxRegionID >= p.id);
+    pokemonNameIndex[p.name.toLowerCase()] = p;
 });
 
 const pokemonMap: any = new Proxy(pokemonList, {
@@ -16458,7 +16462,7 @@ const pokemonMap: any = new Proxy(pokemonList, {
                     return pokemon[random];
                 };
             default:
-                return pokemon.find(p => p.name.toLowerCase() == prop.toLowerCase()) || pokemon[prop] || pokemon.find(p => p.id == 0);
+                return pokemonNameIndex[prop.toLowerCase()] || pokemon[prop] || pokemon.find(p => p.id == 0);
         }
     },
 });
