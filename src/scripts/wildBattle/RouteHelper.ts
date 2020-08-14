@@ -1,7 +1,7 @@
-///<reference path="PokemonsPerRoute.ts"/>
+///<reference path="RoutePokemon.ts"/>
 
 /**
- * Helper class to retrieve information from PokemonsPerRoute
+ * Helper class to retrieve information from RoutePokemon
  */
 class RouteHelper {
     /**

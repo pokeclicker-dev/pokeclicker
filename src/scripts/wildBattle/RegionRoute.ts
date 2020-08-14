@@ -1,4 +1,4 @@
-class Route {
+class RegionRoute {
     constructor(
         public region: GameConstants.Region,
         public number: number,
@@ -6,7 +6,7 @@ class Route {
         public requirements: (EitherRequirement | Requirement)[] = [],
         public orderNumber?: number
     ) {
-        orderNumber = orderNumber || number;
+        this.orderNumber = orderNumber || number;
     }
 
     public isUnlocked() {
