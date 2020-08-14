@@ -1,6 +1,6 @@
 /* eslint-disable array-bracket-newline */
 ///<reference path="../achievements/GymBadgeRequirement.ts"/>
-///<reference path="../achievements/oneFromManyRequirement.ts"/>
+///<reference path="../achievements/OneFromManyRequirement.ts"/>
 class Town {
     public name: KnockoutObservable<string>;
     public gym?: KnockoutObservable<Gym>;
@@ -115,7 +115,7 @@ TownList['Lavender Town'] = new Town('Lavender Town', [new RouteKillRequirement(
 
 //Kanto Dungeons
 TownList['Viridian Forest'] = new DungeonTown('Viridian Forest', [new RouteKillRequirement(10, 2)]);
-TownList['Mt. Moon'] = new DungeonTown('Mt. Moon', [new RouteKillRequirement(10,3), new GymBadgeRequirement(BadgeCase.Badge.Boulder)]);
+TownList['Mt. Moon'] = new DungeonTown('Mt. Moon', [new RouteKillRequirement(10,3)]);
 TownList['Digletts Cave'] = new DungeonTown('Digletts Cave', [new RouteKillRequirement(10, 6)]);
 TownList['Rock Tunnel'] = new DungeonTown('Rock Tunnel', [new RouteKillRequirement(10, 9), new GymBadgeRequirement(BadgeCase.Badge.Cascade)]);
 TownList['Power Plant'] = new DungeonTown('Power Plant', [new RouteKillRequirement(10, 9), new GymBadgeRequirement(BadgeCase.Badge.Soul)]);
@@ -123,7 +123,7 @@ TownList['Pokemon Tower'] = new DungeonTown('Pokemon Tower', [new RouteKillRequi
 TownList['Seafoam Islands'] = new DungeonTown('Seafoam Islands', [new RouteKillRequirement(10, 19)]);
 TownList['Pokemon Mansion'] = new DungeonTown('Pokemon Mansion', [new OneFromManyRequirement([new RouteKillRequirement(10, 20), new RouteKillRequirement(10, 21)])]);
 TownList['Victory Road'] = new DungeonTown('Victory Road', [new RouteKillRequirement(10, 23)]);
-TownList['Cerulean Cave'] = new DungeonTown('Cerulean Cave', [new RouteKillRequirement(10, 4), new GymBadgeRequirement(BadgeCase.Badge.Elite_KantoChampion)]);
+TownList['Cerulean Cave'] = new DungeonTown('Cerulean Cave', [new GymBadgeRequirement(BadgeCase.Badge.Elite_KantoChampion)]);
 
 //Johto Shops
 const NewBarkTownShop = new Shop([
