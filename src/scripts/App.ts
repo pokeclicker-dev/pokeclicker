@@ -9,6 +9,8 @@ class App {
         }
 
         Preload.load(App.debug).then(() => {
+            ko.options.deferUpdates = true;
+            
             console.log(`[${GameConstants.formatDate(new Date())}] %cLoading Game Data..`, 'color:#8e44ad;font-weight:900;');
             // Needs to be loaded first so save data can be updated (specifically "player" data)
             const update = new Update();
@@ -44,7 +46,6 @@ class App {
 
             App.game.initialize();
             ko.applyBindings(App.game);
-            ko.options.deferUpdates = true;
 
             GameController.applyRouteBindings();
             Preload.hideSplashScreen();
