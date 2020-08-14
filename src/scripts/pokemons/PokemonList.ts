@@ -14902,7 +14902,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 849,
-            'name': 'Toxtricity\nLow Key Form',
+            'name': 'Toxtricity',
             'type': [
                 PokemonType.Electric,
                 PokemonType.Poison,
@@ -15389,7 +15389,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 875,
-            'name': 'Eiscue\nIce Face',
+            'name': 'Eiscue',
             'type': [PokemonType.Ice],
             'base': {
                 'hitpoints': 75,
@@ -15406,7 +15406,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 876,
-            'name': 'Indeedee\nMale',
+            'name': 'Indeedee',
             'type': [
                 PokemonType.Psychic,
                 PokemonType.Normal,
@@ -15426,7 +15426,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 877,
-            'name': 'Morpeko\nFull Belly Mode',
+            'name': 'Morpeko',
             'type': [
                 PokemonType.Electric,
                 PokemonType.Dark,
@@ -15643,7 +15643,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 888,
-            'name': 'Zacian\nCrowned Sword',
+            'name': 'Zacian',
             'type': [
                 PokemonType.Fairy,
                 PokemonType.Steel,
@@ -15663,7 +15663,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 889,
-            'name': 'Zamazenta\nCrowned Shield',
+            'name': 'Zamazenta',
             'type': [
                 PokemonType.Fighting,
                 PokemonType.Steel,
@@ -15722,7 +15722,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 892,
-            'name': 'Urshifu\nSingle Strike Style',
+            'name': 'Urshifu',
             'type': [
                 PokemonType.Fighting,
                 PokemonType.Dark,
