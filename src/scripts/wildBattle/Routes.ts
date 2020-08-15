@@ -425,7 +425,8 @@ Routes.add(new RegionRoute(
         land: ['Spearow', 'Rattata', 'Geodude'],
         headbutt: ['Spearow', 'Aipom', 'Heracross'],
     }),
-    [new RouteKillRequirement(10, 29)]
+    [new RouteKillRequirement(10, 29)],
+    29.1
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 47,
@@ -452,7 +453,7 @@ Routes.add(new RegionRoute(
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
     [new RouteKillRequirement(10, 27)],
-    49
+    50
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 27,
@@ -462,7 +463,7 @@ Routes.add(new RegionRoute(
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
     [new GymBadgeRequirement(BadgeCase.Badge.Rising)],
-    50
+    49
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 28,
