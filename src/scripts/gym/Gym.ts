@@ -626,8 +626,8 @@ gymList['Oreburgh City'] = new Gym(
     ],
     BadgeCase.Badge.Coal,
     2500,
-    BadgeCase.Badge.Elite_HoennChampion,
-    'This is embarrassing... I went and lost to a Trainer who didn\'t have a single Gym Badge... But that\'s tough. You were strong, and I was weak. That\'s all there is. According to Pokémon League rules, I have to give you our Gym Badge since you\'ve beaten me, the Leader. Heres your official Pokémon League Coal Badge.'
+    'This is embarrassing... I went and lost to a Trainer who didn\'t have a single Gym Badge... But that\'s tough. You were strong, and I was weak. That\'s all there is. According to Pokémon League rules, I have to give you our Gym Badge since you\'ve beaten me, the Leader. Heres your official Pokémon League Coal Badge.',
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_HoennChampion)]
 );
 gymList['Eterna City'] = new Gym(
     'Gardenia',
@@ -639,8 +639,8 @@ gymList['Eterna City'] = new Gym(
     ],
     BadgeCase.Badge.Forest,
     5000,
-    BadgeCase.Badge.Coal,
-    'I might\'ve said it before, but you\'re really tough! Wasn\'t it hard for you to raise your Pokémon to be so good? I guess that\'s a measure of how much you love your Pokémon. In recognition of that, I proudly grant you this!"'
+    'I might\'ve said it before, but you\'re really tough! Wasn\'t it hard for you to raise your Pokémon to be so good? I guess that\'s a measure of how much you love your Pokémon. In recognition of that, I proudly grant you this!"',
+    [new GymBadgeRequirement(BadgeCase.Badge.Coal)]
 );
 gymList['Hearthome City'] = new Gym(
     'Fantina',
@@ -652,8 +652,8 @@ gymList['Hearthome City'] = new Gym(
     ],
     BadgeCase.Badge.Relic,
     10000,
-    BadgeCase.Badge.Forest,
-    'I am dumbfounded! So very, very strong! You, your Pokémon, so strong! Your power is admirable! I shall honor it with this Gym Badge!"'
+    'I am dumbfounded! So very, very strong! You, your Pokémon, so strong! Your power is admirable! I shall honor it with this Gym Badge!"',
+    [new GymBadgeRequirement(BadgeCase.Badge.Forest)]
 );
 gymList['Veilstone City'] = new Gym(
     'Maylene',
@@ -665,8 +665,8 @@ gymList['Veilstone City'] = new Gym(
     ],
     BadgeCase.Badge.Cobble,
     20000,
-    BadgeCase.Badge.Relic,
-    '...OK. You win. That was a tough loss. I learned a lot from it. Please, accept this Gym Badge.'
+    '...OK. You win. That was a tough loss. I learned a lot from it. Please, accept this Gym Badge.',
+    [new GymBadgeRequirement(BadgeCase.Badge.Relic)]
 );
 gymList['Pastoria City'] = new Gym(
     'Crasher Wake',
@@ -678,8 +678,8 @@ gymList['Pastoria City'] = new Gym(
     ],
     BadgeCase.Badge.Fen,
     40000,
-    BadgeCase.Badge.Cobble,
-    'It seems the undertow pulled me under... But I had a great time battling with you! You\'ve earned this!'
+    'It seems the undertow pulled me under... But I had a great time battling with you! You\'ve earned this!',
+    [new GymBadgeRequirement(BadgeCase.Badge.Cobble)]
 );
 gymList['Canalave City'] = new Gym(
     'Byron',
@@ -691,8 +691,8 @@ gymList['Canalave City'] = new Gym(
     ],
     BadgeCase.Badge.Mine,
     80000,
-    BadgeCase.Badge.Fen,
-    'You were strong enough to take down my prized team of Pokémon. In recognition of that power, I give you this: the Mine Badge!'
+    'You were strong enough to take down my prized team of Pokémon. In recognition of that power, I give you this: the Mine Badge!',
+    [new GymBadgeRequirement(BadgeCase.Badge.Fen)]
 );
 gymList['Snowpoint City'] = new Gym(
     'Candice',
@@ -705,8 +705,8 @@ gymList['Snowpoint City'] = new Gym(
     ],
     BadgeCase.Badge.Icicle,
     16000,
-    BadgeCase.Badge.Mine,
-    'Wow! You\'re great! You\'ve earned my respect! I think your focus and will bowled us over totally. Oh, that\'s right! I\'m supposed to give you this!'
+    'Wow! You\'re great! You\'ve earned my respect! I think your focus and will bowled us over totally. Oh, that\'s right! I\'m supposed to give you this!',
+    [new GymBadgeRequirement(BadgeCase.Badge.Mine)]
 );
 gymList['Sunyshore City'] = new Gym(
     'Volkner',
@@ -719,8 +719,8 @@ gymList['Sunyshore City'] = new Gym(
     ],
     BadgeCase.Badge.Beacon,
     32000,
-    BadgeCase.Badge.Icicle,
-    '...Hehehe. Hahahah! ...That was the most fun I\'ve had in a battle since...I don\'t know when! It\'s also made me excited to know you and your team will keep battling to greater heights! This is your eighth Gym Badge. You\'ve earned this!'
+    '...Hehehe. Hahahah! ...That was the most fun I\'ve had in a battle since...I don\'t know when! It\'s also made me excited to know you and your team will keep battling to greater heights! This is your eighth Gym Badge. You\'ve earned this!',
+    [new GymBadgeRequirement(BadgeCase.Badge.Icicle)]
 );
 gymList['Elite Aaron'] = new Gym(
     'Aaron',
@@ -734,8 +734,8 @@ gymList['Elite Aaron'] = new Gym(
     ],
     BadgeCase.Badge.Elite_Aaron,
     64000,
-    BadgeCase.Badge.Beacon,
-    'I lost with the most beautiful and toughest of the bug Pokémon... We lost because I wasn\'t good enough... That\'s it! Back to training camp! Let\'s hear it for me! No... That was wrong... Anyway... Go on to the next room! Three Trainers are waiting for you. They are all tougher than me.'
+    'I lost with the most beautiful and toughest of the bug Pokémon... We lost because I wasn\'t good enough... That\'s it! Back to training camp! Let\'s hear it for me! No... That was wrong... Anyway... Go on to the next room! Three Trainers are waiting for you. They are all tougher than me.',
+    [new GymBadgeRequirement(BadgeCase.Badge.Beacon)]
 );
 gymList['Elite Bertha'] = new Gym(
     'Bertha',
@@ -749,8 +749,8 @@ gymList['Elite Bertha'] = new Gym(
     ],
     BadgeCase.Badge.Elite_Bertha,
     64000,
-    BadgeCase.Badge.Elite_Aaron,
-    'You\'re quite something, youngster. I like how you and your Pokémon earned the win by working as one. That\'s what makes you so strong. Ahahaha! I think that you can go as far as you want.'
+    'You\'re quite something, youngster. I like how you and your Pokémon earned the win by working as one. That\'s what makes you so strong. Ahahaha! I think that you can go as far as you want.',
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_Aaron)]
 );
 gymList['Elite Flint'] = new Gym(
     'Flint',
@@ -764,8 +764,8 @@ gymList['Elite Flint'] = new Gym(
     ],
     BadgeCase.Badge.Elite_Flint,
     64000,
-    BadgeCase.Badge.Elite_Bertha,
-    '...! I don\'t believe it! I lost! I didn\'t take you for granted. Bud I\'d never even considered it! I\'m blown away by this! You and your Pokémon are hot stuff!'
+    '...! I don\'t believe it! I lost! I didn\'t take you for granted. Bud I\'d never even considered it! I\'m blown away by this! You and your Pokémon are hot stuff!',
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_Bertha)]
 );
 gymList['Elite Lucian'] = new Gym(
     'Lucian',
@@ -779,8 +779,8 @@ gymList['Elite Lucian'] = new Gym(
     ],
     BadgeCase.Badge.Elite_Lucian,
     64000,
-    BadgeCase.Badge.Elite_Flint,
-    'Congratulations. You have beaten the Elite Four. However, that doesn\'t mean you\'re done with the Pokémon league. There remains the Champion. I should warn you—the Champion is far stronger than the Elite Four. Now, go on. Step through the doorway to your final battle.'
+    'Congratulations. You have beaten the Elite Four. However, that doesn\'t mean you\'re done with the Pokémon league. There remains the Champion. I should warn you—the Champion is far stronger than the Elite Four. Now, go on. Step through the doorway to your final battle.',
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_Flint)]
 );
 gymList['Champion Cynthia'] = new Gym(
     'Cynthia',
@@ -795,7 +795,6 @@ gymList['Champion Cynthia'] = new Gym(
     ],
     BadgeCase.Badge.Elite_SinnohChampion,
     128000,
-    BadgeCase.Badge.Elite_Lucian
-    ,
-    'That was excellent. Truly, an outstanding battle. You gave the support your Pokémon needed to maximize their power. And you guided them with certainty to secure victory. You have both passion and calculating coolness. Together, you and your Pokémon can overcome any challenge that may come your way. Those are the impressions I got from our battle. I\'m glad I got to take part in the crowning of Sinnoh\'s new Champion! Come with me. We\'ll take the lift.'
+    'That was excellent. Truly, an outstanding battle. You gave the support your Pokémon needed to maximize their power. And you guided them with certainty to secure victory. You have both passion and calculating coolness. Together, you and your Pokémon can overcome any challenge that may come your way. Those are the impressions I got from our battle. I\'m glad I got to take part in the crowning of Sinnoh\'s new Champion! Come with me. We\'ll take the lift.',
+    [new GymBadgeRequirement(BadgeCase.Badge.Elite_Lucian)]
 );
