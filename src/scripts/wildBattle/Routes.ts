@@ -545,7 +545,7 @@ Routes.add(new RegionRoute(
             new RouteKillRequirement(10, 106),
             new RouteKillRequirement(10, 108),
         ]),
-    ]
+    ],
     115.3
 ));
 Routes.add(new RegionRoute(
