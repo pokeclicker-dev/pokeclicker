@@ -76,7 +76,7 @@ const SortOptionConfigs: Record<SortOptions, SortOptionConfig> = {
     },
 
     [SortOptions.sinnoh]: {
-        'text': 'Hoenn',
+        'text': 'Sinnoh',
         'getValue': p => p.id <= GameConstants.TotalPokemonsPerRegion[GameConstants.Region.sinnoh] && p.id > GameConstants.TotalPokemonsPerRegion[GameConstants.Region.hoenn],
         'invert': true,
     },
