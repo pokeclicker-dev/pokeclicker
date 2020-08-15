@@ -366,61 +366,60 @@ namespace GameConstants {
 
     export const ROUTE_KILLS_NEEDED = 10;
 
-    // TODO: SINNOH
     export const WaterAreas = {
-        0: new Set(['Cerulean City', 19, 20, 21]),
+        0: new Set(['Cerulean City', 19, 20, 21, 24]),
         1: new Set([40, 41, 'Slowpoke Well']),
-        2: new Set([105, 106, 107, 108, 109, 122, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 'Shoal Cave', 'Seafloor Cavern']),
-        3: new Set([]),
+        2: new Set([105, 106, 107, 108, 109, 118, 122, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 'Shoal Cave', 'Seafloor Cavern']),
+        3: new Set([218, 219, 220, 223, 230, 'Lake Verity', 'Lake Valor', 'Pastoria City']),
     };
 
     export const IceAreas = {
         0: new Set(['Seafoam Islands']),
         1: new Set(['Mahogany Town', 'Ice Path', 'Whirl Islands']),
         2: new Set(['Sootopolis City']),
-        3: new Set([]),
+        3: new Set([216, 217, 'Lake Acuity', 'Snowpoint City']),
     };
 
     export const ForestAreas = {
-        0: new Set(['Fuchsia City', 'Viridian Forest']),
-        1: new Set(['Azalea Town', 'Ilex Forest']),
-        2: new Set(['Petalburg Woods']),
-        3: new Set([]),
+        0: new Set([25, 'Fuchsia City', 'Viridian Forest']),
+        1: new Set([36, 38, 43,  'Azalea Town', 'Ilex Forest']),
+        2: new Set([119, 'Petalburg Woods']),
+        3: new Set([201, 204, 'Eterna Forest', 'Eterna City', 'Fullmoon Island', 'Newmoon Island']),
     };
 
     export const CaveAreas = {
         0: new Set(['Pewter City', 'Digletts Cave', 'Mt. Moon', 'Rock Tunnel', 'Victory Road']),
         1: new Set(['Cianwood City', 'Ruins of Alph', 'Union Cave', 'Mt Mortar', 'Dark Cave']),
         2: new Set(['Rustboro City', 'Dewford Town', 'Rusturf Tunnel', 'Granite Cave', 'New Mauville', 'Meteor Falls', 'Victory Road Hoenn']),
-        3: new Set([]),
+        3: new Set(['Oreburgh Gate', 'Oreburgh City', 'Ravaged Path', 'Wayward Cave', 'Mt. Coronet South', 'Iron Island', 'Mt. Coronet North', 'Victory Road Sinnoh']),
     };
 
     export const GemCaveAreas = {
         0: new Set(['Viridian City', 'Cerulean Cave']),
         1: new Set(['Blackthorn City', 'Mt Silver']),
         2: new Set(['Cave of Origin', 'Sky Pillar']),
-        3: new Set([]),
+        3: new Set(['Spear Pillar', 'Hall of Origin', 'Stark Mountain']),
     };
 
     export const PowerPlantAreas = {
         0: new Set(['Vermillion City', 'Power Plant']),
         1: new Set(['Tin Tower']),
         2: new Set(['Mauville City']),
-        3: new Set([]),
+        3: new Set(['Sunyshore City']),
     };
 
     export const MansionAreas = {
         0: new Set(['Cinnabar Island', 'Pokemon Mansion']),
         1: new Set(['Olivine City', 'Burned Tower']),
         2: new Set(['Lavaridge Town', 'Petalburg City', 'Jagged Pass', 'Fiery Path', 'Mt. Chimney']),
-        3: new Set([]),
+        3: new Set(['Old Chateau', 'Veilstone City', 'Canalave City', 'Snowpoint Temple']),
     };
 
     export const GraveyardAreas = {
         0: new Set(['Saffron City', 'Pokemon Tower']),
         1: new Set(['Ecruteak City']),
         2: new Set(['Mossdeep City', 'Mt. Pyre']),
-        3: new Set([]),
+        3: new Set(['Hearthome City']),
     };
 
     export enum Starter {
