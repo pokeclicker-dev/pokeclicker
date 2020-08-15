@@ -43,6 +43,6 @@ TownList['Pokemon League Hoenn'] = new PokemonLeague('Pokemon League Hoenn', [ne
 (<PokemonLeague>TownList['Pokemon League Hoenn']).setupGymTowns();
 
 const pokemonLeagueSinnoh = ['Elite Aaron', 'Elite Bertha', 'Elite Flint', 'Elite Lucian', 'Champion Cynthia'];
-TownList['Pokemon League Sinnoh'] = new PokemonLeague('Pokemon League Sinnoh', [223], indigoPlateauShop, 'Victory Road Sinnoh', pokemonLeagueSinnoh);
+TownList['Pokemon League Sinnoh'] = new PokemonLeague('Pokemon League Sinnoh', [new RouteKillRequirement(10, 223), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Sinnoh'))], indigoPlateauShop, pokemonLeagueSinnoh);
 (<PokemonLeague>TownList['Pokemon League Sinnoh']).setupGymTowns();
 
