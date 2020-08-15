@@ -59,19 +59,19 @@ const SortOptionConfigs: Record<SortOptions, SortOptionConfig> = {
 
     [SortOptions.kanto]: {
         'text': 'Kanto',
-        'getValue': p => p.id <= 151,
+        'getValue': p => p.id <= GameConstants.TotalPokemonsPerRegion[GameConstants.Region.kanto],
         'invert': true,
     },
 
     [SortOptions.johto]: {
         'text': 'Johto',
-        'getValue': p => p.id <= 251 && p.id > 151,
+        'getValue': p => p.id <= GameConstants.TotalPokemonsPerRegion[GameConstants.Region.johto] && p.id > GameConstants.TotalPokemonsPerRegion[GameConstants.Region.kanto],
         'invert': true,
     },
 
     [SortOptions.hoenn]: {
         'text': 'Hoenn',
-        'getValue': p => p.id <= 386 && p.id > 251,
+        'getValue': p => p.id <= GameConstants.TotalPokemonsPerRegion[GameConstants.Region.hoenn] && p.id > GameConstants.TotalPokemonsPerRegion[GameConstants.Region.johto],
         'invert': true,
     },
 };
