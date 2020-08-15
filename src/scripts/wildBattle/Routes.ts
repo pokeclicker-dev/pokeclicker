@@ -503,7 +503,8 @@ Routes.add(new RegionRoute(
         land: ['Poochyena', 'Wingull', 'Zigzagoon'],
         water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer', 'Sharpedo'],
     }),
-    [new RouteKillRequirement(10, 101)]
+    [new RouteKillRequirement(10, 101)],
+    101.1
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 104,
@@ -518,7 +519,8 @@ Routes.add(new RegionRoute(
     new RoutePokemon({
         water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Balance)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Balance)],
+    115.1
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 106,
@@ -530,7 +532,8 @@ Routes.add(new RegionRoute(
             new RouteKillRequirement(10, 105),
             new RouteKillRequirement(10, 107),
         ]),
-    ]
+    ],
+    115.2
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 107,
@@ -543,6 +546,7 @@ Routes.add(new RegionRoute(
             new RouteKillRequirement(10, 108),
         ]),
     ]
+    115.3
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 108,
@@ -554,14 +558,16 @@ Routes.add(new RegionRoute(
             new RouteKillRequirement(10, 107),
             new RouteKillRequirement(10, 109),
         ]),
-    ]
+    ],
+    115.4
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 109,
     new RoutePokemon({
         water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Wailmer'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Balance)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Balance)],
+    115.5
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 110,
@@ -619,7 +625,8 @@ Routes.add(new RegionRoute(
     new RoutePokemon({
         land: ['Poochyena', 'Whismur', 'Nincada', 'Abra', 'Taillow', 'Skitty'],
     }),
-    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Petalburg Woods'))]
+    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Petalburg Woods'))],
+    104.1
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 117,
@@ -627,7 +634,8 @@ Routes.add(new RegionRoute(
         land: ['Surskit', 'Poochyena', 'Oddish', 'Marill', 'Illumise', 'Volbeat', 'Seedot'],
         water: ['Marill', 'Goldeen', 'Magikarp', 'Corphish'],
     }),
-    [new RouteKillRequirement(10, 110)]
+    [new RouteKillRequirement(10, 110)],
+    110.1
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 118,
