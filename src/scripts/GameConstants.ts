@@ -381,10 +381,10 @@ namespace GameConstants {
     };
 
     export const ForestAreas = {
-        0: new Set([15, 25, 'Fuchsia City', 'Viridian Forest']),
+        0: new Set([25, 'Fuchsia City', 'Viridian Forest']),
         1: new Set([36, 38, 43,  'Azalea Town', 'Ilex Forest']),
         2: new Set([119, 'Petalburg Woods']),
-        3: new Set([201, 204, 'Eterna Forest', 'Eterna City']),
+        3: new Set([201, 204, 'Eterna Forest', 'Eterna City', 'Fullmoon Island', 'Newmoon Island']),
     };
 
     export const CaveAreas = {
