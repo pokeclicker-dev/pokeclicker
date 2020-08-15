@@ -6,6 +6,9 @@ enum SortOptions {
     'shiny' = 4,
     'baseAttack' = 5,
     'kanto' = 6,
+    'johto' = 7,
+    'hoenn' = 8,
+    'sinnoh' = 9,
 }
 
 type SortOptionConfig = {
@@ -57,6 +60,18 @@ const SortOptionConfigs: Record<SortOptions, SortOptionConfig> = {
     [SortOptions.kanto]: {
         'text': 'Kanto',
         'getValue': p => p.id <= 151,
+        'invert': true,
+    },
+
+    [SortOptions.johto]: {
+        'text': 'Johto',
+        'getValue': p => p.id <= 251 && p.id > 151,
+        'invert': true,
+    },
+
+    [SortOptions.hoenn]: {
+        'text': 'Hoenn',
+        'getValue': p => p.id <= 386 && p.id > 251,
         'invert': true,
     },
 };
