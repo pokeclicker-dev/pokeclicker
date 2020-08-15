@@ -214,6 +214,7 @@ namespace GameConstants {
         safari = 5,
         town = 6,
         shop = 7,
+        battleFrontier = 8,
     }
 
     export enum Pokeball {
@@ -229,7 +230,8 @@ namespace GameConstants {
         questPoint,
         dungeonToken,
         diamond,
-        farmPoint
+        farmPoint,
+        battlePoint,
     }
 
     export enum TypeEffectiveness {
@@ -363,87 +365,8 @@ namespace GameConstants {
     ];
 
     export const ROUTE_KILLS_NEEDED = 10;
-    /**
-     * Each route contains a list of routenumbers that need to be completed
-     * Access with routeRequirements.region.routeNumber
-     */
+    
     export const routeRequirements = {
-        0: {
-            1: [],
-            2: [1],
-            3: [2],
-            4: [3],
-            5: [4],
-            6: [5],
-            7: [5, 10],
-            8: [5, 6, 7],
-            9: [4],
-            10: [9],
-            11: [6],
-            12: [7, 10, 11],
-            13: [11, 12],
-            14: [13],
-            15: [14],
-            16: [8],
-            17: [16],
-            18: [17],
-            19: [15, 18],
-            20: [19],
-            21: [20],
-            22: [1],
-            23: [22],
-            24: [4],
-            25: [24],
-        },
-        1: {
-            30: [29],
-            31: [30],
-            33: [32],
-            36: [35],
-            37: [36],
-            39: [38],
-            40: [39],
-            41: [40],
-            46: [45],
-            26: [46],
-            27: [26],
-            48: [47],
-        },
-        2: {
-            102: [101],
-            103: [101],
-            104: [102],
-            105: [104],
-            106: [105],
-            107: [106],
-            108: [107],
-            109: [108],
-            110: [116],
-            111: [117],
-            112: [111],
-            113: [111],
-            114: [113],
-            115: [114],
-            116: [104],
-            117: [110],
-            118: [117],
-            119: [118],
-            120: [119],
-            121: [120],
-            122: [121],
-            123: [122],
-            124: [121],
-            125: [124],
-            126: [125],
-            127: [126],
-            128: [127],
-            129: [128],
-            130: [129],
-            131: [130],
-            132: [131],
-            133: [132],
-            134: [133],
-        },
         3: {
             202: [201],
             203: [202],
@@ -479,44 +402,6 @@ namespace GameConstants {
     };
 
     export const routeBadgeRequirements = {
-        0: {
-            3: BadgeCase.Badge.Boulder,
-            5: BadgeCase.Badge.Cascade,
-            7: BadgeCase.Badge.Thunder,
-            8: BadgeCase.Badge.Thunder,
-            9: BadgeCase.Badge.Cascade,
-            11: BadgeCase.Badge.Thunder,
-            12: BadgeCase.Badge.Marsh,
-            13: BadgeCase.Badge.Marsh,
-            16: BadgeCase.Badge.Marsh,
-            19: BadgeCase.Badge.Soul,
-            21: BadgeCase.Badge.Volcano,
-            22: BadgeCase.Badge.Earth,
-            24: BadgeCase.Badge.Cascade,
-        },
-        1: {
-            28: BadgeCase.Badge.Elite_JohtoChampion,
-            32: BadgeCase.Badge.Zephyr,
-            34: BadgeCase.Badge.Hive,
-            35: BadgeCase.Badge.Plain,
-            38: BadgeCase.Badge.Fog,
-            47: BadgeCase.Badge.Storm,
-            42: BadgeCase.Badge.Mineral,
-            43: BadgeCase.Badge.Glacier,
-            44: BadgeCase.Badge.Glacier,
-            45: BadgeCase.Badge.Rising,
-        },
-        2: {
-            116: BadgeCase.Badge.Stone,
-            117: BadgeCase.Badge.Knuckle,
-            111: BadgeCase.Badge.Dynamo,
-            112: BadgeCase.Badge.Heat,
-            105: BadgeCase.Badge.Balance,
-            118: BadgeCase.Badge.Balance,
-            120: BadgeCase.Badge.Feather,
-            126: BadgeCase.Badge.Mind,
-            127: BadgeCase.Badge.Rain,
-        },
         3: {
             206: BadgeCase.Badge.Forest,
             209: BadgeCase.Badge.Relic,
@@ -526,6 +411,16 @@ namespace GameConstants {
             219: BadgeCase.Badge.Fen,
             223: BadgeCase.Badge.Beacon,
             225: BadgeCase.Badge.Elite_SinnohChampion,
+        },
+    };
+
+    export const routeDungeonRequirements = {
+        3: {
+            205: 'Ravaged Path',
+            208: 'Mt. Coronet South',
+            216: 'Mt. Coronet North',
+            222: 'Distortion World',
+            224: 'Victory Road Sinnoh',
         },
     };
 
@@ -584,33 +479,6 @@ namespace GameConstants {
         1: new Set(['Ecruteak City']),
         2: new Set(['Mossdeep City', 'Mt. Pyre']),
         3: new Set([]),
-    };
-
-    export const routeDungeonRequirements = {
-        0: {
-            4: 'Mt. Moon',
-            20: 'Seafoam Islands',
-        },
-        1: {
-            33: 'Union Cave',
-            34: 'Ilex Forest',
-        },
-        2: {
-            116: 'Petalburg Woods',
-            110: 'Granite Cave',
-            113: 'Fiery Path',
-            115: 'Meteor Falls',
-            112: 'Jagged Pass',
-            124: 'Mt. Pyre',
-            128: 'Seafloor Cavern',
-        },
-        3: {
-            205: 'Ravaged Path',
-            208: 'Mt. Coronet South',
-            216: 'Mt. Coronet North',
-            222: 'Distortion World',
-            224: 'Victory Road Sinnoh',
-        },
     };
 
     export enum Starter {
