@@ -1,6 +1,6 @@
 ///<reference path="../Battle.ts"/>
 class BattleFrontierBattle extends Battle {
-    static attackCounter = 0;
+    static alternateAttack = false;
     static pokemonIndex: KnockoutObservable<number> = ko.observable(0);
     static totalPokemons: KnockoutObservable<number> = ko.observable(3);
     
@@ -12,8 +12,8 @@ class BattleFrontierBattle extends Battle {
     // Override pokemon attack method so we can ignore the region multiplier
     public static pokemonAttack() {
         // attack twice as fast if we have defeated this stage
-        this.attackCounter ^= 1;
-        if (this.attackCounter && BattleFrontierRunner.stage() > App.game.statistics.battleFrontierHighestStageCompleted()) {
+        this.alternateAttack = !this.alternateAttack;
+        if (this.alternateAttack && BattleFrontierRunner.stage() > App.game.statistics.battleFrontierHighestStageCompleted()) {
             return;
         }
         // Limit pokemon attack speed, Only allow 1 attack per 450ms
