@@ -22,6 +22,9 @@ class ShopHandler {
         const item: Item = this.shopObservable().items()[ShopHandler.selected()];
         item.buy(this.amount());
         ShopHandler.resetAmount();
+        if (!item.isAvailable()) {
+            this.setSelected(0);
+        }
     }
 
     public static resetAmount() {
