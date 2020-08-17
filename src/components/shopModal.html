@@ -13,26 +13,22 @@
                     </h4>
                 </div>
                 <div class="row justify-content-center" data-bind="foreach: ShopHandler.shopObservable().items">
+                    <!-- ko if: $data.isAvailable() -->
                     <div class="col-6 col-sm-4 col-lg-3">
                        <button class="shopItem clickable btn btn-block btn-secondary"
-                           data-bind="click: function() {ShopHandler.setSelected($index())},
-                           css: { active: ShopHandler.selected() == $index() },
-                           attr: { disabled: !$data.isAvailable() }">
-                           <knockout data-bind="if: ($data instanceof CaughtIndicatingItem)">
-                               <span style="position: absolute; top: 15px; right: 20px;" 
-                                     data-bind="template: { name: 'caughtStatusTemplate', data: {'status': $data.getCaughtStatus()}}">
-                               </span>
-                           </knockout>
-                           <img src="" height="36px" data-bind="attr:{ src: 'assets/images/items/' + name().replace(/\W/g, '_') + '.png' }">
-                           <p data-bind="text: GameConstants.humanifyString(name())">Item Name</p>
-                           <div data-bind="if: $data.isAvailable()">
-                                <span data-bind="template: { name: 'currencyTemplate', data: {'amount': totalPrice(ShopHandler.amount()), 'currency': currency}}"></span>
-                            </div>
-                            <div data-bind="ifnot: $data.isAvailable()">
-                                <span>Sold Out</span>
-                            </div>
+                            data-bind="click: function() {ShopHandler.setSelected($index())},
+                            css: { active: ShopHandler.selected() == $index() }">
+                            <knockout data-bind="if: ($data instanceof CaughtIndicatingItem)">
+                                <span style="position: absolute; top: 15px; right: 20px;" 
+                                      data-bind="template: { name: 'caughtStatusTemplate', data: {'status': $data.getCaughtStatus()}}">
+                                </span>
+                            </knockout>
+                            <img src="" height="36px" data-bind="attr:{ src: 'assets/images/items/' + name().replace(/\W/g, '_') + '.png' }">
+                            <p data-bind="text: GameConstants.humanifyString(name())">Item Name</p>
+                            <span data-bind="template: { name: 'currencyTemplate', data: {'amount': totalPrice(ShopHandler.amount()), 'currency': currency}}"></span>
                         </button>
                     </div>
+                    <!-- /ko -->
                 </div>
             </div>
             <div class="modal-footer">
