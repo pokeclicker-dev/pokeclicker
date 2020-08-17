@@ -1,5 +1,6 @@
 ///<reference path="../Battle.ts"/>
 class BattleFrontierBattle extends Battle {
+    static alternateAttack = false;
     static pokemonIndex: KnockoutObservable<number> = ko.observable(0);
     static totalPokemons: KnockoutObservable<number> = ko.observable(3);
     
@@ -10,9 +11,14 @@ class BattleFrontierBattle extends Battle {
 
     // Override pokemon attack method so we can ignore the region multiplier
     public static pokemonAttack() {
-        // Limit pokemon attack speed, Only allow 1 attack per 950ms
+        // attack twice as fast if we have defeated this stage
+        this.alternateAttack = !this.alternateAttack;
+        if (this.alternateAttack && BattleFrontierRunner.stage() > App.game.statistics.battleFrontierHighestStageCompleted()) {
+            return;
+        }
+        // Limit pokemon attack speed, Only allow 1 attack per 450ms
         const now = Date.now();
-        if (this.lastPokemonAttack > now - 950) {
+        if (this.lastPokemonAttack > now - 450) {
             return;
         }
         this.lastPokemonAttack = now;
@@ -29,8 +35,8 @@ class BattleFrontierBattle extends Battle {
      * Award the player with exp, shards and go to the next pokemon
      */
     public static defeatPokemon() {
-        // This needs to stay as Kanto so the stage number isn't adjusted
-        App.game.breeding.progressEggsBattle(BattleFrontierRunner.stage(), GameConstants.Region.kanto);
+        // This needs to stay as none so the stage number isn't adjusted
+        App.game.breeding.progressEggsBattle(BattleFrontierRunner.stage(), GameConstants.Region.none);
         this.enemyPokemon().defeat(true);
         // Next pokemon
         GameHelper.incrementObservable(this.pokemonIndex);
@@ -52,8 +58,8 @@ class BattleFrontierBattle extends Battle {
 
     public static generateNewEnemy() {
         const enemy = pokemonMap.random(GameConstants.TotalPokemonsPerRegion[player.highestRegion()]);
-        // This needs to stay as Kanto so the stage number isn't adjusted
-        const health = PokemonFactory.routeHealth(BattleFrontierRunner.stage() + 10, GameConstants.Region.kanto);
+        // This needs to stay as none so the stage number isn't adjusted
+        const health = PokemonFactory.routeHealth(BattleFrontierRunner.stage() + 10, GameConstants.Region.none);
         const level = Math.min(100, BattleFrontierRunner.stage());
         // Don't award money per pokemon defeated, award money at the end
         const money = 0;
