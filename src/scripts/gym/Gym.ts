@@ -771,7 +771,7 @@ gymList['Elite Lucian'] = new Gym(
     'Lucian',
     'Elite Lucian',
     [
-        new GymPokemon('Mr.Mime', 2248300, 53),
+        new GymPokemon('Mr. Mime', 2248300, 53),
         new GymPokemon('Espeon', 2252000, 55),
         new GymPokemon('Bronzong', 2257000, 54),
         new GymPokemon('Alakazam', 2260250, 56),
