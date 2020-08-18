@@ -142,7 +142,12 @@ dungeonList['Ruins of Alph'] = new Dungeon('Ruins of Alph',
     ['Natu', 'Wooper', 'Quagsire', 'Smeargle', 'Magikarp', 'Poliwag', 'Poliwhirl'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     60600,
-    [new DungeonBossPokemon('Unown', 260000, 14)],
+    [
+        new DungeonBossPokemon('Unown (A)', 260000, 14),
+        new DungeonBossPokemon('Unown (L)', 260000, 14),
+        new DungeonBossPokemon('Unown (P)', 260000, 14),
+        new DungeonBossPokemon('Unown (H)', 260000, 14),
+    ],
     3000, 32, 7
 );
 
