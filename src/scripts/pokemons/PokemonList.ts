@@ -7937,7 +7937,10 @@ const pokemonList: PokemonListData[] =
             'levelType': LevelType.mediumfast,
             'exp': 55,
             'catchRate': 190,
-            'evolutions': [new LevelEvolution('Cherubi', 'Cherrim', 25)],
+            'evolutions': [
+                new LevelEvolution('Cherubi', 'Cherrim (overcast)', 25),
+                new LevelEvolution('Cherubi', 'Cherrim (sunshine)', 25),
+            ],
             'base': {
                 'hitpoints': 45,
                 'attack': 35,
