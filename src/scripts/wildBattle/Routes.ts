@@ -24,6 +24,9 @@ class Routes {
     }
 
     public static normalizedNumber(region: GameConstants.Region, route: number): number {
+        if (region == GameConstants.Region.none) {
+            return route;
+        }
         return this.regionRoutes.findIndex(routeData => routeData.region == region && routeData.number == route) + 1;
     }
 }
@@ -314,10 +317,7 @@ Routes.add(new RegionRoute(
         land: ['Spearow', 'Rattata', 'Ekans', 'Zubat', 'Hoppip'],
         headbutt: ['Spearow', 'Aipom', 'Heracross'],
     }),
-    [
-        new RouteKillRequirement(10, 32),
-        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Union Cave')),
-    ]
+    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Union Cave'))]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 34,
@@ -326,11 +326,7 @@ Routes.add(new RegionRoute(
         water: ['Tentacool', 'Tentacruel', 'Krabby', 'Magikarp', 'Staryu', 'Corsola', 'Kingler'],
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
-    [
-        new RouteKillRequirement(10, 33),
-        new GymBadgeRequirement(BadgeCase.Badge.Hive),
-        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Union Cave')),
-    ]
+    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Ilex Forest'))]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 35,
@@ -339,7 +335,7 @@ Routes.add(new RegionRoute(
         water: ['Psyduck', 'Golduck', 'Poliwag', 'Magikarp'],
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Plain)]
+    [new RouteKillRequirement(10, 34)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 36,
@@ -347,7 +343,7 @@ Routes.add(new RegionRoute(
         land: ['Pidgey', 'Nidoran(M)', 'Nidoran(F)', 'Vulpix', 'Growlithe', 'Hoothoot', 'Stantler', 'Sudowoodo'],
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
-    [new RouteKillRequirement(10, 35)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Plain)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 37,
@@ -363,7 +359,7 @@ Routes.add(new RegionRoute(
         land: ['Rattata', 'Raticate', 'Meowth', 'Magnemite', 'Farfetch\'d', 'Tauros', 'Snubbull', 'Miltank'],
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Fog)]
+    [new RouteKillRequirement(10, 37)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 39,
@@ -378,7 +374,7 @@ Routes.add(new RegionRoute(
     new RoutePokemon({
         water: ['Tentacool', 'Tentacruel', 'Krabby', 'Magikarp', 'Staryu', 'Corsola', 'Kingler'],
     }),
-    [new RouteKillRequirement(10, 39)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Fog)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 41,
@@ -394,7 +390,7 @@ Routes.add(new RegionRoute(
         water: ['Goldeen', 'Seaking', 'Magikarp'],
         headbutt: ['Spearow', 'Aipom', 'Heracross'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Mineral)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Fog)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 43,
@@ -403,7 +399,7 @@ Routes.add(new RegionRoute(
         water: ['Magikarp', 'Poliwag'],
         headbutt: ['Venonat', 'Exeggcute', 'Hoothoot', 'Pineco'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Glacier)]
+    [new RouteKillRequirement(10, 42)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 44,
@@ -412,7 +408,10 @@ Routes.add(new RegionRoute(
         water: ['Poliwag', 'Poliwhirl', 'Magikarp', 'Remoraid'],
         headbutt: ['Spearow', 'Aipom', 'Heracross'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Glacier)]
+    [
+        new GymBadgeRequirement(BadgeCase.Badge.Mineral),
+        new GymBadgeRequirement(BadgeCase.Badge.Glacier),
+    ]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 45,
@@ -421,7 +420,7 @@ Routes.add(new RegionRoute(
         water: ['Magikarp', 'Poliwag', 'Dratini'],
         headbutt: ['Spearow', 'Aipom', 'Heracross'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Rising)]
+    [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Ice Path'))]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 46,
@@ -429,7 +428,8 @@ Routes.add(new RegionRoute(
         land: ['Spearow', 'Rattata', 'Geodude'],
         headbutt: ['Spearow', 'Aipom', 'Heracross'],
     }),
-    [new RouteKillRequirement(10, 45)]
+    [new RouteKillRequirement(10, 29)],
+    29.1
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 47,
@@ -438,7 +438,7 @@ Routes.add(new RegionRoute(
         water: ['Tentacool', 'Seel', 'Staryu', 'Magikarp', 'Shellder', 'Chinchou', 'Lanturn'],
         headbutt: ['Metapod', 'Butterfree', 'Kakuna', 'Beedrill', 'Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco', 'Heracross'],
     }),
-    [new GymBadgeRequirement(BadgeCase.Badge.Storm)]
+    [new GymBadgeRequirement(BadgeCase.Badge.Mineral)]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 48,
@@ -455,8 +455,8 @@ Routes.add(new RegionRoute(
         water: ['Tentacool', 'Tentacruel', 'Magikarp', 'Shellder', 'Chinchou', 'Lanturn'],
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
-    [new RouteKillRequirement(10, 46)],
-    49
+    [new RouteKillRequirement(10, 27)],
+    50
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 27,
@@ -465,8 +465,8 @@ Routes.add(new RegionRoute(
         water: ['Tentacool', 'Tentacruel', 'Magikarp', 'Shellder', 'Chinchou', 'Lanturn'],
         headbutt: ['Exeggcute', 'Hoothoot', 'Ledyba', 'Spinarak', 'Pineco'],
     }),
-    [new RouteKillRequirement(10, 26)],
-    50
+    [new GymBadgeRequirement(BadgeCase.Badge.Rising)],
+    49
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.johto, 28,
