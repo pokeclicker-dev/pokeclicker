@@ -16,7 +16,13 @@ class PokeballItem extends Item {
     }
 }
 
-ItemList['Pokeball']   = new PokeballItem(GameConstants.Pokeball.Pokeball, 100);
-ItemList['Greatball']  = new PokeballItem(GameConstants.Pokeball.Greatball, 500);
+ItemList['Pokeball'] = new PokeballItem(GameConstants.Pokeball.Pokeball, 100);
+ItemList['Greatball'] = new PokeballItem(GameConstants.Pokeball.Greatball, 500);
+ItemList['Greatball'].isAvailable = ko.pureComputed(() => {
+    return TownList['Lavender Town'].isUnlocked();
+});
 ItemList['Ultraball']  = new PokeballItem(GameConstants.Pokeball.Ultraball, 2000);
+ItemList['Ultraball'].isAvailable = ko.pureComputed(() => {
+    return TownList['Fuchsia City'].isUnlocked();
+});
 ItemList['Masterball'] = new PokeballItem(GameConstants.Pokeball.Masterball, 2500, GameConstants.Currency.questPoint);

@@ -31,37 +31,25 @@ class DungeonTown extends Town {
 
 const TownList: { [name: string]: Town | PokemonLeague } = {};
 
-const pokeMartShop = new Shop([
-    ItemList['Pokeball'],
-    ItemList['Greatball'],
-    ItemList['Ultraball'],
-    ItemList['xAttack'],
-    ItemList['xClick'],
-    ItemList['Lucky_egg'],
-    ItemList['Item_magnet'],
-    ItemList['Token_collector'],
-    ItemList['Lucky_incense'],
-    ItemList['SmallRestore'],
-    ItemList['MediumRestore'],
-    ItemList['LargeRestore'],
-]);
+const pokeMartShop = new PokeMart([]);
 
 //Kanto Shops
-const PewterCityShop = new Shop([
-    ItemList['Pokeball'],
-    ItemList['Token_collector'],
-    ItemList['Lucky_egg'],
+const ViridianCityShop = new PokeMart([
+    ItemList['Dungeon_ticket'],
+]);
+const PewterCityShop = new PokeMart([
     ItemList['Mystery_egg'],
 ]);
-const CeruleanCityShop = new Shop([
+const CeruleanCityShop = new PokeMart([
     ItemList['Water_stone'],
-    ItemList['xAttack'],
     ItemList['Water_egg'],
 ]);
-const VermillionCityShop = new Shop([
+const VermillionCityShop = new PokeMart([
     ItemList['Thunder_stone'],
-    ItemList['Lucky_egg'],
     ItemList['Electric_egg'],
+]);
+const LavenderTownShop = new PokeMart([
+    ItemList['Grass_egg'],
 ]);
 const CeladonCityShop = new Shop([
     ItemList['Eevee'],
@@ -70,39 +58,23 @@ const CeladonCityShop = new Shop([
     ItemList['Mr. Mime'],
     ItemList['Lickitung'],
 ]);
-const SaffronCityShop = new Shop([
+const SaffronCityShop = new PokeMart([
     ItemList['Moon_stone'],
-    ItemList['xClick'],
     ItemList['Leaf_stone'],
     ItemList['Fighting_egg'],
 ]);
-const FuchsiaCityShop = new Shop([
-    ItemList['Ultraball'],
+const FuchsiaCityShop = new PokeMart([
     ItemList['Trade_stone'],
-    ItemList['Lucky_egg'],
     ItemList['Dragon_egg'],
 ]);
-const CinnabarIslandShop = new Shop([
+const CinnabarIslandShop = new PokeMart([
     ItemList['Fire_stone'],
     ItemList['Fire_egg'],
-    ItemList['SmallRestore'],
     ItemList['Explorer_kit'],
-]);
-const ViridianCityShop = new Shop([
-    ItemList['Pokeball'],
-    ItemList['xAttack'],
-    ItemList['xClick'],
-    ItemList['Dungeon_ticket'],
-]);
-const LavenderTownShop = new Shop([
-    ItemList['Greatball'],
-    ItemList['Item_magnet'],
-    ItemList['Lucky_incense'],
-    ItemList['Grass_egg'],
 ]);
 
 //Kanto Towns
-TownList['Pewter City'] = new Town('Pewter City', [new RouteKillRequirement(10, 2), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Viridian Forest'))], PewterCityShop);
+TownList['Pewter City'] = new Town('Pewter City', [new RouteKillRequirement(10, 2), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Viridian Forest'))], pokeMartShop);
 TownList['Cerulean City'] = new Town('Cerulean City', [new RouteKillRequirement(10, 4)], CeruleanCityShop, dungeonList['Cerulean Cave']);
 TownList['Vermillion City'] = new Town('Vermillion City', [new RouteKillRequirement(10, 6)], VermillionCityShop);
 TownList['Celadon City'] = new Town('Celadon City', [new RouteKillRequirement(10, 8)], CeladonCityShop);
@@ -126,37 +98,31 @@ TownList['Victory Road'] = new DungeonTown('Victory Road', [new RouteKillRequire
 TownList['Cerulean Cave'] = new DungeonTown('Cerulean Cave', [new GymBadgeRequirement(BadgeCase.Badge.Elite_KantoChampion)]);
 
 //Johto Shops
-const NewBarkTownShop = new Shop([
-    ItemList['Pokeball'],
-]);
-const CherrygroveCityShop = new Shop([
+const CherrygroveCityShop = new PokeMart([
     ItemList['Greatball'],
 ]);
-const VioletCityShop = new Shop([
-    ItemList['MediumRestore'],
+const VioletCityShop = new PokeMart([
     ItemList['Togepi'],
 ]);
-const AzaleaTownShop = new Shop([
+const AzaleaTownShop = new PokeMart([
     ItemList['Kings_rock'],
 ]);
-const GoldenrodCityShop = new Shop([
+const GoldenrodCityShop = new PokeMart([
     ItemList['Sun_stone'],
     ItemList['Upgrade'],
 ]);
-const OlivineCityShop = new Shop([
+const OlivineCityShop = new PokeMart([
     ItemList['Metal_coat'],
 ]);
-const CianwoodCityShop = new Shop([
-    ItemList['Ultraball'],
+const CianwoodCityShop = new PokeMart([
     ItemList['Time_stone'],
 ]);
-const BlackthornCityShop = new Shop([
-    ItemList['LargeRestore'],
+const BlackthornCityShop = new PokeMart([
     ItemList['Dragon_scale'],
 ]);
 
 //Johto Towns
-TownList['New Bark Town'] = new Town('New Bark Town', [], NewBarkTownShop);
+TownList['New Bark Town'] = new Town('New Bark Town');
 TownList['Cherrygrove City'] = new Town('Cherrygrove City', [new RouteKillRequirement(10, 29)], CherrygroveCityShop);
 TownList['Violet City'] = new Town('Violet City', [new RouteKillRequirement(10, 31)], VioletCityShop, dungeonList['Sprout Tower']);
 TownList['Azalea Town'] = new Town('Azalea Town', [new RouteKillRequirement(10, 33)], AzaleaTownShop, dungeonList['Slowpoke Well']);
@@ -182,23 +148,6 @@ TownList['Dark Cave'] = new DungeonTown('Dark Cave', [new RouteKillRequirement(1
 TownList['Mt Silver'] = new DungeonTown('Mt Silver', [new RouteKillRequirement(10, 28)]);
 
 //Hoenn Shops
-const LittleRootTownShop = new Shop([
-    ItemList['Pokeball'],
-]);
-const LilyCoveCityShop = new Shop([
-    ItemList['Pokeball'],
-    ItemList['Greatball'],
-    ItemList['Ultraball'],
-    ItemList['SmallRestore'],
-    ItemList['MediumRestore'],
-    ItemList['LargeRestore'],
-    ItemList['xAttack'],
-    ItemList['xClick'],
-    ItemList['Lucky_egg'],
-    ItemList['Token_collector'],
-    ItemList['Item_magnet'],
-    ItemList['Lucky_incense'],
-]);
 const MossdeepCityShop = new Shop([
     ItemList['Beldum'],
 ]);
@@ -212,9 +161,9 @@ const BattleFrontierShop = new Shop([
 ]);
 
 //Hoenn Towns
-TownList['Littleroot Town'] = new Town('Littleroot Town', [], LittleRootTownShop);
-TownList['Oldale Town'] = new Town('Oldale Town', [new RouteKillRequirement(10, 101)]);
-TownList['Petalburg City'] = new Town('Petalburg City', [new RouteKillRequirement(10, 102)]);
+TownList['Littleroot Town'] = new Town('Littleroot Town');
+TownList['Oldale Town'] = new Town('Oldale Town', [new RouteKillRequirement(10, 101)], pokeMartShop);
+TownList['Petalburg City'] = new Town('Petalburg City', [new RouteKillRequirement(10, 102)], pokeMartShop);
 TownList['Rustboro City'] = new Town('Rustboro City', [new RouteKillRequirement(10, 104), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Petalburg Woods'))]);
 TownList['Dewford Town'] = new Town('Dewford Town', [new RouteKillRequirement(10, 116), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Rusturf Tunnel'))]);
 TownList['Slateport City'] = new Town('Slateport City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Granite Cave'))]);
@@ -223,7 +172,7 @@ TownList['Verdanturf Town'] = new Town('Verdanturf Town', [new RouteKillRequirem
 TownList['Lavaridge Town'] = new Town('Lavaridge Town', [new RouteKillRequirement(10, 115), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Chimney'))]);
 TownList['Fallarbor Town'] = new Town('Fallarbor Town', [new RouteKillRequirement(10, 113)]);
 TownList['Fortree City'] = new Town('Fortree City', [new RouteKillRequirement(10, 119)]);
-TownList['LilyCove City'] = new Town('LilyCove City', [new RouteKillRequirement(10, 121), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Pyre'))], LilyCoveCityShop);
+TownList['LilyCove City'] = new Town('LilyCove City', [new RouteKillRequirement(10, 121), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Pyre'))], pokeMartShop);
 TownList['Mossdeep City'] = new Town('Mossdeep City', [new RouteKillRequirement(10, 125), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Shoal Cave'))], MossdeepCityShop);
 TownList['Sootopolis City'] = new Town('Sootopolis City', [new RouteKillRequirement(10, 126), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Cave of Origin'))]);
 TownList['Ever Grande City'] = new Town('Ever Grande City', [new RouteKillRequirement(10, 128)]);

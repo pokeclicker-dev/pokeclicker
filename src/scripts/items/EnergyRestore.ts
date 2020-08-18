@@ -22,5 +22,16 @@ class EnergyRestore extends Item {
 }
 
 ItemList['SmallRestore']  = new EnergyRestore(GameConstants.EnergyRestoreSize.SmallRestore, 20000);
+ItemList['SmallRestore'].isAvailable = ko.pureComputed(() => {
+    return TownList['Cinnabar Island'].isUnlocked();
+});
+
 ItemList['MediumRestore'] = new EnergyRestore(GameConstants.EnergyRestoreSize.MediumRestore, 40000);
+ItemList['MediumRestore'].isAvailable = ko.pureComputed(() => {
+    return TownList['Violet City'].isUnlocked();
+});
+
 ItemList['LargeRestore']  = new EnergyRestore(GameConstants.EnergyRestoreSize.LargeRestore, 100000);
+ItemList['LargeRestore'].isAvailable = ko.pureComputed(() => {
+    return TownList['Blackthorn City'].isUnlocked();
+});
