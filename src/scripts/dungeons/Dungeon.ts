@@ -15,7 +15,7 @@ class Dungeon {
         public baseHealth: number,
         public bossList: DungeonBossPokemon[],
         public tokenCost: number,
-        public itemRoute: number,
+        public difficultyRoute: number, // Closest route in terms of difficulty, used for egg steps, dungeon tokens etc.
         public level: number
     ) {
         this.name = ko.observable(name);
