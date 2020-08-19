@@ -9255,7 +9255,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 493,
-            'name': 'Arceus',
+            'name': 'Arceus (normal)',
             'type': [PokemonType.Normal],
             'eggCycles': 120,
             'levelType': LevelType.slow,
