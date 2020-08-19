@@ -477,7 +477,7 @@ namespace GameConstants {
         'Beldum',
         'Skorupi',
         'Combee',
-        'Burmy',
+        'Burmy (plant)',
         'Spiritomb',
         'Cherubi',
     }
