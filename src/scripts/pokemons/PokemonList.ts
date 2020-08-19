@@ -7381,7 +7381,7 @@ const pokemonList: PokemonListData[] =
             },
         },
         {
-            'id': 386.1,
+            'id': 386.3,
             'name': 'Deoxys (speed)',
             'type': [PokemonType.Psychic],
             'eggCycles': 120,
