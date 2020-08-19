@@ -468,7 +468,7 @@ dungeonList['Distortion World'] = new Dungeon('Distortion World',
     [
         new DungeonBossPokemon('Dusclops', 4280000, 45),
         new DungeonBossPokemon('Bronzong', 4280000, 45),
-        new DungeonBossPokemon('Giratina', 8880000, 45),
+        new DungeonBossPokemon('Giratina (altered)', 8880000, 45),
     ],
     82500, 201, 30);
 
