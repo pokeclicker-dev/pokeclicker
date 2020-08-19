@@ -651,7 +651,7 @@ Routes.add(new RegionRoute(
 Routes.add(new RegionRoute(
     GameConstants.Region.hoenn, 119,
     new RoutePokemon({
-        land: ['Zigzagoon', 'Linoone', 'Oddish', 'Tropius', 'Kecleon', 'Castform'],
+        land: ['Zigzagoon', 'Linoone', 'Oddish', 'Tropius', 'Kecleon', 'Castform', 'Castform (sunny)', 'Castform (rainy)', 'Castform (snowy)'],
         water: ['Tentacool', 'Wingull', 'Pelipper', 'Magikarp', 'Carvanha'],
     }),
     [new RouteKillRequirement(10, 118)]
