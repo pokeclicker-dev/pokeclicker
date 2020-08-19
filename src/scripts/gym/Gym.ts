@@ -634,7 +634,7 @@ gymList['Eterna City'] = new Gym(
     'Eterna City',
     [
         new GymPokemon('Turtwig', 1033000, 20),
-        new GymPokemon('Cherrim', 1037500, 20),
+        new GymPokemon('Cherrim (overcast)', 1037500, 20),
         new GymPokemon('Roserade', 1039000, 22),
     ],
     BadgeCase.Badge.Forest,
