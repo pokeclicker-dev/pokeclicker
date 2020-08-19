@@ -818,7 +818,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 205,
     new RoutePokemon({
         land: ['Bidoof', 'Hoothoot', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Kricketot', 'Budew', 'Drifloon'],
-        water: ['Wingull', 'Pelipper', 'Buizel', 'Tentacool', 'Tentacruel', 'Shellos', 'Gastrodon', 'Magikarp', 'Finneon', 'Shellder', 'Gyarados', 'Lumineon', 'Psyduck', 'Golduck', 'Barboach', 'Whiscash'],
+        water: ['Wingull', 'Pelipper', 'Buizel', 'Tentacool', 'Tentacruel', 'Shellos (west)', 'Shellos (east)', 'Gastrodon (west)', 'Gastrodon (east)', 'Magikarp', 'Finneon', 'Shellder', 'Gyarados', 'Lumineon', 'Psyduck', 'Golduck', 'Barboach', 'Whiscash'],
     }),
     [
         new RouteKillRequirement(10, 204),
@@ -897,7 +897,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 213,
     new RoutePokemon({
         land: ['Chatot'],
-        water: ['Buizel', 'Floatzel', 'Tentacool', 'Tentacruel', 'Wingull', 'Pelipper', 'Shellos', 'Gastrodon', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
+        water: ['Buizel', 'Floatzel', 'Tentacool', 'Tentacruel', 'Wingull', 'Pelipper', 'Shellos (west)', 'Shellos (east)', 'Gastrodon (west)', 'Gastrodon (east)', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
     }),
     [new RouteKillRequirement(10, 214)]
 ));
@@ -937,7 +937,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 218,
     new RoutePokemon({
         land: ['Mr. Mime', 'Glameow', 'Chatot'],
-        water: ['Wingull', 'Floatzel', 'Shellos', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Pelipper', 'Magikarp', 'Finneon', 'Gyarados', 'Lumineon'],
+        water: ['Wingull', 'Floatzel', 'Shellos (west)', 'Shellos (east)', 'Gastrodon (west)', 'Gastrodon (east)', 'Tentacool', 'Tentacruel', 'Pelipper', 'Magikarp', 'Finneon', 'Gyarados', 'Lumineon'],
     }),
     [
         new RouteKillRequirement(10, 213),
@@ -965,7 +965,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 221,
     new RoutePokemon({
         land: ['Sudowoodo', 'Girafarig', 'Roselia', 'Stunky', 'Skuntank'],
-        water: ['Wingull', 'Floatzel', 'Shellos', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Pelipper', 'Magikarp', 'Finneon', 'Lumineon', 'Gyarados', 'Clamperl'],
+        water: ['Wingull', 'Floatzel', 'Shellos (west)', 'Shellos (east)', 'Gastrodon (west)', 'Gastrodon (east)', 'Tentacool', 'Tentacruel', 'Pelipper', 'Magikarp', 'Finneon', 'Lumineon', 'Gyarados', 'Clamperl'],
     }),
     [new RouteKillRequirement(10, 220)]
 ));
@@ -973,7 +973,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 222,
     new RoutePokemon({
         land: ['Magnemite', 'Magneton', 'Mr. Mime', 'Electabuzz', 'Luxio', 'Glameow', 'Purugly', 'Chatot'],
-        water: ['Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacool', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
+        water: ['Wingull', 'Pelipper', 'Floatzel', 'Gastrodon (west)', 'Gastrodon (east)', 'Tentacool', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Sharpedo'],
     }),
     [
         new RouteKillRequirement(10, 217),
@@ -994,7 +994,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 224,
     new RoutePokemon({
         land: ['Oddish', 'Gloom', 'Bellsprout', 'Weepinbell', 'Beautifly', 'Dustox', 'Roselia', 'Chatot'],
-        water: ['Pelipper', 'Buizel', 'Floatzel', 'Shellos', 'Gastrodon', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Luvdisc'],
+        water: ['Pelipper', 'Buizel', 'Floatzel', 'Shellos (west)', 'Shellos (east)', 'Gastrodon (west)', 'Gastrodon (east)', 'Tentacruel', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Luvdisc'],
     }),
     [
         new RouteKillRequirement(10, 223),
@@ -1048,7 +1048,7 @@ Routes.add(new RegionRoute(
     GameConstants.Region.sinnoh, 230,
     new RoutePokemon({
         land: ['Oddish', 'Gloom', 'Bellsprout', 'Weepinbell', 'Beautifly', 'Dustox', 'Roselia'],
-        water: ['Golduck', 'Wingull', 'Pelipper', 'Floatzel', 'Gastrodon', 'Tentacruel', 'Seel', 'Dewgong', 'Spheal', 'Sealeo', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Wailmer', 'Wailord'],
+        water: ['Golduck', 'Wingull', 'Pelipper', 'Floatzel', 'Gastrodon (west)', 'Gastrodon (east)', 'Tentacruel', 'Seel', 'Dewgong', 'Spheal', 'Sealeo', 'Magikarp', 'Remoraid', 'Gyarados', 'Octillery', 'Wailmer', 'Wailord'],
     }),
     [new RouteKillRequirement(10, 229)]
 ));
