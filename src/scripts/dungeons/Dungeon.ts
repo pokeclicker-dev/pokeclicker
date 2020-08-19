@@ -498,7 +498,7 @@ dungeonList['Hall of Origin'] = new Dungeon('Hall of Origin',
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     3000,
     [
-        new DungeonBossPokemon('Arceus', 10000000, 70),
+        new DungeonBossPokemon('Arceus (normal)', 10000000, 70),
         new DungeonBossPokemon('Slaking', 8000000, 70),
         new DungeonBossPokemon('Snorlax', 8000000, 70),
         new DungeonBossPokemon('Shuckle', 8000000, 70),
