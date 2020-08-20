@@ -9467,7 +9467,7 @@ const pokemonList: PokemonListData[] =
         },
         {
             'id': 492,
-            'name': 'Shaymin',
+            'name': 'Shaymin (land)',
             'type': [PokemonType.Grass],
             'eggCycles': 120,
             'levelType': LevelType.mediumslow,
@@ -9480,6 +9480,23 @@ const pokemonList: PokemonListData[] =
                 'defense': 100,
                 'specialDefense': 100,
                 'speed': 100,
+            },
+        },
+        {
+            'id': 492.1,
+            'name': 'Shaymin (sky)',
+            'type': [PokemonType.Grass],
+            'eggCycles': 120,
+            'levelType': LevelType.mediumslow,
+            'exp': 270,
+            'catchRate': 45,
+            'base': {
+                'hitpoints': 100,
+                'attack': 103,
+                'specialAttack': 120,
+                'defense': 75,
+                'specialDefense': 75,
+                'speed': 127,
             },
         },
         {

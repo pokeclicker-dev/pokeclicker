@@ -527,7 +527,8 @@ dungeonList['Flower Paradise'] = new Dungeon('Flower Paradise',
     [
         new DungeonBossPokemon('Venusaur', 7900000, 50),
         new DungeonBossPokemon('Meganium', 7000000, 50),
-        new DungeonBossPokemon('Shaymin', 9000000, 50),
+        new DungeonBossPokemon('Shaymin (land)', 9000000, 50),
+        new DungeonBossPokemon('Shaymin (sky)', 9000000, 50),
     ],
     96500, 201, 32);
 
