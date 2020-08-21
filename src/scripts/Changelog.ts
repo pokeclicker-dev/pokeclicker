@@ -36,6 +36,7 @@ const changelogItems = [
     new Changelog(changelogType.NEW, 'Dungeon based evolutions'),
     new Changelog(changelogType.NEW, 'Time based evolutions'),
     new Changelog(changelogType.NEW, '2 new fossils to the Underground'),
+    new Changelog(changelogType.NEW, 'Pokemon alternate forms can now be obtained'),
     new Changelog(changelogType.CHANGE, 'All Happiness/Friendship evolutions now make use of the Soothe Bell'),
     new Changelog(changelogType.REMOVED, 'Removed Time Stone'),
 
