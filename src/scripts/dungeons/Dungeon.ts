@@ -142,7 +142,12 @@ dungeonList['Ruins of Alph'] = new Dungeon('Ruins of Alph',
     ['Natu', 'Wooper', 'Quagsire', 'Smeargle', 'Magikarp', 'Poliwag', 'Poliwhirl'],
     [GameConstants.BattleItemType.xAttack, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     60600,
-    [new DungeonBossPokemon('Unown', 260000, 14)],
+    [
+        new DungeonBossPokemon('Unown (A)', 260000, 14),
+        new DungeonBossPokemon('Unown (L)', 260000, 14),
+        new DungeonBossPokemon('Unown (P)', 260000, 14),
+        new DungeonBossPokemon('Unown (H)', 260000, 14),
+    ],
     3000, 32, 7
 );
 
@@ -463,7 +468,7 @@ dungeonList['Distortion World'] = new Dungeon('Distortion World',
     [
         new DungeonBossPokemon('Dusclops', 4280000, 45),
         new DungeonBossPokemon('Bronzong', 4280000, 45),
-        new DungeonBossPokemon('Giratina', 8880000, 45),
+        new DungeonBossPokemon('Giratina (altered)', 8880000, 45),
     ],
     82500, 201, 30);
 
@@ -493,7 +498,7 @@ dungeonList['Hall of Origin'] = new Dungeon('Hall of Origin',
     [GameConstants.BattleItemType.xClick, GameConstants.BattleItemType.Item_magnet],
     3000,
     [
-        new DungeonBossPokemon('Arceus', 10000000, 70),
+        new DungeonBossPokemon('Arceus (normal)', 10000000, 70),
         new DungeonBossPokemon('Slaking', 8000000, 70),
         new DungeonBossPokemon('Snorlax', 8000000, 70),
         new DungeonBossPokemon('Shuckle', 8000000, 70),
@@ -522,7 +527,8 @@ dungeonList['Flower Paradise'] = new Dungeon('Flower Paradise',
     [
         new DungeonBossPokemon('Venusaur', 7900000, 50),
         new DungeonBossPokemon('Meganium', 7000000, 50),
-        new DungeonBossPokemon('Shaymin', 9000000, 50),
+        new DungeonBossPokemon('Shaymin (land)', 9000000, 50),
+        new DungeonBossPokemon('Shaymin (sky)', 9000000, 50),
     ],
     96500, 201, 32);
 
