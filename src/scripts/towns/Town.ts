@@ -220,37 +220,37 @@ const BattleFrontierShop = new Shop([
 TownList['Littleroot Town'] = new Town('Littleroot Town', [], LittleRootTownShop);
 TownList['Oldale Town'] = new Town('Oldale Town', [new RouteKillRequirement(10, 101)]);
 TownList['Petalburg City'] = new Town('Petalburg City', [new RouteKillRequirement(10, 102)]);
-TownList['Rustboro City'] = new Town('Rustboro City', [new RouteKillRequirement(10, 104), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Petalburg Woods'))]);
-TownList['Dewford Town'] = new Town('Dewford Town', [new RouteKillRequirement(10, 116), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Rusturf Tunnel'))]);
-TownList['Slateport City'] = new Town('Slateport City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Granite Cave'))]);
+TownList['Rustboro City'] = new Town('Rustboro City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Petalburg Woods'))]);
+TownList['Dewford Town'] = new Town('Dewford Town', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Rusturf Tunnel'))]);
+TownList['Slateport City'] = new Town('Slateport City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Granite Cave')), new GymBadgeRequirement(BadgeCase.Badge.Knuckle)]);
 TownList['Mauville City'] = new Town('Mauville City', [new RouteKillRequirement(10, 110)]);
 TownList['Verdanturf Town'] = new Town('Verdanturf Town', [new RouteKillRequirement(10, 117)]);
-TownList['Lavaridge Town'] = new Town('Lavaridge Town', [new RouteKillRequirement(10, 115), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Chimney'))]);
+TownList['Lavaridge Town'] = new Town('Lavaridge Town', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Jagged Pass'))]);
 TownList['Fallarbor Town'] = new Town('Fallarbor Town', [new RouteKillRequirement(10, 113)]);
 TownList['Fortree City'] = new Town('Fortree City', [new RouteKillRequirement(10, 119)]);
-TownList['LilyCove City'] = new Town('LilyCove City', [new RouteKillRequirement(10, 121), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Pyre'))], LilyCoveCityShop);
-TownList['Mossdeep City'] = new Town('Mossdeep City', [new RouteKillRequirement(10, 125), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Shoal Cave'))], MossdeepCityShop);
-TownList['Sootopolis City'] = new Town('Sootopolis City', [new RouteKillRequirement(10, 126), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Cave of Origin'))]);
-TownList['Ever Grande City'] = new Town('Ever Grande City', [new RouteKillRequirement(10, 128)]);
+TownList['LilyCove City'] = new Town('LilyCove City', [new RouteKillRequirement(10, 121)], LilyCoveCityShop);
+TownList['Mossdeep City'] = new Town('Mossdeep City', [new RouteKillRequirement(10, 125)], MossdeepCityShop);
+TownList['Sootopolis City'] = new Town('Sootopolis City', [new RouteKillRequirement(10, 126), new GymBadgeRequirement(BadgeCase.Badge.Mind)]);
+TownList['Ever Grande City'] = new Town('Ever Grande City', [new GymBadgeRequirement(BadgeCase.Badge.Rain)]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [new RouteKillRequirement(10, 128), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Hoenn'))]);
 TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [new RouteKillRequirement(10, 131)]);
-TownList['Battle Frontier'] = new Town('Battle Frontier', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Hoenn'))], BattleFrontierShop);
+TownList['Battle Frontier'] = new Town('Battle Frontier', [new GymBadgeRequirement(BadgeCase.Badge.Elite_HoennChampion)], BattleFrontierShop);
 
 //Hoenn Dungeons
 TownList['Petalburg Woods'] = new DungeonTown('Petalburg Woods', [new RouteKillRequirement(10, 104)]);
 TownList['Rusturf Tunnel'] = new DungeonTown('Rusturf Tunnel', [new RouteKillRequirement(10, 116), new GymBadgeRequirement(BadgeCase.Badge.Stone)]);
-TownList['Granite Cave'] = new DungeonTown('Granite Cave', [new RouteKillRequirement(10, 116), new GymBadgeRequirement(BadgeCase.Badge.Knuckle)]);
-TownList['Fiery Path'] = new DungeonTown('Fiery Path', [new RouteKillRequirement(10, 111), new GymBadgeRequirement(BadgeCase.Badge.Dynamo)]);
+TownList['Granite Cave'] = new DungeonTown('Granite Cave', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Rusturf Tunnel'))]);
+TownList['Fiery Path'] = new DungeonTown('Fiery Path', [new RouteKillRequirement(10, 112)]);
 TownList['Meteor Falls'] = new DungeonTown('Meteor Falls', [new RouteKillRequirement(10, 114)]);
-TownList['Mt. Chimney'] = new DungeonTown('Mt. Chimney', [new RouteKillRequirement(10, 115)]);
-TownList['Jagged Pass'] = new DungeonTown('Jagged Pass', [new RouteKillRequirement(10, 115)]);
-TownList['New Mauville'] = new DungeonTown('New Mauville', [new RouteKillRequirement(10, 112), new GymBadgeRequirement(BadgeCase.Badge.Heat)]);
+TownList['Mt. Chimney'] = new DungeonTown('Mt. Chimney', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Meteor Falls'))]);
+TownList['Jagged Pass'] = new DungeonTown('Jagged Pass', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Mt. Chimney'))]);
+TownList['New Mauville'] = new DungeonTown('New Mauville', [new GymBadgeRequirement(BadgeCase.Badge.Balance)]);
 TownList['Mt. Pyre'] = new DungeonTown('Mt. Pyre', [new RouteKillRequirement(10, 122)]);
 TownList['Shoal Cave'] = new DungeonTown('Shoal Cave', [new RouteKillRequirement(10, 125)]);
-TownList['Cave of Origin'] = new DungeonTown('Cave of Origin', [new RouteKillRequirement(10, 126)]);
-TownList['Seafloor Cavern'] = new DungeonTown('Seafloor Cavern', [new RouteKillRequirement(10, 127)]);
-TownList['Sky Pillar'] = new DungeonTown('Sky Pillar', [new RouteKillRequirement(10, 131)]);
-TownList['Victory Road Hoenn'] = new DungeonTown('Victory Road Hoenn', [new RouteKillRequirement(10, 128), new GymBadgeRequirement(BadgeCase.Badge.Rain)]);
+TownList['Cave of Origin'] = new DungeonTown('Cave of Origin', [new RouteKillRequirement(10, 126),new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Seafloor Cavern'))]);
+TownList['Seafloor Cavern'] = new DungeonTown('Seafloor Cavern', [new RouteKillRequirement(10, 128), new GymBadgeRequirement(BadgeCase.Badge.Mind)]);
+TownList['Sky Pillar'] = new DungeonTown('Sky Pillar', [new RouteKillRequirement(10, 131), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Cave of Origin'))]);
+TownList['Victory Road Hoenn'] = new DungeonTown('Victory Road Hoenn', [new GymBadgeRequirement(BadgeCase.Badge.Rain)]);
 
 //Sinnoh Shops
 const TwinleafTownShop = new Shop([
@@ -266,7 +266,7 @@ const PalParkShop = new Shop([
     ItemList['Razor_claw'],
     ItemList['Razor_fang'],
     ItemList['Combee'],
-    ItemList['Burmy'],
+    ItemList['Burmy (plant)'],
     ItemList['Cherubi'],
 ]);
 const SurvivalAreaShop = new Shop([
@@ -293,7 +293,7 @@ TownList['Hearthome City'] = new Town('Hearthome City', [new RouteKillRequiremen
 TownList['Solaceon Town'] = new Town('Solaceon Town', [new RouteKillRequirement(10, 209)], SolaceonTownShop);
 TownList['Veilstone City'] = new Town('Veilstone City', [new RouteKillRequirement(10, 215)]);
 TownList['Pastoria City'] = new Town('Pastoria City', [new RouteKillRequirement(10, 213)], PastoriaShop);
-TownList['Celestic Town'] = new Town('Celestic Town', [new RouteKillRequirement(10, 210)]);
+TownList['Celestic Town'] = new Town('Celestic Town', [new RouteKillRequirement(10, 210), new GymBadgeRequirement(BadgeCase.Badge.Fen)]);
 TownList['Pal Park'] = new Town('Pal Park', [new RouteKillRequirement(10, 221)], PalParkShop);
 TownList['Canalave City'] = new Town('Canalave City', [new RouteKillRequirement(10, 218)]);
 TownList['Snowpoint City'] = new Town('Snowpoint City', [new RouteKillRequirement(10, 217)]);
@@ -318,7 +318,7 @@ TownList['Lake Verity'] = new DungeonTown('Lake Verity', [new RouteKillRequireme
 TownList['Lake Acuity'] = new DungeonTown('Lake Acuity', [new RouteKillRequirement(10, 217), new GymBadgeRequirement(BadgeCase.Badge.Icicle)]);
 TownList['Victory Road Sinnoh'] = new DungeonTown('Victory Road Sinnoh', [new RouteKillRequirement(10, 223), new GymBadgeRequirement(BadgeCase.Badge.Beacon)]);
 TownList['Spear Pillar'] = new DungeonTown('Spear Pillar', [new RouteKillRequirement(10, 211), new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
-TownList['Hall of Origin'] = new DungeonTown('Hall of Origin', [new RouteKillRequirement(10, 211), new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
+TownList['Hall of Origin'] = new DungeonTown('Hall of Origin', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Spear Pillar'))]);
 TownList['Fullmoon Island'] = new DungeonTown('Fullmoon Island', [new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
 TownList['Newmoon Island'] = new DungeonTown('Newmoon Island', [new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
 TownList['Flower Paradise'] = new DungeonTown('Flower Paradise', [new RouteKillRequirement(10, 224), new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
