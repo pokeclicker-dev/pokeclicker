@@ -71,6 +71,7 @@ class Breeding implements Feature {
             [],
             ['Bagon', 'Shelgon', 'Salamence'],
             ['Gible', 'Gabite', 'Garchomp'],
+            ['Deino', 'Zwellous', 'Hydreigon'],
         ];
 
     }
