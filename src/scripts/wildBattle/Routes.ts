@@ -1042,3 +1042,240 @@ Routes.add(new RegionRoute(
     }),
     [new RouteKillRequirement(10, 229)]
 ));
+
+// TODO: from here down:
+// the pokemon are mostly correct, but some data may be wrong/missing
+// No requirements have been done
+// No route order has been set
+
+/*
+UNOVA
+*/
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 1,
+    new RoutePokemon({
+        land: ['Herdier', 'Watchog'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 2,
+    new RoutePokemon({
+        land: ['Watchog', 'Herdier', 'Liepard'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 3,
+    new RoutePokemon({
+        land: ['Tranquill', 'Watchog', 'Zebstrika', 'Herdier', 'Purrloin'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 4,
+    new RoutePokemon({
+        land: ['Sandile', 'Darumaka', 'Trubbish', 'Scraggy', 'Minccino'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 5,
+    new RoutePokemon({
+        land: ['Gothita', 'Minccino', 'Trubbish', 'Liepard', 'Solosis'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 6,
+    new RoutePokemon({
+        land: ['Deerling', 'Karrablast', 'Tranquill', 'Foongus', 'Swadloon', 'Shelmet'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 7,
+    new RoutePokemon({
+        land: ['Blitzle', 'Cubchoo', 'Deerling', 'Zebstrika', 'Watchog', 'Tranquill', 'Foongus'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 8,
+    new RoutePokemon({
+        land: ['Palpitoad', 'Shelmet', 'Stunfisk', 'Karrablast'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 9,
+    new RoutePokemon({
+        land: ['Gothorita', 'Minccino', 'Garbodor', 'Pawniard', 'Liepard', 'Duosion'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 11,
+    new RoutePokemon({
+        land: ['Golduck', 'Gligar', 'Marill', 'Zangoose', 'Seviper'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 12,
+    new RoutePokemon({
+        land: ['Roselia', 'Combee', 'Heracross', 'Pinsir'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 13,
+    new RoutePokemon({
+        land: ['Tangela', 'Pelipper', 'Drifblim', 'Absol', 'Lunatone', 'Solrock'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 14,
+    new RoutePokemon({
+        land: ['Golduck', 'Swablu', 'Mienfoo', 'Drifblim', 'Absol', 'Altaria'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 15,
+    new RoutePokemon({
+        land: ['Sandslash', 'Gligar', 'Pupitar'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 16,
+    new RoutePokemon({
+        land: ['Gothita', 'Minccino', 'Trubbish', 'Liepard', 'Solosis'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 17,
+    new RoutePokemon({
+        land: ['Frillish'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 18,
+    new RoutePokemon({
+        land: ['Scrafty', 'Crustle', 'Sawk', 'Throh'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 19,
+    new RoutePokemon({
+        land: ['Patrat', 'Purrloin', 'Lillipup'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 20,
+    new RoutePokemon({
+        land: ['Pidove', 'Venipede', 'Patrat', 'Purrloin', 'Sewaddle'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 21,
+    new RoutePokemon({
+        land: ['Mantyke', 'Remoraid', 'Spheal'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 22,
+    new RoutePokemon({
+        land: ['Pelipper', 'Golduck', 'Lunatone', 'Solrock', 'Marill', 'Delibird'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.unova, 23,
+    new RoutePokemon({
+        land: ['Bouffalant', 'Sawk', 'Mienfoo', 'Amoonguss', 'Vullaby', 'Rufflet'],
+    })
+));
+
+/*
+KALOS
+*/
+
+/*
+ALOLA
+*/
+Routes.add(new RegionRoute(
+    GameConstants.Region.alola, 1,
+    new RoutePokemon({
+        land: ['Pikipek', 'Yungoos', 'Grubbin'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.alola, 3,
+    new RoutePokemon({
+        land: ['Cutiefly', 'Rockruff', 'Oricorio', 'Crabrawler'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.alola, 5,
+    new RoutePokemon({
+        land: ['Mudbray', 'Dewpider', 'Salandit', 'Stufful'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.alola, 14,
+    new RoutePokemon({
+        land: ['Turtonator', 'Togedemaru', 'Mimikyu'],
+    })
+));
+
+/*
+GALAR
+*/
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 1,
+    new RoutePokemon({
+        land: ['Skwovet', 'Rookidee', 'Blipbug', 'Wooloo', 'Nickit'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 2,
+    new RoutePokemon({
+        land: ['Skwovet', 'Rookidee', 'Nickit', 'Chewtle', 'Yamper'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 3,
+    new RoutePokemon({
+        land: ['Gossifleur', 'Rookidee', 'Corvisquire', 'Skwovet', 'Rolycoly', 'Sizzlipede'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 4,
+    new RoutePokemon({
+        land: ['Yamper', 'Wooloo', 'Milcery'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 5,
+    new RoutePokemon({
+        land: ['Dottler', 'Applin', 'Eldegoss'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 6,
+    new RoutePokemon({
+        land: ['Silicobra'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 7,
+    new RoutePokemon({
+        land: ['Thievul', 'Toxel', 'Corviknight', 'Perrserker', 'Morpeko'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 8,
+    new RoutePokemon({
+        land: ['Sandaconda', 'Falinks'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 9,
+    new RoutePokemon({
+        land: ['Cramorant', 'Clobbopus', 'Grapploct', 'Pincurchin'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.galar, 10,
+    new RoutePokemon({
+        land: ['Snom', 'Duraludon', 'Stonjourner', 'Eiscue'],
+    })
+));
