@@ -29,18 +29,30 @@ class Breeding implements Feature {
             ['Cyndaquil', 'Slugma', 'Houndour', 'Magby'],
             ['Torchic'],
             ['Chimchar'],
+            ['Tepig'],
+            ['Fennekin'],
+            ['Litten'],
+            ['Scorbunny'],
         ];
         this.hatchList[EggType.Water] = [
             ['Squirtle', 'Lapras', 'Staryu', 'Psyduck'],
             ['Totodile', 'Wooper', 'Marill', 'Qwilfish'],
             ['Mudkip', 'Feebas', 'Clamperl'],
             ['Piplup', 'Finneon'],
+            ['Oshawott'],
+            ['Froakie'],
+            ['Popplio'],
+            ['Sobble'],
         ];
         this.hatchList[EggType.Grass] = [
             ['Bulbasaur', 'Oddish', 'Tangela', 'Bellsprout'],
             ['Chikorita', 'Hoppip', 'Sunkern'],
             ['Treecko', 'Tropius', 'Roselia'],
             ['Turtwig', 'Carnivine'],
+            ['Snivy'],
+            ['Chespin'],
+            ['Rowlet'],
+            ['Grookey'],
         ];
         this.hatchList[EggType.Fighting] = [
             ['Hitmonlee', 'Hitmonchan', 'Machop', 'Mankey'],
@@ -59,6 +71,7 @@ class Breeding implements Feature {
             [],
             ['Bagon', 'Shelgon', 'Salamence'],
             ['Gible', 'Gabite', 'Garchomp'],
+            ['Deino', 'Zwellous', 'Hydreigon'],
         ];
 
     }
