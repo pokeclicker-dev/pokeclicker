@@ -91,9 +91,3 @@ UndergroundItem.addItem('Stone Plate', 42, [[42,42,42,42], [42,42,42,42], [42,42
 UndergroundItem.addItem('Toxic Plate', 43, [[43,43,43,43], [43,43,43,43], [43,43,43,43]], 100, 'poison');
 UndergroundItem.addItem('Zap Plate', 44, [[44,44,44,44], [44,44,44,44], [44,44,44,44]], 100, 'electric');
 UndergroundItem.addItem('Pixie Plate', 45, [[45,45,45,45], [45,45,45,45], [45,45,45,45]], 100, 'fairy');
-
-UndergroundItem.addItem('Trade Stone', 46, [[46,46,46], [46,46,46], [46,46,46]], 1, 'Trade_stone');
-UndergroundItem.addItem('Dragon Scale', 47, [[47,47,47], [47,47,47], [47,47,47]], 1, 'Dragon_scale');
-UndergroundItem.addItem('Metal Coat', 48, [[48,48,48], [48,48,48], [48,48,48]], 1, 'Metal_coat');
-UndergroundItem.addItem('Kings Rock', 49, [[49,49,49], [49,49,49], [49,49,49]], 1, 'Kings_rock');
-UndergroundItem.addItem('Upgrade', 50, [[50,50,50], [50,50,50], [50,50,50]], 1, 'Upgrade');
