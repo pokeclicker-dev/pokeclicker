@@ -37,9 +37,11 @@ const changelogItems = [
     new Changelog(changelogType.NEW, 'Time based evolutions'),
     new Changelog(changelogType.NEW, '2 new fossils to the Underground'),
     new Changelog(changelogType.NEW, 'Pokemon alternate forms can now be obtained'),
+    new Changelog(changelogType.CHANGE, 'Decrease attack reduction in newer regions'),
     new Changelog(changelogType.CHANGE, 'All Happiness/Friendship evolutions now make use of the Soothe Bell'),
     new Changelog(changelogType.CHANGE, 'Added base exp per quest completed'),
     new Changelog(changelogType.CHANGE, 'Updated the order Routes, Dungeons and Gyms need to be completed in the Kanto region'),
+    new Changelog(changelogType.FIXED, 'Gyms should award correct amount of Egg steps now'),
     new Changelog(changelogType.REMOVED, 'Removed Time Stone'),
 
     // v0.4.20
