@@ -1235,61 +1235,98 @@ Routes.add(new RegionRoute(
         land: ['Inkay', 'Mienfoo', 'Drifloon', 'Absol', 'Bagon', 'Zangoose', 'Spoink'],
     })
 ));
-//TODO : finish the rest of this
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 9,
     new RoutePokemon({
-        land: ['Gothorita', 'Minccino', 'Garbodor', 'Pawniard', 'Liepard', 'Duosion'],
+        land: ['Hippopotas', 'Sandile', 'Helioptile'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.kalos, 10,
+    new RoutePokemon({
+        land: ['Snubbull', 'Houndour', 'Electrike', 'Sigilyph', 'Emolga', 'Golett', 'Hawlucha'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 11,
     new RoutePokemon({
-        land: ['Golduck', 'Gligar', 'Marill', 'Zangoose', 'Seviper'],
+        land: ['Hariyama', 'Staravia', 'Chingling', 'Stunky', 'Throh', 'Sawk', 'Dedenne'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 12,
     new RoutePokemon({
-        land: ['Roselia', 'Combee', 'Heracross', 'Pinsir'],
+        land: ['Slowpoke', 'Exeggcute', 'Pinsir', 'Tauros', 'Heracross', 'Miltank', 'Pachirisu', 'Chatot'],
+        water: ['Lapras', 'Luvdisc', 'Huntail', 'Gorebyss', 'Binacle'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 13,
     new RoutePokemon({
-        land: ['Tangela', 'Pelipper', 'Drifblim', 'Absol', 'Lunatone', 'Solrock'],
+        land: ['Dugtrio', 'Trapinch', 'Gible', 'Graveler', 'Slugma'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 14,
     new RoutePokemon({
-        land: ['Golduck', 'Swablu', 'Mienfoo', 'Drifblim', 'Absol', 'Altaria'],
+        land: ['Weepinbell', 'Haunter', 'Quagsire', 'Skorupi', 'Carnivine', 'Karrablast', 'Shelmet', 'Goomy'],
+        water: ['Stunfisk'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 15,
     new RoutePokemon({
-        land: ['Sandslash', 'Gligar', 'Pupitar'],
+        land: ['Mightyena', 'Skorupi', 'Watchog', 'Liepard', 'Foongus', 'Pawniard', 'Klefki'],
+        water: ['Lombre', 'Basculin'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 16,
     new RoutePokemon({
-        land: ['Gothita', 'Minccino', 'Trubbish', 'Liepard', 'Solosis'],
+        land: ['Skorupi', 'Pumpkaboo', 'Floatzel', 'Foongus', 'Phantump', 'Klefki'],
+        water: ['Lombre', 'Basculin'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 17,
     new RoutePokemon({
-        land: ['Frillish'],
+        land: ['Sneasel', 'Delibird', 'Snover', 'Abomasnow'],
     })
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.kalos, 18,
     new RoutePokemon({
-        land: ['Scrafty', 'Crustle', 'Sawk', 'Throh'],
+        land: ['Pupitar', 'Lairon', 'Torkoal', 'Gurdurr', 'Heatmor', 'Durant'],
     })
 ));
+Routes.add(new RegionRoute(
+    GameConstants.Region.kalos, 19,
+    new RoutePokemon({
+        land: ['Quagsire', 'Drapion', 'Carnivine', 'Karrablast', 'Shelmet', 'Sliggoo'],
+        water: ['Stunfisk', 'Politoed'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.kalos, 20,
+    new RoutePokemon({
+        land: ['Jigglypuff', 'Noctowl', 'Zoroark', 'Gothorita', 'Amoonguss', 'Trevenant'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.kalos, 21,
+    new RoutePokemon({
+        land: ['Scyther', 'Ursaring', 'Spinda', 'Altaria', 'Floatzel'],
+        water: ['Lombre', 'Basculin', 'Dratini', 'Dragonair'],
+    })
+));
+Routes.add(new RegionRoute(
+    GameConstants.Region.kalos, 22,
+    new RoutePokemon({
+        land: ['Psyduck', 'Farfetch\'d', 'Dunsparce', 'Azurill', 'Bidoof', 'Riolu', 'Bunnelby', 'Litleo'],
+        water: ['Azumarill'],
+    })
+));
+//TODO : press F to pay respect
 /*
 ALOLA
 */
