@@ -1326,7 +1326,6 @@ Routes.add(new RegionRoute(
         water: ['Azumarill'],
     })
 ));
-//TODO : press F to pay respect
 /*
 ALOLA
 */
