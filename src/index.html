@@ -47,7 +47,7 @@
     <link href="styles/styles.min.css?v=$VERSION" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171657234-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=$GOOGLE_ANALYTICS_ID"></script>
     <script>
         if ($INIT_GOOGLE_ANALYTICS) {
             window.dataLayer = window.dataLayer || [];
@@ -58,7 +58,7 @@
 
             gtag('js', new Date());
 
-            gtag('config', 'UA-171657234-1');
+            gtag('config', '$GOOGLE_ANALYTICS_ID');
         }
     </script>
     <style>

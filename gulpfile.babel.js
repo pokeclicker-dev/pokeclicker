@@ -16,6 +16,12 @@ const replace = require('gulp-replace');
 const connect = require('gulp-connect');
 const version = process.env.npm_package_version || '0.0.0';
 
+const _config = require('./config.js');
+const config = {
+    GOOGLE_ANALYTICS_ID: '',
+    ..._config,
+};
+
 /**
  * Push build to gh-pages
  */
@@ -82,6 +88,7 @@ gulp.task('compile-html', (done) => {
     }
     stream.pipe(replace('$VERSION', version));
     stream.pipe(replace('$INIT_GOOGLE_ANALYTICS', process.env.NODE_ENV == 'production'));
+    stream.pipe(replace('$GOOGLE_ANALYTICS_ID', config.GOOGLE_ANALYTICS_ID));
 
     stream.pipe(plumber())
         .pipe(gulpImport('./src/components/'))
@@ -91,16 +98,6 @@ gulp.task('compile-html', (done) => {
         .pipe(gulp.dest(htmlDest))
         .pipe(browserSync.reload({stream: true}));
     done();
-});
-
-gulp.task('html', () => {
-    const htmlDest = './build';
-
-    return gulp.src(srcs.html)
-        .pipe(changed(dests.base))
-        .pipe(minifyHtml())
-        .pipe(gulp.dest(htmlDest))
-        .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('scripts', () => {
