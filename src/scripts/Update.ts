@@ -203,6 +203,18 @@ class Update implements Saveable {
             }
         }
 
+        if (this.isOlderVersion(this.saveVersion, '0.5.2')) {
+            try {
+                // If the player has the Soul Badge already
+                // Not using game constants incase the badge value isn't 5 in the future
+                if (saveData.badgeCase[5]) {
+                    saveData.quests.questLines.push({state: 1, name: 'Mining Expedition', quest: 0});
+                }
+            } catch (ಠ_ಠ) {
+                console.error('[update] v0.5.2 - Couldn\'t start Aerodactyl Quest line..', ಠ_ಠ);
+            }
+        }
+
         // Notify the player that the game has updated!
         if (this.saveVersion != this.version && this.saveVersion != '0.0.0') {
             const button = document.createElement('a');
