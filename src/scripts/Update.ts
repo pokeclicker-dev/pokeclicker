@@ -210,6 +210,9 @@ class Update implements Saveable {
                 if (saveData.badgeCase[5]) {
                     saveData.quests.questLines.push({state: 1, name: 'Mining Expedition', quest: 0});
                 }
+
+                // Update save data
+                this.setSaveData(saveData);
             } catch (ಠ_ಠ) {
                 console.error('[update] v0.5.2 - Couldn\'t start Aerodactyl Quest line..', ಠ_ಠ);
             }
