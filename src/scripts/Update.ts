@@ -11,8 +11,43 @@ class Update implements Saveable {
         if (saveData) {
             this.fromJSON(saveData.update, true);
         }
+
+        // Start our update check
+        this.checkForNewerVersionOnInterval();
     }
 
+    checkForNewerVersionOnInterval() {
+        // Lets check every 3 hours for a newer version
+        const checkForNewVersionInterval = setInterval(() => {
+            try {
+                $.ajax({
+                    cache: false,
+                    url: './package.json',
+                    dataType: 'json',
+                    success: result => {
+                        // If the website version is newer
+                        if (this.isNewerVersion(result.version, this.version)) {
+                            clearInterval(checkForNewVersionInterval);
+                            Notifier.notify({
+                                title: `[UPDATE] v${result.version}`,
+                                message: 'A newer version of the game is available:<br/><br/><a class="btn btn-warning btn-block" href="#" onclick="location.reload(true);">Reload Page</a>',
+                                timeout: GameConstants.DAY,
+                            });
+                        }
+                    },
+                });
+            } catch (ಠ_ಠ) {
+                console.error('[update] Unable to check for new version', ಠ_ಠ);
+            }
+        }, GameConstants.HOUR * 3);
+    }
+
+    // potentially newer version, check againt version
+    isNewerVersion(version, compareVersion) {
+        return compareVersion.localeCompare(version, undefined, { numeric: true }) === -1;
+    }
+
+    // potentially older version, check againt version
     isOlderVersion(version, compareVersion) {
         return compareVersion.localeCompare(version, undefined, { numeric: true }) === 1;
     }
@@ -153,6 +188,18 @@ class Update implements Saveable {
                 this.setPlayerData(playerData);
             } catch (ಠ_ಠ) {
                 console.error('[update] v0.5.0 - Couldn\'t update item list data..', ಠ_ಠ);
+            }
+        }
+
+        if (this.isOlderVersion(this.saveVersion, '0.5.1')) {
+            try {
+                // Items removed from the Underground, if the player has these items in their current layer, reset their mine
+                const mineData = JSON.parse(localStorage.mine);
+                if (mineData.rewardNumbers.some(id => id >= 46)) {
+                    delete localStorage.mine;
+                }
+            } catch (ಠ_ಠ) {
+                console.error('[update] v0.5.1 - Couldn\'t reset player mine..', ಠ_ಠ);
             }
         }
 
