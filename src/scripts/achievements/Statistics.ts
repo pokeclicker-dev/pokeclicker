@@ -11,7 +11,16 @@ class Statistics implements Saveable {
     /*
      * observables
      */
+    // Other
     clickAttacks: KnockoutObservable<number>;
+    // Currency
+    totalMoney: KnockoutObservable<number>;
+    totalDungeonTokens: KnockoutObservable<number>;
+    totalQuestPoints: KnockoutObservable<number>;
+    totalDiamonds: KnockoutObservable<number>;
+    totalFarmPoints: KnockoutObservable<number>;
+    totalBattlePoints: KnockoutObservable<number>;
+    // Pokemon
     totalPokemonCaptured: KnockoutObservable<number>;
     totalPokemonDefeated: KnockoutObservable<number>;
     totalPokemonEncountered: KnockoutObservable<number>;
@@ -20,16 +29,11 @@ class Statistics implements Saveable {
     totalShinyPokemonDefeated: KnockoutObservable<number>;
     totalShinyPokemonEncountered: KnockoutObservable<number>;
     totalShinyPokemonHatched: KnockoutObservable<number>;
-    totalMoney: KnockoutObservable<number>;
-    totalDungeonTokens: KnockoutObservable<number>;
-    totalQuestPoints: KnockoutObservable<number>;
-    totalDiamonds: KnockoutObservable<number>;
-    totalFarmPoints: KnockoutObservable<number>;
-    totalBattlePoints: KnockoutObservable<number>;
-    // Underground statistics
-    undergroundItemsFound: KnockoutObservable<number>; // Total treasure found in underground
-    undergroundLayersMined: KnockoutObservable<number>; // Total underground layers completed
-    // Battle Frontier statistics
+    // Underground
+    undergroundItemsFound: KnockoutObservable<number>;
+    undergroundLayersMined: KnockoutObservable<number>;
+    undergroundDailyDealTrades: KnockoutObservable<number>;
+    // Battle Frontier
     battleFrontierTotalStagesCompleted: KnockoutObservable<number>;
     battleFrontierHighestStageCompleted: KnockoutObservable<number>;
 
@@ -38,9 +42,12 @@ class Statistics implements Saveable {
      */
     pokeballsUsed: Array<KnockoutObservable<number>>;
     pokeballsBought: Array<KnockoutObservable<number>>;
+    // Other
     totalShards: Array<KnockoutObservable<number>>;
     oakItemUses: Array<KnockoutObservable<number>>;
+    // Farm
     berriesHarvested: Array<KnockoutObservable<number>>;
+    //Battle
     routeKills: Array<KnockoutObservable<number>>;
     gymsDefeated: Array<KnockoutObservable<number>>;
     dungeonsCleared: Array<KnockoutObservable<number>>;
@@ -73,6 +80,7 @@ class Statistics implements Saveable {
         'totalShinyPokemonHatched',
         'undergroundItemsFound',
         'undergroundLayersMined',
+        'undergroundDailyDealTrades',
         'battleFrontierTotalStagesCompleted',
         'battleFrontierHighestStageCompleted',
     ];
