@@ -12,6 +12,7 @@ class Statistics implements Saveable {
      * observables
      */
     // Other
+    secondsPlayed: KnockoutObservable<number>;
     clickAttacks: KnockoutObservable<number>;
     questsCompleted: KnockoutObservable<number>;
     totalShardsGained: KnockoutObservable<number>;
@@ -67,6 +68,7 @@ class Statistics implements Saveable {
     shinyPokemonEncountered: any;
 
     observables = [
+        'secondsPlayed',
         'clickAttacks',
         'questsCompleted',
         'totalShardsGained',

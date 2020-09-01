@@ -115,6 +115,11 @@ class Game {
     gameTick() {
         // Update tick counters
         EffectEngineRunner.counter += GameConstants.TICK_TIME;
+
+        if (EffectEngineRunner.counter % GameConstants.SECOND == 0) {
+            GameHelper.incrementObservable(App.game.statistics.secondsPlayed);
+        }
+
         Game.achievementCounter += GameConstants.TICK_TIME;
         if (Game.achievementCounter > GameConstants.ACHIEVEMENT_TICK) {
             Game.achievementCounter = 0;
