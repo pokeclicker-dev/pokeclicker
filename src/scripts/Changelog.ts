@@ -29,7 +29,7 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
-    // v0.5.1
+    // v0.5.2
     new Changelog(changelogType.UPDATE, 'v0.5.2'),
     new Changelog(changelogType.NEW, 'More statistics added'),
 
