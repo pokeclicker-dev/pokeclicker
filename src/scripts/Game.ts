@@ -115,7 +115,7 @@ class Game {
     gameTick() {
         // Acheivements
         Game.achievementCounter += GameConstants.TICK_TIME;
-        if (Game.achievementCounter > GameConstants.ACHIEVEMENT_TICK) {
+        if (Game.achievementCounter >= GameConstants.ACHIEVEMENT_TICK) {
             Game.achievementCounter = 0;
             AchievementHandler.checkAchievements();
             GameHelper.incrementObservable(App.game.statistics.secondsPlayed);
@@ -125,14 +125,14 @@ class Game {
         switch (this.gameState) {
             case GameConstants.GameState.fighting: {
                 Battle.counter += GameConstants.TICK_TIME;
-                if (Battle.counter > GameConstants.BATTLE_TICK) {
+                if (Battle.counter >= GameConstants.BATTLE_TICK) {
                     Battle.tick();
                 }
                 break;
             }
             case GameConstants.GameState.gym: {
                 GymBattle.counter += GameConstants.TICK_TIME;
-                if (GymBattle.counter > GameConstants.BATTLE_TICK) {
+                if (GymBattle.counter >= GameConstants.BATTLE_TICK) {
                     GymBattle.tick();
                 }
                 GymRunner.tick();
@@ -140,7 +140,7 @@ class Game {
             }
             case GameConstants.GameState.dungeon: {
                 DungeonBattle.counter += GameConstants.TICK_TIME;
-                if (DungeonBattle.counter > GameConstants.BATTLE_TICK) {
+                if (DungeonBattle.counter >= GameConstants.BATTLE_TICK) {
                     DungeonBattle.tick();
                 }
                 DungeonRunner.tick();
@@ -148,7 +148,7 @@ class Game {
             }
             case GameConstants.GameState.battleFrontier: {
                 BattleFrontierBattle.counter += GameConstants.TICK_TIME;
-                if (BattleFrontierBattle.counter > GameConstants.BATTLE_FRONTIER_TICK) {
+                if (BattleFrontierBattle.counter >= GameConstants.BATTLE_FRONTIER_TICK) {
                     BattleFrontierBattle.tick();
                 }
                 BattleFrontierRunner.tick();
@@ -172,7 +172,7 @@ class Game {
 
         // Underground
         Underground.counter += GameConstants.TICK_TIME;
-        if (Underground.counter > GameConstants.UNDERGROUND_TICK) {
+        if (Underground.counter >= GameConstants.UNDERGROUND_TICK) {
             Underground.energyTick(Math.max(0, Underground.energyTick() - 1));
             if (Underground.energyTick() == 0) {
                 Underground.gainEnergy();
@@ -186,14 +186,14 @@ class Game {
 
         // Effect Engine (battle items)
         EffectEngineRunner.counter += GameConstants.TICK_TIME;
-        if (EffectEngineRunner.counter > GameConstants.EFFECT_ENGINE_TICK) {
+        if (EffectEngineRunner.counter >= GameConstants.EFFECT_ENGINE_TICK) {
             EffectEngineRunner.tick();
         }
 
         // Game timers
         GameHelper.counter += GameConstants.TICK_TIME;
-        if (GameHelper.counter > 60 * 1000) {
-            GameHelper.updateTime();
+        if (GameHelper.counter >= GameConstants.SECOND) {
+            GameHelper.tick();
         }
     }
 
