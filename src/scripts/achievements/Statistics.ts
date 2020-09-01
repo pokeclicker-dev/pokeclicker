@@ -33,6 +33,8 @@ class Statistics implements Saveable {
     undergroundItemsFound: KnockoutObservable<number>;
     undergroundLayersMined: KnockoutObservable<number>;
     undergroundDailyDealTrades: KnockoutObservable<number>;
+    // Farm
+    totalBerriesHarvested: KnockoutObservable<number>;
     // Battle Frontier
     battleFrontierTotalStagesCompleted: KnockoutObservable<number>;
     battleFrontierHighestStageCompleted: KnockoutObservable<number>;
@@ -81,6 +83,7 @@ class Statistics implements Saveable {
         'undergroundItemsFound',
         'undergroundLayersMined',
         'undergroundDailyDealTrades',
+        'totalBerriesHarvested',
         'battleFrontierTotalStagesCompleted',
         'battleFrontierHighestStageCompleted',
     ];

@@ -203,6 +203,21 @@ class Update implements Saveable {
             }
         }
 
+        if (this.isOlderVersion(this.saveVersion, '0.5.2')) {
+            try {
+                // Rename from the old statistic name
+                saveData.statistics = {
+                    ...saveData.statistics,
+                    totalBerriesHarvested: saveData.statistics.berriesHarvested.reduce((sum, b) => sum + b, 0) || 0,
+                };
+
+                // Update save data
+                this.setSaveData(saveData);
+            } catch (ಠ_ಠ) {
+                console.error('[update] v0.5.2 - Couldn\'t updaet player berries statistics..', ಠ_ಠ);
+            }
+        }
+
         // Notify the player that the game has updated!
         if (this.saveVersion != this.version && this.saveVersion != '0.0.0') {
             const button = document.createElement('a');
