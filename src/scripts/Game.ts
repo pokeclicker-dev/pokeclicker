@@ -113,22 +113,15 @@ class Game {
     }
 
     gameTick() {
-        // Update tick counters
-        EffectEngineRunner.counter += GameConstants.TICK_TIME;
-
-        if (EffectEngineRunner.counter % GameConstants.SECOND == 0) {
-            GameHelper.incrementObservable(App.game.statistics.secondsPlayed);
-        }
-
+        // Acheivements
         Game.achievementCounter += GameConstants.TICK_TIME;
         if (Game.achievementCounter > GameConstants.ACHIEVEMENT_TICK) {
             Game.achievementCounter = 0;
             AchievementHandler.checkAchievements();
+            GameHelper.incrementObservable(App.game.statistics.secondsPlayed);
         }
-        Save.counter += GameConstants.TICK_TIME;
-        Underground.counter += GameConstants.TICK_TIME;
 
-        GameHelper.counter += GameConstants.TICK_TIME;
+        // Battles
         switch (this.gameState) {
             case GameConstants.GameState.fighting: {
                 Battle.counter += GameConstants.TICK_TIME;
@@ -163,6 +156,8 @@ class Game {
             }
         }
 
+        // Auto Save
+        Save.counter += GameConstants.TICK_TIME;
         if (Save.counter > GameConstants.SAVE_TICK) {
             const now = new Date();
             if (new Date(player._lastSeen).toLocaleDateString() !== now.toLocaleDateString()) {
@@ -175,6 +170,8 @@ class Game {
             Save.store(player);
         }
 
+        // Underground
+        Underground.counter += GameConstants.TICK_TIME;
         if (Underground.counter > GameConstants.UNDERGROUND_TICK) {
             Underground.energyTick(Math.max(0, Underground.energyTick() - 1));
             if (Underground.energyTick() == 0) {
@@ -184,12 +181,17 @@ class Game {
             Underground.counter = 0;
         }
 
-        this.farming.update(GameConstants.TICK_TIME / 1000);
+        // Farm
+        this.farming.update(GameConstants.TICK_TIME / GameConstants.SECOND);
 
+        // Effect Engine (battle items)
+        EffectEngineRunner.counter += GameConstants.TICK_TIME;
         if (EffectEngineRunner.counter > GameConstants.EFFECT_ENGINE_TICK) {
             EffectEngineRunner.tick();
         }
 
+        // Game timers
+        GameHelper.counter += GameConstants.TICK_TIME;
         if (GameHelper.counter > 60 * 1000) {
             GameHelper.updateTime();
         }
