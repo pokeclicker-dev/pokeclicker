@@ -14,6 +14,7 @@ class Statistics implements Saveable {
     // Other
     clickAttacks: KnockoutObservable<number>;
     questsCompleted: KnockoutObservable<number>;
+    totalShardsGained: KnockoutObservable<number>;
     // Currency
     totalMoney: KnockoutObservable<number>;
     totalDungeonTokens: KnockoutObservable<number>;
@@ -46,7 +47,7 @@ class Statistics implements Saveable {
     pokeballsUsed: Array<KnockoutObservable<number>>;
     pokeballsBought: Array<KnockoutObservable<number>>;
     // Other
-    totalShards: Array<KnockoutObservable<number>>;
+    shardsGained: Array<KnockoutObservable<number>>;
     oakItemUses: Array<KnockoutObservable<number>>;
     // Farm
     berriesHarvested: Array<KnockoutObservable<number>>;
@@ -68,6 +69,7 @@ class Statistics implements Saveable {
     observables = [
         'clickAttacks',
         'questsCompleted',
+        'totalShardsGained',
         'totalMoney',
         'totalDungeonTokens',
         'totalQuestPoints',
@@ -94,7 +96,7 @@ class Statistics implements Saveable {
         'dungeonsCleared',
         'pokeballsUsed',
         'pokeballsBought',
-        'totalShards',
+        'shardsGained',
         'oakItemUses',
         'berriesHarvested',
         'routeKills',

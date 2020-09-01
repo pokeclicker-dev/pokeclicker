@@ -209,6 +209,8 @@ class Update implements Saveable {
                 saveData.statistics = {
                     ...saveData.statistics,
                     totalBerriesHarvested: saveData.statistics.berriesHarvested.reduce((sum, b) => sum + b, 0) || 0,
+                    totalShardsGained: saveData.statistics.totalShards.reduce((sum, b) => sum + b, 0) || 0,
+                    shardsGained: saveData.statistics.totalShards || 0,
                 };
 
                 // Update save data
