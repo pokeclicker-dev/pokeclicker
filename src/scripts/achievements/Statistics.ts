@@ -13,6 +13,7 @@ class Statistics implements Saveable {
      */
     // Other
     clickAttacks: KnockoutObservable<number>;
+    questsCompleted: KnockoutObservable<number>;
     // Currency
     totalMoney: KnockoutObservable<number>;
     totalDungeonTokens: KnockoutObservable<number>;
@@ -66,6 +67,7 @@ class Statistics implements Saveable {
 
     observables = [
         'clickAttacks',
+        'questsCompleted',
         'totalMoney',
         'totalDungeonTokens',
         'totalQuestPoints',
