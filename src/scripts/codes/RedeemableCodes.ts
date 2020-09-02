@@ -16,7 +16,7 @@ class RedeemableCodes implements Saveable {
             new RedeemableCode('shiny-charmer', -318017456, false, function () {
                 // Select a random Pokemon to give the player as a shiny
                 const pokemon = pokemonMap.random(GameConstants.TotalPokemonsPerRegion[player.highestRegion()]);
-                App.game.party.gainPokemon(pokemon, true, true);
+                App.game.party.gainPokemonById(pokemon.id, true, true);
                 // Notify that the code was activated successfully
                 Notifier.notify({ title:'Code activated!', message: `✨ You found a shiny ${pokemon.name}! ✨`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
             }),
@@ -44,66 +44,87 @@ class RedeemableCodes implements Saveable {
                 // Notify that the code was activated successfully
                 Notifier.notify({ title:'Code activated!', message: 'You have unlocked all of the Kanto region', type: GameConstants.NotificationOption.success, timeout: 1e4 });
             }),
-            new RedeemableCode('complete-johto', 171396746, false, function () {
-                // Complete all routes
-                for (let route = GameConstants.RegionRoute[GameConstants.Region.johto][0]; route <= GameConstants.RegionRoute[GameConstants.Region.johto][1]; route++) {
-                    GameHelper.incrementObservable(App.game.statistics.routeKills[route], 10);
-                }
-                // Complete all gyms
-                GameConstants.JohtoGyms.forEach(gym => {
-                    GameHelper.incrementObservable(App.game.statistics.gymsDefeated[Statistics.getGymIndex(gym)]);
-                    // Give badge
-                    if (!App.game.badgeCase.hasBadge(gymList[gym].badgeReward)) {
-                        App.game.badgeCase.gainBadge(gymList[gym].badgeReward);
-                    }
-                });
-                // Complete all dungeons
-                GameConstants.JohtoDungeons.forEach(dungeon => {
-                    GameHelper.incrementObservable(App.game.statistics.dungeonsCleared[Statistics.getDungeonIndex(dungeon)]);
-                });
-                // Catch all Pokemon
-                for (let id = GameConstants.TotalPokemonsPerRegion[GameConstants.Region.kanto] + 1; id <= GameConstants.TotalPokemonsPerRegion[GameConstants.Region.johto]; id++) {
-                    App.game.party.gainPokemonById(id, false, true);
-                }
+            /*
+             * DISCORD CODES BELOW HERE:
+             */
+            new RedeemableCode('[Discord] Deoxys (speed)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Deoxys (speed)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
                 // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: 'You have unlocked all of the Johto region', type: GameConstants.NotificationOption.success, timeout: 1e4 });
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
             }),
-            new RedeemableCode('complete-hoenn', -1257697040, false, function () {
-                // Complete all routes
-                for (let route = GameConstants.RegionRoute[GameConstants.Region.hoenn][0]; route <= GameConstants.RegionRoute[GameConstants.Region.hoenn][1]; route++) {
-                    GameHelper.incrementObservable(App.game.statistics.routeKills[route], 10);
-                }
-                // Complete all gyms
-                GameConstants.HoennGyms.forEach(gym => {
-                    GameHelper.incrementObservable(App.game.statistics.gymsDefeated[Statistics.getGymIndex(gym)]);
-                    // Give badge
-                    if (!App.game.badgeCase.hasBadge(gymList[gym].badgeReward)) {
-                        App.game.badgeCase.gainBadge(gymList[gym].badgeReward);
-                    }
-                });
-                // Complete all dungeons
-                GameConstants.HoennDungeons.forEach(dungeon => {
-                    GameHelper.incrementObservable(App.game.statistics.dungeonsCleared[Statistics.getDungeonIndex(dungeon)]);
-                });
-                // Catch all Pokemon
-                for (let id = GameConstants.TotalPokemonsPerRegion[GameConstants.Region.johto] + 1; id <= GameConstants.TotalPokemonsPerRegion[GameConstants.Region.hoenn]; id++) {
-                    App.game.party.gainPokemonById(id, false, true);
-                }
+            new RedeemableCode('[Discord] Unown (D)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Unown (D)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
                 // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: 'You have unlocked all of the Hoenn region', type: GameConstants.NotificationOption.success, timeout: 1e4 });
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
+            }),
+            new RedeemableCode('[Discord] Unown (I)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Unown (I)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
+                // Notify that the code was activated successfully
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
+            }),
+            new RedeemableCode('[Discord] Unown (S)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Unown (S)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
+                // Notify that the code was activated successfully
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
+            }),
+            new RedeemableCode('[Discord] Unown (C)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Unown (C)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
+                // Notify that the code was activated successfully
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
+            }),
+            new RedeemableCode('[Discord] Unown (O)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Unown (O)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
+                // Notify that the code was activated successfully
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
+            }),
+            new RedeemableCode('[Discord] Unown (R)', undefined, false, function () {
+                // Select the Pokemon to give the player
+                const pokemon = pokemonMap['Unown (R)'];
+                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
+                App.game.party.gainPokemonById(pokemon.id, shiny, true);
+                // Notify that the code was activated successfully
+                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
             }),
         ];
+    }
+
+    discordCodeMatch(code_name, code) {
+        // TODO: implement Discord login
+        const discordID = player.discordID || false;
+        if (!discordID) {
+            return false;
+        }
+        const val = discordID ^ parseInt(code_name.replace(/(\W|_)/g, ''), 36);
+        return code.toUpperCase() == (val > 0 ? val : ~val).toString(36).toUpperCase();
     }
 
     enterCode(code: string) {
         const hash = this.hash(code);
 
-        const redeemableCode = this.codeList.find(code => {
-            return code.hash === hash;
+        const redeemableCode = this.codeList.find(c => {
+            return c.hash === hash || this.discordCodeMatch(c.name, code);
         });
 
         if (!redeemableCode) {
-            Notifier.notify({ message: `Invalid code ${code}`, type: GameConstants.NotificationOption.danger });
+            Notifier.notify({ message: `Invalid code ${code}<br/>Or Discord account not linked.`, type: GameConstants.NotificationOption.danger });
             return;
         }
 
