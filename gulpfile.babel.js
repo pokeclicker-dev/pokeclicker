@@ -16,10 +16,28 @@ const replace = require('gulp-replace');
 const connect = require('gulp-connect');
 const version = process.env.npm_package_version || '0.0.0';
 
-const _config = require('./config.js');
-const config = {
-    GOOGLE_ANALYTICS_ID: '',
-    ..._config,
+let config = require('./config.js') || {};
+config = Object.assign({
+    GOOGLE_ANALYTICS_INIT: false,
+    GOOGLE_ANALYTICS_ID: false,
+    DEV_BANNER: false,
+    DISCORD_LOGIN_URI: false,
+}, config || {});
+
+const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+};
+
+const htmlImportIf = (html_str, is_true) => {
+    // Allow import if
+    if (is_true) {
+        // replace with standard import
+        return replace(`@importif ${html_str}`, '@import');
+    } else {
+        // remove the line
+        const replaceRegex = new RegExp(`\\s*@importif ${escapeRegExp(html_str)}.*\\n?`, 'g');
+        return replace(replaceRegex, '');
+    }
 };
 
 /**
@@ -90,15 +108,14 @@ gulp.task('compile-html', (done) => {
     const htmlDest = './build';
     const stream = gulp.src('./src/index.html');
     // If we want the development banner displayed
-    if (process.env.HEROKU) {
-        stream.pipe(replace('<!--$DEV_BANNER-->', '@import "developmentBanner.html"'));
-    }
-    stream.pipe(replace('$VERSION', version));
-    stream.pipe(replace('$INIT_GOOGLE_ANALYTICS', process.env.NODE_ENV == 'production'));
-    stream.pipe(replace('$GOOGLE_ANALYTICS_ID', config.GOOGLE_ANALYTICS_ID));
+    stream.pipe(htmlImportIf('$DEV_BANNER', config.DEV_BANNER));
+    stream.pipe(htmlImportIf('$GOOGLE_ANALYTICS_ID', config.GOOGLE_ANALYTICS_ID));
 
     stream.pipe(plumber())
         .pipe(gulpImport('./src/components/'))
+        .pipe(replace('$VERSION', version))
+        .pipe(replace('$GOOGLE_ANALYTICS_INIT', !!config.GOOGLE_ANALYTICS_INIT))
+        .pipe(replace('$GOOGLE_ANALYTICS_ID', config.GOOGLE_ANALYTICS_ID))
         .pipe(replace('$GIT_BRANCH', process.env.GIT_BRANCH))
         .pipe(replace('$DEV_DESCRIPTION', process.env.DEV_DESCRIPTION !== undefined ? process.env.DEV_DESCRIPTION : ''))
         .pipe(ejs())
