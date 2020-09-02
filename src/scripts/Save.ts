@@ -16,6 +16,7 @@ class Save {
     public static getSaveObject() {
         const saveObject = {};
 
+        // TODO: Why do we have this here?
         saveObject[Underground.saveKey] = Underground.save();
 
         Object.keys(App.game).filter(key => App.game[key].saveKey).forEach(key => {
