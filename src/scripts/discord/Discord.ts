@@ -1,11 +1,14 @@
 /* global $DISCORD_ENABLED */
 class Discord implements Saveable {
-    defaults: Record<string, any>;
+    defaults: Record<string, any> = {
+        ID: null,
+        username: null,
+    };
     saveKey = 'discord';
     clientID = '$DISCORD_CLIENT_ID';
     uri = '$DISCORD_LOGIN_URI';
-    ID: number;
-    username: string;
+    ID: KnockoutObservable<number> = ko.observable(null);
+    username: KnockoutObservable<string> = ko.observable(null);
 
     get enabled(): boolean {
         try {
@@ -16,6 +19,7 @@ class Discord implements Saveable {
     }
 
     constructor() {
+        // User logged in, need to get details
         const $_GET: Record<string, any> = {};
         location.search.substr(1).split('&').map(el => el.split('=')).forEach(el => $_GET[el[0]] = el[1]);
         if ($_GET.code) {
@@ -27,8 +31,9 @@ class Discord implements Saveable {
                 dataType: 'json',
                 success: data => {
                     if (data && data.id) {
-                        this.ID = data.id;
-                        this.username = `${data.username}#${data.discriminator}`;
+                        this.ID(data.id);
+                        this.username(`${data.username}#${data.discriminator}`);
+                        Notifier.notify({ title: `Welcome ${this.username()}`, message: 'Successfully logged in to Discord!', type: GameConstants.NotificationOption.success, timeout:GameConstants.MINUTE });
                     }
                 },
                 complete: () => {
@@ -43,8 +48,8 @@ class Discord implements Saveable {
     }
 
     logout() {
-        delete this.ID;
-        delete this.username;
+        this.ID(this.defaults.id);
+        this.username(this.defaults.username);
     }
 
     fromJSON(json): void {
@@ -52,14 +57,14 @@ class Discord implements Saveable {
             return;
         }
         
-        this.ID = json.ID;
-        this.username = json.username;
+        this.ID(json.ID || this.defaults.ID);
+        this.username(json.username || this.defaults.username);
     }
 
     toJSON(): Record<string, any> {
         return {
-            ID: this.ID,
-            username: this.username,
+            ID: this.ID(),
+            username: this.username(),
         };
     }
 

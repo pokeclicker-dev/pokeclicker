@@ -100,7 +100,7 @@ class RedeemableCodes implements Saveable {
 
     discordCodeMatch(code_name, code) {
         // TODO: implement Discord login
-        const discordID = App.game.discord.ID || false;
+        const discordID = App.game.discord.ID() || false;
         if (!discordID) {
             return false;
         }
@@ -117,7 +117,7 @@ class RedeemableCodes implements Saveable {
 
         if (!redeemableCode) {
             let message = `Invalid code ${code}`;
-            if (App.game.discord.enabled && !App.game.discord.ID) {
+            if (App.game.discord.enabled && !App.game.discord.ID()) {
                 message += '<br/>Or Discord account not linked.';
             }
             Notifier.notify({ message, type: GameConstants.NotificationOption.danger });
