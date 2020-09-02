@@ -47,14 +47,6 @@ class RedeemableCodes implements Saveable {
             /*
              * DISCORD CODES BELOW HERE:
              */
-            new RedeemableCode('[Discord] Deoxys (speed)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Deoxys (speed)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
             new RedeemableCode('[Discord] Unown (D)', undefined, false, function () {
                 // Select the Pokemon to give the player
                 const pokemon = pokemonMap['Unown (D)'];
