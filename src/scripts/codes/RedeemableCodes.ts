@@ -105,7 +105,7 @@ class RedeemableCodes implements Saveable {
             return false;
         }
         const val = discordID ^ parseInt(code_name.replace(/(\W|_)/g, ''), 36);
-        return code.toUpperCase() == (val > 0 ? val : ~val).toString(36).toUpperCase();
+        return code.toUpperCase() == (val > 0 ? val : -val).toString(36).toUpperCase();
     }
 
     enterCode(code: string) {
