@@ -81,6 +81,15 @@ class Discord implements Saveable {
         return true;
     }
 
+    loadCodes(codes) {
+        codes.forEach(code => {
+            const c = this.codes.find(c => c.name == code.name);
+            if (c) {
+                c.claimed = code.claimed;
+            }
+        });
+    }
+
     fromJSON(json): void {
         if (!json || !json.ID) {
             return;
@@ -88,12 +97,14 @@ class Discord implements Saveable {
         
         this.ID(json.ID || this.defaults.ID);
         this.username(json.username || this.defaults.username);
+        this.loadCodes(json.codes || []);
     }
 
     toJSON(): Record<string, any> {
         return {
             ID: this.ID(),
             username: this.username(),
+            codes: this.codes.filter(c => c.claimed),
         };
     }
 
