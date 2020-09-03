@@ -44,57 +44,6 @@ class RedeemableCodes implements Saveable {
                 // Notify that the code was activated successfully
                 Notifier.notify({ title:'Code activated!', message: 'You have unlocked all of the Kanto region', type: GameConstants.NotificationOption.success, timeout: 1e4 });
             }),
-            /*
-             * DISCORD CODES BELOW HERE:
-             */
-            new RedeemableCode('[Discord] Unown (D)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Unown (D)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
-            new RedeemableCode('[Discord] Unown (I)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Unown (I)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
-            new RedeemableCode('[Discord] Unown (S)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Unown (S)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
-            new RedeemableCode('[Discord] Unown (C)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Unown (C)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
-            new RedeemableCode('[Discord] Unown (O)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Unown (O)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
-            new RedeemableCode('[Discord] Unown (R)', undefined, false, function () {
-                // Select the Pokemon to give the player
-                const pokemon = pokemonMap['Unown (R)'];
-                const shiny = PokemonFactory.generateShiny(GameConstants.SHINY_CHANCE_SHOP);
-                App.game.party.gainPokemonById(pokemon.id, shiny, true);
-                // Notify that the code was activated successfully
-                Notifier.notify({ title:'Code activated!', message: `You found a ${pokemon.name}!`, type: GameConstants.NotificationOption.success, timeout: 1e4 });
-            }),
         ];
     }
 
