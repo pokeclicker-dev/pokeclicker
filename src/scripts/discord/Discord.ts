@@ -50,13 +50,35 @@ class Discord implements Saveable {
         }
     }
 
-    login() {
+    login(): void {
         location.href = `https://discord.com/oauth2/authorize?client_id=${this.clientID}&redirect_uri=${location.origin + location.pathname}&response_type=code&scope=identify&prompt=consent`;
     }
 
-    logout() {
+    logout(): void {
         this.ID(this.defaults.id);
         this.username(this.defaults.username);
+    }
+
+    calcCode(code: DiscordCode): string {
+        const discordID = App.game.discord.ID() || false;
+        if (!discordID) {
+            return;
+        }
+        const val = discordID ^ parseInt(code.name.replace(/(\W|_)/g, ''), 36);
+        return (val > 0 ? val : -val).toString(36).toUpperCase();
+    }
+
+    findCodeMatch(enteredCode: string): DiscordCode {
+        return this.codes.find(code => enteredCode.toUpperCase() == this.calcCode(code));
+    }
+
+    checkCode(enteredCode: string): boolean {
+        const code = this.findCodeMatch(enteredCode);
+        if (!code) {
+            return false;
+        }
+        code.claim();
+        return true;
     }
 
     fromJSON(json): void {

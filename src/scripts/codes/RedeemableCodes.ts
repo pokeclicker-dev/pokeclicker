@@ -47,33 +47,22 @@ class RedeemableCodes implements Saveable {
         ];
     }
 
-    discordCodeMatch(code_name, code) {
-        // TODO: implement Discord login
-        const discordID = App.game.discord.ID() || false;
-        if (!discordID) {
-            return false;
-        }
-        const val = discordID ^ parseInt(code_name.replace(/(\W|_)/g, ''), 36);
-        return code.toUpperCase() == (val > 0 ? val : -val).toString(36).toUpperCase();
-    }
-
     enterCode(code: string) {
         const hash = this.hash(code);
 
         const redeemableCode = this.codeList.find(c => {
-            return c.hash === hash || this.discordCodeMatch(c.name, code);
+            return c.hash === hash;
         });
 
-        if (!redeemableCode) {
-            let message = `Invalid code ${code}`;
-            if (App.game.discord.enabled && !App.game.discord.ID()) {
-                message += '<br/>Or Discord account not linked.';
-            }
+        if (!redeemableCode && !App.game.discord.checkCode(code)) {
+            const message = `Invalid code ${code}`;
             Notifier.notify({ message, type: GameConstants.NotificationOption.danger });
             return;
         }
 
-        redeemableCode.redeem();
+        if (redeemableCode) {
+            redeemableCode.redeem();
+        }
     }
 
     /**
