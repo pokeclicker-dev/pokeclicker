@@ -59,13 +59,34 @@ class Discord implements Saveable {
         this.username(this.defaults.username);
     }
 
-    calcCode(code: DiscordCode): string {
-        const discordID = App.game.discord.ID() || false;
+    calcCode(code) {
+        const discordID = +App.game.discord.ID() || false;
         if (!discordID) {
             return;
         }
-        const val = discordID ^ parseInt(code.name.replace(/(\W|_)/g, ''), 36);
-        return (val > 0 ? val : -val).toString(36).toUpperCase();
+
+        // reverse the string (for names that are similar - forms)
+        const codeSeed = code.name.split('').reverse()
+            // map to the character code
+            .map(l => l.charCodeAt(0))
+            // multiply the numbers (should be random enough)
+            .reduce((s,b) => s * (b / 10), 1);
+
+        SeededRand.seed(discordID + codeSeed);
+
+        const arr = [];
+        for (let i = 0; i < 14; i++) {
+            let int;
+            while (int == undefined || int.length != 1) {
+                int = SeededRand.intBetween(0, 35).toString(36);
+            }
+            arr.push(int);
+        }
+
+        arr[4] = '-';
+        arr[9] = '-';
+
+        return arr.join('').toUpperCase();
     }
 
     findCodeMatch(enteredCode: string): DiscordCode {
