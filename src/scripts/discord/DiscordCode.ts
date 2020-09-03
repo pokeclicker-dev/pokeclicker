@@ -12,7 +12,7 @@ class DiscordCode {
     claim() {
         if (this.claimed) {
             Notifier.notify({
-                title: `[Discord Code] ${name}`,
+                title: `[Discord Code] ${this.name}`,
                 message: 'Already claimed!',
                 type: GameConstants.NotificationOption.warning,
             });
@@ -22,7 +22,7 @@ class DiscordCode {
         if (this.claimFunction()) {
             this.claimed = true;
             Notifier.notify({
-                title: `[Discord Code] ${name}`,
+                title: `[Discord Code] ${this.name}`,
                 message: 'Successfully claimed!',
                 type: GameConstants.NotificationOption.success,
             });
