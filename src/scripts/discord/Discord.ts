@@ -1,4 +1,3 @@
-/* global $DISCORD_ENABLED */
 class Discord implements Saveable {
     defaults: Record<string, any> = {
         ID: null,
@@ -9,6 +8,14 @@ class Discord implements Saveable {
     uri = '$DISCORD_LOGIN_URI';
     ID: KnockoutObservable<number> = ko.observable(null);
     username: KnockoutObservable<string> = ko.observable(null);
+    codes: Array<DiscordCode> = [
+        new DiscordPokemonCode(pokemonMap['Unown (D)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (I)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (S)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (C)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (O)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (R)'], 700, 'Alternate form of Unown'),
+    ];
 
     get enabled(): boolean {
         try {
