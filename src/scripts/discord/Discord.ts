@@ -1,0 +1,132 @@
+class Discord implements Saveable {
+    defaults: Record<string, any> = {
+        ID: null,
+        username: null,
+    };
+    saveKey = 'discord';
+    clientID = '$DISCORD_CLIENT_ID';
+    uri = '$DISCORD_LOGIN_URI';
+    ID: KnockoutObservable<number> = ko.observable(null);
+    username: KnockoutObservable<string> = ko.observable(null);
+    codes: Array<DiscordCode> = [
+        new DiscordPokemonCode(pokemonMap['Unown (D)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (I)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (S)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (C)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (O)'], 700, 'Alternate form of Unown'),
+        new DiscordPokemonCode(pokemonMap['Unown (R)'], 700, 'Alternate form of Unown'),
+    ];
+
+    get enabled(): boolean {
+        try {
+            return !!JSON.parse('$DISCORD_ENABLED');
+        } catch (e) {
+            return false;
+        }
+    }
+
+    constructor() {
+        // User logged in, need to get details
+        const $_GET: Record<string, any> = {};
+        location.search.substr(1).split('&').map(el => el.split('=')).forEach(el => $_GET[el[0]] = el[1]);
+        if ($_GET.code) {
+            $.ajax({
+                data: $_GET,
+                type: 'get',
+                url: 'https://discord.redsparr0w.com/pokeclicker',
+                crossDomain: true,
+                dataType: 'json',
+                success: data => {
+                    if (data && data.id) {
+                        this.ID(data.id);
+                        this.username(`${data.username}#${data.discriminator}`);
+                        Notifier.notify({ title: `Welcome ${this.username()}`, message: 'Successfully logged in to Discord!', type: GameConstants.NotificationOption.success, timeout:GameConstants.MINUTE });
+                    }
+                },
+                complete: () => {
+                    window.history.replaceState('', '', `${location.origin + location.pathname}`);
+                },
+            });
+        }
+    }
+
+    login(): void {
+        location.href = `https://discord.com/oauth2/authorize?client_id=${this.clientID}&redirect_uri=${location.origin + location.pathname}&response_type=code&scope=identify&prompt=consent`;
+    }
+
+    logout(): void {
+        this.ID(this.defaults.id);
+        this.username(this.defaults.username);
+    }
+
+    calcCode(code) {
+        const discordID = +App.game.discord.ID() || false;
+        if (!discordID) {
+            return;
+        }
+
+        // reverse the string (for names that are similar - forms)
+        const codeSeed = code.name.split('').reverse()
+            // map to the character code
+            .map(l => l.charCodeAt(0))
+            // multiply the numbers (should be random enough)
+            .reduce((s,b) => s * (b / 10), 1);
+
+        SeededRand.seed(discordID + codeSeed);
+
+        const arr = [];
+        for (let i = 0; i < 14; i++) {
+            let int;
+            while (int == undefined || int.length != 1) {
+                int = SeededRand.intBetween(0, 35).toString(36);
+            }
+            arr.push(int);
+        }
+
+        arr[4] = '-';
+        arr[9] = '-';
+
+        return arr.join('').toUpperCase();
+    }
+
+    findCodeMatch(enteredCode: string): DiscordCode {
+        return this.codes.find(code => enteredCode.toUpperCase() == this.calcCode(code));
+    }
+
+    checkCode(enteredCode: string): boolean {
+        const code = this.findCodeMatch(enteredCode);
+        if (!code) {
+            return false;
+        }
+        code.claim();
+        return true;
+    }
+
+    loadCodes(codes) {
+        codes.forEach(code => {
+            const c = this.codes.find(c => c.name == code.name);
+            if (c) {
+                c.claimed = code.claimed;
+            }
+        });
+    }
+
+    fromJSON(json): void {
+        if (!json || !json.ID) {
+            return;
+        }
+        
+        this.ID(json.ID || this.defaults.ID);
+        this.username(json.username || this.defaults.username);
+        this.loadCodes(json.codes || []);
+    }
+
+    toJSON(): Record<string, any> {
+        return {
+            ID: this.ID(),
+            username: this.username(),
+            codes: this.codes.filter(c => c.claimed),
+        };
+    }
+
+}

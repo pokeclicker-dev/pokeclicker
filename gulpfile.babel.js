@@ -16,6 +16,31 @@ const replace = require('gulp-replace');
 const connect = require('gulp-connect');
 const version = process.env.npm_package_version || '0.0.0';
 
+let config = require('./config.js') || {};
+config = Object.assign({
+    GOOGLE_ANALYTICS_INIT: false,
+    GOOGLE_ANALYTICS_ID: false,
+    DEV_BANNER: false,
+    DISCORD_CLIENT_ID: false,
+    DISCORD_LOGIN_URI: false,
+}, config || {});
+
+const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+};
+
+const htmlImportIf = (html_str, is_true) => {
+    // Allow import if
+    if (is_true) {
+        // replace with standard import
+        return replace(`@importif ${html_str}`, '@import');
+    } else {
+        // remove the line
+        const replaceRegex = new RegExp(`\\s*@importif ${escapeRegExp(html_str)}.*\\n?`, 'g');
+        return replace(replaceRegex, '');
+    }
+};
+
 /**
  * Push build to gh-pages
  */
@@ -84,14 +109,14 @@ gulp.task('compile-html', (done) => {
     const htmlDest = './build';
     const stream = gulp.src('./src/index.html');
     // If we want the development banner displayed
-    if (process.env.HEROKU) {
-        stream.pipe(replace('<!--$DEV_BANNER-->', '@import "developmentBanner.html"'));
-    }
-    stream.pipe(replace('$VERSION', version));
-    stream.pipe(replace('$INIT_GOOGLE_ANALYTICS', process.env.NODE_ENV == 'production'));
+    stream.pipe(htmlImportIf('$DEV_BANNER', config.DEV_BANNER));
+    stream.pipe(htmlImportIf('$GOOGLE_ANALYTICS_ID', config.GOOGLE_ANALYTICS_ID));
 
     stream.pipe(plumber())
         .pipe(gulpImport('./src/components/'))
+        .pipe(replace('$VERSION', version))
+        .pipe(replace('$GOOGLE_ANALYTICS_INIT', !!config.GOOGLE_ANALYTICS_INIT))
+        .pipe(replace('$GOOGLE_ANALYTICS_ID', config.GOOGLE_ANALYTICS_ID))
         .pipe(replace('$GIT_BRANCH', process.env.GIT_BRANCH))
         .pipe(replace('$DEV_DESCRIPTION', process.env.DEV_DESCRIPTION !== undefined ? process.env.DEV_DESCRIPTION : ''))
         .pipe(ejs())
@@ -100,20 +125,13 @@ gulp.task('compile-html', (done) => {
     done();
 });
 
-gulp.task('html', () => {
-    const htmlDest = './build';
-
-    return gulp.src(srcs.html)
-        .pipe(changed(dests.base))
-        .pipe(minifyHtml())
-        .pipe(gulp.dest(htmlDest))
-        .pipe(browserSync.reload({stream: true}));
-});
-
 gulp.task('scripts', () => {
     const tsProject = typescript.createProject('tsconfig.json');
     return tsProject.src()
         .pipe(replace('$VERSION', version))
+        .pipe(replace('$DISCORD_ENABLED', !!(config.DISCORD_CLIENT_ID && config.DISCORD_LOGIN_URI)))
+        .pipe(replace('$DISCORD_CLIENT_ID', config.DISCORD_CLIENT_ID))
+        .pipe(replace('$DISCORD_LOGIN_URI', config.DISCORD_LOGIN_URI))
         .pipe(tsProject())
         .pipe(gulp.dest(dests.scripts))
         .pipe(browserSync.reload({stream: true}));
