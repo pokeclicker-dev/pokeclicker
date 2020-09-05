@@ -233,7 +233,7 @@ TownList['Mossdeep City'] = new Town('Mossdeep City', [new RouteKillRequirement(
 TownList['Sootopolis City'] = new Town('Sootopolis City', [new RouteKillRequirement(10, 126), new GymBadgeRequirement(BadgeCase.Badge.Mind)]);
 TownList['Ever Grande City'] = new Town('Ever Grande City', [new GymBadgeRequirement(BadgeCase.Badge.Rain)]);
 TownList['Pokemon League Hoenn'] = new Town('Pokemon League', [new RouteKillRequirement(10, 128), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Hoenn'))]);
-TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [new RouteKillRequirement(10, 131)]);
+TownList['Pacifidlog Town'] = new Town('Pacifidlog Town', [new RouteKillRequirement(10, 131)], PacifidlogTownShop);
 TownList['Battle Frontier'] = new Town('Battle Frontier', [new GymBadgeRequirement(BadgeCase.Badge.Elite_HoennChampion)], BattleFrontierShop);
 
 //Hoenn Dungeons
@@ -299,7 +299,7 @@ TownList['Canalave City'] = new Town('Canalave City', [new RouteKillRequirement(
 TownList['Snowpoint City'] = new Town('Snowpoint City', [new RouteKillRequirement(10, 217)]);
 TownList['Sunyshore City'] = new Town('Sunyshore City', [new RouteKillRequirement(10, 222)]);
 TownList['Pokemon League Sinnoh'] = new Town('Pokemon League Sinnoh', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Sinnoh'))]);
-TownList['Fight Area'] = new Town('Fight Area', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Spear Pillar'))]);
+TownList['Fight Area'] = new Town('Fight Area', [new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
 TownList['Survival Area'] = new Town('Survival Area', [new RouteKillRequirement(10, 225)], SurvivalAreaShop);
 TownList['Resort Area'] = new Town('Resort Area', [new RouteKillRequirement(10, 229)], ResortAreaShop);
 

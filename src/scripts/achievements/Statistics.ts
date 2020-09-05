@@ -57,7 +57,6 @@ class Statistics implements Saveable {
 
     observables = [
         'clickAttacks',
-        'hatchedEggs',
         'totalMoney',
         'totalDungeonTokens',
         'totalQuestPoints',
@@ -71,11 +70,11 @@ class Statistics implements Saveable {
         'totalShinyPokemonCaptured',
         'totalShinyPokemonDefeated',
         'totalShinyPokemonEncountered',
+        'totalShinyPokemonHatched',
         'undergroundItemsFound',
         'undergroundLayersMined',
         'battleFrontierTotalStagesCompleted',
         'battleFrontierHighestStageCompleted',
-        'totalShinyPokemonHatched',
     ];
     arrayObservables = [
         'gymsDefeated',
@@ -220,7 +219,7 @@ class Statistics implements Saveable {
 
         for (const array of this.arrayObservables) {
             json[array]?.forEach((el, index) => {
-                if (this[array] && +el) {
+                if (this[array] && this[array][index] && +el) {
                     this[array][index](+el);
                 }
             });
