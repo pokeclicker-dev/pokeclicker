@@ -7,17 +7,18 @@ const autoprefix = require('gulp-autoprefixer');
 const minifyCSS = require('gulp-minify-css');
 const typescript = require('gulp-typescript');
 const browserSync = require('browser-sync');
-const del = require('del');
 const less = require('gulp-less');
 const gulpImport = require('gulp-html-import');
 const ejs = require('gulp-ejs');
 const plumber = require('gulp-plumber');
 const replace = require('gulp-replace');
-const connect = require('gulp-connect');
+const del = require('del');
+const fs = require('fs');
 const version = process.env.npm_package_version || '0.0.0';
 
 let config = require('./config.js') || {};
 config = Object.assign({
+    CNAME: false,
     GOOGLE_ANALYTICS_INIT: false,
     GOOGLE_ANALYTICS_ID: false,
     DEV_BANNER: false,
@@ -153,25 +154,20 @@ gulp.task('copyWebsite', () => {
     return gulp.src(srcs.buildArtefacts).pipe(gulp.dest(dests.githubPages));
 });
 
+gulp.task('cname', (done) => {
+    if (!config.CNAME) {
+        console.warn('[warning] No CNAME set in config!');
+        return;
+    }
+    fs.writeFile(`${dests.githubPages}CNAME`, config.CNAME, done);
+});
+
 gulp.task('build', done => {
     gulp.series('copy', 'assets', 'compile-html', 'scripts', 'styles')(done);
 });
 
 gulp.task('website', done => {
-    gulp.series('clean', 'build', 'cleanWebsite', 'copyWebsite')(done);
-});
-
-gulp.task('serveProd', function () {
-    connect.server({
-        root: ['build'],
-        port: process.env.PORT || 3000,
-        host: '0.0.0.0',
-        livereload: false,
-    });
-});
-
-gulp.task('heroku', done => {
-    gulp.series('clean', 'build', 'serveProd')(done);
+    gulp.series('clean', 'build', 'cleanWebsite', 'copyWebsite', 'cname')(done);
 });
 
 gulp.task('default', done => {
