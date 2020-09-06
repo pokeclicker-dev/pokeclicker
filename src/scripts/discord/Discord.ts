@@ -1,11 +1,15 @@
 class Discord implements Saveable {
+    saveKey = 'discord';
+
     defaults: Record<string, any> = {
         ID: null,
         username: null,
     };
-    saveKey = 'discord';
+
+    // These will be updated from our config values
     clientID = '$DISCORD_CLIENT_ID';
     uri = '$DISCORD_LOGIN_URI';
+
     ID: KnockoutObservable<number> = ko.observable(null);
     username: KnockoutObservable<string> = ko.observable(null);
     codes: Array<DiscordCode> = [
@@ -18,6 +22,7 @@ class Discord implements Saveable {
     ];
 
     get enabled(): boolean {
+        // This was done like this so es/tslint doesn't throw errors
         try {
             return !!JSON.parse('$DISCORD_ENABLED');
         } catch (e) {
