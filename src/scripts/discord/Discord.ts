@@ -99,7 +99,7 @@ class Discord implements Saveable {
         return this.codes.find(code => enteredCode.toUpperCase() == this.calcCode(code));
     }
 
-    checkCode(enteredCode: string): boolean {
+    enterCode(enteredCode: string): boolean {
         const code = this.findCodeMatch(enteredCode);
         if (!code) {
             return false;

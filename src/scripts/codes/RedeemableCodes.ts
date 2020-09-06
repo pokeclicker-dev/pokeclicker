@@ -47,17 +47,24 @@ class RedeemableCodes implements Saveable {
         ];
     }
 
+    isDiscordCode(code: string): boolean {
+        return /^\w{4}-\w{4}-\w{4}$/.test(code);
+    }
+
     enterCode(code: string) {
+        // If this is a Discord code, send it to the Discord class to check
+        if (App.game.discord.enabled && this.isDiscordCode(code)) {
+            return App.game.discord.enterCode(code);
+        }
+
         const hash = this.hash(code);
 
         const redeemableCode = this.codeList.find(c => {
             return c.hash === hash;
         });
 
-        if (!redeemableCode && !App.game.discord.checkCode(code)) {
-            const message = `Invalid code ${code}`;
-            Notifier.notify({ message, type: GameConstants.NotificationOption.danger });
-            return;
+        if (!redeemableCode) {
+            return Notifier.notify({ message: `Invalid code ${code}`, type: GameConstants.NotificationOption.danger });
         }
 
         if (redeemableCode) {
