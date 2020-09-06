@@ -27,11 +27,11 @@ class Discord implements Saveable {
 
     constructor() {
         // User logged in, need to get details
-        const $_GET: Record<string, any> = {};
-        location.search.substr(1).split('&').map(el => el.split('=')).forEach(el => $_GET[el[0]] = el[1]);
-        if ($_GET.code) {
+        const search = new URLSearchParams(location.search)
+        const code = search.get('code');
+        if (code) {
             $.ajax({
-                data: $_GET,
+                data: { code },
                 type: 'get',
                 url: 'https://discord.redsparr0w.com/pokeclicker',
                 crossDomain: true,
@@ -44,6 +44,7 @@ class Discord implements Saveable {
                     }
                 },
                 complete: () => {
+                    // Remove the code from the URI, no longer needed
                     window.history.replaceState('', '', `${location.origin + location.pathname}`);
                 },
             });
