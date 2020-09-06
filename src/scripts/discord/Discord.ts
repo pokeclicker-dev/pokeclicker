@@ -26,14 +26,14 @@ class Discord implements Saveable {
     }
 
     constructor() {
-        // User logged in, need to get details
-        const search = new URLSearchParams(location.search)
+        // Check if code provided by Discord, which means the user has logged in, and we need to get their details
+        const search = new URLSearchParams(location.search);
         const code = search.get('code');
         if (code) {
             $.ajax({
                 data: { code },
                 type: 'get',
-                url: 'https://discord.redsparr0w.com/pokeclicker',
+                url: this.uri,
                 crossDomain: true,
                 dataType: 'json',
                 success: data => {
