@@ -24,7 +24,7 @@ config = Object.assign({
     DEV_BANNER: false,
     DISCORD_CLIENT_ID: false,
     DISCORD_LOGIN_URI: false,
-}, config || {});
+}, config);
 
 const escapeRegExp = (string) => {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
