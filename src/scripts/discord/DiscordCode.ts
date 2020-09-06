@@ -1,6 +1,8 @@
 class DiscordCode {
     public claimed = false;
     
+    // Image, Price and Description fields are not currently used on the website,
+    // the data is there so the Discord bot and website can share the same dataset
     constructor(
         public name: string,
         public image: string,
