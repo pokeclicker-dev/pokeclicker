@@ -100,10 +100,27 @@ class Discord implements Saveable {
     }
 
     enterCode(enteredCode: string): boolean {
-        const code = this.findCodeMatch(enteredCode);
-        if (!code) {
+        // Discord integration disabled
+        if (!this.enabled) {
+            Notifier.notify({ message: 'Discord integration not enabled', type: GameConstants.NotificationOption.danger });
             return false;
         }
+        // User not logged in to Discord
+        if (!this.ID) {
+            Notifier.notify({ message: 'You must sign in to Discord before attempting this code', type: GameConstants.NotificationOption.danger });
+            return false;
+        }
+
+        // Try find a matching code
+        const code = this.findCodeMatch(enteredCode);
+
+        // No code found
+        if (!code) {
+            Notifier.notify({ message: `Invalid code ${enteredCode}`, type: GameConstants.NotificationOption.danger });
+            return false;
+        }
+
+        // Claim the code
         code.claim();
         return true;
     }
