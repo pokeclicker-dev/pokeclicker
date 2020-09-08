@@ -192,7 +192,7 @@ class Game {
 
         // Game timers
         GameHelper.counter += GameConstants.TICK_TIME;
-        if (GameHelper.counter >= GameConstants.SECOND) {
+        if (GameHelper.counter >= GameConstants.MINUTE) {
             GameHelper.tick();
         }
     }
