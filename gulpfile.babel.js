@@ -16,7 +16,13 @@ const del = require('del');
 const fs = require('fs');
 const version = process.env.npm_package_version || '0.0.0';
 
-let config = require('./config.js') || {};
+let config = {};
+try {
+    config = require('./config.js');
+} catch (err) {
+    console.warn('\n[WARNING] No config file exist, this will still run fine without it, but it is recommended.\n');
+}
+
 config = Object.assign({
     CNAME: false,
     GOOGLE_ANALYTICS_INIT: false,
