@@ -16,13 +16,14 @@ const del = require('del');
 const fs = require('fs');
 const version = process.env.npm_package_version || '0.0.0';
 
+// Import our config, or log a warning if hasn't been created
 let config = {};
 try {
     config = require('./config.js');
 } catch (err) {
     console.warn('\n[WARNING] No config file exist, this will still run fine without it, but it is recommended.\n');
 }
-
+// use our config settings or default values if the key doesn't exist
 config = Object.assign({
     CNAME: false,
     GOOGLE_ANALYTICS_INIT: false,
