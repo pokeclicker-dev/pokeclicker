@@ -220,7 +220,7 @@ class Update implements Saveable {
                 // Update save data
                 this.setSaveData(saveData);
             } catch (ಠ_ಠ) {
-                console.error('[update] v0.5.2 - Couldn\'t updaet player berries statistics..', ಠ_ಠ);
+                console.error('[update] v0.5.2 - Couldn\'t update player statistics..', ಠ_ಠ);
             }
         }
 
