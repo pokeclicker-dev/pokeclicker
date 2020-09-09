@@ -205,12 +205,16 @@ class Update implements Saveable {
 
         if (this.isOlderVersion(this.saveVersion, '0.5.2')) {
             try {
-                // Rename from the old statistic name
+                // Calculate hatched amount (we can't calculate the shiny hatches though)
+                const pokemonHatched = {};
+                saveData.party.caughtPokemon.forEach(p => pokemonHatched[p.id] = p.attackBonus / 25);
+                // Rename from the old statistic name, add our new statistics
                 saveData.statistics = {
                     ...saveData.statistics,
                     totalBerriesHarvested: saveData.statistics.berriesHarvested.reduce((sum, b) => sum + b, 0) || 0,
                     totalShardsGained: saveData.statistics.totalShards.reduce((sum, b) => sum + b, 0) || 0,
                     shardsGained: saveData.statistics.totalShards || 0,
+                    pokemonHatched,
                 };
 
                 // Update save data

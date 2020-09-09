@@ -63,9 +63,11 @@ class Statistics implements Saveable {
     pokemonCaptured: any;
     pokemonDefeated: any;
     pokemonEncountered: any;
+    pokemonHatched: any;
     shinyPokemonCaptured: any;
     shinyPokemonDefeated: any;
     shinyPokemonEncountered: any;
+    shinyPokemonHatched: any;
 
     observables = [
         'secondsPlayed',
@@ -108,9 +110,11 @@ class Statistics implements Saveable {
         'pokemonCaptured',
         'pokemonDefeated',
         'pokemonEncountered',
+        'pokemonHatched',
         'shinyPokemonCaptured',
         'shinyPokemonDefeated',
         'shinyPokemonEncountered',
+        'shinyPokemonHatched',
     ]
 
     constructor() {
