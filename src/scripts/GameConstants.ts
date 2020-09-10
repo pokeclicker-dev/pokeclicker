@@ -579,10 +579,10 @@ namespace GameConstants {
         'Olivine City',
         'Mahogany Town',
         'Blackthorn City',
-        'Elite Will',
-        'Elite Koga',
-        'Elite Bruno2',
-        'Elite Karen',
+        'Johto Elite Will',
+        'Johto Elite Koga',
+        'Johto Elite Bruno',
+        'Johto Elite Karen',
         'Champion Lance',
     ];
 
@@ -595,10 +595,10 @@ namespace GameConstants {
         'Fortree City',
         'Mossdeep City',
         'Sootopolis City',
-        'Elite Sidney',
-        'Elite Phoebe',
-        'Elite Glacia',
-        'Elite Drake',
+        'Hoenn Elite Sidney',
+        'Hoenn Elite Phoebe',
+        'Hoenn Elite Glacia',
+        'Hoenn Elite Drake',
         'Champion Wallace',
     ];
 
@@ -611,11 +611,14 @@ namespace GameConstants {
         'Canalave City',
         'Snowpoint City',
         'Sunyshore City',
-        'Elite Aaron',
-        'Elite Bertha',
-        'Elite Flint',
-        'Elite Lucian',
+        'Sinnoh Elite Aaron',
+        'Sinnoh Elite Bertha',
+        'Sinnoh Elite Flint',
+        'Sinnoh Elite Lucian',
         'Champion Cynthia',
+    ];
+
+    export const UnovaGyms = [
     ];
 
     export const RegionGyms = [
@@ -623,6 +626,7 @@ namespace GameConstants {
         JohtoGyms,
         HoennGyms,
         SinnohGyms,
+        UnovaGyms,
     ];
 
     export const KantoDungeons = [
@@ -700,7 +704,6 @@ namespace GameConstants {
     ];
 
     export const SinnohDungeons = [
-        // TODO: SINNOH
         'Oreburgh Gate',
         'Ravaged Path',
         'Eterna Forest',
@@ -723,11 +726,15 @@ namespace GameConstants {
         'Stark Mountain',
     ];
 
+    export const UnovaDungeons = [
+    ];
+
     export const RegionDungeons = [
         KantoDungeons,
         JohtoDungeons,
         HoennDungeons,
         SinnohDungeons,
+        UnovaDungeons,
     ];
 
     export const StartingTowns = [
@@ -735,6 +742,7 @@ namespace GameConstants {
         'New Bark Town',
         'Littleroot Town',
         'Twinleaf Town',
+        'Aspertia City'
     ];
 
     export const DockTowns = [
@@ -742,5 +750,6 @@ namespace GameConstants {
         'Olivine City',
         'Slateport City',
         'Canalave City',
+        'Castelia City'
     ];
 }

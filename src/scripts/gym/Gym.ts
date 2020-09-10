@@ -178,9 +178,9 @@ gymList['Viridian City'] = new Gym(
 );
 
 // Kanto Elite 4
-gymList['Elite Lorelei'] = new Gym(
+gymList['Kanto Elite Lorelei'] = new Gym(
     'Lorelei',
-    'Elite Lorelei',
+    'Kanto Elite Lorelei',
     [
         new GymPokemon('Dewgong', 45330, 52),
         new GymPokemon('Cloyster', 48300, 51),
@@ -195,7 +195,7 @@ gymList['Elite Lorelei'] = new Gym(
 );
 gymList['Elite Bruno'] = new Gym(
     'Bruno',
-    'Elite Bruno',
+    'Kanto Elite Bruno',
     [
         new GymPokemon('Onix', 45330, 51),
         new GymPokemon('Hitmonchan', 48300, 53),
@@ -208,9 +208,9 @@ gymList['Elite Bruno'] = new Gym(
     'Why? How could I lose?',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Lorelei)]
 );
-gymList['Elite Agatha'] = new Gym(
+gymList['Kanto Elite Agatha'] = new Gym(
     'Agatha',
-    'Elite Agatha',
+    'Kanto Elite Agatha',
     [
         new GymPokemon('Gengar', 45330, 54),
         new GymPokemon('Golbat', 48300, 54),
@@ -223,9 +223,9 @@ gymList['Elite Agatha'] = new Gym(
     'Oh, my! You\'re something special, child!',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Bruno)]
 );
-gymList['Elite Lance'] = new Gym(
+gymList['Kanto Elite Lance'] = new Gym(
     'Lance',
-    'Elite Lance',
+    'Kanto Elite Lance',
     [
         new GymPokemon('Gyarados', 48300, 56),
         new GymPokemon('Dragonair', 52000, 54),
@@ -346,9 +346,9 @@ gymList['Blackthorn City'] = new Gym(
 );
 
 //Johto Elite 4
-gymList['Elite Will'] = new Gym(
+gymList['Johto Elite Will'] = new Gym(
     'Will',
-    'Elite Will',
+    'Johto Elite Will',
     [
         new GymPokemon('Xatu', 245330, 40),
         new GymPokemon('Jynx', 248300, 41),
@@ -361,9 +361,9 @@ gymList['Elite Will'] = new Gym(
     'Even though I was defeated, I won\'t change my course. I will continue battling until I stand above all Trainers! Now move on and experience the true ferocity of the Elite Four.',
     [new GymBadgeRequirement(BadgeCase.Badge.Rising)]
 );
-gymList['Elite Koga'] = new Gym(
-    'Koga2',
-    'Elite Koga',
+gymList['Johto Elite Koga'] = new Gym(
+    'Koga',
+    'Johto Elite Koga',
     [
         new GymPokemon('Ariados', 245330, 40),
         new GymPokemon('Venomoth', 248300, 41),
@@ -376,9 +376,9 @@ gymList['Elite Koga'] = new Gym(
     'I subjected you to everything I could muster. But my efforts failed. I must hone my skills. Go on to the next room, and put your abilities to the test!',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Will)]
 );
-gymList['Elite Bruno2'] = new Gym(
-    'Bruno2',
-    'Elite Bruno2',
+gymList['Johto Elite Bruno'] = new Gym(
+    'Bruno',
+    'Johto Elite Bruno',
     [
         new GymPokemon('Hitmontop', 245330, 42),
         new GymPokemon('Hitmonlee', 248300, 42),
@@ -391,9 +391,9 @@ gymList['Elite Bruno2'] = new Gym(
     'Having lost, I have no right to say anything… Go face your next challenge!',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Koga)]
 );
-gymList['Elite Karen'] = new Gym(
+gymList['Johto Elite Karen'] = new Gym(
     'Karen',
-    'Elite Karen',
+    'Johto Elite Karen',
     [
         new GymPokemon('Umbreon', 248300, 42),
         new GymPokemon('Vileplume', 252000, 42),
@@ -407,7 +407,7 @@ gymList['Elite Karen'] = new Gym(
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Bruno2)]
 );
 gymList['Champion Lance'] = new Gym(
-    'Lance2',
+    'Lance',
     'Champion Lance',
     [
         new GymPokemon('Gyarados', 258300, 44),
@@ -537,9 +537,9 @@ gymList['Sootopolis City'] = new Gym(
 );
 
 // Hoenn Elite 4
-gymList['Elite Sidney'] = new Gym(
+gymList['Hoenn Elite Sidney'] = new Gym(
     'Sidney',
-    'Elite Sidney',
+    'Hoenn Elite Sidney',
     [
         new GymPokemon('Mightyena', 572000, 46),
         new GymPokemon('Cacturne', 580000, 46),
@@ -552,9 +552,9 @@ gymList['Elite Sidney'] = new Gym(
     'Well, how do you like that? I lost! Eh, it was fun, so it doesn\'t matter.',
     [new GymBadgeRequirement(BadgeCase.Badge.Rain)]
 );
-gymList['Elite Phoebe'] = new Gym(
+gymList['Hoenn Elite Phoebe'] = new Gym(
     'Phoebe',
-    'Elite Phoebe',
+    'Hoenn Elite Phoebe',
     [
         new GymPokemon('Dusclops', 636700, 48),
         new GymPokemon('Banette', 638000, 49),
@@ -567,9 +567,9 @@ gymList['Elite Phoebe'] = new Gym(
     'Oh, darn. I\'ve gone and lost.',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Sidney)]
 );
-gymList['Elite Glacia'] = new Gym(
+gymList['Hoenn Elite Glacia'] = new Gym(
     'Glacia',
-    'Elite Glacia',
+    'Hoenn Elite Glacia',
     [
         new GymPokemon('Glalie', 672000, 50),
         new GymPokemon('Sealeo', 682000, 50),
@@ -582,9 +582,9 @@ gymList['Elite Glacia'] = new Gym(
     'You and your Pokémon... How hot your spirits burn! The all-consuming heat overwhelms. It\'s no surprise that my icy skills failed to harm you.',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Phoebe)]
 );
-gymList['Elite Drake'] = new Gym(
+gymList['Hoenn Elite Drake'] = new Gym(
     'Drake',
-    'Elite Drake',
+    'Hoenn Elite Drake',
     [
         new GymPokemon('Shelgon', 664000, 52),
         new GymPokemon('Altaria', 672000, 54),
@@ -722,9 +722,9 @@ gymList['Sunyshore City'] = new Gym(
     '...Hehehe. Hahahah! ...That was the most fun I\'ve had in a battle since...I don\'t know when! It\'s also made me excited to know you and your team will keep battling to greater heights! This is your eighth Gym Badge. You\'ve earned this!',
     [new GymBadgeRequirement(BadgeCase.Badge.Icicle)]
 );
-gymList['Elite Aaron'] = new Gym(
+gymList['Sinnoh Elite Aaron'] = new Gym(
     'Aaron',
-    'Elite Aaron',
+    'Sinnoh Elite Aaron',
     [
         new GymPokemon('Yanmega', 1945330, 49),
         new GymPokemon('Scizor', 1948300, 49),
@@ -737,9 +737,9 @@ gymList['Elite Aaron'] = new Gym(
     'I lost with the most beautiful and toughest of the bug Pokémon... We lost because I wasn\'t good enough... That\'s it! Back to training camp! Let\'s hear it for me! No... That was wrong... Anyway... Go on to the next room! Three Trainers are waiting for you. They are all tougher than me.',
     [new GymBadgeRequirement(BadgeCase.Badge.Beacon)]
 );
-gymList['Elite Bertha'] = new Gym(
+gymList['Sinnoh Elite Bertha'] = new Gym(
     'Bertha',
-    'Elite Bertha',
+    'Sinnoh Elite Bertha',
     [
         new GymPokemon('Whiscash', 2045330, 50),
         new GymPokemon('Gliscor', 2048300, 53),
@@ -752,9 +752,9 @@ gymList['Elite Bertha'] = new Gym(
     'You\'re quite something, youngster. I like how you and your Pokémon earned the win by working as one. That\'s what makes you so strong. Ahahaha! I think that you can go as far as you want.',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Aaron)]
 );
-gymList['Elite Flint'] = new Gym(
+gymList['Sinnoh Elite Flint'] = new Gym(
     'Flint',
-    'Elite Flint',
+    'Sinnoh Elite Flint',
     [
         new GymPokemon('Houndoom', 2145330, 52),
         new GymPokemon('Flareon', 2148300, 55),
@@ -767,9 +767,9 @@ gymList['Elite Flint'] = new Gym(
     '...! I don\'t believe it! I lost! I didn\'t take you for granted. Bud I\'d never even considered it! I\'m blown away by this! You and your Pokémon are hot stuff!',
     [new GymBadgeRequirement(BadgeCase.Badge.Elite_Bertha)]
 );
-gymList['Elite Lucian'] = new Gym(
+gymList['Sinnoh Elite Lucian'] = new Gym(
     'Lucian',
-    'Elite Lucian',
+    'Sinnoh Elite Lucian',
     [
         new GymPokemon('Mr. Mime', 2248300, 53),
         new GymPokemon('Espeon', 2252000, 55),
