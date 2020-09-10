@@ -618,8 +618,7 @@ namespace GameConstants {
         'Champion Cynthia',
     ];
 
-    export const UnovaGyms = [
-    ];
+    export const UnovaGyms = [];
 
     export const RegionGyms = [
         KantoGyms,
@@ -726,8 +725,7 @@ namespace GameConstants {
         'Stark Mountain',
     ];
 
-    export const UnovaDungeons = [
-    ];
+    export const UnovaDungeons = [];
 
     export const RegionDungeons = [
         KantoDungeons,
@@ -742,7 +740,7 @@ namespace GameConstants {
         'New Bark Town',
         'Littleroot Town',
         'Twinleaf Town',
-        'Aspertia City'
+        'Aspertia City',
     ];
 
     export const DockTowns = [
@@ -750,6 +748,6 @@ namespace GameConstants {
         'Olivine City',
         'Slateport City',
         'Canalave City',
-        'Castelia City'
+        'Castelia City',
     ];
 }
