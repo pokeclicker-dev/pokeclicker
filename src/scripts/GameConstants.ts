@@ -772,6 +772,7 @@ namespace GameConstants {
         'Wellspring Cave'    //Optional dungeon, contains no unique Pokémon, safe to scrap
         'Dreamyard'
         'P2 Laboratory'
+    ];
 
     export const RegionDungeons = [
         KantoDungeons,
