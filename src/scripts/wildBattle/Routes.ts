@@ -1114,13 +1114,15 @@ Routes.add(new RegionRoute(
     new RoutePokemon({
         land: ['Palpitoad', 'Shelmet', 'Stunfisk', 'Karrablast'],
     }),
-//  [
-//      new OneFromManyRequirement([
-//          new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain'))            new RouteKillRequirement(10, 9),
-//          new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion)
-//      ]),
-//  ]
-// No clue if this is right. The intention is: (champion+route 9) OR twist mountain.
+    [
+        new OneFromManyRequirement(
+            new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain'),
+            MultiRequirement(
+              new RouteKillRequirement(10, 9),
+              new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion),
+            ),
+        ),
+    ]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.unova, 9,
@@ -1162,13 +1164,18 @@ Routes.add(new RegionRoute(
     new RoutePokemon({
         land: ['Sandslash', 'Gligar', 'Pupitar'],
     }),
-//  [
-//      new OneFromManyRequirement([
-//          new RouteKillRequirement(10, 14),    new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion)
-//          new RouteKillRequirement(10, 16),    new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion)
-//      ]),
-//  ]
-// No clue if this is right. The intention is: (champion+route 14) OR (champion+route 16).
+    [
+        new OneFromManyRequirement(
+            MultiRequirement(
+              new RouteKillRequirement(10, 14),
+              new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion),
+            ),
+            MultiRequirement(
+              new RouteKillRequirement(10, 16),
+              new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion),
+            ),
+        ),
+    ]
 ));
 Routes.add(new RegionRoute(
     GameConstants.Region.unova, 16,
