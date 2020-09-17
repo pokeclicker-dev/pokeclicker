@@ -745,33 +745,34 @@ namespace GameConstants {
         'Stark Mountain',
     ];
     
-    export const UnovaDuneons = [
-        'Flocessy Ranch'
-        'Virbank Complex'    //Optional dungeon, contains no unique Pokémon, safe to scrap
-        'Liberty Garden'
-        'Castelia Sewers'
-        'Relic Passage'
-        'Desert Resort'    //Should really be a route
-        'Relic Castle'
-        'Lostlorn Forest'
-        'Chargestone Cave'
-        'Mistralton Cave'
-        'Celestial Tower'
-        'Reversal Mountain'
-        'Strange House'    //Optional dungeon, contains no unique Pokémon, safe to scrap
-        'Undella Bay'    //Should really be a route
-        'Seaside Cave'
-        'Giant Chasm'
-        'Abundant Shrine'
-        'Cave of Being'    //Contains gen 4 trio only
-        'Victory Road Unova'
-        'Twist Mountain'
-        'Dragonspiral Tower'
-        'Moor of Icirrus'
-        'Pinwheel Forest'
-        'Wellspring Cave'    //Optional dungeon, contains no unique Pokémon, safe to scrap
-        'Dreamyard'
-        'P2 Laboratory'
+    export const UnovaDungeons = [
+        'Flocessy Ranch',
+        'Virbank Complex',    //Optional dungeon, contains no unique Pokémon, safe to scrap
+        'Liberty Garden',
+        'Castelia Sewers',
+        'Relic Passage',
+        'Desert Resort',    //Should really be a route
+        'Relic Castle',
+        'Lostlorn Forest',
+        'Chargestone Cave',
+        'Mistralton Cave',
+        'Celestial Tower',
+        'Reversal Mountain',
+        'Strange House',    //Optional dungeon, contains no unique Pokémon, safe to scrap
+        'Undella Bay',    //Should really be a route
+        'Seaside Cave',
+        'Giant Chasm',
+        'Abundant Shrine',
+        'Cave of Being',    //Contains gen 4 trio only
+        'Victory Road Unova',
+        'Twist Mountain',
+        'Dragonspiral Tower',
+        'Moor of Icirrus',
+        'Pinwheel Forest',
+        'Wellspring Cave',    //Optional dungeon, contains no unique Pokémon, safe to scrap
+        'Dreamyard',
+        'P2 Laboratory',
+    ];
 
     export const RegionDungeons = [
         KantoDungeons,
