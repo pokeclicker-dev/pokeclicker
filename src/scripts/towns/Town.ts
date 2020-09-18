@@ -324,3 +324,79 @@ TownList['Newmoon Island'] = new DungeonTown('Newmoon Island', [new GymBadgeRequ
 TownList['Flower Paradise'] = new DungeonTown('Flower Paradise', [new RouteKillRequirement(10, 224), new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
 TownList['Stark Mountain'] = new DungeonTown('Stark Mountain', [new RouteKillRequirement(10, 227), new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
 TownList['Snowpoint Temple'] = new DungeonTown('Snowpoint Temple', [new RouteKillRequirement(10, 217), new GymBadgeRequirement(BadgeCase.Badge.Elite_SinnohChampion)]);
+
+//Unova Shops
+const AspertiaCityShop = new Shop([
+    ItemList['Pokeball'],
+]);
+
+//Unova Towns
+Townlist['Aspertia City'] = new Town('Aspertia City', [], AspertiaCityShop);
+Townlist['Flocessy Town'] = new Town('Flocessy Town', [new RouteKillRequirement(10, 19)]);
+Townlist['Virbank City'] = new Town('Virbank City', new GymBadgeRequirement(BadgeCase.Badge.Basic)]);
+Townlist['Castelia City'] = new Town('Castelia City', [new GymBadgeRequirement(BadgeCase.Badge.Toxic)], dungeonList['Castelia Sewers']);
+Townlist['Nimbasa City'] = new Town('Nimbasa City', [new RouteKillRequirement(10, 4), new GymBadgeRequirement(BadgeCase.Badge.Insect)]);
+Townlist['Driftveil City'] = new Town('Driftveil City', [new RouteKillRequirement(10,5), new GymBadgeRequirement(BadgeCase.Badge.Bolt)]);
+Townlist['Mistralton City'] = new Town('Mistralton City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Chargestone Cave')), new GymBadgeRequirement(BadgeCase.Badge.Quake)]);
+Townlist['Lentimas Town'] = new Town('Lentimas Town', [new GymBadgeRequirement(BadgeCase.Badge.Jet)]);
+Townlist['Undella Town'] = new Town('Undella Town', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Reversal Mountain'))]);
+Townlist['Lacunosa Town'] = new Town('Lacunosa Town', [new RouteKillRequirement(10, 13)]);
+Townlist['Opelucid City'] = new Town('Opelucid City', [new RouteKillRequirement(10, 11)]);
+Townlist['Humilau City'] = new Town('Humilau City', [new RouteKillRequirement(10, 21)]);
+Townlist['Pokemon League Unova'] = new Town('Pokemon League Unova', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Unova'))]);
+Townlist['Icirrus City'] = new Town('Icirrus City', [new OneFromManyRequirement([new RouteKillRequirement(10, 8), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain'))])]);
+Townlist['Black and White Park'] = new Town('Black and White Park', [
+  new OneFromManyRequirement([
+    new MultiRequirement([
+      new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
+      new RouteKillRequirement(10, 14),
+    ]),
+    new RouteKillRequirement(10, 15)
+  ])
+]);
+Townlist['Nacrene City'] = new Town('Nacrene City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Pinwheel Forest'))]);
+Townlist['Striatorn City'] = new Town('Striatorn City', [new RouteKillRequirement(10, 3)]);
+Townlist['Accumula Town'] = new Town('Accumula Town', [new RouteKillRequirement(10, 2)]);
+Townlist['Nuvema Town'] = new Town('Nuvema Town', [new RouteKillRequirement(10, 1)]);
+
+//Unova Dungeons
+Townlist['Pledge Grove'] = new DungeonTown('Pledge Grove', [new ObtainedPokemonRequirement(pokemonMap.Keldeo)]);
+Townlist['Floccesy Ranch'] = new DungeonTown('Flocessy Ranch', [new RouteKillRequirement(10, 20)]);
+Townlist['Virbank Complex'] = new DungeonTown('Virbank Complex', [new GymBadgeRequirement(BadgeCase.Badge.Basic)]);    //Optional dungeon, no unique mons, safe to scrap
+Townlist['Liberty Garden'] = new DungeonTown('Liberty Garden', [new GymBadgeRequirement(BadgeCase.Badge.Toxic)]);    //Victini dungeon, maybe unlock later
+Townlist['Castelia Sewers'] = new DungeonTown('Castelia Sewers', [new GymBadgeRequirement(BadgeCase.Badge.Toxic)]);
+Townlist['Relic Passage'] = new DungeonTown('Relic Passage', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Castelia Sewers'))]);
+Townlist['Desert Resort'] = new DungeonTown('Desert Resort', [new RouteKillRequirement(10, 4), new GymBadgeRequirement(BadgeCase.Badge.Insect)]);    //Should really be a route
+Townlist['Relic Castle'] = new DungeonTown('Relic Castle', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Desert Resort'))]);
+Townlist['Lostlorn Forest'] = new DungeonTown('Lostlorn Forest', [new RouteKillRequirement(10, 16)]);
+Townlist['Chargestone Cave'] = new DungeonTown('Chargestone Cave', [new RouteKillRequirement(10, 6)]);
+Townlist['Mistralton Cave'] = new DungeonTown('Mistralton Cave', [new GymBadgeRequirement(BadgeCase.Badge.Quake)]);
+Townlist['Celestial Tower'] = new DungeonTown('Celestial Tower', [new RouteKillRequirement(10, 7)]);
+Townlist['Reversal Mountain'] = new Dungeontown('Reversal Mountain', [new GymBadgeRequirement(BadgeCase.Badge.Jet)]);
+Townlist['Strange House'] = new DungeonTown('Strange House', [new GymBadgeRequirement(BadgeCase.Badge.Jet)]);    //Optional dungeon, no unique mons, safe to scrap
+Townlist['Undella Bay'] = new DungeonTown('Undella Bay', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Reversal Mountain'))]);    //Should really be a route
+Townlist['Seaside Cave'] = new DungeonTown('Seaside Cave', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Undella Bay')), new GymBadgeRequirement(BadgeCase.Badge.Legend)]);
+Townlist['Giant Chasm'] = new DungeonTown('Giant Chasm', [new RouteKillRequirement(10, 22), new GymBadgeRequirement(BadgeCase.Badge.Wave)]);
+Townlist['Cave of Being'] = new DungeonTown('Cave of Being', [new RouteKillRequirement(10, 23)]);
+Townlist['Abundant Shrine'] = new DungeonTown('Abundant Shrine', [new RouteKillRequirement(10, 23), new ObtainedPokemonRequirement(pokemonMap.Tornadus), new ObtainedPokemonRequirement(pokemonMap.Thundurus)]);
+Townlist['Victory Road'] = new DungeonTown('Victory Road', [new RouteKillRequirement(10, 23)]);
+Townlist['Twist Mountain'] = new DungeonTown('Twist Mountain', [
+  new OneFromManyRequirement([
+    new MultiRequirement([
+      new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
+      new RouteKillRequirement(10, 7),
+    ]),
+    new RouteKillRequirement(10, 8),
+  ])
+]);
+Townlist['Dragonspiral Tower'] = new DungeonTown('Dragonspiral Tower', [
+  new OneFromManyRequirement([
+    new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain')),
+    new RouteKillRequirement(10, 8),
+  ])
+]);
+Townlist['Moor of Icirrus'] = new DungeonTown('Moor of Icirrus', [new RouteKillRequirement(10, 8), new ObtainedPokemonRequirement(pokemonMap.Cobalion), new ObtainedPokemonRequirement(pokemonMap.Terrakion), new ObtainedPokemonRequirement(pokemonMap.Virizion)]);
+Townlist['Pinwheel Forest'] = new DungeonTown('Pinwheel Forest', [new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion)]);
+Townlist['Wellspring Cave'] = new DungeonTown('Wellspring Cave', [new RouteKillRequirement(10, 3)]);    //Optional dungeon, no unique mons, safe to scrap
+Townlist['Dreamyard'] = new DungeonTown('Dreamyard', [new RouteKillRequirement(10, 3)]);
+Townlist['P2 Laboratory'] = new DungeonTown('P2 Laboratory', [new RouteKillRequirement(10, 17)]);
