@@ -346,13 +346,13 @@ TownList['Humilau City'] = new Town('Humilau City', [new RouteKillRequirement(10
 TownList['Pokemon League Unova'] = new Town('Pokemon League Unova', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Victory Road Unova'))]);
 TownList['Icirrus City'] = new Town('Icirrus City', [new OneFromManyRequirement([new RouteKillRequirement(10, 8), new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain'))])]);
 TownList['Black and White Park'] = new Town('Black and White Park', [
-  new OneFromManyRequirement([
-    new MultiRequirement([
-      new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
-      new RouteKillRequirement(10, 14),
+    new OneFromManyRequirement([
+        new MultiRequirement([
+            new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
+            new RouteKillRequirement(10, 14),
+        ]),
+        new RouteKillRequirement(10, 15),
     ]),
-    new RouteKillRequirement(10, 15)
-  ])
 ]);
 TownList['Nacrene City'] = new Town('Nacrene City', [new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Pinwheel Forest'))]);
 TownList['Striatorn City'] = new Town('Striatorn City', [new RouteKillRequirement(10, 3)]);
@@ -381,19 +381,19 @@ TownList['Cave of Being'] = new DungeonTown('Cave of Being', [new RouteKillRequi
 TownList['Abundant Shrine'] = new DungeonTown('Abundant Shrine', [new RouteKillRequirement(10, 23), new ObtainedPokemonRequirement(pokemonMap.Tornadus), new ObtainedPokemonRequirement(pokemonMap.Thundurus)]);
 TownList['Victory Road'] = new DungeonTown('Victory Road', [new RouteKillRequirement(10, 23)]);
 TownList['Twist Mountain'] = new DungeonTown('Twist Mountain', [
-  new OneFromManyRequirement([
-    new MultiRequirement([
-      new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
-      new RouteKillRequirement(10, 7),
+    new OneFromManyRequirement([
+        new MultiRequirement([
+            new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
+            new RouteKillRequirement(10, 7),
+        ]),
+        new RouteKillRequirement(10, 8),
     ]),
-    new RouteKillRequirement(10, 8),
-  ])
 ]);
 TownList['Dragonspiral Tower'] = new DungeonTown('Dragonspiral Tower', [
-  new OneFromManyRequirement([
-    new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain')),
-    new RouteKillRequirement(10, 8),
-  ])
+    new OneFromManyRequirement([
+        new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain')),
+        new RouteKillRequirement(10, 8),
+    ]),
 ]);
 TownList['Moor of Icirrus'] = new DungeonTown('Moor of Icirrus', [new RouteKillRequirement(10, 8), new ObtainedPokemonRequirement(pokemonMap.Cobalion), new ObtainedPokemonRequirement(pokemonMap.Terrakion), new ObtainedPokemonRequirement(pokemonMap.Virizion)]);
 TownList['Pinwheel Forest'] = new DungeonTown('Pinwheel Forest', [new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion)]);
