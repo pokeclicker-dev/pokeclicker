@@ -333,7 +333,7 @@ const AspertiaCityShop = new Shop([
 //Unova Towns
 Townlist['Aspertia City'] = new Town('Aspertia City', [], AspertiaCityShop);
 Townlist['Flocessy Town'] = new Town('Flocessy Town', [new RouteKillRequirement(10, 19)]);
-Townlist['Virbank City'] = new Town('Virbank City', new GymBadgeRequirement(BadgeCase.Badge.Basic)]);
+Townlist['Virbank City'] = new Town('Virbank City', [new GymBadgeRequirement(BadgeCase.Badge.Basic)]);
 Townlist['Castelia City'] = new Town('Castelia City', [new GymBadgeRequirement(BadgeCase.Badge.Toxic)], dungeonList['Castelia Sewers']);
 Townlist['Nimbasa City'] = new Town('Nimbasa City', [new RouteKillRequirement(10, 4), new GymBadgeRequirement(BadgeCase.Badge.Insect)]);
 Townlist['Driftveil City'] = new Town('Driftveil City', [new RouteKillRequirement(10,5), new GymBadgeRequirement(BadgeCase.Badge.Bolt)]);
