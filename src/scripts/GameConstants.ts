@@ -40,20 +40,13 @@ namespace GameConstants {
     export const ITEM_USE_TIME = 30;
 
 
+    export const SECOND = 1000;
     export const MINUTE = 1000 * 60;
     export const HOUR = 1000 * 60 * 60;
     export const DAY = 1000 * 60 * 60 * 24;
 
     export const ROAMING_MIN_CHANCE = 8192;
     export const ROAMING_MAX_CHANCE = 4096;
-
-    export const RoamingPokemon = {
-        0: ['Mew'],
-        1: ['Raikou', 'Entei', 'Suicune'],
-        2: ['Latios', 'Latias', 'Regice', 'Regirock', 'Registeel', 'Jirachi'],
-        3: ['Manaphy'],
-        4: ['Tornadus', 'Thundurus'],
-    };
 
     // Shinies
     export const SHINY_CHANCE_BATTLE = 8192;
@@ -429,6 +422,7 @@ namespace GameConstants {
         'Bulbasaur' = 0,
         'Charmander' = 1,
         'Squirtle' = 2,
+        'Pikachu' = 3,
     }
 
     export enum StoneType {
@@ -746,6 +740,7 @@ namespace GameConstants {
     ];
     
     export const UnovaDungeons = [
+        'Pledge Grove',
         'Flocessy Ranch',
         'Virbank Complex',    //Optional dungeon, contains no unique Pokémon, safe to scrap
         'Liberty Garden',
