@@ -746,6 +746,7 @@ namespace GameConstants {
     ];
     
     export const UnovaDungeons = [
+        'Pledge Grove',
         'Flocessy Ranch',
         'Virbank Complex',    //Optional dungeon, contains no unique Pokémon, safe to scrap
         'Liberty Garden',
