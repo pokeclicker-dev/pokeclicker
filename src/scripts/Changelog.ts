@@ -29,6 +29,25 @@ class Changelog {
  * PATCH - Increment for small changes, bugfixes, UI changes.
  */
 const changelogItems = [
+    // v0.5.3
+    new Changelog(changelogType.UPDATE, 'v0.5.3'),
+    new Changelog(changelogType.NEW, 'Can filter Daycare Pokémon by name (regex supported)'),
+    new Changelog(changelogType.NEW, 'Select which information is displayed under each Pokémon in the Daycare'),
+    new Changelog(changelogType.NEW, 'Possible to start with a Pikachu if no starter Pokémon selected enough times'),
+    new Changelog(changelogType.CHANGE, 'Some Roaming Pokémon will only appear after certain requirements have been met'),
+    new Changelog(changelogType.CHANGE, 'Some Dungeon Pokémon will only appear after certain requirements have been met'),
+    new Changelog(changelogType.FIXED, 'Flower Paradise dungeon HP corrected'),
+    new Changelog(changelogType.FIXED, 'Route 40 should no longer unlock before reaching it'),
+
+    // v0.5.2
+    new Changelog(changelogType.UPDATE, 'v0.5.2'),
+    new Changelog(changelogType.NEW, 'Underground quest line created'),
+    new Changelog(changelogType.NEW, 'More statistics added'),
+    new Changelog(changelogType.NEW, 'Some minor Discord integration'),
+    new Changelog(changelogType.CHANGE, 'Attack achievement no longer based on current region'),
+    new Changelog(changelogType.CHANGE, 'Modified the way game ticks are handled'),
+    new Changelog(changelogType.FIXED, 'Fixed breeding filter displayed options being reset after hatchery filled up'),
+
     // v0.5.1
     new Changelog(changelogType.UPDATE, 'v0.5.1'),
     new Changelog(changelogType.NEW, 'Added a notification for when the game has an update available'),
