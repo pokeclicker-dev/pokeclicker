@@ -1118,13 +1118,13 @@ Routes.add(new RegionRoute(
         land: ['Palpitoad', 'Shelmet', 'Stunfisk', 'Karrablast'],
     }),
     [
-        new OneFromManyRequirement(
-            new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain'),
-            MultiRequirement(
-              new RouteKillRequirement(10, 9),
-              new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion),
-            ),
-        ),
+        new OneFromManyRequirement([
+            new ClearDungeonRequirement(1, Statistics.getDungeonIndex('Twist Mountain')),
+            new MultiRequirement([
+                new RouteKillRequirement(10, 9),
+                new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
+            ]),
+        ]),
     ]
 ));
 Routes.add(new RegionRoute(
@@ -1168,16 +1168,11 @@ Routes.add(new RegionRoute(
         land: ['Sandslash', 'Gligar', 'Pupitar'],
     }),
     [
-        new OneFromManyRequirement(
-            MultiRequirement(
-              new RouteKillRequirement(10, 14),
-              new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion),
-            ),
-            MultiRequirement(
-              new RouteKillRequirement(10, 16),
-              new GymBadgeRequirement(BadgeCase.Badge.BadgeCase.Badge.Elite_UnovaChampion),
-            ),
-        ),
+        new OneFromManyRequirement([
+            new RouteKillRequirement(10, 14),
+            new RouteKillRequirement(10, 16),
+        ]),
+        new GymBadgeRequirement(BadgeCase.Badge.Elite_UnovaChampion),
     ]
 ));
 Routes.add(new RegionRoute(
