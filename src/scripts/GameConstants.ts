@@ -578,10 +578,10 @@ namespace GameConstants {
         'Olivine City',
         'Mahogany Town',
         'Blackthorn City',
-        'Elite Will',
-        'Elite Koga',
-        'Elite Bruno2',
-        'Elite Karen',
+        'Johto Elite Will',
+        'Johto Elite Koga',
+        'Johto Elite Bruno',
+        'Johto Elite Karen',
         'Champion Lance',
     ];
 
@@ -594,10 +594,10 @@ namespace GameConstants {
         'Fortree City',
         'Mossdeep City',
         'Sootopolis City',
-        'Elite Sidney',
-        'Elite Phoebe',
-        'Elite Glacia',
-        'Elite Drake',
+        'Hoenn Elite Sidney',
+        'Hoenn Elite Phoebe',
+        'Hoenn Elite Glacia',
+        'Hoenn Elite Drake',
         'Champion Wallace',
     ];
 
@@ -610,10 +610,10 @@ namespace GameConstants {
         'Canalave City',
         'Snowpoint City',
         'Sunyshore City',
-        'Elite Aaron',
-        'Elite Bertha',
-        'Elite Flint',
-        'Elite Lucian',
+        'Sinnoh Elite Aaron',
+        'Sinnoh Elite Bertha',
+        'Sinnoh Elite Flint',
+        'Sinnoh Elite Lucian',
         'Champion Cynthia',
     ];
     
@@ -632,6 +632,8 @@ namespace GameConstants {
         'Elite Caitlin',
         'Champion Iris',
     ];
+
+    export const UnovaGyms = [];
 
     export const RegionGyms = [
         KantoGyms,
@@ -716,7 +718,6 @@ namespace GameConstants {
     ];
 
     export const SinnohDungeons = [
-        // TODO: SINNOH
         'Oreburgh Gate',
         'Ravaged Path',
         'Eterna Forest',
@@ -768,6 +769,8 @@ namespace GameConstants {
         'Dreamyard',
         'P2 Laboratory',
     ];
+
+    export const UnovaDungeons = [];
 
     export const RegionDungeons = [
         KantoDungeons,
