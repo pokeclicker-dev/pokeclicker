@@ -40,19 +40,13 @@ namespace GameConstants {
     export const ITEM_USE_TIME = 30;
 
 
+    export const SECOND = 1000;
     export const MINUTE = 1000 * 60;
     export const HOUR = 1000 * 60 * 60;
     export const DAY = 1000 * 60 * 60 * 24;
 
     export const ROAMING_MIN_CHANCE = 8192;
     export const ROAMING_MAX_CHANCE = 4096;
-
-    export const RoamingPokemon = {
-        0: ['Mew'],
-        1: ['Raikou', 'Entei', 'Suicune'],
-        2: ['Latios', 'Latias', 'Regice', 'Regirock', 'Registeel', 'Jirachi'],
-        3: ['Manaphy'],
-    };
 
     // Shinies
     export const SHINY_CHANCE_BATTLE = 8192;
@@ -428,6 +422,7 @@ namespace GameConstants {
         'Bulbasaur' = 0,
         'Charmander' = 1,
         'Squirtle' = 2,
+        'Pikachu' = 3,
     }
 
     export enum StoneType {
@@ -539,6 +534,8 @@ namespace GameConstants {
         'Claw Fossil': 'Anorith',
         'Armor Fossil': 'Shieldon',
         'Skull Fossil': 'Cranidos',
+        'Cover Fossil': 'Tirtouga',
+        'Plume Fossil': 'Archen',
     };
 
     //Used for image name
@@ -550,6 +547,8 @@ namespace GameConstants {
         'Anorith': 'Claw Fossil',
         'Shieldon': 'Armor Fossil',
         'Cranidos': 'Skull Fossil',
+        'Tirtouga': 'Cover Fossil',
+        'Archen': 'Plume Fossil',
 
     };
 
@@ -616,6 +615,22 @@ namespace GameConstants {
         'Sinnoh Elite Flint',
         'Sinnoh Elite Lucian',
         'Champion Cynthia',
+    ];
+    
+    export const UnovaGyms = [
+        'Aspertia City',
+        'Virbank City',
+        'Castelia City',
+        'Nimbasa City',
+        'Driftveil City',
+        'Mistralton City',
+        'Opelucid City',
+        'Humilau City',
+        'Elite Shauntal',
+        'Elite Marshal',
+        'Elite Grimsley',
+        'Elite Caitlin',
+        'Champion Iris',
     ];
 
     export const UnovaGyms = [];
@@ -723,6 +738,36 @@ namespace GameConstants {
         'Flower Paradise',
         'Snowpoint Temple',
         'Stark Mountain',
+    ];
+    
+    export const UnovaDungeons = [
+        'Pledge Grove',
+        'Flocessy Ranch',
+        'Virbank Complex',    //Optional dungeon, contains no unique Pokémon, safe to scrap
+        'Liberty Garden',
+        'Castelia Sewers',
+        'Relic Passage',
+        'Desert Resort',    //Should really be a route
+        'Relic Castle',
+        'Lostlorn Forest',
+        'Chargestone Cave',
+        'Mistralton Cave',
+        'Celestial Tower',
+        'Reversal Mountain',
+        'Strange House',    //Optional dungeon, contains no unique Pokémon, safe to scrap
+        'Undella Bay',    //Should really be a route
+        'Seaside Cave',
+        'Giant Chasm',
+        'Abundant Shrine',
+        'Cave of Being',    //Contains gen 4 trio only
+        'Victory Road Unova',
+        'Twist Mountain',
+        'Dragonspiral Tower',
+        'Moor of Icirrus',
+        'Pinwheel Forest',
+        'Wellspring Cave',    //Optional dungeon, contains no unique Pokémon, safe to scrap
+        'Dreamyard',
+        'P2 Laboratory',
     ];
 
     export const UnovaDungeons = [];

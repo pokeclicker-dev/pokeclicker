@@ -1,10 +1,10 @@
 ///<reference path="Requirement.ts"/>
 
-class OneFromManyRequirement {
-    constructor(public requirements: Array<Requirement | MultiRequirement>) {}
+class MultiRequirement {
+    constructor(public requirements: Requirement[]) {}
 
     public isCompleted() {
-        return this.requirements.some(requirement => {
+        return this.requirements.every(requirement => {
             return requirement.isCompleted();
         });
     }
@@ -16,6 +16,6 @@ class OneFromManyRequirement {
                 output.push(requirement.hint());
             }
         });
-        return output.join(' or ');
+        return output.join(' and ');
     }
 }
