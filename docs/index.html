@@ -120,6 +120,28 @@
 <link href="https://bootswatch.com/4/yeti/bootstrap.min.css" rel="stylesheet" data-bind="attr: {href: 'https://bootswatch.com/4/' + Settings.getSetting('theme').observableValue() + '/bootstrap.min.css'}">
 
 <!--$DEV_BANNER-->
+<div class="modal" data-keyboard="false" data-backdrop="static" id="developmentModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title">Please read carefully</h5>
+            </div><div class="modal-body">
+                <p>
+                    Please download your save, and move to the new official website:<br>
+                    <button class="btn btn-info btn-block" onclick="Save.download()">Download Save</button>
+                    <a class="btn btn-info btn-block" href="https://www.pokeclicker.com">Go to pokeclicker.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('#developmentModal').modal('show')
+    });
+</script>
+
 
 <div class="loader" id="loader">
     <br>
